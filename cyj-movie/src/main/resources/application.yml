@@ -1,0 +1,11 @@
+server:
+  port: 8010
+eureka:
+  client:
+    service-url:
+      defaultZone: http://noice:123@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: cyj-movie
