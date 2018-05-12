@@ -1,12 +1,11 @@
 package com.example.cyjuser.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     public User() {
     }
@@ -20,6 +19,7 @@ public class User {
     }
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column

@@ -42,10 +42,8 @@ public class BeanUtils {
             if (ifTimestamp(entityList)){
                 sb.append("import java.sql.Timestamp;\r\n");
             }
-        sb.append("import javax.persistence.Column;\r\n");
-        sb.append("import javax.persistence.Entity;\r\n");
-        sb.append("import javax.persistence.Id;\r\n");
-        sb.append("import javax.persistence.Table;\r\n");
+        sb.append("import javax.persistence.*;\r\n");
+        sb.append("import java.io.Serializable;\r\n");
         return sb;
     }
 
@@ -71,7 +69,7 @@ public class BeanUtils {
         sb.append("\r\n");
         sb.append("@Entity\r\n");
         sb.append("@Table(name = \"T_").append(captureName(underline2Camel(tableName))).append("\")\r\n");
-        sb.append("public class ").append(captureName(underline2Camel(tableName))).append(" {\r\n");
+        sb.append("public class ").append(captureName(underline2Camel(tableName))).append(" implements Serializable {\r\n");
         sb.append("    public ")
                 .append(captureName(underline2Camel(tableName)))
                 .append("() {\r\n").append("    }\r\n").append("\r\n");
@@ -92,6 +90,7 @@ public class BeanUtils {
         for (Entity entity:entityList){
             if (entity.getEntityAuto().equals("true")){
                 sb.append("    @Id\r\n");
+                sb.append("    @GeneratedValue(strategy=GenerationType.IDENTITY)\r\n");
                 sb.append("    private ").append(entity.getEntityProperty())
                         .append(" ").append(underline2Camel(entity.getEntityName())).append(";\r\n");
                 sb.append("\r\n");

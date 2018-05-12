@@ -33,8 +33,9 @@ function deleteRow(obj){
     var entityTable = document.getElementById("entityTable");
     var rowId = obj.getAttribute("id");
     entityTable.deleteRow(Number(rowId));
-    for (var i = 0; i < entityTable.rows.length; i++) {
-        document.getElementsByName("add")[i].id = i + 1;
+    for (var i = 0; i < entityTable.rows.length - 2; i++) {
+        var idx = document.getElementsByName("delete")[i];
+        idx.setAttribute("id",i + 2);
     }
 }
 
