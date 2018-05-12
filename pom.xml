@@ -31,6 +31,7 @@
         <module>cyj-movie</module>
         <module>cyj-discovery</module>
         <module>cyj-entity-creater</module>
+        <module>cyj-data-dictionary</module>
     </modules>
     
 </project>
