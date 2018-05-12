@@ -7,6 +7,18 @@ import java.math.BigDecimal;
 
 @Entity
 public class User {
+
+    public User() {
+    }
+
+    public User(Long id, String userName, String name, Integer age, BigDecimal balance) {
+        this.id = id;
+        this.userName = userName;
+        this.name = name;
+        this.age = age;
+        this.balance = balance;
+    }
+
     @Id
     private Long id;
 

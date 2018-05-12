@@ -16,7 +16,7 @@ public class BeanUtils {
     @Value("${Path.path}")
     private String Path;
 
-    @Value("${Path.referencePath}")
+    @Value("${Path.reference}")
     private String referencePath;
 
 
@@ -72,54 +72,51 @@ public class BeanUtils {
         sb.append("@Entity\r\n");
         sb.append("@Table(name = \"T_").append(captureName(underline2Camel(tableName))).append("\")\r\n");
         sb.append("public class ").append(captureName(underline2Camel(tableName))).append(" {\r\n");
+        sb.append("    public ")
+                .append(captureName(underline2Camel(tableName)))
+                .append("() {\r\n").append("    }\r\n").append("\r\n");
+        sb.append("    public ")
+                .append(captureName(underline2Camel(tableName))).append("(");
+        for (Entity entity:entityList){
+            sb.append(entity.getEntityProperty()).append(" ")
+                    .append(underline2Camel(entity.getEntityName())).append(", ");
+        }
+        sb.deleteCharAt(sb.length() - 2);
+        sb.append(") {\r\n");
+        for (Entity entity:entityList){
+            sb.append("        this.")
+                    .append(underline2Camel(entity.getEntityName()))
+                    .append(" = ").append(underline2Camel(entity.getEntityName())).append(";\r\n");
+        }
+        sb.append("    }\r\n").append("\r\n");
         for (Entity entity:entityList){
             if (entity.getEntityAuto().equals("true")){
                 sb.append("    @Id\r\n");
-                sb.append("    private ")
-                        .append(entity.getEntityProperty())
-                        .append(" ")
-                        .append(underline2Camel(entity.getEntityName()))
-                        .append(";\r\n");
+                sb.append("    private ").append(entity.getEntityProperty())
+                        .append(" ").append(underline2Camel(entity.getEntityName())).append(";\r\n");
                 sb.append("\r\n");
             }else {
                 sb.append("    @Column\r\n");
-                sb.append("    private ")
-                        .append(entity.getEntityProperty())
-                        .append(" ")
-                        .append(underline2Camel(entity.getEntityName()))
-                        .append(";\r\n");
+                sb.append("    private ").append(entity.getEntityProperty()).append(" ")
+                        .append(underline2Camel(entity.getEntityName())).append(";\r\n");
                 sb.append("\r\n");
             }
         }
         for (Entity entity:entityList){
             sb.append("    public ")
-                    .append(entity.getEntityProperty())
-                    .append(" ")
-                    .append("get")
+                    .append(entity.getEntityProperty()).append(" ").append("get")
                     .append(captureName(underline2Camel(entity.getEntityName())))
-                    .append("()")
-                    .append(" {\r\n")
-                    .append("        return ")
+                    .append("()").append(" {\r\n").append("        return ")
                     .append(underline2Camel(entity.getEntityName()))
-                    .append(";\r\n")
-                    .append("    }\r\n")
-                    .append("\r\n")
-                    .append("    public void ")
-                    .append("set")
+                    .append(";\r\n").append("    }\r\n").append("\r\n")
+                    .append("    public void ").append("set")
                     .append(captureName(underline2Camel(entity.getEntityName())))
-                    .append("(")
-                    .append(entity.getEntityProperty())
-                    .append(" ")
+                    .append("(").append(entity.getEntityProperty()).append(" ")
                     .append(underline2Camel(entity.getEntityName()))
-                    .append(") {\r\n")
-                    .append("        this.")
+                    .append(") {\r\n").append("        this.")
                     .append(underline2Camel(entity.getEntityName()))
-                    .append(" = ")
-                    .append(underline2Camel(entity.getEntityName()))
-                    .append(";\r\n")
-                    .append("    }\r\n")
-                    .append("\r\n");
-
+                    .append(" = ").append(underline2Camel(entity.getEntityName()))
+                    .append(";\r\n").append("    }\r\n").append("\r\n");
         }
         sb.append("}");
         return sb;
