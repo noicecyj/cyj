@@ -85,3 +85,5 @@ function submit() {
         }
     })
 }
+
+$("[name='switch']").bootstrapSwitch();

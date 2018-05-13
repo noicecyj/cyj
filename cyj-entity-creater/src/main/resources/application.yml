@@ -25,7 +25,7 @@ spring:
   datasource:
     platform: mysql
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.1.2:3306/noice?useSSL=false
+    url: jdbc:mysql://192.168.1.2:3306/entity_create?useSSL=false
     username: root
     password: 68762306
 Path:
