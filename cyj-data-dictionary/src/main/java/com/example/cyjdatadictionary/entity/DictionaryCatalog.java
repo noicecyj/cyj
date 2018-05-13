@@ -1,11 +1,24 @@
-package com.example.cyjdatadictionary.Entity;
+package com.example.cyjdatadictionary.entity;
 
+import javax.persistence.*;
 
-public class TDictionaryCatalog {
+@Entity
+@Table(name = DictionaryCatalog.T_DICTIONARY_CATALOG)
+public class DictionaryCatalog {
+	
+	static final String T_DICTIONARY_CATALOG = "t_dictionary_catalog";
 
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+
+    @Column
     private String catalogName;
+
+    @Column
     private String catalogValue;
+
+    @Column
     private String description;
 
 

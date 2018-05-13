@@ -1,7 +1,7 @@
-package com.example.cyjuser.Controller;
+package com.example.cyjuser.controller;
 
-import com.example.cyjuser.Dao.UserDao;
-import com.example.cyjuser.Entity.User;
+import com.example.cyjuser.dao.UserDao;
+import com.example.cyjuser.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,4 +1,4 @@
-package com.example.cyjuser.Entity;
+package com.example.cyjuser.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
