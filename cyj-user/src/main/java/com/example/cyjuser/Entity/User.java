@@ -1,11 +1,10 @@
 package com.example.cyjuser.Entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-public class User implements Serializable {
+public class User {
 
     public User() {
     }
