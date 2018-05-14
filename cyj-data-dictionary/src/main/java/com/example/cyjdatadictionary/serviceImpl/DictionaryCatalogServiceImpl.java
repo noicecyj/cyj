@@ -12,12 +12,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class DictionaryCatalogServiceImpl implements DictionaryCatalogService {
 
-    @Autowired
-    private DictionaryCatalogDao dictionaryCatalogDao;
+    private final DictionaryCatalogDao dictionaryCatalogDao;
+
+	@Autowired
+	public DictionaryCatalogServiceImpl(DictionaryCatalogDao dictionaryCatalogDao) {
+		this.dictionaryCatalogDao = dictionaryCatalogDao;
+	}
 
 	@Override
 	public List<DictionaryCatalog> findAll() {
 		return dictionaryCatalogDao.findAll();
 	}
-    
+
+	@Override
+	public DictionaryCatalog findDictionaryCatalogById(Long id) {
+		return dictionaryCatalogDao.findDictionaryCatalogById(id);
+	}
+
 }

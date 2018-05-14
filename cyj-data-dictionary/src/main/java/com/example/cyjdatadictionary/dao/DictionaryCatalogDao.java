@@ -3,4 +3,6 @@ package com.example.cyjdatadictionary.dao;
 import com.example.cyjdatadictionary.entity.DictionaryCatalog;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DictionaryCatalogDao extends JpaRepository<DictionaryCatalog,Long> {}
+public interface DictionaryCatalogDao extends JpaRepository<DictionaryCatalog,Long> {
+    DictionaryCatalog findDictionaryCatalogById(long id);
+}
