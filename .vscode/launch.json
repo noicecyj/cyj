@@ -1,0 +1,71 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CyjDataDictionaryApplication<cyj-data-dictionary>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.example.cyjdatadictionary.CyjDataDictionaryApplication",
+            "projectName": "cyj-data-dictionary",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CyjDiscoveryApplication<cyj-discovery>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.example.cyjdiscovery.CyjDiscoveryApplication",
+            "projectName": "cyj-discovery",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CyjEntityCreaterApplication<cyj-entity-creater>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.example.cyjentitycreater.CyjEntityCreaterApplication",
+            "projectName": "cyj-entity-creater",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CyjMovieApplication<cyj-movie>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.example.cyjmovie.CyjMovieApplication",
+            "projectName": "cyj-movie",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-CyjUserApplication<cyj-user>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.example.cyjuser.CyjUserApplication",
+            "projectName": "cyj-user",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Attach)",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 0
+        }
+    ]
+}
