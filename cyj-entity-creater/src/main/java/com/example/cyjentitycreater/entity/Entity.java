@@ -31,7 +31,7 @@ public class Entity {
 
     @Override
     public String toString() {
-        return "Entity{" +
+        return "entity{" +
                 "entityName='" + entityName + '\'' +
                 ", entityProperty='" + entityProperty + '\'' +
                 ", entityAuto='" + entityAuto + '\'' +

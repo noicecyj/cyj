@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/Dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/entity/User.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cyj-movie/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -58,13 +64,6 @@
         <item name="data_dictionary: schema" type="c314c289:MysqlImplModel$Schema" />
         <item name="t_dictionary: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="data_dictionary: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="t_dictionary_catalog: table" type="98d5ac3d:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -78,81 +77,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DictionaryCatalogServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-              <folding>
-                <element signature="e#599#600#0" expanded="true" />
-                <element signature="e#643#644#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DictionaryCatalogDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DictionaryCatalog.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/DictionaryCatalog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DictionaryServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#517#518#0" expanded="true" />
-                <element signature="e#581#582#0" expanded="true" />
-                <element signature="e#324#325#0" expanded="true" />
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#418#419#0" expanded="true" />
-                <element signature="e#445#446#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DictionaryService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DictionaryDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="156">
-              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryCatalogService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="8" column="57" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="57" />
+              <caret line="8" column="57" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -172,11 +101,74 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/templates/index.html">
+      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="357">
+              <caret line="35" column="28" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="28" />
+              <folding>
+                <element signature="e#1088#1089#0" expanded="true" />
+                <element signature="e#1156#1157#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dictionary.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+                <element signature="e#521#522#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DictionaryCatalogDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DictionaryDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserFeign.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Feign/UserFeign.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -225,7 +217,6 @@
         <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/CyjDataDictionaryApplication.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/cyj-data-dictionary/pom.xml" />
-        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" />
         <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/myjs.js" />
         <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/templates/index.html" />
         <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/templates/index.html" />
@@ -240,8 +231,9 @@
         <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryDaoService.java" />
         <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryDaoServiceImpl.java" />
         <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java" />
-        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java" />
         <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" />
       </list>
     </option>
   </component>
@@ -295,8 +287,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -347,6 +337,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cyjdatadictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjdatadictionary" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -368,33 +368,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cyjdatadictionary" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cyj" type="462c0819:PsiDirectoryNode" />
-              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cyjdatadictionary" type="462c0819:PsiDirectoryNode" />
-              <item name="serviceImpl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cyj" type="462c0819:PsiDirectoryNode" />
-              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cyj" type="462c0819:PsiDirectoryNode" />
-              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
@@ -468,10 +441,122 @@
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjmovie" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjmovie" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjmovie" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-movie" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjmovie" type="462c0819:PsiDirectoryNode" />
+              <item name="Feign" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjuser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-user" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjuser" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -530,7 +615,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CyjEntityCreaterApplication">
+  <component name="RunManager" selected="Spring Boot.CyjDataDictionaryApplication">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -644,6 +729,8 @@
       <workItem from="1526117491257" duration="7644000" />
       <workItem from="1526179048531" duration="20664000" />
       <workItem from="1526308927606" duration="2944000" />
+      <workItem from="1526312314984" duration="210000" />
+      <workItem from="1526387688170" duration="3657000" />
     </task>
     <task id="LOCAL-00001" summary="我是天才">
       <created>1526050747980</created>
@@ -701,7 +788,14 @@
       <option name="project" value="LOCAL" />
       <updated>1526311938027</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="doubiodubi">
+      <created>1526312430486</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1526312430487</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -713,10 +807,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140443000" />
+    <option name="totallyTimeSpent" value="144310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.4377551" />
@@ -730,29 +825,29 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32857144" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Run Dashboard" order="7" sideWeight="0.49947917" weight="0.4377551" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="7" sideWeight="0.49947917" visible="true" weight="0.4377551" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32959184" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32857144" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1796875" />
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Database Console" order="9" weight="0.32721713" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32857144" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
       <window_info active="true" anchor="right" id="Coverage" order="4" sideWeight="0.5007133" side_tool="true" visible="true" weight="0.13541667" />
     </layout>
   </component>
@@ -783,31 +878,8 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/performance_schema/table/global_variables" />
-    <entry file="file://$PROJECT_DIR$/cyj-discovery/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/JavaBean/EwqRte.java" />
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/JavaBean/Sdd.java" />
     <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/performance_schema/table/accounts" />
-    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/Entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1248">
-          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/BeanUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
@@ -853,24 +925,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Feign/UserFeign.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Controller/MovieController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/Controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -886,16 +944,6 @@
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/bootstrapselect.js" />
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/bootstraptable.min.js" />
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/css/bootstrapselect.css" />
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/css/bootstrapswitch.min.css" />
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/bootstrapswitch.min.js" />
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/bootstrap.min.js">
@@ -917,13 +965,6 @@
     <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/static/js/npm.js" />
     <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/npm.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
@@ -963,6 +1004,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/Entity/TDictionaryCatalog.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/DictionaryCatalog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -970,11 +1040,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/Entity/TDictionaryCatalog.java" />
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java">
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/.classpath">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1274">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/dao/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
-          <caret line="5" selection-start-line="5" selection-end-line="7" selection-end-column="1" />
+          <caret line="5" column="47" lean-forward="true" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Feign/UserFeign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -984,68 +1100,57 @@
     <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryCatalogService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="8" column="57" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="57" />
+          <caret line="8" column="57" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        <state relative-caret-position="468">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="22" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="27" column="52" lean-forward="true" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#418#419#0" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-          </folding>
+    <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/data_dictionary/table/t_dictionary">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java">
+    <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/data_dictionary/table/t_dictionary_catalog">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        <state relative-caret-position="357">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="28" />
+          <folding>
+            <element signature="e#1088#1089#0" expanded="true" />
+            <element signature="e#1156#1157#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/DictionaryCatalog.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
