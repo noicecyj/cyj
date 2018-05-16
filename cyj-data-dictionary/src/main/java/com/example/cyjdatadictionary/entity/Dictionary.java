@@ -1,6 +1,7 @@
 package com.example.cyjdatadictionary.entity;
 
         import javax.persistence.*;
+        import java.util.Collection;
 
 @Entity
 @Table(name = Dictionary.T_DICTIONARY)
@@ -12,8 +13,17 @@ public class Dictionary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "Id")
-    private long pid;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="pid")
+    private DictionaryCatalog dictionaryCatalog;
+
+    public DictionaryCatalog getDictionaryCatalog() {
+        return dictionaryCatalog;
+    }
+
+    public void setDictionaryCatalog(DictionaryCatalog dictionaryCatalog) {
+        this.dictionaryCatalog = dictionaryCatalog;
+    }
 
     @Column
     private String dictionaryName;
@@ -28,15 +38,6 @@ public class Dictionary {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-
-    public long getPid() {
-        return pid;
-    }
-
-    public void setPid(long pid) {
-        this.pid = pid;
     }
 
 
