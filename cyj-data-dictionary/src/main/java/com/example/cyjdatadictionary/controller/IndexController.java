@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 
 @RestController
 public class IndexController {
@@ -23,9 +25,14 @@ public class IndexController {
     }
 
 
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    @GetMapping("/index")
     public ModelAndView hello() {
         return new ModelAndView("index");
+    }
+
+    @GetMapping("/data")
+    public List<DictionaryCatalog> data() {
+        return dictionaryCatalogService.findAll();
     }
 
     @GetMapping("/{id}")

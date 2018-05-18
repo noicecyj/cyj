@@ -9,32 +9,23 @@
     <script th:src="@{js/bootstrap.min.js}" type="text/javascript" th:inline="javascript"></script>
     <script th:src="@{js/bootstraptable.min.js}" type="text/javascript" th:inline="javascript"></script>
     <script th:src="@{js/bootstraptablezhCN.min.js}" type="text/javascript" th:inline="javascript"></script>
+    <script th:src="@{js/table.js}" type="text/javascript" th:inline="javascript"></script>
 </head>
 <body>
 <div class="row">
     <div class="col-md-12 column">
-        <table  data-toggle="table" id="entityTable" data-striped="true">
+        <table  data-toggle="table" id="entityTable" data-striped="true" data-url="/data">
             <caption><h1>数据字典</h1></caption>
             <thead>
                 <tr>
-                    <th>序号</th>
-                    <th>目录名称</th>
-                    <th>目录代号</th>
-                    <th>目录描述</th>
+                    <th data-field="id">序号</th>
+                    <th data-field="catalogName">目录名称</th>
+                    <th data-field="catalogValue">目录代号</th>
+                    <th data-field="description">目录描述</th>
                     <th>编辑</th>
                     <th>删除</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
         </table>
     </div>
 </div>

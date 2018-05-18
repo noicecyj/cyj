@@ -57,4 +57,13 @@ public class DictionaryCatalog {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "DictionaryCatalog{" +
+                "id=" + id +
+                ", catalogName='" + catalogName + '\'' +
+                ", catalogValue='" + catalogValue + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
