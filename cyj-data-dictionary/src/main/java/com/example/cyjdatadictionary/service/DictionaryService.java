@@ -8,4 +8,6 @@ public interface DictionaryService {
     Dictionary findDictionaryById(Integer id);
     List<Dictionary> findDictionaryByDictionaryCatalog_Id(Integer pid);
     Dictionary save(Dictionary dictionary);
+    Dictionary saveAndFlush(Dictionary dictionary);
+    void delete(Integer id);
 }

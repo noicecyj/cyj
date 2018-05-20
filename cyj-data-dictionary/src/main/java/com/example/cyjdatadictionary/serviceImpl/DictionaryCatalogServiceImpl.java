@@ -34,4 +34,14 @@ public class DictionaryCatalogServiceImpl implements DictionaryCatalogService {
 		return dictionaryCatalogDao.save(dictionaryCatalog);
 	}
 
+	@Override
+	public DictionaryCatalog saveAndFlush(DictionaryCatalog dictionaryCatalog) {
+		return dictionaryCatalogDao.saveAndFlush(dictionaryCatalog);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		dictionaryCatalogDao.delete(id);
+	}
+
 }

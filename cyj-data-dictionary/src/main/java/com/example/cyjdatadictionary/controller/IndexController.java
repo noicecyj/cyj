@@ -51,10 +51,53 @@ public class IndexController {
         return this.dictionaryCatalogService.save(dictionaryCatalog);
     }
 
+    @GetMapping("/updateDictionaryCatalog")
+    public DictionaryCatalog updateDictionaryCatalog(@RequestParam("editCatalogId") Integer id,
+                                                     @RequestParam("editCatalogName") String catalogName,
+                                                     @RequestParam("editCatalogValue") String catalogValue,
+                                                     @RequestParam("editDescription") String description){
+        DictionaryCatalog dictionaryCatalog = new DictionaryCatalog();
+        dictionaryCatalog.setId(id);
+        dictionaryCatalog.setCatalogName(catalogName);
+        dictionaryCatalog.setCatalogValue(catalogValue);
+        dictionaryCatalog.setDescription(description);
+        return this.dictionaryCatalogService.saveAndFlush(dictionaryCatalog);
+    }
+
     @GetMapping("/saveDictionary")
-    public Dictionary saveDictionary(){
+    public Dictionary saveDictionary(@RequestParam("catalogId") Integer catalogId,
+                                     @RequestParam("dictionaryName") String dictionaryName,
+                                     @RequestParam("dictionaryValue") String dictionaryValue){
+        DictionaryCatalog dictionaryCatalog =dictionaryCatalogService.findDictionaryCatalogById(catalogId);
         Dictionary dictionary = new Dictionary();
+        dictionary.setDictionaryCatalog(dictionaryCatalog);
+        dictionary.setDictionaryName(dictionaryName);
+        dictionary.setDictionaryValue(dictionaryValue);
         return this.dictionaryService.save(dictionary);
+    }
+
+    @GetMapping("/updateDictionary")
+    public Dictionary updateDictionary(@RequestParam("editDictionaryId") Integer id,
+                                       @RequestParam("editCatalogId") Integer catalogId,
+                                       @RequestParam("editDictionaryName") String dictionaryName,
+                                       @RequestParam("editDictionaryValue") String dictionaryValue){
+        DictionaryCatalog dictionaryCatalog =dictionaryCatalogService.findDictionaryCatalogById(catalogId);
+        Dictionary dictionary = new Dictionary();
+        dictionary.setId(id);
+        dictionary.setDictionaryCatalog(dictionaryCatalog);
+        dictionary.setDictionaryName(dictionaryName);
+        dictionary.setDictionaryValue(dictionaryValue);
+        return this.dictionaryService.saveAndFlush(dictionary);
+    }
+
+    @GetMapping("/deleteCatalog")
+    public void deleteCatalog(@RequestParam("catalogId") Integer id){
+        dictionaryCatalogService.delete(id);
+    }
+
+    @GetMapping("/deleteDictionary")
+    public void deleteDictionary(@RequestParam("dictionaryId") Integer id){
+        dictionaryService.delete(id);
     }
 
 }

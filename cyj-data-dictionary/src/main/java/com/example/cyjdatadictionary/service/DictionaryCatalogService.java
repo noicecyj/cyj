@@ -8,4 +8,6 @@ public interface DictionaryCatalogService {
     List<DictionaryCatalog> findAll();
     DictionaryCatalog findDictionaryCatalogById(Integer id);
     DictionaryCatalog save(DictionaryCatalog dictionaryCatalog);
+    DictionaryCatalog saveAndFlush(DictionaryCatalog dictionaryCatalog);
+    void delete(Integer id);
 }

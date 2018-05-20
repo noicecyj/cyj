@@ -38,5 +38,15 @@ public class DictionaryServiceImpl implements DictionaryService {
         return dictionaryDao.save(dictionary);
     }
 
+    @Override
+    public Dictionary saveAndFlush(Dictionary dictionary) {
+        return dictionaryDao.saveAndFlush(dictionary);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        dictionaryDao.delete(id);
+    }
+
 
 }

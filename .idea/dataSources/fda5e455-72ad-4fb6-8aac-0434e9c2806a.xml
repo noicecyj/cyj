@@ -2676,6 +2676,8 @@
       <RefSchemaName>data_dictionary</RefSchemaName>
       <RefTableName>t_dictionary_catalog</RefTableName>
       <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="796" parent="280" name="id">
       <Position>1</Position>

@@ -12,7 +12,7 @@ public class Dictionary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="pid")
     private DictionaryCatalog dictionaryCatalog;
 
