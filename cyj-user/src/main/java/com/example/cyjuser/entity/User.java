@@ -9,7 +9,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String userName, String name, Integer age, BigDecimal balance) {
+    public User(Integer id, String userName, String name, Integer age, BigDecimal balance) {
         this.id = id;
         this.userName = userName;
         this.name = name;
@@ -19,7 +19,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column
     private String userName;
@@ -33,11 +33,11 @@ public class User {
     @Column
     private BigDecimal balance;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

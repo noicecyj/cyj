@@ -35,13 +35,9 @@ public class IndexController {
         return dictionaryCatalogService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public DictionaryCatalog findDictionaryCatalogId(@PathVariable Long id){
-        return this.dictionaryCatalogService.findDictionaryCatalogById(id);
+    @GetMapping("/dictionary")
+    public List<Dictionary> findDictionaryByDictionaryCatalog_Id(@RequestParam("pid") Integer pid){
+        return this.dictionaryService.findDictionaryByDictionaryCatalog_Id(pid);
     }
 
-    @GetMapping("/Dictionary{id}")
-    public Dictionary findDictionaryId(@PathVariable Long id){
-        return this.dictionaryService.findDictionaryById(id);
-    }
 }

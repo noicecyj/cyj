@@ -24,7 +24,14 @@ public class DictionaryServiceImpl implements DictionaryService {
     }
 
     @Override
-    public Dictionary findDictionaryById(Long id) {
+    public Dictionary findDictionaryById(Integer id) {
         return dictionaryDao.findDictionaryById(id);
     }
+
+    @Override
+    public List<Dictionary> findDictionaryByDictionaryCatalog_Id(Integer pid) {
+        return dictionaryDao.findDictionaryByDictionaryCatalog_Id(pid);
+    }
+
+
 }

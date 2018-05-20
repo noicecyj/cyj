@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name = "cyj-user")
 public interface UserFeign {
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    User findById(@PathVariable("id") Long id);
+    User findById(@PathVariable("id") Integer id);
 }

@@ -18,7 +18,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable Long id){
+    public User findById(@PathVariable Integer id){
         return this.userDao.findOne(id);
     }
 }

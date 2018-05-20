@@ -10,7 +10,7 @@ public class DictionaryCatalog {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column
     private String catalogName;
@@ -22,11 +22,11 @@ public class DictionaryCatalog {
     private String description;
 
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

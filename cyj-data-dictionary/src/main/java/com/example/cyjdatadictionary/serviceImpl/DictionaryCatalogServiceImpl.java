@@ -25,7 +25,7 @@ public class DictionaryCatalogServiceImpl implements DictionaryCatalogService {
 	}
 
 	@Override
-	public DictionaryCatalog findDictionaryCatalogById(Long id) {
+	public DictionaryCatalog findDictionaryCatalogById(Integer id) {
 		return dictionaryCatalogDao.findDictionaryCatalogById(id);
 	}
 

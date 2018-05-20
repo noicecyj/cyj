@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>实体生成器</title>
+    <title>数据字典</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{css/bootstraptable.min.css}" rel="stylesheet"/>
@@ -14,7 +14,7 @@
 <body>
 <div class="row">
     <div class="col-md-12 column">
-        <table  data-toggle="table" id="entityTable" data-striped="true" data-url="/data">
+        <table  data-toggle="table" id="dictionaryCatalogTable" data-striped="true" data-url="/data">
             <caption><h1>数据字典</h1></caption>
             <thead>
                 <tr>
@@ -22,12 +22,40 @@
                     <th data-field="catalogName">目录名称</th>
                     <th data-field="catalogValue">目录代号</th>
                     <th data-field="description">目录描述</th>
-                    <th>编辑</th>
-                    <th>删除</th>
+                    <th data-formatter="operateFormatter" data-events="operateEvents">操作</th>
                 </tr>
             </thead>
         </table>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editModalLabel">编辑数据字典</h4>
+            </div>
+            <div class="modal-body">
+                <table  data-toggle="table" id="dictionaryTable" data-striped="true" data-url="/dictionary?pid=1">
+                    <thead>
+                    <tr>
+                        <th data-field="id">序号</th>
+                        <th data-field="dictionaryName">键</th>
+                        <th data-field="dictionaryValue">值</th>
+                        <th data-formatter="operateFormatter" data-events="operateEvents">操作</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

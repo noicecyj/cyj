@@ -6,5 +6,5 @@ import com.example.cyjdatadictionary.entity.DictionaryCatalog;
 
 public interface DictionaryCatalogService {
     List<DictionaryCatalog> findAll();
-    DictionaryCatalog findDictionaryCatalogById(Long id);
+    DictionaryCatalog findDictionaryCatalogById(Integer id);
 }
