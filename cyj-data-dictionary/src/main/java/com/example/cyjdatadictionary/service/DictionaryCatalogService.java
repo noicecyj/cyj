@@ -7,4 +7,5 @@ import com.example.cyjdatadictionary.entity.DictionaryCatalog;
 public interface DictionaryCatalogService {
     List<DictionaryCatalog> findAll();
     DictionaryCatalog findDictionaryCatalogById(Integer id);
+    DictionaryCatalog save(DictionaryCatalog dictionaryCatalog);
 }

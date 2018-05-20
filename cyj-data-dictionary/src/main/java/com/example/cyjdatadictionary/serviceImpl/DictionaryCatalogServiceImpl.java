@@ -29,4 +29,9 @@ public class DictionaryCatalogServiceImpl implements DictionaryCatalogService {
 		return dictionaryCatalogDao.findDictionaryCatalogById(id);
 	}
 
+	@Override
+	public DictionaryCatalog save(DictionaryCatalog dictionaryCatalog) {
+		return dictionaryCatalogDao.save(dictionaryCatalog);
+	}
+
 }

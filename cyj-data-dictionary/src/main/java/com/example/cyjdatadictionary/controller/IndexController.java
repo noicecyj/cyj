@@ -40,4 +40,21 @@ public class IndexController {
         return this.dictionaryService.findDictionaryByDictionaryCatalog_Id(pid);
     }
 
+    @GetMapping("/saveDictionaryCatalog")
+    public DictionaryCatalog saveDictionaryCatalog(@RequestParam("catalogName") String catalogName,
+                                                   @RequestParam("catalogValue") String catalogValue,
+                                                   @RequestParam("description") String description){
+        DictionaryCatalog dictionaryCatalog = new DictionaryCatalog();
+        dictionaryCatalog.setCatalogName(catalogName);
+        dictionaryCatalog.setCatalogValue(catalogValue);
+        dictionaryCatalog.setDescription(description);
+        return this.dictionaryCatalogService.save(dictionaryCatalog);
+    }
+
+    @GetMapping("/saveDictionary")
+    public Dictionary saveDictionary(){
+        Dictionary dictionary = new Dictionary();
+        return this.dictionaryService.save(dictionary);
+    }
+
 }

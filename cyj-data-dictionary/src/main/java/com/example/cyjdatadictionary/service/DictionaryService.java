@@ -7,4 +7,5 @@ public interface DictionaryService {
     List<Dictionary> findAll();
     Dictionary findDictionaryById(Integer id);
     List<Dictionary> findDictionaryByDictionaryCatalog_Id(Integer pid);
+    Dictionary save(Dictionary dictionary);
 }

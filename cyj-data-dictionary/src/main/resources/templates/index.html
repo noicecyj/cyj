@@ -14,15 +14,18 @@
 <body>
 <div class="row">
     <div class="col-md-12 column">
-        <table  data-toggle="table" id="dictionaryCatalogTable" data-striped="true" data-url="/data">
+        <table data-toggle="table" id="dictionaryCatalogTable" data-striped="true" data-url="/data">
             <caption><h1>数据字典</h1></caption>
             <thead>
                 <tr>
-                    <th data-field="id">序号</th>
-                    <th data-field="catalogName">目录名称</th>
-                    <th data-field="catalogValue">目录代号</th>
-                    <th data-field="description">目录描述</th>
-                    <th data-formatter="operateFormatter" data-events="operateEvents">操作</th>
+                    <th data-field="id" data-width="5%">序号</th>
+                    <th data-field="catalogName" data-width="10%">目录名称</th>
+                    <th data-field="catalogValue" data-width="10%">目录代号</th>
+                    <th data-field="description" data-width="60%">目录描述</th>
+                    <th data-formatter="operateFormatter" data-events="operateEvents" data-width="10%">
+                        操作
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveModal">添加</button>
+                    </th>
                 </tr>
             </thead>
         </table>
@@ -30,28 +33,48 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="editModalLabel">编辑数据字典</h4>
             </div>
             <div class="modal-body">
-                <table  data-toggle="table" id="dictionaryTable" data-striped="true" data-url="/dictionary?pid=1">
-                    <thead>
-                    <tr>
-                        <th data-field="id">序号</th>
-                        <th data-field="dictionaryName">键</th>
-                        <th data-field="dictionaryValue">值</th>
-                        <th data-formatter="operateFormatter" data-events="operateEvents">操作</th>
-                    </tr>
-                    </thead>
-                </table>
+                <table id="dictionaryTable"></table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="saveModalLabel">添加数据字典</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="catalogName">目录名称</label>
+                    <input type="text" class="form-control" id="catalogName"/>
+                </div>
+                <div class="form-group">
+                    <label for="catalogValue">目录代号</label>
+                    <input type="text" class="form-control" id="catalogValue"/>
+                </div>
+                <div class="form-group">
+                    <label for="description">目录描述</label>
+                    <textarea class="form-control" rows="7" id="description"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="save()">保存</button>
             </div>
         </div>
     </div>

@@ -33,5 +33,10 @@ public class DictionaryServiceImpl implements DictionaryService {
         return dictionaryDao.findDictionaryByDictionaryCatalog_Id(pid);
     }
 
+    @Override
+    public Dictionary save(Dictionary dictionary) {
+        return dictionaryDao.save(dictionary);
+    }
+
 
 }
