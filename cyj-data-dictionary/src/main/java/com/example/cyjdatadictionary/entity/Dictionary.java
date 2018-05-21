@@ -16,14 +16,6 @@ public class Dictionary {
     @JoinColumn(name="pid")
     private DictionaryCatalog dictionaryCatalog;
 
-    public DictionaryCatalog getDictionaryCatalog() {
-        return dictionaryCatalog;
-    }
-
-    public void setDictionaryCatalog(DictionaryCatalog dictionaryCatalog) {
-        this.dictionaryCatalog = dictionaryCatalog;
-    }
-
     @Column
     private String dictionaryName;
 
@@ -33,6 +25,14 @@ public class Dictionary {
 
     public Integer getId() {
         return id;
+    }
+
+    public DictionaryCatalog getDictionaryCatalog() {
+        return dictionaryCatalog;
+    }
+
+    public void setDictionaryCatalog(DictionaryCatalog dictionaryCatalog) {
+        this.dictionaryCatalog = dictionaryCatalog;
     }
 
     public void setId(Integer id) {

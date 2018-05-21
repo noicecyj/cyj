@@ -2,14 +2,16 @@ function operateFormatter(value, row, index) {
     return [
         '<button type="button" class="btn btn-default editCatalog" style="margin-right:15px;">编辑内容</button>',
         '<button type="button" class="btn btn-default edit" style="margin-right:15px;">编辑</button>',
-        '<button type="button" class="btn btn-default deleteCatalog" style="margin-right:15px;">删除</button>'
+        '<button type="button" class="btn btn-warning deleteCatalog" style="margin-right:15px;">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除</button>'
     ].join('');
 }
 
 function operateFormatter1(value, row, index) {
     return [
         '<button type="button" class="btn btn-default editDictionary" style="margin-right:15px;">编辑</button>',
-        '<button type="button" class="btn btn-default deleteDictionary" style="margin-right:15px;">删除</button>'
+        '<button type="button" class="btn btn-warning deleteDictionary" style="margin-right:15px;">' +
+        '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除</button>'
     ].join('');
 }
 
@@ -23,6 +25,21 @@ function dictionary(id){
             $('#dictionaryTable').bootstrapTable('load', msg);
         }
     });
+}
+
+function hasDictionary(id){
+    var size = 0;
+    $.ajax({
+        type : "GET",
+        url : '/dictionary?pid=' + id,
+        async: false,
+        contentType: "application/json;charset=utf-8",
+        dataType:"json",
+        success : function (msg) {
+            size = msg.length;
+        }
+    });
+    return size;
 }
 
 function saveCatalog(){
@@ -104,8 +121,7 @@ function updateDictionary(){
 
 window.operateEvents = {
     'click .editCatalog': function (e, value, index) {
-        var id = index.id;
-        document.getElementById("catalogId1").value = id;
+        document.getElementById("catalogId1").value = index.id;
         $('#dictionaryTable').bootstrapTable({
             ajax: dictionary(index.id)
         });
@@ -123,15 +139,26 @@ window.operateEvents = {
         $("#editCatalogModal").modal('show');
     },
     'click .deleteCatalog': function (e, value, index) {
-        $.ajax({
-            type : "GET",
-            url : '/deleteCatalog',
-            data: {
-                catalogId: index.id
-            },
-            contentType: "application/json;charset=utf-8",
-            dataType:"json"
-        });
+        var catalogSize = hasDictionary(index.id);
+        if (catalogSize === 0) {
+            if(confirm("确认删除吗?")) {
+                $('#dictionaryCatalogTable').bootstrapTable('remove', {
+                    field: 'mainContentId',
+                    values: [index.id]
+                });
+                $.ajax({
+                    type: "GET",
+                    url: '/deleteCatalog',
+                    data: {
+                        catalogId: index.id
+                    },
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json"
+                });
+            }
+        }else {
+            alert("目录中存在数据，不能删除！");
+        }
         window.location.reload();
     }
 };
@@ -149,17 +176,21 @@ window.operateEvents1 = {
         $("#updateDictionaryModal").modal('show');
     },
     'click .deleteDictionary': function (e, value, index) {
-        alert(index.id);
-        $.ajax({
-            type : "GET",
-            url : '/deleteDictionary',
-            data: {
-                dictionaryId: index.id
-            },
-            contentType: "application/json;charset=utf-8",
-            dataType:"json"
-        });
+        if(confirm("确认删除吗?")) {
+            $('#dictionaryTable').bootstrapTable('remove', {
+                field: 'mainContentId',
+                values: [index.id]
+            });
+            $.ajax({
+                type: "GET",
+                url: '/deleteDictionary',
+                data: {
+                    dictionaryId: index.id
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json"
+            });
+        }
         window.location.reload();
     }
 };
-
