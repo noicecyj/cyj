@@ -1,7 +1,6 @@
 package com.example.cyjdatadictionary.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = DictionaryCatalog.T_DICTIONARY_CATALOG)
