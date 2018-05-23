@@ -34,6 +34,11 @@ public class DictionaryServiceImpl implements DictionaryService {
     }
 
     @Override
+    public List<Dictionary> findDictionaryByDictionaryCatalog_CatalogValue(String catalogValue) {
+        return dictionaryDao.findDictionaryByDictionaryCatalog_CatalogValue(catalogValue);
+    }
+
+    @Override
     public Dictionary save(Dictionary dictionary) {
         return dictionaryDao.save(dictionary);
     }
