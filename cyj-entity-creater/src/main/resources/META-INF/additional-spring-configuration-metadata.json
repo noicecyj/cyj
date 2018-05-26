@@ -9,5 +9,10 @@
       "name": "Path.reference",
       "type": "java.lang.String",
       "description": "实体类生成包名."
+    },
+    {
+      "name": "cyj-data-api.ribbon.listOfServers",
+      "type": "java.lang.String",
+      "description": "Description for cyj-data-api.ribbon.listOfServers."
     }
   ] }

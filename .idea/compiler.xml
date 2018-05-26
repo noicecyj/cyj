@@ -9,9 +9,11 @@
         <module name="cyj-data-dictionary" />
         <module name="cyj-discovery" />
         <module name="cyj-entity-creater" />
-        <module name="cyj-movie" />
-        <module name="cyj-user" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cyj-movie" target="1.8" />
+      <module name="cyj-user" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

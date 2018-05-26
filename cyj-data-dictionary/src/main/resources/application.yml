@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://noice:123@192.168.1.2:8761/eureka/
+      defaultZone: http://192.168.1.2:8761/eureka/
   instance:
     prefer-ip-address: true
 spring:
@@ -28,3 +28,10 @@ spring:
     url: jdbc:mysql://192.168.1.2:3306/data_dictionary?useSSL=false
     username: root
     password: 68762306
+logging:
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.springms: DEBUG
