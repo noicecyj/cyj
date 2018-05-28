@@ -1,4 +1,4 @@
-package com.example.cyjentitycreater.Feign;
+package com.example.cyjentitycreater.feign;
 
 import com.example.cyjentitycreater.entity.Dictionary;
 import org.springframework.cloud.netflix.feign.FeignClient;

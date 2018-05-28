@@ -2,7 +2,7 @@ package com.example.cyjentitycreater.controller;
 
 
 import com.example.cyjentitycreater.BeanUtils;
-import com.example.cyjentitycreater.Feign.DictionaryFeign;
+import com.example.cyjentitycreater.feign.DictionaryFeign;
 import com.example.cyjentitycreater.entity.Dictionary;
 import com.example.cyjentitycreater.entity.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
