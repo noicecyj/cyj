@@ -11,9 +11,5 @@
         <module name="cyj-entity-creater" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="cyj-movie" target="1.8" />
-      <module name="cyj-user" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -40,28 +40,6 @@
         },
         {
             "type": "java",
-            "name": "Debug (Launch)-CyjMovieApplication<cyj-movie>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopOnEntry": false,
-            "mainClass": "com.example.cyjmovie.CyjMovieApplication",
-            "projectName": "cyj-movie",
-            "args": ""
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-CyjUserApplication<cyj-user>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopOnEntry": false,
-            "mainClass": "com.example.cyjuser.CyjUserApplication",
-            "projectName": "cyj-user",
-            "args": ""
-        },
-        {
-            "type": "java",
             "name": "Debug (Attach)",
             "request": "attach",
             "hostName": "localhost",

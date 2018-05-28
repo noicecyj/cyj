@@ -15,36 +15,9 @@
       <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/META-INF/additional-spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Controller/MovieController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/CyjMovieApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Feign/UserFeign.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-movie/src/test/java/com/example/cyjmovie/CyjMovieApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/.mvn/wrapper/maven-wrapper(1).properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/CyjUserApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/dao/UserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-user/src/test/java/com/example/cyjuser/CyjUserApplicationTests.java" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/cyj-movie/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/cyj-user/target/" />
     <ignored path="$PROJECT_DIR$/cyj-discovery/target/" />
-    <ignored path="$PROJECT_DIR$/cyj-entitycreater/target/" />
     <ignored path="$PROJECT_DIR$/cyj-entity-creater/target/" />
     <ignored path="$PROJECT_DIR$/cyj-data-dictionary/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
