@@ -100,7 +100,7 @@ public class IndexController {
         dictionaryService.delete(id);
     }
 
-    @GetMapping("/catalogValue")
+    @GetMapping("/CatalogValue")
     public List<Dictionary> findDictionaryByDictionaryCatalog_CatalogValue(@RequestParam("CatalogValue") String catalogValue){
         return dictionaryService.findDictionaryByDictionaryCatalog_CatalogValue(catalogValue);
     }

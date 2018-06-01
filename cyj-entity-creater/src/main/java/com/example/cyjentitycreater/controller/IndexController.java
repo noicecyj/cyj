@@ -41,4 +41,9 @@ public class IndexController {
     public List<Dictionary> findDictionaryByDictionaryCatalog_Id(@RequestParam("pid") Integer pid){
         return this.dictionaryFeign.findDictionaryByDictionaryCatalog_Id(pid);
     }
+
+    @RequestMapping(value = "/CatalogValue",method = RequestMethod.GET)
+    public List<Dictionary> findDictionaryByDictionaryCatalog_CatalogValue(@RequestParam("CatalogValue") String catalogValue){
+        return this.dictionaryFeign.findDictionaryByDictionaryCatalog_CatalogValue(catalogValue);
+    }
 }

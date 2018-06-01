@@ -10,4 +10,6 @@ import java.util.List;
 public interface DictionaryFeign {
     @RequestMapping(value = "/Dictionary",method = RequestMethod.GET)
     List<Dictionary> findDictionaryByDictionaryCatalog_Id(@RequestParam("pid") Integer pid);
+    @RequestMapping(value = "/CatalogValue",method = RequestMethod.GET)
+    List<Dictionary> findDictionaryByDictionaryCatalog_CatalogValue(@RequestParam("CatalogValue") String catalogValue);
 }
