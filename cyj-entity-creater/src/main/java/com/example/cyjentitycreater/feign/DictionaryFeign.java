@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient("cyj-data-dictionary")
+@FeignClient(name = "cyj-data-dictionary",url = "http://localhost:8030")
 public interface DictionaryFeign {
-    @GetMapping("/dictionary")
+    @RequestMapping(value = "/Dictionary",method = RequestMethod.GET)
     List<Dictionary> findDictionaryByDictionaryCatalog_Id(@RequestParam("pid") Integer pid);
 }

@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/Feign/DictionaryFeign.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/feign/DictionaryFeign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/cyj-discovery/target/" />
+    <ignored path="$PROJECT_DIR$/cyj-entity-creater/target/" />
+    <ignored path="$PROJECT_DIR$/cyj-data-dictionary/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/cyj$CyjEntityCreaterApplication.ic" NAME="CyjEntityCreaterApplication Coverage Results" MODIFIED="1525882562060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="data_dictionary: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - @localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="data_dictionary: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="t_dictionary: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ExecutionTargetDialog">
+    <checked>
+      <node key="fda5e455-72ad-4fb6-8aac-0434e9c2806a" />
+    </checked>
+    <expanded>
+      <node key="fda5e455-72ad-4fb6-8aac-0434e9c2806a" />
+    </expanded>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="130">
+              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndexController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="37" column="4" lean-forward="true" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="69" />
+              <folding>
+                <element signature="e#987#988#0" expanded="true" />
+                <element signature="e#1035#1036#0" expanded="true" />
+                <element signature="e#1105#1106#0" expanded="true" />
+                <element signature="e#1162#1163#0" expanded="true" />
+                <element signature="e#4502#4503#0" expanded="true" />
+                <element signature="e#4553#4554#0" expanded="true" />
+                <element signature="e#4667#4668#0" expanded="true" />
+                <element signature="e#4711#4712#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DictionaryFeign.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/feign/DictionaryFeign.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-484">
+              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-discovery/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1248">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1430">
+              <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Long</find>
+      <find>catalogName1</find>
+      <find>alert</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Integer</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/cyj-movie/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/cyj-movie/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Controller/MovieController.java" />
+        <option value="$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/CyjMovieApplication.java" />
+        <option value="$PROJECT_DIR$/cyj-entitycreater/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/templetes/index.html" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/jquery.min.js" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/test.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/test/java/com/example/cyjentitycreater/CyjEntityCreaterApplicationTests.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/JavaBean/NoiceCyj.java" />
+        <option value="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/Entity/User.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/BeanUtils.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/myjs.js" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/templates/index.html" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/fda5e455-72ad-4fb6-8aac-0434e9c2806a/console.sql" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/Entity/TDictionaryCatalog.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryDaoService.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryDaoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryCatalogService.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/DictionaryCatalog.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/table.js" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/Feign/UserFeign.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/User.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Dictionary.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/DictionaryCatalog.java" />
+        <option value="$PROJECT_DIR$/cyj-user/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/cyj-discovery/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-user/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Feign/UserFeign.java" />
+        <option value="$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/entity/User.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/META-INF/additional-spring-configuration-metadata.json" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/CyjDataDictionaryApplication.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/CyjEntityCreaterApplication.java" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-discovery/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/Feign/DictionaryFeign.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/feign/DictionaryFeign.java" />
+        <option value="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="C:\Users\95263\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="cyj-entity-creater" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="cyj-entity-creater" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="360" />
+    <option name="y" value="100" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjdatadictionary" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjdatadictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-data-dictionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjentitycreater" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjentitycreater" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjentitycreater" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cyjentitycreater" type="462c0819:PsiDirectoryNode" />
+              <item name="feign" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cyj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cyj" type="462c0819:PsiDirectoryNode" />
+              <item name="cyj-entity-creater" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last.edited.regexp" value="asd_" />
+    <property name="last_opened_file_path" value="D:/" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\cyj\cyj-data-dictionary\src\main\resources" />
+      <recent name="D:\cyj\cyj-data-dictionary\src\main\resources\static\js" />
+      <recent name="D:\cyj\cyj-data-dictionary\src\main\resources\static\css" />
+      <recent name="E:\BaiduNetdiskDownload\cyj\cyj-entity-creater\src\main\resources\static\js" />
+      <recent name="E:\BaiduNetdiskDownload\cyj\cyj-entity-creater\src\main\resources" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\onedrive\cyj\cyj-entity-creater\src\main\java\com\example\cyjentitycreater\entity" />
+      <recent name="D:\onedrive\cyj\cyj-data-dictionary\src\main\resources\static\js" />
+      <recent name="D:\cyj\cyj-data-dictionary\src\main\resources" />
+      <recent name="D:\cyj\cyj-data-dictionary\src\main\resources\static" />
+      <recent name="D:\cyj\cyj-entity-creater\src\main\resources\static" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.cyjentitycreater.Feign" />
+      <recent name="com.example.cyjdatadictionary.controller" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.cyjdatadictionary.serviceImpl" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/compiler.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/encodings.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/misc.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.vscode/launch.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.vscode/settings.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/CyjDataDictionaryApplication.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/application.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-discovery/src/main/resources/application.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/CyjEntityCreaterApplication.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/Feign/DictionaryFeign.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-entity-creater/src/main/resources/application.yml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/pom.xml</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Dictionary.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/DictionaryCatalog.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/fda5e455-72ad-4fb6-8aac-0434e9c2806a.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/fda5e455-72ad-4fb6-8aac-0434e9c2806a/storage_v2/_src_/schema/noice.KiVCBg.meta</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/fda5e455-72ad-4fb6-8aac-0434e9c2806a/storage_v2/_src_/schema/sys.zb4BAA.meta</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/dataSources/fda5e455-72ad-4fb6-8aac-0434e9c2806a/storage_v2/_src_/schema/sys.zb4BAA.zip</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.CyjEntityCreaterApplication">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="CyjDataDictionaryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cyj-data-dictionary" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.cyjdatadictionary.CyjDataDictionaryApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    </configuration>
+    <configuration name="CyjDiscoveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cyj-discovery" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.cyjdiscovery.CyjDiscoveryApplication" />
+    </configuration>
+    <configuration name="CyjEntityCreaterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cyj-entity-creater" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.cyjentitycreater.CyjEntityCreaterApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.CyjDiscoveryApplication" />
+      <item itemvalue="Spring Boot.CyjEntityCreaterApplication" />
+      <item itemvalue="Spring Boot.CyjDataDictionaryApplication" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration useDefault="false">C:\Users\Huawei\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="" />
+      <created>1525167295136</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1525167295136</updated>
+      <workItem from="1525167299294" duration="908000" />
+      <workItem from="1525171353824" duration="676000" />
+      <workItem from="1525174876719" duration="1457000" />
+      <workItem from="1525177168033" duration="791000" />
+      <workItem from="1525179046462" duration="3075000" />
+      <workItem from="1525271976280" duration="234000" />
+      <workItem from="1525272285487" duration="1341000" />
+      <workItem from="1525357685965" duration="3159000" />
+      <workItem from="1525493647181" duration="3916000" />
+      <workItem from="1525497615530" duration="34001000" />
+      <workItem from="1525580028129" duration="2119000" />
+      <workItem from="1525582965144" duration="271000" />
+      <workItem from="1525590379268" duration="764000" />
+      <workItem from="1525591208265" duration="21077000" />
+      <workItem from="1525779581729" duration="743000" />
+      <workItem from="1525877611079" duration="55000" />
+      <workItem from="1525877738265" duration="4836000" />
+      <workItem from="1525958611781" duration="5135000" />
+      <workItem from="1526007392456" duration="43000" />
+      <workItem from="1526007549668" duration="1589000" />
+      <workItem from="1526046752162" duration="1378000" />
+      <workItem from="1526048587049" duration="2952000" />
+      <workItem from="1526051794027" duration="1158000" />
+      <workItem from="1526090378248" duration="8872000" />
+      <workItem from="1526105497181" duration="2182000" />
+      <workItem from="1526113557851" duration="293000" />
+      <workItem from="1526116932840" duration="522000" />
+      <workItem from="1526117491257" duration="7644000" />
+      <workItem from="1526179048531" duration="20664000" />
+      <workItem from="1526308927606" duration="2944000" />
+      <workItem from="1526312314984" duration="210000" />
+      <workItem from="1526387688170" duration="4151000" />
+      <workItem from="1526509952775" duration="447000" />
+      <workItem from="1526566719780" duration="4328000" />
+      <workItem from="1526652587679" duration="928000" />
+      <workItem from="1526690672129" duration="285000" />
+      <workItem from="1526691019920" duration="4225000" />
+      <workItem from="1526780221746" duration="41637000" />
+      <workItem from="1526908039691" duration="7715000" />
+      <workItem from="1527089062114" duration="40000" />
+      <workItem from="1527089212788" duration="2873000" />
+      <workItem from="1527154105240" duration="29000" />
+      <workItem from="1527154193659" duration="663000" />
+      <workItem from="1527154881539" duration="592000" />
+      <workItem from="1527172944522" duration="3937000" />
+      <workItem from="1527215731579" duration="8000" />
+      <workItem from="1527255477460" duration="8997000" />
+      <workItem from="1527330425977" duration="561000" />
+      <workItem from="1527341737801" duration="248000" />
+    </task>
+    <task id="LOCAL-00001" summary="我是天才">
+      <created>1526050747980</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1526050747980</updated>
+    </task>
+    <task id="LOCAL-00002" summary="我是天才">
+      <created>1526096715926</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1526096715926</updated>
+    </task>
+    <task id="LOCAL-00003" summary="doubiodubi">
+      <created>1526123753303</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1526123753303</updated>
+    </task>
+    <task id="LOCAL-00004" summary="doubiodubi">
+      <created>1526123972695</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526123972695</updated>
+    </task>
+    <task id="LOCAL-00005" summary="doubiodubi">
+      <created>1526124190568</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1526124190568</updated>
+    </task>
+    <task id="LOCAL-00006" summary="doubiodubi">
+      <created>1526124258640</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1526124258640</updated>
+    </task>
+    <task id="LOCAL-00007" summary="doubiodubi">
+      <created>1526193759199</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1526193759199</updated>
+    </task>
+    <task id="LOCAL-00008" summary="doubiodubi">
+      <created>1526311938027</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1526311938027</updated>
+    </task>
+    <task id="LOCAL-00009" summary="doubiodubi">
+      <created>1526312430486</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1526312430487</updated>
+    </task>
+    <task id="LOCAL-00010" summary="doubiodubi">
+      <created>1526399421762</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1526399421763</updated>
+    </task>
+    <task id="LOCAL-00011" summary="doubiodubi">
+      <created>1526652682263</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1526652682263</updated>
+    </task>
+    <task id="LOCAL-00012" summary="doubiodubi">
+      <created>1526787653238</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1526787653238</updated>
+    </task>
+    <task id="LOCAL-00013" summary="doubiodubi">
+      <created>1526807802524</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1526807802524</updated>
+    </task>
+    <task id="LOCAL-00014" summary="doubiodubi">
+      <created>1526829307000</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1526829307000</updated>
+    </task>
+    <task id="LOCAL-00015" summary="doubiodubi">
+      <created>1526915880565</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1526915880565</updated>
+    </task>
+    <task id="LOCAL-00016" summary="doubiodubi">
+      <created>1527091897718</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1527091897719</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="CyjEntityCreaterApplicationTests_contextLoads - 2018.05.09 at 23h 21m 29s.xml">
+      <configuration name="CyjEntityCreaterApplicationTests.contextLoads" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BeanUtils_contextLoads - 2018.05.09 at 23h 25m 37s.xml">
+      <configuration name="BeanUtils.contextLoads" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="225190000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.50104165" side_tool="true" weight="0.43469387" />
+      <window_info anchor="right" id="Maven Projects" order="10" weight="0.28541666" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49928674" visible="true" weight="0.20677084" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32857144" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="12" sideWeight="0.49895832" visible="true" weight="0.43469387" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32959184" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32857144" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22447917" />
+      <window_info anchor="bottom" id="Problems" order="16" />
+      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32857144" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5005208" side_tool="true" weight="0.4377551" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15559895" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="bottom" id="Problems" order="16" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="10" weight="0.28541666" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="12" sideWeight="0.49947917" visible="true" weight="0.43506494" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info id="Image Layers" order="5" />
+      <window_info active="true" anchor="right" id="Coverage" order="9" sideWeight="0.5007133" side_tool="true" visible="true" weight="0.13541667" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49928674" visible="true" weight="0.20703125" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32959184" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Database Console" order="15" weight="0.32721713" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="UI Designer" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info id="Designer" order="2" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="我是天才" />
+    <MESSAGE value="doubiodubi" />
+    <option name="LAST_COMMIT_MESSAGE" value="doubiodubi" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.13.10.RELEASE/spring-data-commons-1.13.10.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="62" column="112" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/static/js/myjs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryCatalogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="46" column="1" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/DictionaryCatalog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap-confirmation.js" />
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="16" column="61" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1971">
+          <caret line="168" column="8" selection-start-line="168" selection-start-column="8" selection-end-line="168" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar!/javax/persistence/ManyToOne.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/javax/persistence/CascadeType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final-sources.jar!/javax/persistence/ManyToOne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="95" column="10" selection-start-line="95" selection-start-column="10" selection-end-line="95" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="41" column="51" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/data_dictionary/table/t_dictionary_catalog">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/JavaBean/NoiceCyj.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-netflix-core/1.4.4.RELEASE/spring-cloud-netflix-core-1.4.4.RELEASE.jar!/org/springframework/cloud/netflix/metrics/atlas/AtlasConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="54" column="18" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/resources/application.yml" />
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/User.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/DictionaryCatalog.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/resources/application.yml" />
+    <entry file="file://$PROJECT_DIR$/cyj-movie/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/cyj-user/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/entity/User.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/controller/UserController.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Controller/MovieController.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-user/src/main/java/com/example/cyjuser/CyjUserApplication.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Feign/UserFeign.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/Entity/User.java" />
+    <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/noice/table/t_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-movie/src/main/java/com/example/cyjmovie/CyjMovieApplication.java" />
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/META-INF/additional-spring-configuration-metadata.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Dictionary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/CyjDataDictionaryApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/data_dictionary/table/t_dictionary_catalog_dictionary_list">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-discovery/src/main/java/com/example/cyjdiscovery/CyjDiscoveryApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-484">
+          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-discovery/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1248">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1430">
+          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-discovery/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://fda5e455-72ad-4fb6-8aac-0434e9c2806a/schema/data_dictionary/table/t_dictionary">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/CyjEntityCreaterApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="37" column="4" lean-forward="true" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="69" />
+          <folding>
+            <element signature="e#987#988#0" expanded="true" />
+            <element signature="e#1035#1036#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#4502#4503#0" expanded="true" />
+            <element signature="e#4553#4554#0" expanded="true" />
+            <element signature="e#4667#4668#0" expanded="true" />
+            <element signature="e#4711#4712#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/feign/DictionaryFeign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="69" selection-start-line="10" selection-start-column="69" selection-end-line="10" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="39" column="69" selection-start-line="39" selection-start-column="69" selection-end-line="39" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

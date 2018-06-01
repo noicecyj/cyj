@@ -35,7 +35,7 @@ public class IndexController {
         return dictionaryCatalogService.findAll();
     }
 
-    @GetMapping("/dictionary")
+    @RequestMapping(value = "/Dictionary",method = RequestMethod.GET)
     public List<Dictionary> findDictionaryByDictionaryCatalog_Id(@RequestParam("pid") Integer pid){
         return this.dictionaryService.findDictionaryByDictionaryCatalog_Id(pid);
     }

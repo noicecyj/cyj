@@ -37,7 +37,7 @@ public class IndexController {
         return "entity";
     }
 
-    @GetMapping("/Dictionary")
+    @RequestMapping(value = "/Dictionary",method = RequestMethod.GET)
     public List<Dictionary> findDictionaryByDictionaryCatalog_Id(@RequestParam("pid") Integer pid){
         return this.dictionaryFeign.findDictionaryByDictionaryCatalog_Id(pid);
     }
