@@ -12,10 +12,17 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="cyj" target="1.6" />
+      <module name="cyj" target="1.8" />
       <module name="cyj-data-dictionary" target="1.8" />
       <module name="cyj-discovery" target="1.8" />
       <module name="cyj-entity-creater" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cyj-data-dictionary" options="-parameters" />
+      <module name="cyj-discovery" options="-parameters" />
+      <module name="cyj-entity-creater" options="-parameters" />
+    </option>
   </component>
 </project>

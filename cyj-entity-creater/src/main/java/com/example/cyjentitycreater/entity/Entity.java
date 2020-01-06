@@ -1,9 +1,9 @@
 package com.example.cyjentitycreater.entity;
 
 public class Entity {
+    private Integer id;
     private String entityName;
     private String entityProperty;
-    private String entityAuto;
 
     public String getEntityName() {
         return entityName;
@@ -21,20 +21,20 @@ public class Entity {
         this.entityProperty = entityProperty;
     }
 
-    public String getEntityAuto() {
-        return entityAuto;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEntityAuto(String entityAuto) {
-        this.entityAuto = entityAuto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "entity{" +
-                "entityName='" + entityName + '\'' +
+        return "Entity{" +
+                "id=" + id +
+                ", entityName='" + entityName + '\'' +
                 ", entityProperty='" + entityProperty + '\'' +
-                ", entityAuto='" + entityAuto + '\'' +
                 '}';
     }
 }

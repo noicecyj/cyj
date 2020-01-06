@@ -1,11 +1,8 @@
 package com.example.cyjentitycreater;
 
 import com.example.cyjentitycreater.entity.Entity;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,29 +10,16 @@ import java.util.regex.Pattern;
 @Component
 public class BeanUtils {
 
-    @Value("${Path.path}")
-    private String Path;
 
-    @Value("${Path.reference}")
-    private String referencePath;
-
-
-    public void beanUtils(List<Entity> entityList,String tableName){
+    public String[] beanUtils(List<Entity> entityList, String tableName){
         StringBuffer sb = new StringBuffer();
-        sb.append("package ").append(referencePath).append(";\r\n");
-        sb = getClass(entityList,sb);
-        sb = getBody(entityList,sb,tableName);
-        try {
-            FileWriter fw=new FileWriter(Path + captureName(underline2Camel(tableName)) + ".java");
-            fw.write(sb.toString());
-            fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(sb);
+        sb.append("package ").append("请填写包名").append(";\r\n");
+        getClass(entityList, sb);
+        getBody(entityList, sb, tableName);
+        return new String[]{sb.toString(), captureName(underline2Camel(tableName)) + ".java"};
     }
 
-    private StringBuffer getClass(List<Entity> entityList, StringBuffer sb){
+    private void getClass(List<Entity> entityList, StringBuffer sb){
             if (ifDate(entityList)){
                 sb.append("import java.sql.Date;\r\n");
             }
@@ -44,7 +28,6 @@ public class BeanUtils {
             }
         sb.append("import javax.persistence.*;\r\n");
         sb.append("import java.io.Serializable;\r\n");
-        return sb;
     }
 
     private Boolean ifDate(List<Entity> entityList){
@@ -65,60 +48,96 @@ public class BeanUtils {
         return false;
     }
 
-    private StringBuffer getBody(List<Entity> entityList, StringBuffer sb, String tableName){
+    private void getBody(List<Entity> entityList, StringBuffer sb, String tableName){
         sb.append("\r\n");
         sb.append("@Entity\r\n");
         sb.append("@Table(name = \"T_").append(captureName(underline2Camel(tableName))).append("\")\r\n");
         sb.append("public class ").append(captureName(underline2Camel(tableName))).append(" implements Serializable {\r\n");
-        sb.append("    public ")
-                .append(captureName(underline2Camel(tableName)))
-                .append("() {\r\n").append("    }\r\n").append("\r\n");
-        sb.append("    public ")
-                .append(captureName(underline2Camel(tableName))).append("(");
-        for (Entity entity:entityList){
-            sb.append(entity.getEntityProperty()).append(" ")
-                    .append(underline2Camel(entity.getEntityName())).append(", ");
-        }
+        //生成无参的构造方法
+        sb.append("    public ").append(captureName(underline2Camel(tableName))).append("() {\r\n").append("    }\r\n").append("\r\n");
+        //生成有参的构造方法
+        sb.append("    public ").append(captureName(underline2Camel(tableName))).append("(");
+        entityList.forEach(entity -> sb.append(entity.getEntityProperty()).append(" ").append(underline2Camel(entity.getEntityName())).append(", "));
         sb.deleteCharAt(sb.length() - 2);
         sb.append(") {\r\n");
-        for (Entity entity:entityList){
-            sb.append("        this.")
-                    .append(underline2Camel(entity.getEntityName()))
-                    .append(" = ").append(underline2Camel(entity.getEntityName())).append(";\r\n");
-        }
+        entityList.forEach(entity -> sb.append("        this.").append(underline2Camel(entity.getEntityName())).append(" = ").append(underline2Camel(entity.getEntityName())).append(";\r\n"));
         sb.append("    }\r\n").append("\r\n");
-        for (Entity entity:entityList){
-            if (entity.getEntityAuto().equals("true")){
+        //生成属性注解
+        entityList.forEach(entity -> {
+            if (entity.getEntityName().equals("id")){
                 sb.append("    @Id\r\n");
                 sb.append("    @GeneratedValue(strategy=GenerationType.IDENTITY)\r\n");
-                sb.append("    private ").append(entity.getEntityProperty())
-                        .append(" ").append(underline2Camel(entity.getEntityName())).append(";\r\n");
-                sb.append("\r\n");
             }else {
                 sb.append("    @Column\r\n");
-                sb.append("    private ").append(entity.getEntityProperty()).append(" ")
-                        .append(underline2Camel(entity.getEntityName())).append(";\r\n");
-                sb.append("\r\n");
             }
-        }
-        for (Entity entity:entityList){
-            sb.append("    public ")
-                    .append(entity.getEntityProperty()).append(" ").append("get")
-                    .append(captureName(underline2Camel(entity.getEntityName())))
-                    .append("()").append(" {\r\n").append("        return ")
-                    .append(underline2Camel(entity.getEntityName()))
-                    .append(";\r\n").append("    }\r\n").append("\r\n")
-                    .append("    public void ").append("set")
-                    .append(captureName(underline2Camel(entity.getEntityName())))
-                    .append("(").append(entity.getEntityProperty()).append(" ")
-                    .append(underline2Camel(entity.getEntityName()))
-                    .append(") {\r\n").append("        this.")
-                    .append(underline2Camel(entity.getEntityName()))
-                    .append(" = ").append(underline2Camel(entity.getEntityName()))
-                    .append(";\r\n").append("    }\r\n").append("\r\n");
-        }
+            sb.append("    private ").append(entity.getEntityProperty()).append(" ").append(underline2Camel(entity.getEntityName())).append(";\r\n");
+            sb.append("\r\n");
+        });
+        //生成重写getter和setter的方法
+        generateGetterAndSetter(entityList,sb,tableName);
+        sb.append("\r\n");
+        //生成重写toString的方法
+        generateToString(entityList,sb,tableName);
+        sb.append("\r\n");
+        //生成重写equals的方法
+        generateEquals(entityList,sb,tableName);
+        sb.append("\r\n");
+        //生成重写hashcode的方法
+        generateHashCode(entityList,sb);
         sb.append("}");
-        return sb;
+    }
+
+    private void generateGetterAndSetter(List<Entity> entityList, StringBuffer sb, String tableName){
+        entityList.forEach(entity -> sb.append("    public ").append(entity.getEntityProperty()).append(" ").append("get")
+                .append(captureName(underline2Camel(entity.getEntityName()))).append("()").append(" {\r\n").append("        return ")
+                .append(underline2Camel(entity.getEntityName())).append(";\r\n").append("    }\r\n").append("\r\n")
+                .append("    public void ").append("set").append(captureName(underline2Camel(entity.getEntityName())))
+                .append("(").append(entity.getEntityProperty()).append(" ").append(underline2Camel(entity.getEntityName()))
+                .append(") {\r\n").append("        this.").append(underline2Camel(entity.getEntityName()))
+                .append(" = ").append(underline2Camel(entity.getEntityName())).append(";\r\n").append("    }\r\n").append("\r\n"));
+    }
+
+    private void generateToString(List<Entity> entityList, StringBuffer sb, String tableName){
+        sb.append("    @Override\r\n");
+        sb.append("    public String toString() {\r\n");
+        sb.append("        return \"").append(captureName(underline2Camel(tableName))).append("{\" +\r\n");
+        entityList.forEach(entity -> {
+            if (entity.getEntityName().equals("id") && entity.getEntityProperty().equals("Integer")){
+                sb.append("            \"id=\" + id +\r\n");
+            }else if (!entity.getEntityProperty().equals("String")){
+                sb.append("            \", ").append(entity.getEntityName()).append("=\" + ").append(entity.getEntityName()).append(" + \r\n");
+            }else {
+                sb.append("            \", ").append(entity.getEntityName()).append("='\" + ").append(entity.getEntityName()).append(" + ").append(" '\\'' ").append(" + \r\n");
+            }
+        });
+        sb.append("            '}'\r\n");
+        sb.append("    }\r\n");
+    }
+
+    private void generateEquals(List<Entity> entityList, StringBuffer sb, String tableName){
+        sb.append("    @Override\r\n");
+        sb.append("    public boolean equals(Object o) {\r\n");
+        sb.append("        if (this == o) return true;\r\n");
+        sb.append("        if (o == null || getClass() != o.getClass()) return false;\r\n");
+        sb.append("        ").append(captureName(underline2Camel(tableName))).append(" that = (").append(captureName(underline2Camel(tableName))).append(") o;\r\n");
+        entityList.forEach(entity -> {
+            if (entity.getEntityName().equals("id") && entity.getEntityProperty().equals("Integer")){
+                sb.append("        return Objects.equals(id, that.id) &&\r\n");
+            }else {
+                sb.append("                Objects.equals(").append(entity.getEntityName()).append(", that.").append(entity.getEntityName()).append(") &&\r\n");
+            }
+        });
+        sb.append("    }\r\n");
+    }
+
+    private void generateHashCode(List<Entity> entityList, StringBuffer sb){
+        sb.append("    @Override\r\n");
+        sb.append("    public int hashCode() {\r\n");
+        sb.append("        return Objects.hash(");
+        entityList.forEach(entity -> sb.append(entity.getEntityName()).append(", "));
+        sb.deleteCharAt(sb.length() - 2);
+        sb.append(");\r\n");
+        sb.append("    }\r\n");
     }
 
     private static String underline2Camel(String line){
