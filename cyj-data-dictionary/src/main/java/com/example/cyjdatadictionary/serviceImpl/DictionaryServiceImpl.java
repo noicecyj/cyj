@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DictionaryServiceImpl implements DictionaryService {
+public class DictionaryServiceImpl extends baseService implements DictionaryService  {
 
-    private final DictionaryDao dictionaryDao;
+    final DictionaryDao dictionaryDao;
 
     @Autowired
     public DictionaryServiceImpl(DictionaryDao dictionaryDao) {
@@ -22,36 +22,4 @@ public class DictionaryServiceImpl implements DictionaryService {
     public List<Dictionary> findAll() {
         return dictionaryDao.findAll();
     }
-
-    @Override
-    public Dictionary findDictionaryById(Integer id) {
-        return dictionaryDao.findDictionaryById(id);
-    }
-
-    @Override
-    public List<Dictionary> findDictionaryByDictionaryCatalog_Id(Integer pid) {
-        return dictionaryDao.findDictionaryByDictionaryCatalog_Id(pid);
-    }
-
-    @Override
-    public List<Dictionary> findDictionaryByDictionaryCatalog_CatalogValue(String catalogValue) {
-        return dictionaryDao.findDictionaryByDictionaryCatalog_CatalogValue(catalogValue);
-    }
-
-    @Override
-    public Dictionary save(Dictionary dictionary) {
-        return dictionaryDao.save(dictionary);
-    }
-
-    @Override
-    public Dictionary saveAndFlush(Dictionary dictionary) {
-        return dictionaryDao.saveAndFlush(dictionary);
-    }
-
-    @Override
-    public void delete(Integer id) {
-        dictionaryDao.delete(id);
-    }
-
-
 }

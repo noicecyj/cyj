@@ -9,14 +9,6 @@ eureka:
 spring:
   application:
     name: cyj-data-didtionary
-  thymeleaf:
-    mode: HTML5
-    encoding: utf-8
-    content-type: text/html
-    cache: false
-  devtools:
-    restart:
-      enabled: true
   jpa:
     generate-ddl: false
     show-sql: true

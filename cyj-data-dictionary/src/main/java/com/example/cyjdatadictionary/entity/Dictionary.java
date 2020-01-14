@@ -10,35 +10,33 @@ public class Dictionary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name="pid")
-    private DictionaryCatalog dictionaryCatalog;
+    @Column(name = "pid")
+    private Integer pid;
 
-    @Column
+    @Column(name = "dictionary_name")
     private String dictionaryName;
 
-    @Column
+    @Column(name = "dictionary_value")
     private String dictionaryValue;
-
 
     public Integer getId() {
         return id;
-    }
-
-    public DictionaryCatalog getDictionaryCatalog() {
-        return dictionaryCatalog;
-    }
-
-    public void setDictionaryCatalog(DictionaryCatalog dictionaryCatalog) {
-        this.dictionaryCatalog = dictionaryCatalog;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
 
     public String getDictionaryName() {
         return dictionaryName;
@@ -48,22 +46,11 @@ public class Dictionary {
         this.dictionaryName = dictionaryName;
     }
 
-
     public String getDictionaryValue() {
         return dictionaryValue;
     }
 
     public void setDictionaryValue(String dictionaryValue) {
         this.dictionaryValue = dictionaryValue;
-    }
-
-    @Override
-    public String toString() {
-        return "Dictionary{" +
-                "id=" + id +
-                ", dictionaryCatalog=" + dictionaryCatalog +
-                ", dictionaryName='" + dictionaryName + '\'' +
-                ", dictionaryValue='" + dictionaryValue + '\'' +
-                '}';
     }
 }

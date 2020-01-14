@@ -1,26 +1,25 @@
 package com.example.cyjentitycreater.controller;
 
 
-import com.example.cyjentitycreater.BeanUtils;
+import com.example.cyjentitycreater.service.BeanServiceImpl;
 import com.example.cyjentitycreater.entity.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @RestController
 public class IndexController {
 
-    private final BeanUtils beanUtils;
+    private final BeanServiceImpl beanServiceImpl;
 
     @Autowired
-    public IndexController(BeanUtils beanUtils) {
-        this.beanUtils = beanUtils;
+    public IndexController(BeanServiceImpl beanServiceImpl) {
+        this.beanServiceImpl = beanServiceImpl;
     }
 
     @RequestMapping(value = "entity")
-    public String[] entity(@RequestBody List<Entity> entityList,@RequestParam("tableName") String tableName){
-        return beanUtils.beanUtils(entityList,tableName);
+    public String[] entity(@RequestBody List<Entity> entityList,@RequestParam("tableName") String tableName,@RequestParam("method") String method){
+        return beanServiceImpl.entityGenerate(entityList,tableName,method);
     }
 }

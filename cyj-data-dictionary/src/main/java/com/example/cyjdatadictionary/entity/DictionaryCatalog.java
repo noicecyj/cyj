@@ -10,15 +10,16 @@ public class DictionaryCatalog {
 
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @Column
+    @Column(name = "catalog_name")
     private String catalogName;
 
-    @Column
+    @Column(name = "catalog_value")
     private String catalogValue;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
     public Integer getId() {
@@ -56,13 +57,4 @@ public class DictionaryCatalog {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "DictionaryCatalog{" +
-                "id=" + id +
-                ", catalogName='" + catalogName + '\'' +
-                ", catalogValue='" + catalogValue + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }
