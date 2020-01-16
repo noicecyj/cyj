@@ -1,4 +1,4 @@
-package com.example.cyjdatadictionary.entity;
+package com.example.cyjcommon.entity;
 
 import javax.persistence.*;
 

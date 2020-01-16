@@ -1,4 +1,4 @@
-package com.example.cyjdatadictionary.serviceImpl;
+package com.example.cyjcommon.service;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;

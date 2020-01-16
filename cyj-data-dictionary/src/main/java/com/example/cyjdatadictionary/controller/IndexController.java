@@ -1,7 +1,7 @@
 package com.example.cyjdatadictionary.controller;
 
 
-import com.example.cyjdatadictionary.entity.Dictionary;
+import com.example.cyjcommon.entity.Dictionary;
 import com.example.cyjdatadictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

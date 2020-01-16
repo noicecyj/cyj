@@ -1,6 +1,7 @@
 package com.example.cyjdatadictionary.service;
 
-import com.example.cyjdatadictionary.entity.Dictionary;
+import com.example.cyjcommon.entity.Dictionary;
+
 import java.util.List;
 
 public interface DictionaryService {

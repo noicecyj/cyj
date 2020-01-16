@@ -1,7 +1,7 @@
 package com.example.cyjdatadictionary.serviceImpl;
 
+import com.example.cyjcommon.entity.DictionaryCatalog;
 import com.example.cyjdatadictionary.dao.DictionaryCatalogDao;
-import com.example.cyjdatadictionary.entity.DictionaryCatalog;
 import com.example.cyjdatadictionary.service.DictionaryCatalogService;
 
 import org.springframework.beans.factory.annotation.Autowired;

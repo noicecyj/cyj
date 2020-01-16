@@ -1,9 +1,8 @@
 package com.example.cyjdatadictionary.service;
 
-import java.util.List;
+import com.example.cyjcommon.entity.DictionaryCatalog;
 
-import com.example.cyjdatadictionary.entity.Dictionary;
-import com.example.cyjdatadictionary.entity.DictionaryCatalog;
+import java.util.List;
 
 public interface DictionaryCatalogService {
     List<DictionaryCatalog> findAll();
