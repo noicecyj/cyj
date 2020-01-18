@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cyj-entity-creater" />
+        <module name="cyj-dictionary" />
         <module name="cyj-common" />
-        <module name="cyj-data-dictionary" />
         <module name="cyj-discovery" />
       </profile>
     </annotationProcessing>
@@ -16,6 +16,7 @@
       <module name="cyj" target="1.8" />
       <module name="cyj-common" target="1.8" />
       <module name="cyj-data-dictionary" target="1.8" />
+      <module name="cyj-dictionary" target="1.8" />
       <module name="cyj-discovery" target="1.8" />
       <module name="cyj-entity-creater" target="1.8" />
     </bytecodeTargetLevel>
@@ -24,6 +25,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cyj-common" options="-parameters" />
       <module name="cyj-data-dictionary" options="-parameters" />
+      <module name="cyj-dictionary" options="-parameters" />
       <module name="cyj-discovery" options="-parameters" />
       <module name="cyj-entity-creater" options="-parameters" />
     </option>

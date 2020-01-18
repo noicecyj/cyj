@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cyj.iml" filepath="$PROJECT_DIR$/cyj.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-common/cyj-common.iml" filepath="$PROJECT_DIR$/cyj-common/cyj-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cyj-data-dictionary/cyj-data-dictionary.iml" filepath="$PROJECT_DIR$/cyj-data-dictionary/cyj-data-dictionary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cyj-dictionary/cyj-dictionary.iml" filepath="$PROJECT_DIR$/cyj-dictionary/cyj-dictionary.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-discovery/cyj-discovery.iml" filepath="$PROJECT_DIR$/cyj-discovery/cyj-discovery.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-entity-creater/cyj-entity-creater.iml" filepath="$PROJECT_DIR$/cyj-entity-creater/cyj-entity-creater.iml" />
     </modules>

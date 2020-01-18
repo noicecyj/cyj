@@ -30,7 +30,7 @@
     <modules>
         <module>cyj-discovery</module>
         <module>cyj-entity-creater</module>
-        <module>cyj-data-dictionary</module>
+        <module>cyj-dictionary</module>
         <module>cyj-common</module>
     </modules>
     

@@ -2,51 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="doubiodubi">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_apt_4_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_codegen_4_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_jpa_4_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_core_2_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_schema_2_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spi_2_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_spring_web_2_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger2_2_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_common_2_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_springfox_springfox_swagger_ui_2_9_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_annotations_1_5_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_swagger_swagger_models_1_5_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_2_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_core_1_2_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_plugin_spring_plugin_metadata_1_2_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/config/Swagger2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/Dictionary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/DictionaryCatalog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_18_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_apt_4_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_codegen_4_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_querydsl_querydsl_jpa_4_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_github_openfeign_feign_httpclient_10_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_6_0_M1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/Dictionary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/entity/DictionaryCatalog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryCatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryCatalogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/baseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/service/baseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/entity/Dictionary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/entity/DictionaryCatalog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/service/baseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/baseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/CyjDataDictionaryApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/controller/IndexController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryCatalogDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/dao/DictionaryDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryCatalogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/service/DictionaryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryCatalogServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/java/com/example/cyjdatadictionary/serviceImpl/DictionaryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap-theme.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap-theme.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap-theme.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap-theme.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstrapswitch.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/css/bootstraptable.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap-confirmation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap-table-zh-CN.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap-table.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrapselect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrapselect.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrapselect.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstrapswitch.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstraptable.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/bootstraptablezhCN.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/npm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/static/js/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-data-dictionary/src/test/java/com/example/cyjdatadictionary/CyjDataDictionaryApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-discovery/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-discovery/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyj-entity-creater/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/entity/Dictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/DictionaryCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/entity/DictionaryCatalog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cyj.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -172,7 +194,7 @@
     <property name="database.console.LAST_STATE" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last.edited.regexp" value="asd_" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cyj-dictionary/pom.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.22680412" />
@@ -190,7 +212,11 @@
       <recent name="D:\onedrive\cyj\cyj-entity-creater\src\main\java\com\example\cyjentitycreater\entity" />
       <recent name="D:\onedrive\cyj\cyj-data-dictionary\src\main\resources\static\js" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.cyjdictionary" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.cyjdictionary.serviceImpl" />
       <recent name="com.example.cyjentitycreater.Feign" />
       <recent name="com.example.cyjdatadictionary.controller" />
     </key>
@@ -247,6 +273,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CyjDictionaryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="cyj-dictionary" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.cyjdictionary.CyjDictionaryApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CyjDiscoveryApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="cyj-discovery" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.cyjdiscovery.CyjDiscoveryApplication" />
@@ -281,13 +314,14 @@
       <item itemvalue="Spring Boot.CyjEntityCreaterApplication" />
       <item itemvalue="Spring Boot.CyjDataDictionaryApplication" />
       <item itemvalue="Spring Boot.CyjCommonApplication" />
+      <item itemvalue="Spring Boot.CyjDictionaryApplication" />
     </list>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.17943409" />
+          <option name="contentProportion" value="0.20969945" />
           <treeState>
             <expand>
               <path>
@@ -383,6 +417,8 @@
       <workItem from="1579051315641" duration="3960000" />
       <workItem from="1579081058443" duration="1962000" />
       <workItem from="1579136566429" duration="5786000" />
+      <workItem from="1579243117731" duration="7687000" />
+      <workItem from="1579320315433" duration="198000" />
     </task>
     <task id="LOCAL-00001" summary="我是天才">
       <created>1526050747980</created>
@@ -562,14 +598,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="doubiodubi" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="74" key="#Assign_Data_Sources" timestamp="1578301649559">
+    <state x="361" y="74" key="#Assign_Data_Sources" timestamp="1579320517700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="74" key="#Assign_Data_Sources/0.0.1536.824@0.0.1536.824" timestamp="1578301649559" />
-    <state x="162" y="71" width="1007" height="676" key="#Project_Structure" timestamp="1579140624665">
+    <state x="361" y="74" key="#Assign_Data_Sources/0.0.1536.824@0.0.1536.824" timestamp="1579320517700" />
+    <state x="162" y="71" width="1007" height="676" key="#Project_Structure" timestamp="1579243171872">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="162" y="71" width="1007" height="676" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1579140624665" />
+    <state x="162" y="71" width="1007" height="676" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1579243171872" />
     <state x="131" y="80" width="1287" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578298009712">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -586,6 +622,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="695" y="129" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1536.824@0.0.1536.824" timestamp="1575938942014" />
+    <state x="351" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579243229305">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="351" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1579243229305" />
+    <state x="550" y="300" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1579243232096">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="550" y="300" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1579243232096" />
     <state x="201" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578290719577">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -598,74 +642,74 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="507" y="187" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575939364771" />
-    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1578995045452">
+    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579320501139">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1578995045452" />
+    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579320501139" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1579140570778">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1579140570778" />
-    <state x="647" y="156" key="FileChooserDialogImpl" timestamp="1579136599436">
+    <state x="647" y="156" key="FileChooserDialogImpl" timestamp="1579243159670">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="647" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579136599436" />
-    <state width="1493" height="198" key="GridCell.Tab.0.bottom" timestamp="1579141757485">
+    <state x="647" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579243159670" />
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom" timestamp="1579254900082">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579141757485" />
-    <state width="1493" height="198" key="GridCell.Tab.0.center" timestamp="1579141757485">
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579254900082" />
+    <state width="1156" height="211" key="GridCell.Tab.0.center" timestamp="1579254900082">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579141757485" />
-    <state width="1493" height="198" key="GridCell.Tab.0.left" timestamp="1579141757484">
+    <state width="1156" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579254900082" />
+    <state width="1156" height="211" key="GridCell.Tab.0.left" timestamp="1579254900082">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579141757484" />
-    <state width="1493" height="198" key="GridCell.Tab.0.right" timestamp="1579141757485">
+    <state width="1156" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579254900082" />
+    <state width="1156" height="211" key="GridCell.Tab.0.right" timestamp="1579254900082">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579141757485" />
-    <state width="1200" height="211" key="GridCell.Tab.1.bottom" timestamp="1578304921313">
+    <state width="1156" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579254900082" />
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579254900083">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578304921313" />
-    <state width="1200" height="211" key="GridCell.Tab.1.center" timestamp="1578304921312">
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579254900083" />
+    <state width="1156" height="211" key="GridCell.Tab.1.center" timestamp="1579254900083">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1578304921312" />
-    <state width="1200" height="211" key="GridCell.Tab.1.left" timestamp="1578304921312">
+    <state width="1156" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579254900083" />
+    <state width="1156" height="211" key="GridCell.Tab.1.left" timestamp="1579254900083">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1578304921312" />
-    <state width="1200" height="211" key="GridCell.Tab.1.right" timestamp="1578304921313">
+    <state width="1156" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579254900083" />
+    <state width="1156" height="211" key="GridCell.Tab.1.right" timestamp="1579254900083">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1578304921313" />
-    <state width="1200" height="211" key="GridCell.Tab.2.bottom" timestamp="1578304921313">
+    <state width="1156" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579254900083" />
+    <state width="1156" height="211" key="GridCell.Tab.2.bottom" timestamp="1579252671076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578304921313" />
-    <state width="1200" height="211" key="GridCell.Tab.2.center" timestamp="1578304921313">
+    <state width="1156" height="211" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579252671076" />
+    <state width="1156" height="211" key="GridCell.Tab.2.center" timestamp="1579252671076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1578304921313" />
-    <state width="1200" height="211" key="GridCell.Tab.2.left" timestamp="1578304921313">
+    <state width="1156" height="211" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1579252671076" />
+    <state width="1156" height="211" key="GridCell.Tab.2.left" timestamp="1579252671075">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1578304921313" />
-    <state width="1200" height="211" key="GridCell.Tab.2.right" timestamp="1578304921313">
+    <state width="1156" height="211" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1579252671075" />
+    <state width="1156" height="211" key="GridCell.Tab.2.right" timestamp="1579252671076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1200" height="211" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1578304921313" />
+    <state width="1156" height="211" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1579252671076" />
     <state x="349" y="77" key="Registry" timestamp="1575597880915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="77" key="Registry/0.0.1536.824@0.0.1536.824" timestamp="1575597880915" />
-    <state x="272" y="0" key="SettingsEditor" timestamp="1579081458140">
+    <state x="272" y="0" key="SettingsEditor" timestamp="1579243023911">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="272" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579081458140" />
+    <state x="272" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579243023911" />
     <state x="565" y="193" key="chooseDestDirectoryDialog" timestamp="1579081786939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

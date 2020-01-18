@@ -5,7 +5,14 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/cyj-common/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-discovery/pom.xml" />
+        <option value="$PROJECT_DIR$/cyj-dictionary/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/cyj-data-dictionary/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
