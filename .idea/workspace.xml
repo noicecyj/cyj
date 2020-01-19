@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="doubiodubi">
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/rest-api.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/CyjDictionaryApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryCatalogDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryCatalogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryCatalogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/resources/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/test/java/com/example/cyjdictionary/CyjDictionaryApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -577,7 +592,7 @@
       <workItem from="1579320315433" duration="4800000" />
       <workItem from="1579399237544" duration="6497000" />
       <workItem from="1579420062508" duration="6261000" />
-      <workItem from="1579442107821" duration="1909000" />
+      <workItem from="1579442107821" duration="2190000" />
     </task>
     <task id="LOCAL-00001" summary="我是天才">
       <created>1526050747980</created>
@@ -733,7 +748,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579320556081</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="doubiodubi">
+      <created>1579444883159</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1579444883159</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -812,10 +834,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="272" key="#com.intellij.ws.actions.HttpClientConvertFromCurlDialog/0.0.1536.824@0.0.1536.824" timestamp="1579426399757" />
-    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579320544527">
+    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579444943740">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579320544527" />
+    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579444943740" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1579140570778">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -824,22 +846,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="647" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579444191373" />
-    <state width="1493" height="198" key="GridCell.Tab.0.bottom" timestamp="1579444672911">
+    <state width="1493" height="198" key="GridCell.Tab.0.bottom" timestamp="1579444888357">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579444672911" />
-    <state width="1493" height="198" key="GridCell.Tab.0.center" timestamp="1579444672910">
+    <state width="1493" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
+    <state width="1493" height="198" key="GridCell.Tab.0.center" timestamp="1579444888357">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579444672910" />
-    <state width="1493" height="198" key="GridCell.Tab.0.left" timestamp="1579444672910">
+    <state width="1493" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
+    <state width="1493" height="198" key="GridCell.Tab.0.left" timestamp="1579444888357">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579444672910" />
-    <state width="1493" height="198" key="GridCell.Tab.0.right" timestamp="1579444672911">
+    <state width="1493" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
+    <state width="1493" height="198" key="GridCell.Tab.0.right" timestamp="1579444888357">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579444672911" />
+    <state width="1493" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
     <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579443833956">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
