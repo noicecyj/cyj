@@ -3,7 +3,6 @@ package com.example.cyjdictionary.serviceImpl;
 import com.example.cyjdictionary.entity.Dictionary;
 import com.example.cyjdictionary.entity.QDictionary;
 import com.example.cyjdictionary.entity.QDictionaryCatalog;
-import com.example.cyjdictionary.serviceImpl.baseService;
 import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;

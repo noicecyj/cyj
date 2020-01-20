@@ -2,6 +2,7 @@ package com.example.cyjdictionary.controller;
 
 
 import com.example.cyjdictionary.entity.Dictionary;
+import com.example.cyjdictionary.entity.DictionaryCatalog;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping(value = "dictionaryApi")
 public class IndexController {
 
     @Autowired
@@ -20,8 +22,13 @@ public class IndexController {
     DictionaryCatalogService dictionaryCatalogService;
 
     @RequestMapping(value = "dictionaryFindAll")
-    public List<Dictionary> findAll(){
+    public List<Dictionary> dictionaryFindAll(){
         return dictionaryService.findAll();
+    }
+
+    @RequestMapping(value = "dictionaryCatalogFindAll")
+    public List<DictionaryCatalog> dictionaryCatalogFindAll(){
+        return dictionaryCatalogService.findAll();
     }
 
     @RequestMapping(value = "findCatalogById")

@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="doubiodubi">
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/CyjDictionaryApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryCatalogDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryCatalogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryCatalogServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cyj-dictionary/src/test/java/com/example/cyjdictionary/CyjDictionaryApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/rest-api.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +168,54 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8030/dictionaryApi/dictionaryCatalogFindAll" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8030/apc/dictionaryCatalogFindAll" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8030/api2/dictionaryCatalogFindAll" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="GET" />
           <option name="urlBase" value="http://localhost:8030/findCatalogById" />
@@ -408,20 +442,14 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.rest-api#1">
+  <component name="RunManager" selected="HTTP Request.rest-api#2">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/cyj-dictionary/rest-api.http" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="rest-api_3#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_3.http" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="rest-api_4#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_4.http" runType="Run single request">
+    <configuration name="rest-api#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/cyj-dictionary/rest-api.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -468,18 +496,14 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.rest-api_3#1" />
       <item itemvalue="Spring Boot.CyjDiscoveryApplication" />
       <item itemvalue="Spring Boot.CyjEntityCreaterApplication" />
       <item itemvalue="Spring Boot.CyjDictionaryApplication" />
-      <item itemvalue="HTTP Request.rest-api_4#1" />
-      <item itemvalue="HTTP Request.rest-api#1" />
+      <item itemvalue="HTTP Request.rest-api#2" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.rest-api#1" />
-        <item itemvalue="HTTP Request.rest-api_4#1" />
-        <item itemvalue="HTTP Request.rest-api_3#1" />
+        <item itemvalue="HTTP Request.rest-api#2" />
       </list>
     </recent_temporary>
   </component>
@@ -592,7 +616,8 @@
       <workItem from="1579320315433" duration="4800000" />
       <workItem from="1579399237544" duration="6497000" />
       <workItem from="1579420062508" duration="6261000" />
-      <workItem from="1579442107821" duration="2190000" />
+      <workItem from="1579442107821" duration="4118000" />
+      <workItem from="1579481498695" duration="18293000" />
     </task>
     <task id="LOCAL-00001" summary="我是天才">
       <created>1526050747980</created>
@@ -755,7 +780,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579444883159</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="doubiodubi">
+      <created>1579444995300</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1579444995300</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -794,10 +826,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="162" y="71" width="1007" height="676" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1579243171872" />
-    <state x="131" y="80" width="1287" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579444224361">
+    <state x="131" y="80" width="1287" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579490716227">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="131" y="80" width="1287" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579444224361" />
+    <state x="131" y="80" width="1287" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579490716227" />
     <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser" timestamp="1579341281248">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -830,14 +862,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="507" y="187" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1536.824@0.0.1536.824" timestamp="1575939364771" />
-    <state x="566" y="272" key="#com.intellij.ws.actions.HttpClientConvertFromCurlDialog" timestamp="1579426399757">
+    <state x="566" y="272" key="#com.intellij.ws.actions.HttpClientConvertFromCurlDialog" timestamp="1579504643832">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="566" y="272" key="#com.intellij.ws.actions.HttpClientConvertFromCurlDialog/0.0.1536.824@0.0.1536.824" timestamp="1579426399757" />
-    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579444943740">
+    <state x="566" y="272" key="#com.intellij.ws.actions.HttpClientConvertFromCurlDialog/0.0.1536.824@0.0.1536.824" timestamp="1579504643832" />
+    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579444993580">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579444943740" />
+    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579444993580" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1579140570778">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -846,38 +878,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="647" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579444191373" />
-    <state width="1493" height="198" key="GridCell.Tab.0.bottom" timestamp="1579444888357">
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom" timestamp="1579509941943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
-    <state width="1493" height="198" key="GridCell.Tab.0.center" timestamp="1579444888357">
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
+    <state width="1156" height="211" key="GridCell.Tab.0.center" timestamp="1579509941943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
-    <state width="1493" height="198" key="GridCell.Tab.0.left" timestamp="1579444888357">
+    <state width="1156" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
+    <state width="1156" height="211" key="GridCell.Tab.0.left" timestamp="1579509941943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
-    <state width="1493" height="198" key="GridCell.Tab.0.right" timestamp="1579444888357">
+    <state width="1156" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
+    <state width="1156" height="211" key="GridCell.Tab.0.right" timestamp="1579509941943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579444888357" />
-    <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579443833956">
+    <state width="1156" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579509941944">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579443833956" />
-    <state width="1156" height="211" key="GridCell.Tab.1.center" timestamp="1579443833955">
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579509941944" />
+    <state width="1156" height="211" key="GridCell.Tab.1.center" timestamp="1579509941943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579443833955" />
-    <state width="1156" height="211" key="GridCell.Tab.1.left" timestamp="1579443833955">
+    <state width="1156" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
+    <state width="1156" height="211" key="GridCell.Tab.1.left" timestamp="1579509941943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579443833955" />
-    <state width="1156" height="211" key="GridCell.Tab.1.right" timestamp="1579443833956">
+    <state width="1156" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
+    <state width="1156" height="211" key="GridCell.Tab.1.right" timestamp="1579509941943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579443833956" />
+    <state width="1156" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
     <state width="1156" height="211" key="GridCell.Tab.2.bottom" timestamp="1579252671076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

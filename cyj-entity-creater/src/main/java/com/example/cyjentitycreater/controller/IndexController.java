@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "entityCreateApi")
 public class IndexController {
 
     private final BeanServiceImpl beanServiceImpl;
