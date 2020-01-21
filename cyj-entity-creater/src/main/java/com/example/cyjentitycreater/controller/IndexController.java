@@ -8,14 +8,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author 曹元杰
+ * @version 1.0
+ * @date 2020/1/21 14:46
+ */
 @RestController
 @RequestMapping(value = "entityCreateApi")
 public class IndexController {
 
-    private final BeanServiceImpl beanServiceImpl;
+    private BeanServiceImpl beanServiceImpl;
 
     @Autowired
-    public IndexController(BeanServiceImpl beanServiceImpl) {
+    public void setBeanServiceImpl(BeanServiceImpl beanServiceImpl) {
         this.beanServiceImpl = beanServiceImpl;
     }
 
@@ -23,4 +28,5 @@ public class IndexController {
     public String[] entity(@RequestBody List<Entity> entityList,@RequestParam("tableName") String tableName,@RequestParam("method") String method){
         return beanServiceImpl.entityGenerate(entityList,tableName,method);
     }
+
 }

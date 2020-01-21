@@ -1,4 +1,4 @@
-package com.example.cyjdictionary.serviceImpl;
+package com.example.cyjdictionary.serviceimpl;
 
 import com.example.cyjdictionary.entity.DictionaryCatalog;
 import com.example.cyjdictionary.dao.DictionaryCatalogDao;
@@ -8,12 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * @author 曹元杰
+ * @version 1.0
+ * @date 2020/1/21 14:46
+ */
 @Service
-public class DictionaryCatalogServiceImpl extends baseService implements DictionaryCatalogService {
+public class DictionaryCatalogServiceImpl extends BaseService implements DictionaryCatalogService {
+
+	private DictionaryCatalogDao dictionaryCatalogDao;
 
 	@Autowired
-	DictionaryCatalogDao dictionaryCatalogDao;
+	public void setDictionaryCatalogDao(DictionaryCatalogDao dictionaryCatalogDao) {
+		this.dictionaryCatalogDao = dictionaryCatalogDao;
+	}
 
 	@Override
 	public List<DictionaryCatalog> findAll() {

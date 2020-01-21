@@ -10,16 +10,28 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * @author 曹元杰
+ * @version 1.0
+ * @date 2020/1/21 14:46
+ */
 @RestController
 @RequestMapping(value = "dictionaryApi")
 public class IndexController {
 
-    @Autowired
-    DictionaryService dictionaryService;
+    private DictionaryService dictionaryService;
+
+    private DictionaryCatalogService dictionaryCatalogService;
 
     @Autowired
-    DictionaryCatalogService dictionaryCatalogService;
+    public void setDictionaryService(DictionaryService dictionaryService) {
+        this.dictionaryService = dictionaryService;
+    }
+
+    @Autowired
+    public void setDictionaryCatalogService(DictionaryCatalogService dictionaryCatalogService) {
+        this.dictionaryCatalogService = dictionaryCatalogService;
+    }
 
     @RequestMapping(value = "dictionaryFindAll")
     public List<Dictionary> dictionaryFindAll(){
@@ -29,6 +41,28 @@ public class IndexController {
     @RequestMapping(value = "dictionaryCatalogFindAll")
     public List<DictionaryCatalog> dictionaryCatalogFindAll(){
         return dictionaryCatalogService.findAll();
+    }
+
+    @RequestMapping(value = "dictionaryFindById")
+    public Dictionary dictionaryFindById(Integer id) {
+        return dictionaryService.findOneById(id);
+    }
+
+    @RequestMapping(value = "dictionaryAddOne")
+    public Dictionary dictionaryAddOne(Dictionary dictionary) {
+        return dictionaryService.addOne(dictionary);
+    }
+    @RequestMapping(value = "dictionaryDeleteOne")
+    public void dictionaryDeleteOne(Integer id) {
+        dictionaryService.deleteOne(id);
+    }
+    @RequestMapping(value = "dictionaryUpdateOne")
+    public Dictionary dictionaryUpdateOne(Dictionary dictionary) {
+        return dictionaryService.updateOne(dictionary);
+    }
+    @RequestMapping(value = "dictionaryCount")
+    public long dictionaryCount() {
+        return dictionaryService.count();
     }
 
     @RequestMapping(value = "findCatalogById")
@@ -44,5 +78,15 @@ public class IndexController {
     @RequestMapping(value = "findCatalogByValue")
     public List<Dictionary> findCatalogByValue(@RequestParam("value") String value){
         return dictionaryService.findCatalogByValue(value);
+    }
+
+    @RequestMapping(value = "dictionaryCatalogAddOne")
+    public DictionaryCatalog dictionaryCatalogAddOne(DictionaryCatalog dictionaryCatalog) {
+        return dictionaryCatalogService.addOne(dictionaryCatalog);
+    }
+
+    @RequestMapping(value = "dictionaryCatalogUpdateOne")
+    public DictionaryCatalog dictionaryCatalogUpdateOne(DictionaryCatalog dictionaryCatalog) {
+        return dictionaryCatalogService.updateOne(dictionaryCatalog);
     }
 }

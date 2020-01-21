@@ -6,11 +6,18 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class beanUtils {
+/**
+ * @author 曹元杰
+ * @version 1.0
+ * @date 2020/1/21 14:46
+ */
+public class BeanUtils {
+
+    private static Pattern NUMBER_PATTERN = Pattern.compile("([A-Za-z\\d]+)(_)?");
 
     public static String underline2Camel(String line){
         StringBuilder sb=new StringBuilder();
-        Pattern pattern=Pattern.compile("([A-Za-z\\d]+)(_)?");
+        Pattern pattern=NUMBER_PATTERN;
         Matcher matcher=pattern.matcher(line);
         while(matcher.find()){
             String word=matcher.group();
@@ -33,7 +40,7 @@ public class beanUtils {
 
     public static Boolean ifDate(List<Entity> entityList){
         for (Entity entity:entityList){
-            if (entity.getEntityProperty().equals("Date")){
+            if ("Date".equals(entity.getEntityProperty())){
                 return true;
             }
         }
@@ -42,7 +49,7 @@ public class beanUtils {
 
     public static Boolean ifTimestamp(List<Entity> entityList){
         for (Entity entity:entityList){
-            if (entity.getEntityProperty().equals("Timestamp")){
+            if ("Timestamp".equals(entity.getEntityProperty())){
                 return true;
             }
         }

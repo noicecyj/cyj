@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.43284622" />
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="doubiodubi">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/rest-api.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/config/Swagger2.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/config/Swagger2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/CyjDictionaryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/CyjDictionaryApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryCatalogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryCatalogDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/Dictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/DictionaryCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/DictionaryCatalog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryCatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryCatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryCatalogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceimpl/DictionaryCatalogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceimpl/DictionaryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/baseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceimpl/BaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-discovery/src/main/java/com/example/cyjdiscovery/CyjDiscoveryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-discovery/src/main/java/com/example/cyjdiscovery/CyjDiscoveryApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/CyjEntityCreaterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/CyjEntityCreaterApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/BeanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/BeanServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/beanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/BeanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/utils/beanUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/utils/BeanUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +156,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.22680412" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -442,7 +462,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.rest-api#2">
+  <component name="RunManager" selected="Spring Boot.CyjDictionaryApplication">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -496,10 +516,10 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="HTTP Request.rest-api#2" />
       <item itemvalue="Spring Boot.CyjDiscoveryApplication" />
       <item itemvalue="Spring Boot.CyjEntityCreaterApplication" />
       <item itemvalue="Spring Boot.CyjDictionaryApplication" />
-      <item itemvalue="HTTP Request.rest-api#2" />
     </list>
     <recent_temporary>
       <list>
@@ -517,11 +537,6 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -617,7 +632,10 @@
       <workItem from="1579399237544" duration="6497000" />
       <workItem from="1579420062508" duration="6261000" />
       <workItem from="1579442107821" duration="4118000" />
-      <workItem from="1579481498695" duration="18293000" />
+      <workItem from="1579481498695" duration="19622000" />
+      <workItem from="1579523072782" duration="3194000" />
+      <workItem from="1579570694526" duration="2964000" />
+      <workItem from="1579587531907" duration="9456000" />
     </task>
     <task id="LOCAL-00001" summary="我是天才">
       <created>1526050747980</created>
@@ -787,7 +805,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579444995300</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="doubiodubi">
+      <created>1579512442725</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1579512442725</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -830,10 +855,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="131" y="80" width="1287" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1579490716227" />
-    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser" timestamp="1579341281248">
+    <state x="862" y="98" key="#com.intellij.ide.util.MemberChooser" timestamp="1579597306344">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="105" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1579341281248" />
+    <state x="862" y="98" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1579597306344" />
     <state x="597" y="201" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1575874085146">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -866,10 +891,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="272" key="#com.intellij.ws.actions.HttpClientConvertFromCurlDialog/0.0.1536.824@0.0.1536.824" timestamp="1579504643832" />
-    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579444993580">
+    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579512440422">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579444993580" />
+    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579512440422" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1579140570778">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -878,38 +903,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="647" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579444191373" />
-    <state width="1156" height="211" key="GridCell.Tab.0.bottom" timestamp="1579509941943">
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom" timestamp="1579587486633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
-    <state width="1156" height="211" key="GridCell.Tab.0.center" timestamp="1579509941943">
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
+    <state width="1156" height="211" key="GridCell.Tab.0.center" timestamp="1579587486633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
-    <state width="1156" height="211" key="GridCell.Tab.0.left" timestamp="1579509941943">
+    <state width="1156" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
+    <state width="1156" height="211" key="GridCell.Tab.0.left" timestamp="1579587486633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
-    <state width="1156" height="211" key="GridCell.Tab.0.right" timestamp="1579509941943">
+    <state width="1156" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
+    <state width="1156" height="211" key="GridCell.Tab.0.right" timestamp="1579587486633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
-    <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579509941944">
+    <state width="1156" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579587486634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579509941944" />
-    <state width="1156" height="211" key="GridCell.Tab.1.center" timestamp="1579509941943">
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579587486634" />
+    <state width="1156" height="211" key="GridCell.Tab.1.center" timestamp="1579587486633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
-    <state width="1156" height="211" key="GridCell.Tab.1.left" timestamp="1579509941943">
+    <state width="1156" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
+    <state width="1156" height="211" key="GridCell.Tab.1.left" timestamp="1579587486633">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
-    <state width="1156" height="211" key="GridCell.Tab.1.right" timestamp="1579509941943">
+    <state width="1156" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
+    <state width="1156" height="211" key="GridCell.Tab.1.right" timestamp="1579587486634">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579509941943" />
+    <state width="1156" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579587486634" />
     <state width="1156" height="211" key="GridCell.Tab.2.bottom" timestamp="1579252671076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -926,14 +951,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1156" height="211" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1579252671076" />
+    <state x="349" y="150" key="IDE.errors.dialog" timestamp="1579596671350">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="150" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1579596671350" />
     <state x="349" y="77" key="Registry" timestamp="1575597880915">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="349" y="77" key="Registry/0.0.1536.824@0.0.1536.824" timestamp="1575597880915" />
-    <state x="272" y="0" key="SettingsEditor" timestamp="1579419746101">
+    <state x="272" y="0" width="1202" height="709" key="SettingsEditor" timestamp="1579589508818">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="272" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579419746101" />
+    <state x="272" y="0" width="1202" height="709" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1579589508818" />
     <state x="565" y="193" key="chooseDestDirectoryDialog" timestamp="1579081786939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -950,10 +979,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="274" y="104" width="1180" height="557" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1579073850792" />
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1578036524668">
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1579591699921">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1578036524668" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1579591699921" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1575597849104">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

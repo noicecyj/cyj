@@ -2,9 +2,12 @@ package com.example.cyjdictionary.entity;
 
 import lombok.Data;
 
-import javax.annotation.sql.DataSourceDefinition;
 import javax.persistence.*;
-
+/**
+ * @author 曹元杰
+ * @version 1.0
+ * @date 2020/1/21 14:46
+ */
 @Entity
 @Table(name = Dictionary.T_DICTIONARY)
 @Data

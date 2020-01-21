@@ -1,4 +1,4 @@
-package com.example.cyjdictionary.serviceImpl;
+package com.example.cyjdictionary.serviceimpl;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-public class baseService {
+/**
+ * @author 曹元杰
+ * @version 1.0
+ * @date 2020/1/21 14:46
+ */
+public class BaseService {
 
     @Autowired
     @PersistenceContext
