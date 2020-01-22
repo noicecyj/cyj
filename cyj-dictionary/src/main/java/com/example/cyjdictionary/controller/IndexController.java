@@ -44,22 +44,24 @@ public class IndexController {
     }
 
     @RequestMapping(value = "dictionaryFindById")
-    public Dictionary dictionaryFindById(Integer id) {
+    public Dictionary dictionaryFindById(@RequestParam("id") Integer id) {
         return dictionaryService.findOneById(id);
     }
 
     @RequestMapping(value = "dictionaryAddOne")
-    public Dictionary dictionaryAddOne(Dictionary dictionary) {
+    public Dictionary dictionaryAddOne(@RequestBody Dictionary dictionary) {
         return dictionaryService.addOne(dictionary);
     }
     @RequestMapping(value = "dictionaryDeleteOne")
-    public void dictionaryDeleteOne(Integer id) {
+    public void dictionaryDeleteOne(@RequestParam("id") Integer id) {
         dictionaryService.deleteOne(id);
     }
+
     @RequestMapping(value = "dictionaryUpdateOne")
-    public Dictionary dictionaryUpdateOne(Dictionary dictionary) {
+    public Dictionary dictionaryUpdateOne(@RequestBody Dictionary dictionary) {
         return dictionaryService.updateOne(dictionary);
     }
+
     @RequestMapping(value = "dictionaryCount")
     public long dictionaryCount() {
         return dictionaryService.count();
@@ -81,12 +83,12 @@ public class IndexController {
     }
 
     @RequestMapping(value = "dictionaryCatalogAddOne")
-    public DictionaryCatalog dictionaryCatalogAddOne(DictionaryCatalog dictionaryCatalog) {
+    public DictionaryCatalog dictionaryCatalogAddOne(@RequestBody DictionaryCatalog dictionaryCatalog) {
         return dictionaryCatalogService.addOne(dictionaryCatalog);
     }
 
     @RequestMapping(value = "dictionaryCatalogUpdateOne")
-    public DictionaryCatalog dictionaryCatalogUpdateOne(DictionaryCatalog dictionaryCatalog) {
+    public DictionaryCatalog dictionaryCatalogUpdateOne(@RequestBody DictionaryCatalog dictionaryCatalog) {
         return dictionaryCatalogService.updateOne(dictionaryCatalog);
     }
 }

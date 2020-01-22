@@ -6,27 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c57f714-c1c0-42be-9641-060693a340d3" name="Default" comment="doubiodubi">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/config/Swagger2.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-common/src/main/java/com/example/cyjcommon/config/Swagger2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/CyjDictionaryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/CyjDictionaryApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cyj-dictionary/rest-api.http" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/rest-api.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryCatalogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryCatalogDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/dao/DictionaryDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/Dictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/Dictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/DictionaryCatalog.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/entity/DictionaryCatalog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryCatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryCatalogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/service/DictionaryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryCatalogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceimpl/DictionaryCatalogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/DictionaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceimpl/DictionaryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceImpl/baseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-dictionary/src/main/java/com/example/cyjdictionary/serviceimpl/BaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-discovery/src/main/java/com/example/cyjdiscovery/CyjDiscoveryApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-discovery/src/main/java/com/example/cyjdiscovery/CyjDiscoveryApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/CyjEntityCreaterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/CyjEntityCreaterApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/controller/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/BeanServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/BeanServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/beanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/service/BeanService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/utils/beanUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/cyj-entity-creater/src/main/java/com/example/cyjentitycreater/utils/BeanUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +126,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -188,6 +171,126 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8030/dictionaryApi/findCatalogById" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="id" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8030/dictionaryApi/findCatalogById" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="id" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8030/findCatalogById" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="id" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8030/findCatalogById" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="id" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8030/findCatalogById" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="id" />
+                <option name="value" value="2" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="POST" />
           <option name="urlBase" value="http://localhost:8030/dictionaryApi/dictionaryCatalogFindAll" />
@@ -469,6 +572,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="rest-api#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/cyj-dictionary/rest-api.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <configuration name="rest-api#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/cyj-dictionary/rest-api.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -517,12 +623,14 @@
     </configuration>
     <list>
       <item itemvalue="HTTP Request.rest-api#2" />
+      <item itemvalue="HTTP Request.rest-api#1" />
       <item itemvalue="Spring Boot.CyjDiscoveryApplication" />
       <item itemvalue="Spring Boot.CyjEntityCreaterApplication" />
       <item itemvalue="Spring Boot.CyjDictionaryApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.rest-api#1" />
         <item itemvalue="HTTP Request.rest-api#2" />
       </list>
     </recent_temporary>
@@ -537,6 +645,11 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -635,7 +748,10 @@
       <workItem from="1579481498695" duration="19622000" />
       <workItem from="1579523072782" duration="3194000" />
       <workItem from="1579570694526" duration="2964000" />
-      <workItem from="1579587531907" duration="9456000" />
+      <workItem from="1579587531907" duration="9627000" />
+      <workItem from="1579606455369" duration="5197000" />
+      <workItem from="1579654442506" duration="108000" />
+      <workItem from="1579654597982" duration="5943000" />
     </task>
     <task id="LOCAL-00001" summary="我是天才">
       <created>1526050747980</created>
@@ -812,7 +928,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579512442725</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="doubiodubi">
+      <created>1579599878276</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1579599878276</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -891,10 +1014,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="566" y="272" key="#com.intellij.ws.actions.HttpClientConvertFromCurlDialog/0.0.1536.824@0.0.1536.824" timestamp="1579504643832" />
-    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579512440422">
+    <state x="0" y="10" key="CommitChangelistDialog2" timestamp="1579599872816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579512440422" />
+    <state x="0" y="10" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1579599872816" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1579140570778">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -903,38 +1026,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="647" y="156" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1579444191373" />
-    <state width="1156" height="211" key="GridCell.Tab.0.bottom" timestamp="1579587486633">
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom" timestamp="1579661881698">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
-    <state width="1156" height="211" key="GridCell.Tab.0.center" timestamp="1579587486633">
+    <state width="1156" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579661881698" />
+    <state width="1156" height="211" key="GridCell.Tab.0.center" timestamp="1579661881698">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
-    <state width="1156" height="211" key="GridCell.Tab.0.left" timestamp="1579587486633">
+    <state width="1156" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579661881698" />
+    <state width="1156" height="211" key="GridCell.Tab.0.left" timestamp="1579661881697">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
-    <state width="1156" height="211" key="GridCell.Tab.0.right" timestamp="1579587486633">
+    <state width="1156" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579661881697" />
+    <state width="1156" height="211" key="GridCell.Tab.0.right" timestamp="1579661881698">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
-    <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579587486634">
+    <state width="1156" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579661881698" />
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom" timestamp="1579661146395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579587486634" />
-    <state width="1156" height="211" key="GridCell.Tab.1.center" timestamp="1579587486633">
+    <state width="1156" height="211" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579661146395" />
+    <state width="1156" height="211" key="GridCell.Tab.1.center" timestamp="1579661146395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
-    <state width="1156" height="211" key="GridCell.Tab.1.left" timestamp="1579587486633">
+    <state width="1156" height="211" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579661146395" />
+    <state width="1156" height="211" key="GridCell.Tab.1.left" timestamp="1579661146395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579587486633" />
-    <state width="1156" height="211" key="GridCell.Tab.1.right" timestamp="1579587486634">
+    <state width="1156" height="211" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579661146395" />
+    <state width="1156" height="211" key="GridCell.Tab.1.right" timestamp="1579661146395">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1156" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579587486634" />
+    <state width="1156" height="211" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579661146395" />
     <state width="1156" height="211" key="GridCell.Tab.2.bottom" timestamp="1579252671076">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
