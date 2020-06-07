@@ -1,6 +1,7 @@
 package com.example.cyjdictionary.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 /**
@@ -10,14 +11,16 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = DictionaryCatalog.T_DICTIONARY_CATALOG)
+@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Data
 public class DictionaryCatalog {
 	
 	static final String T_DICTIONARY_CATALOG = "t_dictionary_catalog";
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(generator = "jpa-uuid")
+    @Column(name = "id",length = 32)
+    private String id;
 
     @Column
     private String catalogName;
@@ -27,4 +30,7 @@ public class DictionaryCatalog {
 
     @Column
     private String description;
+
+    @Column
+    private String sortCode;
 }

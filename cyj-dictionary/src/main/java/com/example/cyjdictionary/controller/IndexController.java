@@ -5,7 +5,10 @@ import com.example.cyjdictionary.entity.Dictionary;
 import com.example.cyjdictionary.entity.DictionaryCatalog;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 import com.example.cyjdictionary.service.DictionaryService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,62 +36,69 @@ public class IndexController {
         this.dictionaryCatalogService = dictionaryCatalogService;
     }
 
-    @RequestMapping(value = "dictionaryFindAll")
-    public List<Dictionary> dictionaryFindAll(){
-        return dictionaryService.findAll();
+    @ApiOperation(value = "分页查询目录")
+    @PostMapping(value = "catalogPage")
+    public Page<DictionaryCatalog> catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
+                                                  @RequestParam("pageSize") Integer pageSize,
+                                                  @RequestParam("sortCode") String sortCode){
+        return dictionaryCatalogService.findAll(pageNumber-1,pageSize, sortCode);
     }
 
-    @RequestMapping(value = "dictionaryCatalogFindAll")
-    public List<DictionaryCatalog> dictionaryCatalogFindAll(){
-        return dictionaryCatalogService.findAll();
+    @ApiOperation(value = "保存目录")
+    @PostMapping(value = "saveCatalog")
+    public DictionaryCatalog saveCatalog(@RequestBody DictionaryCatalog dictionaryCatalog) {
+        if (dictionaryCatalog.getId() == null){
+            return dictionaryCatalogService.addOne(dictionaryCatalog);
+        }
+        return dictionaryCatalogService.updateOne(dictionaryCatalog);
     }
 
-    @RequestMapping(value = "dictionaryFindById")
-    public Dictionary dictionaryFindById(@RequestParam("id") Integer id) {
-        return dictionaryService.findOneById(id);
-    }
-
-    @RequestMapping(value = "dictionaryAddOne")
-    public Dictionary dictionaryAddOne(@RequestBody Dictionary dictionary) {
-        return dictionaryService.addOne(dictionary);
-    }
-    @RequestMapping(value = "dictionaryDeleteOne")
-    public void dictionaryDeleteOne(@RequestParam("id") Integer id) {
-        dictionaryService.deleteOne(id);
-    }
-
-    @RequestMapping(value = "dictionaryUpdateOne")
-    public Dictionary dictionaryUpdateOne(@RequestBody Dictionary dictionary) {
-        return dictionaryService.updateOne(dictionary);
-    }
-
-    @RequestMapping(value = "dictionaryCount")
-    public long dictionaryCount() {
-        return dictionaryService.count();
-    }
-
-    @RequestMapping(value = "findCatalogById")
-    public List<Dictionary> findCatalogById(@RequestParam("id") Integer id){
-        return dictionaryService.findCatalogById(id);
-    }
-
-    @RequestMapping(value = "findCatalogByName")
+    @ApiOperation(value = "根据名称查询目录")
+    @PostMapping(value = "findCatalogByName")
     public List<Dictionary> findCatalogByName(@RequestParam("name") String name){
         return dictionaryService.findCatalogByName(name);
     }
 
-    @RequestMapping(value = "findCatalogByValue")
+    @ApiOperation(value = "根据代码查询目录")
+    @PostMapping(value = "findCatalogByValue")
     public List<Dictionary> findCatalogByValue(@RequestParam("value") String value){
         return dictionaryService.findCatalogByValue(value);
     }
 
-    @RequestMapping(value = "dictionaryCatalogAddOne")
-    public DictionaryCatalog dictionaryCatalogAddOne(@RequestBody DictionaryCatalog dictionaryCatalog) {
-        return dictionaryCatalogService.addOne(dictionaryCatalog);
+    @ApiOperation(value = "根据id删除目录")
+    @PostMapping(value = "catalogDeleteOne")
+    public void catalogDeleteOne(@RequestParam("id") String id) {
+        dictionaryCatalogService.deleteOne(id);
     }
 
-    @RequestMapping(value = "dictionaryCatalogUpdateOne")
-    public DictionaryCatalog dictionaryCatalogUpdateOne(@RequestBody DictionaryCatalog dictionaryCatalog) {
-        return dictionaryCatalogService.updateOne(dictionaryCatalog);
+    @ApiOperation(value = "根据名称和代码模糊查询")
+    @PostMapping(value = "findAllByCatalogNameContainsOrCatalogValueContains")
+    public Page<DictionaryCatalog> findAllByCatalogNameContainsOrCatalogValueContains(@RequestParam("catalogName") String catalogName,
+                                                                                      @RequestParam("catalogValue") String catalogValue,
+                                                                                      @RequestParam("pageNumber") Integer pageNumber,
+                                                                                      @RequestParam("pageSize") Integer pageSize,
+                                                                                      @RequestParam("sortCode") String sortCode) {
+        return dictionaryCatalogService.findAllByCatalogNameContainsOrCatalogValueContains(catalogName,catalogValue,pageNumber-1,pageSize,sortCode);
+    }
+
+    @ApiOperation(value = "分页查询字典")
+    @PostMapping(value = "dictionaryPage")
+    public Page<Dictionary> dictionaryFindAll(@RequestParam("pageNumber") Integer pageNumber,
+                                              @RequestParam("pageSize") Integer pageSize,
+                                              @RequestParam("sortCode") String sortCode){
+        return dictionaryService.findAll(pageNumber-1,pageSize, sortCode);
+    }
+
+    @PostMapping(value = "saveDictionary")
+    public Dictionary saveDictionary(@RequestBody Dictionary dictionary) {
+        if (dictionary.getId() == null){
+            return dictionaryService.addOne(dictionary);
+        }
+        return dictionaryService.updateOne(dictionary);
+    }
+
+    @PostMapping(value = "dictionaryDeleteOne")
+    public void dictionaryDeleteOne(@RequestParam("id") String id) {
+        dictionaryService.deleteOne(id);
     }
 }

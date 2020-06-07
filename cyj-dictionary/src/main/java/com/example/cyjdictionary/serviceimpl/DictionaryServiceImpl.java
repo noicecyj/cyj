@@ -6,6 +6,10 @@ import com.example.cyjdictionary.entity.QDictionaryCatalog;
 import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +34,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public Dictionary findOneById(Integer id) {
+    public Dictionary findOneById(String id) {
         return dictionaryDao.getOne(id);
     }
 
@@ -40,7 +44,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public void deleteOne(Integer id) {
+    public void deleteOne(String id) {
          dictionaryDao.deleteById(id);
     }
 
@@ -55,7 +59,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogById(Integer id) {
+    public List<Dictionary> findCatalogById(String id) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -82,6 +86,13 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))
                 .where(qDictionaryCatalog.catalogValue.eq(value)).fetch();
+    }
+
+    @Override
+    public Page<Dictionary> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
+        Sort sort = Sort.by(sortCode);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        return dictionaryDao.findAll(pageable);
     }
 
 }

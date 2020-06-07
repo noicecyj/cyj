@@ -1,6 +1,8 @@
 package com.example.cyjdictionary.service;
 
 import com.example.cyjdictionary.entity.Dictionary;
+import com.example.cyjdictionary.entity.DictionaryCatalog;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 /**
@@ -21,7 +23,7 @@ public interface DictionaryService {
      * @param id 字典id
      * @return 字典
      */
-    Dictionary findOneById(Integer id);
+    Dictionary findOneById(String id);
     /**
      * 添加字典
      *
@@ -34,7 +36,7 @@ public interface DictionaryService {
      *
      * @param id 字典id
      */
-    void deleteOne(Integer id);
+    void deleteOne(String id);
     /**
      * 更新字典
      *
@@ -54,7 +56,7 @@ public interface DictionaryService {
      * @param id 目录id
      * @return 字典列表
      */
-    List<Dictionary> findCatalogById(Integer id);
+    List<Dictionary> findCatalogById(String id);
     /**
      * 根据目录名称查找字典
      *
@@ -69,5 +71,15 @@ public interface DictionaryService {
      * @return 字典列表
      */
     List<Dictionary> findCatalogByValue(String value);
+
+    /**
+     * 查找所有字典(分页排序)
+     *
+     * @param pageNumber 页码
+     * @param pageSize 条目
+     * @param sortCode 排序列
+     * @return 目录列表分页
+     */
+    Page<Dictionary> findAll(Integer pageNumber, Integer pageSize, String sortCode);
 
 }
