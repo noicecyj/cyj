@@ -56,21 +56,21 @@ public interface DictionaryService {
      * @param id 目录id
      * @return 字典列表
      */
-    List<Dictionary> findCatalogById(String id);
+    List<Dictionary> findCatalogById(String id, String sortCode);
     /**
      * 根据目录名称查找字典
      *
      * @param name 目录名称
      * @return 字典列表
      */
-    List<Dictionary> findCatalogByName(String name);
+    List<Dictionary> findCatalogByName(String name, String sortCode);
     /**
      * 根据目录代号查找字典
      *
      * @param value 目录代号
      * @return 字典列表
      */
-    List<Dictionary> findCatalogByValue(String value);
+    List<Dictionary> findCatalogByValue(String value, String sortCode);
 
     /**
      * 查找所有字典(分页排序)
@@ -80,6 +80,6 @@ public interface DictionaryService {
      * @param sortCode 排序列
      * @return 目录列表分页
      */
-    Page<Dictionary> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+    List<Dictionary> findAll(String id,Integer pageNumber, Integer pageSize, String sortCode);
 
 }

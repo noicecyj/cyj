@@ -12,7 +12,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -59,7 +62,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogById(String id) {
+    public List<Dictionary> findCatalogById(String id, String sortCode) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -69,7 +72,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogByName(String name) {
+    public List<Dictionary> findCatalogByName(String name, String sortCode) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -79,20 +82,29 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogByValue(String value) {
+    public List<Dictionary> findCatalogByValue(String value, String sortCode) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.catalogValue.eq(value)).fetch();
+                .where(qDictionaryCatalog.catalogValue.eq(value)).orderBy(qDictionary.sortCode.asc()).fetch();
     }
 
     @Override
-    public Page<Dictionary> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
-        Sort sort = Sort.by(sortCode);
-        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-        return dictionaryDao.findAll(pageable);
+    public List<Dictionary> findAll(String id,Integer pageNumber, Integer pageSize, String sortCode) {
+        return page(findCatalogById(id,sortCode),pageSize,pageNumber);
     }
 
+    public static List<Dictionary> page(List<Dictionary> dataList, int pageSize,int currentPage) {
+        List<Dictionary> currentPageList = new ArrayList<>();
+        if (dataList != null && dataList.size() > 0) {
+            int currIdx = (currentPage > 1 ? (currentPage - 1) * pageSize : 0);
+            for (int i = 0; i < pageSize && i < dataList.size() - currIdx; i++) {
+                Dictionary data = dataList.get(currIdx + i);
+                currentPageList.add(data);
+            }
+        }
+        return currentPageList;
+    }
 }

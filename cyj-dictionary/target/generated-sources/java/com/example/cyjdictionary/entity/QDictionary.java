@@ -27,6 +27,8 @@ public class QDictionary extends EntityPathBase<Dictionary> {
 
     public final StringPath pid = createString("pid");
 
+    public final StringPath sortCode = createString("sortCode");
+
     public QDictionary(String variable) {
         super(Dictionary.class, forVariable(variable));
     }
