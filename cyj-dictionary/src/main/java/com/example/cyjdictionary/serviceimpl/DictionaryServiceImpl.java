@@ -6,15 +6,11 @@ import com.example.cyjdictionary.entity.QDictionaryCatalog;
 import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author 曹元杰
@@ -68,7 +64,8 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
         return queryFactory.selectFrom(qDictionary)
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.id.eq(id)).fetch();
+                .where(qDictionaryCatalog.id.eq(id))
+                .orderBy(qDictionary.sortCode.asc()).fetch();
     }
 
     @Override
@@ -78,7 +75,8 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
         return queryFactory.selectFrom(qDictionary)
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.catalogName.eq(name)).fetch();
+                .where(qDictionaryCatalog.catalogName.eq(name))
+                .orderBy(qDictionary.sortCode.asc()).fetch();
     }
 
     @Override
@@ -88,12 +86,17 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
         return queryFactory.selectFrom(qDictionary)
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.catalogValue.eq(value)).orderBy(qDictionary.sortCode.asc()).fetch();
+                .where(qDictionaryCatalog.catalogValue.eq(value))
+                .orderBy(qDictionary.sortCode.asc()).fetch();
     }
 
     @Override
-    public List<Dictionary> findAll(String id,Integer pageNumber, Integer pageSize, String sortCode) {
-        return page(findCatalogById(id,sortCode),pageSize,pageNumber);
+    public Page<Dictionary> findAll(String id,Integer pageNumber, Integer pageSize, String sortCode) {
+        Sort sort = Sort.by(sortCode);
+        Pageable pageable = PageRequest.of(pageNumber -1, pageSize, sort);
+        List<Dictionary> dictionaryList = findCatalogById(id,sortCode);
+        List<Dictionary> dictionaryPage = page(dictionaryList,pageSize,pageNumber);
+        return new PageImpl<>(dictionaryPage,pageable, dictionaryList.size());
     }
 
     public static List<Dictionary> page(List<Dictionary> dataList, int pageSize,int currentPage) {

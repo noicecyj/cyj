@@ -55,18 +55,18 @@ public class IndexController {
 
     @ApiOperation(value = "根据名称查询目录")
     @PostMapping(value = "findCatalogByName")
-    public List<Dictionary> findCatalogByName(@RequestParam("name") String name,@RequestParam("sortCode") String sortCode) {
-        return dictionaryService.findCatalogByName(name,sortCode);
+    public List<Dictionary> findCatalogByName(@RequestParam("name") String name, @RequestParam("sortCode") String sortCode) {
+        return dictionaryService.findCatalogByName(name, sortCode);
     }
 
     @ApiOperation(value = "根据代码查询目录")
     @PostMapping(value = "findCatalogByValue")
-    public List<Dictionary> findCatalogByValue(@RequestParam("value") String value,@RequestParam("sortCode") String sortCode) {
-        return dictionaryService.findCatalogByValue(value,sortCode);
+    public List<Dictionary> findCatalogByValue(@RequestParam("value") String value, @RequestParam("sortCode") String sortCode) {
+        return dictionaryService.findCatalogByValue(value, sortCode);
     }
 
     @ApiOperation(value = "删除目录")
-    @PostMapping(value = "catalogDeleteOne")
+    @PostMapping(value = "catalogDelete")
     public void catalogDeleteOne(@RequestParam("id") String id) {
         dictionaryCatalogService.deleteOne(id);
     }
@@ -83,11 +83,11 @@ public class IndexController {
 
     @ApiOperation(value = "分页查询字典")
     @PostMapping(value = "dictionaryPage")
-    public List<Dictionary> dictionaryFindAll(@RequestParam("sortCode") String id,
+    public Page<Dictionary> dictionaryFindAll(@RequestParam("id") String id,
                                               @RequestParam("pageNumber") Integer pageNumber,
                                               @RequestParam("pageSize") Integer pageSize,
                                               @RequestParam("sortCode") String sortCode) {
-        return dictionaryService.findAll(id,pageNumber - 1, pageSize, sortCode);
+        return dictionaryService.findAll(id, pageNumber, pageSize, sortCode);
     }
 
     @ApiOperation(value = "保存字典")
@@ -100,7 +100,7 @@ public class IndexController {
     }
 
     @ApiOperation(value = "删除字典")
-    @PostMapping(value = "dictionaryDeleteOne")
+    @PostMapping(value = "dictionaryDelete")
     public void dictionaryDeleteOne(@RequestParam("id") String id) {
         dictionaryService.deleteOne(id);
     }

@@ -80,6 +80,6 @@ public interface DictionaryService {
      * @param sortCode 排序列
      * @return 目录列表分页
      */
-    List<Dictionary> findAll(String id,Integer pageNumber, Integer pageSize, String sortCode);
+    Page<Dictionary> findAll(String id,Integer pageNumber, Integer pageSize, String sortCode);
 
 }
