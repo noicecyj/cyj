@@ -3,12 +3,8 @@ package com.example.cyjentitycreater.controller;
 
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.service.BeanServiceImpl;
-import com.example.cyjentitycreater.entity.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * @author 曹元杰
@@ -28,9 +24,7 @@ public class IndexController {
 
     @RequestMapping(value = "entity")
     public String[] entity(@RequestBody CreateVO createVO) {
-        System.out.print(createVO);
-        return null;
-//        return beanServiceImpl.entityGenerate(entityList, tableName, method);
+        return beanServiceImpl.entityGenerate(createVO);
     }
 
 }

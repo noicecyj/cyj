@@ -1,5 +1,6 @@
 package com.example.cyjentitycreater.service;
 
+import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.Entity;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -22,32 +23,32 @@ public class BeanServiceImpl implements BeanService {
     String cValue = "C";
     String dValue = "D";
 
-    public String[] entityGenerate(List<Entity> entityList, String tableName,String method){
+    public String[] entityGenerate(CreateVO createVO){
         StringBuffer sb = new StringBuffer();
         sb.append("package ").append("请填写包名").append(";\r\n");
-        if (BeanUtils.ifDate(entityList)){
+        if (BeanUtils.ifDate(createVO.getEntityData())){
             sb.append("import java.sql.Date;\r\n");
         }
-        if (BeanUtils.ifTimestamp(entityList)){
+        if (BeanUtils.ifTimestamp(createVO.getEntityData())){
             sb.append("import java.sql.Timestamp;\r\n");
         }
         sb.append("import javax.persistence.*;\r\n");
         sb.append("import java.io.Serializable;\r\n");
         sb.append("\r\n");
         sb.append("@Entity\r\n");
-        sb.append("@Table(name = \"T_").append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName))).append("\")\r\n");
-        sb.append("public class ").append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName))).append(" implements Serializable {\r\n");
+        sb.append("@Table(name = \"T_").append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()))).append("\")\r\n");
+        sb.append("public class ").append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()))).append(" implements Serializable {\r\n");
         //生成无参的构造方法
-        sb.append("    public ").append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName))).append("() {\r\n").append("    }\r\n").append("\r\n");
+        sb.append("    public ").append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()))).append("() {\r\n").append("    }\r\n").append("\r\n");
         //生成有参的构造方法
-        sb.append("    public ").append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName))).append("(");
-        entityList.forEach(entity -> sb.append(entity.getEntityProperty()).append(" ").append(BeanUtils.underline2Camel(entity.getEntityName())).append(", "));
+        sb.append("    public ").append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()))).append("(");
+        createVO.getEntityData().forEach(entity -> sb.append(entity.getEntityProperty()).append(" ").append(BeanUtils.underline2Camel(entity.getEntityName())).append(", "));
         sb.deleteCharAt(sb.length() - 2);
         sb.append(") {\r\n");
-        entityList.forEach(entity -> sb.append("        this.").append(BeanUtils.underline2Camel(entity.getEntityName())).append(" = ").append(BeanUtils.underline2Camel(entity.getEntityName())).append(";\r\n"));
+        createVO.getEntityData().forEach(entity -> sb.append("        this.").append(BeanUtils.underline2Camel(entity.getEntityName())).append(" = ").append(BeanUtils.underline2Camel(entity.getEntityName())).append(";\r\n"));
         sb.append("    }\r\n").append("\r\n");
         //生成属性注解
-        entityList.forEach(entity -> {
+        createVO.getEntityData().forEach(entity -> {
             if (idValue.equals(entity.getEntityName())){
                 sb.append("    @Id\r\n");
                 sb.append("    @GeneratedValue(strategy=GenerationType.IDENTITY)\r\n");
@@ -57,28 +58,28 @@ public class BeanServiceImpl implements BeanService {
             sb.append("    private ").append(entity.getEntityProperty()).append(" ").append(BeanUtils.underline2Camel(entity.getEntityName())).append(";\r\n");
             sb.append("\r\n");
         });
-        if(method.contains(aValue)){
-            //生成重写getter和setter的方法
-            generateGetterAndSetter(entityList,sb);
-            sb.append("\r\n");
-        }
-        if(method.contains(bValue)){
-            //生成重写toString的方法
-            generateToString(entityList,sb,tableName);
-            sb.append("\r\n");
-        }
-        if(method.contains(cValue)){
-            //生成重写equals的方法
-            generateEquals(entityList,sb,tableName);
-            sb.append("\r\n");
-        }
-        if(method.contains(dValue)){
-            //生成重写hashcode的方法
-            generateHashCode(entityList,sb);
-            sb.append("\r\n");
-        }
+//        if(method.contains(aValue)){
+//            //生成重写getter和setter的方法
+//            generateGetterAndSetter(createVO.getEntityData(),sb);
+//            sb.append("\r\n");
+//        }
+//        if(method.contains(bValue)){
+//            //生成重写toString的方法
+//            generateToString(createVO.getEntityData(),sb,createVO.getName());
+//            sb.append("\r\n");
+//        }
+//        if(method.contains(cValue)){
+//            //生成重写equals的方法
+//            generateEquals(createVO.getEntityData(),sb,createVO.getName());
+//            sb.append("\r\n");
+//        }
+//        if(method.contains(dValue)){
+//            //生成重写hashcode的方法
+//            generateHashCode(createVO.getEntityData(),sb);
+//            sb.append("\r\n");
+//        }
         sb.append("}");
-        return new String[]{sb.toString(), BeanUtils.captureName(BeanUtils.underline2Camel(tableName)) + ".java"};
+        return new String[]{sb.toString(), BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + ".java"};
     }
 
     @Override
