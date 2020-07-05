@@ -25,14 +25,51 @@ public class BeanServiceImpl implements BeanService {
     private final String PO = "PO";
 
     public String[] entityGenerate(CreateVO createVO){
-        LocalDateTime localDateTime = LocalDateTime.now();
         StringBuffer sb = new StringBuffer();
+        generateAnnotation(createVO, sb);
+        sb.append("public class ")
+                .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
+                .append(" implements Serializable {\r\n");
+        //生成属性注解
+        generateProperty(createVO, sb);
+        if(LOMBOK_NO.equals(createVO.getLombok())) {
+            for (String method : createVO.getMethod()) {
+                if ("Constructor".equals(method)) {
+                    generateConstructor(createVO, sb);
+                }
+                if ("Getter and Setter".equals(method)){
+                    generateGetterAndSetter(createVO.getEntityData(),sb);
+                    sb.append("\r\n");
+                }
+                if ("toString".equals(method)){
+                    generateToString(createVO.getEntityData(),sb,createVO.getName());
+                    sb.append("\r\n");
+                }
+                if ("equals and hashCode".equals(method)){
+                    generateEquals(createVO.getEntityData(),sb,createVO.getName());
+                    sb.append("\r\n");
+                    generateHashCode(createVO.getEntityData(),sb);
+                }
+            }
+        }
+        sb.append("}");
+        String entityData = sb.toString();
+        return new String[]{entityData, entityName(createVO)};
+    }
+
+    @Override
+    public void generateAnnotation(CreateVO createVO, StringBuffer sb) {
+        LocalDateTime localDateTime = LocalDateTime.now();
         sb.append("package ").append("请填写包名").append(";\r\n");
         if (BeanUtils.ifDate(createVO.getEntityData())){
             sb.append("import java.sql.Date;\r\n");
         }
         if (BeanUtils.ifTimestamp(createVO.getEntityData())){
             sb.append("import java.sql.Timestamp;\r\n");
+        }
+        String yes = "Y";
+        if(yes.equals(createVO.getLombok())){
+            sb.append("import lombok.Data;\r\n");
         }
         if (PO.equals(createVO.getType())){
             sb.append("import javax.persistence.*;\r\n");
@@ -52,10 +89,10 @@ public class BeanServiceImpl implements BeanService {
         }else {
             sb.append("@Data\r\n");
         }
-        sb.append("public class ")
-                .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
-                .append(" implements Serializable {\r\n");
-        //生成属性注解
+    }
+
+    @Override
+    public void generateProperty(CreateVO createVO, StringBuffer sb) {
         createVO.getEntityData().forEach(entity -> {
             if(LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())){
                 if (entity.getEntityName().contains(idValue)) {
@@ -71,30 +108,6 @@ public class BeanServiceImpl implements BeanService {
                     .append(";\r\n");
             sb.append("\r\n");
         });
-        if(LOMBOK_NO.equals(createVO.getLombok())) {
-            for (String method : createVO.getMethod()) {
-                if ("Constructor".equals(method)) {
-                    generateConstructor(createVO, sb);
-                }
-                if ("Getter and Setter".equals(method)){
-                    generateGetterAndSetter(createVO.getEntityData(),sb);
-                    sb.append("\r\n");
-                }
-                if ("toString".equals(method)){
-                    generateToString(createVO.getEntityData(),sb,createVO.getName());
-                    sb.append("\r\n");
-                }
-                if ("equals and hashCode".equals(method)){
-                    generateEquals(createVO.getEntityData(),sb,createVO.getName());
-                    sb.append("\r\n");
-                    generateHashCode(createVO.getEntityData(),sb);
-                    sb.append("\r\n");
-                }
-            }
-        }
-        sb.append("}");
-        String entityData = sb.toString();
-        return new String[]{entityData, entityName(createVO)};
     }
 
     @Override

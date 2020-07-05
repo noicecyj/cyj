@@ -11,6 +11,20 @@ import java.util.List;
  */
 public interface BeanService {
     /**
+     * 生成注解
+     *
+     * @param createVO 属性列表
+     * @param sb         实体类生成字符串
+     */
+    void generateAnnotation(CreateVO createVO, StringBuffer sb);
+    /**
+     * 生成属性
+     *
+     * @param createVO 属性列表
+     * @param sb         实体类生成字符串
+     */
+    void generateProperty(CreateVO createVO, StringBuffer sb);
+    /**
      * 生成重写构造方法
      *
      * @param createVO 属性列表
