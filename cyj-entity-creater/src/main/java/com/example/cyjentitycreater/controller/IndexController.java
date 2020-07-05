@@ -26,5 +26,4 @@ public class IndexController {
     public String[] entity(@RequestBody CreateVO createVO) {
         return beanServiceImpl.entityGenerate(createVO);
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.cyjentitycreater.service;
 
+import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.Entity;
 
 import java.util.List;
@@ -9,6 +10,13 @@ import java.util.List;
  * @date 2020/1/21 14:46
  */
 public interface BeanService {
+    /**
+     * 生成重写构造方法
+     *
+     * @param createVO 属性列表
+     * @param sb         实体类生成字符串
+     */
+    void generateConstructor(CreateVO createVO, StringBuffer sb);
     /**
      * 生成重写getter和setter的方法
      *

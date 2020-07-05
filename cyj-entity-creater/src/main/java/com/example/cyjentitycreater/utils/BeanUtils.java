@@ -1,5 +1,6 @@
 package com.example.cyjentitycreater.utils;
 
+import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.Entity;
 
 import java.util.List;
@@ -54,6 +55,10 @@ public class BeanUtils {
             }
         }
         return false;
+    }
+
+    public static String entityName(CreateVO createVO){
+        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()))+ createVO.getType() + ".java";
     }
 
 }
