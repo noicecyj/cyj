@@ -24,31 +24,32 @@ public class BeanServiceImpl implements BeanService {
     private final String LOMBOK_NO = "N";
     private final String PO = "PO";
 
-    public String[] entityGenerate(CreateVO createVO){
+    public String[] entityGenerate(CreateVO createVO) {
         StringBuffer sb = new StringBuffer();
         generateAnnotation(createVO, sb);
         sb.append("public class ")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
+                .append(createVO.getType())
                 .append(" implements Serializable {\r\n");
         //生成属性注解
         generateProperty(createVO, sb);
-        if(LOMBOK_NO.equals(createVO.getLombok())) {
+        if (LOMBOK_NO.equals(createVO.getLombok())) {
             for (String method : createVO.getMethod()) {
                 if ("Constructor".equals(method)) {
                     generateConstructor(createVO, sb);
                 }
-                if ("Getter and Setter".equals(method)){
-                    generateGetterAndSetter(createVO.getEntityData(),sb);
+                if ("Getter and Setter".equals(method)) {
+                    generateGetterAndSetter(createVO.getEntityData(), sb);
                     sb.append("\r\n");
                 }
-                if ("toString".equals(method)){
-                    generateToString(createVO.getEntityData(),sb,createVO.getName());
+                if ("toString".equals(method)) {
+                    generateToString(createVO.getEntityData(), sb, createVO.getName());
                     sb.append("\r\n");
                 }
-                if ("equals and hashCode".equals(method)){
-                    generateEquals(createVO.getEntityData(),sb,createVO.getName());
+                if ("equals and hashCode".equals(method)) {
+                    generateEquals(createVO.getEntityData(), sb, createVO.getName());
                     sb.append("\r\n");
-                    generateHashCode(createVO.getEntityData(),sb);
+                    generateHashCode(createVO.getEntityData(), sb);
                 }
             }
         }
@@ -61,17 +62,17 @@ public class BeanServiceImpl implements BeanService {
     public void generateAnnotation(CreateVO createVO, StringBuffer sb) {
         LocalDateTime localDateTime = LocalDateTime.now();
         sb.append("package ").append("请填写包名").append(";\r\n");
-        if (BeanUtils.ifDate(createVO.getEntityData())){
+        if (BeanUtils.ifDate(createVO.getEntityData())) {
             sb.append("import java.sql.Date;\r\n");
         }
-        if (BeanUtils.ifTimestamp(createVO.getEntityData())){
+        if (BeanUtils.ifTimestamp(createVO.getEntityData())) {
             sb.append("import java.sql.Timestamp;\r\n");
         }
         String yes = "Y";
-        if(yes.equals(createVO.getLombok())){
+        if (yes.equals(createVO.getLombok())) {
             sb.append("import lombok.Data;\r\n");
         }
-        if (PO.equals(createVO.getType())){
+        if (PO.equals(createVO.getType())) {
             sb.append("import javax.persistence.*;\r\n");
         }
         sb.append("import java.io.Serializable;\r\n");
@@ -81,12 +82,12 @@ public class BeanServiceImpl implements BeanService {
         sb.append(" * @version 1.0\r\n");
         sb.append(" * @date ").append(localDateTime).append("\r\n");
         sb.append(" */\r\n");
-        if(LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())){
+        if (LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())) {
             sb.append("@Entity\r\n");
             sb.append("@Table(name = \"T_")
                     .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
                     .append("\")\r\n");
-        }else {
+        } else {
             sb.append("@Data\r\n");
         }
     }
@@ -94,7 +95,7 @@ public class BeanServiceImpl implements BeanService {
     @Override
     public void generateProperty(CreateVO createVO, StringBuffer sb) {
         createVO.getEntityData().forEach(entity -> {
-            if(LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())){
+            if (LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())) {
                 if (entity.getEntityName().contains(idValue)) {
                     sb.append("    @Id\r\n");
                     sb.append("    @GeneratedValue(strategy=GenerationType.IDENTITY)\r\n");
@@ -134,7 +135,7 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
-    public void generateGetterAndSetter(List<Entity> entityList, StringBuffer sb){
+    public void generateGetterAndSetter(List<Entity> entityList, StringBuffer sb) {
         entityList.forEach(entity -> sb.append("    public ")
                 .append(entity.getEntityProperty()).append(" ").append("get")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(entity.getEntityName())))
@@ -152,18 +153,18 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
-    public void generateToString(List<Entity> entityList, StringBuffer sb, String tableName){
+    public void generateToString(List<Entity> entityList, StringBuffer sb, String tableName) {
         sb.append("    @Override\r\n");
         sb.append("    public String toString() {\r\n");
         sb.append("        return \"")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName))).append("{\" +\r\n");
         entityList.forEach(entity -> {
-            if (idValue.equals(entity.getEntityName()) && integerValue.equals(entity.getEntityProperty())){
+            if (idValue.equals(entity.getEntityName()) && integerValue.equals(entity.getEntityProperty())) {
                 sb.append("            \"id=\" + id +\r\n");
-            }else if (!stringValue.equals(entity.getEntityProperty())){
+            } else if (!stringValue.equals(entity.getEntityProperty())) {
                 sb.append("            \", ").append(entity.getEntityName())
                         .append("=\" + ").append(entity.getEntityName()).append(" + \r\n");
-            }else {
+            } else {
                 sb.append("            \", ").append(entity.getEntityName())
                         .append("='\" + ").append(entity.getEntityName()).append(" + ")
                         .append(" '\\'' ").append(" + \r\n");
@@ -174,7 +175,7 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
-    public void generateEquals(List<Entity> entityList, StringBuffer sb, String tableName){
+    public void generateEquals(List<Entity> entityList, StringBuffer sb, String tableName) {
         sb.append("    @Override\r\n");
         sb.append("    public boolean equals(Object o) {\r\n");
         sb.append("        if (this == o) return true;\r\n");
@@ -183,9 +184,9 @@ public class BeanServiceImpl implements BeanService {
                 .append(" that = (").append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName)))
                 .append(") o;\r\n");
         entityList.forEach(entity -> {
-            if (idValue.equals(entity.getEntityName()) && integerValue.equals(entity.getEntityProperty())){
+            if (idValue.equals(entity.getEntityName()) && integerValue.equals(entity.getEntityProperty())) {
                 sb.append("        return Objects.equals(id, that.id) &&\r\n");
-            }else {
+            } else {
                 sb.append("                Objects.equals(")
                         .append(entity.getEntityName()).append(", that.")
                         .append(entity.getEntityName()).append(") &&\r\n");
@@ -195,7 +196,7 @@ public class BeanServiceImpl implements BeanService {
     }
 
     @Override
-    public void generateHashCode(List<Entity> entityList, StringBuffer sb){
+    public void generateHashCode(List<Entity> entityList, StringBuffer sb) {
         sb.append("    @Override\r\n");
         sb.append("    public int hashCode() {\r\n");
         sb.append("        return Objects.hash(");
