@@ -5,7 +5,7 @@ import com.example.cyjentitycreater.entity.Entity;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
@@ -33,7 +33,7 @@ public class BeanServiceImpl implements BeanService {
                 .append(" implements Serializable {\r\n");
         //生成属性注解
         generateProperty(createVO, sb);
-        if (LOMBOK_NO.equals(createVO.getLombok())) {
+        if (createVO.getMethod() != null && LOMBOK_NO.equals(createVO.getLombok())) {
             for (String method : createVO.getMethod()) {
                 if ("Constructor".equals(method)) {
                     generateConstructor(createVO, sb);
@@ -60,7 +60,7 @@ public class BeanServiceImpl implements BeanService {
 
     @Override
     public void generateAnnotation(CreateVO createVO, StringBuffer sb) {
-        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDate localDate = LocalDate.now();
         sb.append("package ").append("请填写包名").append(";\r\n");
         if (BeanUtils.ifDate(createVO.getEntityData())) {
             sb.append("import java.sql.Date;\r\n");
@@ -80,7 +80,7 @@ public class BeanServiceImpl implements BeanService {
         sb.append("/**\r\n");
         sb.append(" * @author 曹元杰\r\n");
         sb.append(" * @version 1.0\r\n");
-        sb.append(" * @date ").append(localDateTime).append("\r\n");
+        sb.append(" * @date ").append(localDate).append("\r\n");
         sb.append(" */\r\n");
         if (LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())) {
             sb.append("@Entity\r\n");
