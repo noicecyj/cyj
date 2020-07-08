@@ -2,7 +2,8 @@ package com.example.cyjentitycreater.controller;
 
 
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.service.BeanServiceImpl;
+import com.example.cyjentitycreater.entity.ResultVO;
+import com.example.cyjentitycreater.service.EntityFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,15 +16,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "entityCreateApi")
 public class IndexController {
 
-    private BeanServiceImpl beanServiceImpl;
+    private EntityFactory entityFactory;
 
     @Autowired
-    public void setBeanServiceImpl(BeanServiceImpl beanServiceImpl) {
-        this.beanServiceImpl = beanServiceImpl;
+    public void setEntityFactory(EntityFactory entityFactory) {
+        this.entityFactory = entityFactory;
     }
 
     @RequestMapping(value = "entity")
-    public String[] entity(@RequestBody CreateVO createVO) {
-        return beanServiceImpl.entityGenerate(createVO);
+    public ResultVO entity(@RequestBody CreateVO createVO) {
+        return entityFactory.entity(createVO);
     }
 }

@@ -16,8 +16,9 @@ public interface BeanService {
      *
      * @param createVO 属性列表
      * @param sb       实体类生成字符串
+     * @param yes      是否使用lombok
      */
-    void generateAnnotation(CreateVO createVO, StringBuffer sb);
+    void generateAnnotation(CreateVO createVO, StringBuffer sb, String yes);
 
     /**
      * 生成属性

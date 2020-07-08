@@ -2,6 +2,7 @@ package com.example.cyjentitycreater.service;
 
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.Entity;
+import com.example.cyjentitycreater.entity.ResultVO;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -16,24 +17,23 @@ import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
  * @date 2020/1/21 14:46
  */
 @Component
-public class BeanServiceImpl implements BeanService {
+public class PoServiceImpl implements BeanService {
 
     private final String idValue = "id";
     private final String integerValue = "Integer";
     private final String stringValue = "String";
-    private final String LOMBOK_NO = "N";
-    private final String PO = "PO";
 
-    public String[] entityGenerate(CreateVO createVO) {
+    public ResultVO entityGenerate(CreateVO createVO) {
         StringBuffer sb = new StringBuffer();
-        generateAnnotation(createVO, sb);
+        String yes = "Y";
+        generateAnnotation(createVO, sb, yes);
         sb.append("public class ")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
                 .append(createVO.getType())
                 .append(" implements Serializable {\r\n");
         //生成属性注解
         generateProperty(createVO, sb);
-        if (createVO.getMethod() != null && LOMBOK_NO.equals(createVO.getLombok())) {
+        if (createVO.getMethod() != null && !yes.equals(createVO.getLombok())) {
             for (String method : createVO.getMethod()) {
                 if ("Constructor".equals(method)) {
                     generateConstructor(createVO, sb);
@@ -55,11 +55,11 @@ public class BeanServiceImpl implements BeanService {
         }
         sb.append("}");
         String entityData = sb.toString();
-        return new String[]{entityData, entityName(createVO)};
+        return ResultVO.success(new String[]{entityData, entityName(createVO)});
     }
 
     @Override
-    public void generateAnnotation(CreateVO createVO, StringBuffer sb) {
+    public void generateAnnotation(CreateVO createVO, StringBuffer sb, String yes) {
         LocalDate localDate = LocalDate.now();
         sb.append("package ").append("请填写包名").append(";\r\n");
         if (BeanUtils.ifDate(createVO.getEntityData())) {
@@ -68,13 +68,10 @@ public class BeanServiceImpl implements BeanService {
         if (BeanUtils.ifTimestamp(createVO.getEntityData())) {
             sb.append("import java.sql.Timestamp;\r\n");
         }
-        String yes = "Y";
         if (yes.equals(createVO.getLombok())) {
             sb.append("import lombok.Data;\r\n");
         }
-        if (PO.equals(createVO.getType())) {
-            sb.append("import javax.persistence.*;\r\n");
-        }
+        sb.append("import javax.persistence.*;\r\n");
         sb.append("import java.io.Serializable;\r\n");
         sb.append("\r\n");
         sb.append("/**\r\n");
@@ -82,12 +79,11 @@ public class BeanServiceImpl implements BeanService {
         sb.append(" * @version 1.0\r\n");
         sb.append(" * @date ").append(localDate).append("\r\n");
         sb.append(" */\r\n");
-        if (LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())) {
-            sb.append("@Entity\r\n");
-            sb.append("@Table(name = \"T_")
-                    .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
-                    .append("\")\r\n");
-        } else {
+        sb.append("@Entity\r\n");
+        sb.append("@Table(name = \"T_")
+                .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
+                .append("\")\r\n");
+        if (yes.equals(createVO.getLombok())) {
             sb.append("@Data\r\n");
         }
     }
@@ -95,13 +91,11 @@ public class BeanServiceImpl implements BeanService {
     @Override
     public void generateProperty(CreateVO createVO, StringBuffer sb) {
         createVO.getEntityData().forEach(entity -> {
-            if (LOMBOK_NO.equals(createVO.getLombok()) && PO.equals(createVO.getType())) {
-                if (entity.getEntityName().contains(idValue)) {
-                    sb.append("    @Id\r\n");
-                    sb.append("    @GeneratedValue(strategy=GenerationType.IDENTITY)\r\n");
-                } else {
-                    sb.append("    @Column\r\n");
-                }
+            if (entity.getEntityName().contains(idValue)) {
+                sb.append("    @Id\r\n");
+                sb.append("    @GeneratedValue(strategy=GenerationType.IDENTITY)\r\n");
+            } else {
+                sb.append("    @Column\r\n");
             }
             sb.append("    private ")
                     .append(entity.getEntityProperty()).append(" ")
