@@ -3,6 +3,7 @@ package com.example.cyjentitycreater.service;
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.EntityType;
 import com.example.cyjentitycreater.entity.ResultVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,27 @@ import org.springframework.stereotype.Service;
 @Service
 public class EntityFactory {
 
-    @Qualifier("poService")
     private PoServiceImpl poService;
-
-    @Qualifier("voService")
     private VoServiceImpl voService;
-
-    @Qualifier("dtoService")
     private DtoServiceImpl dtoService;
-
-    @Qualifier("boService")
     private BoServiceImpl boService;
+
+    @Autowired
+    public void setPoService(PoServiceImpl poService) {
+        this.poService = poService;
+    }
+    @Autowired
+    public void setVoService(VoServiceImpl voService) {
+        this.voService = voService;
+    }
+    @Autowired
+    public void setDtoService(DtoServiceImpl dtoService) {
+        this.dtoService = dtoService;
+    }
+    @Autowired
+    public void setBoService(BoServiceImpl boService) {
+        this.boService = boService;
+    }
 
     public ResultVO entity(CreateVO createVO) {
         if (EntityType.PO.getType().equals(createVO.getType())) {

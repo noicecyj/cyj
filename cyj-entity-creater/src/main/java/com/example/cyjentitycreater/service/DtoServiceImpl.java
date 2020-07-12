@@ -3,6 +3,7 @@ package com.example.cyjentitycreater.service;
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.Entity;
 import com.example.cyjentitycreater.entity.ResultVO;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
+@Component
 public class DtoServiceImpl implements BeanService {
 
     public ResultVO entityGenerate(CreateVO createVO) {

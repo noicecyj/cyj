@@ -91,9 +91,9 @@ public class PoServiceImpl implements BeanService {
     @Override
     public void generateProperty(CreateVO createVO, StringBuffer sb) {
         createVO.getEntityData().forEach(entity -> {
-            if (entity.getEntityName().contains(idValue)) {
+            if (entity.getId().equals(createVO.getPrimaryKey()) && entity.getEntityName().contains(idValue)) {
                 sb.append("    @Id\r\n");
-                sb.append("    @GeneratedValue(strategy=GenerationType.IDENTITY)\r\n");
+                sb.append("    @GeneratedValue(generator = \"jpa-uuid\")\r\n");
             } else {
                 sb.append("    @Column\r\n");
             }

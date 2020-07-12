@@ -16,4 +16,5 @@ public class CreateVO {
     private String name;
     private String[] method;
     private String lombok;
+    private Integer primaryKey;
 }

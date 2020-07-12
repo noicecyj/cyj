@@ -14,12 +14,11 @@ import java.util.regex.Pattern;
  */
 public class BeanUtils {
 
-    private static Pattern NUMBER_PATTERN = Pattern.compile("([A-Za-z\\d]+)(_)?");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("([A-Za-z\\d]+)(_)?");
 
     public static String underline2Camel(String line) {
         StringBuilder sb = new StringBuilder();
-        Pattern pattern = NUMBER_PATTERN;
-        Matcher matcher = pattern.matcher(line);
+        Matcher matcher = NUMBER_PATTERN.matcher(line);
         while (matcher.find()) {
             String word = matcher.group();
             sb.append(matcher.start() == 0 ? Character.toLowerCase(word.charAt(0)) : Character.toUpperCase(word.charAt(0)));
