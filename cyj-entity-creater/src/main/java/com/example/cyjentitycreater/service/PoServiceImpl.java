@@ -75,7 +75,7 @@ public class PoServiceImpl implements BeanService {
         if (yes.equals(createVO.getLombok())) {
             sb.append("import lombok.Data;\r\n");
         }
-        sb.append("import org.hibernate.annotations.GenericGenerator;");
+        sb.append("import org.hibernate.annotations.GenericGenerator;\r\n");
         sb.append("import javax.persistence.*;\r\n");
         sb.append("import java.io.Serializable;\r\n");
         sb.append("\r\n");
@@ -91,7 +91,7 @@ public class PoServiceImpl implements BeanService {
         if (yes.equals(createVO.getLombok())) {
             sb.append("@Data\r\n");
         }
-        sb.append("@GenericGenerator(name = \"jpa-uuid\", strategy = \"uuid\")");
+        sb.append("@GenericGenerator(name = \"jpa-uuid\", strategy = \"uuid\")\r\n");
     }
 
     @Override
