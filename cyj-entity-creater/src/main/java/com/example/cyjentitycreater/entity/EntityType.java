@@ -17,11 +17,11 @@ public enum EntityType {
 
     private final String type;
 
-    EntityType(String type){
+    EntityType(String type) {
         this.type = type;
     }
 
-    public String getType(){
+    public String getType() {
         return type;
     }
 }

@@ -22,6 +22,7 @@ public class VoServiceImpl implements BeanService {
 
         return null;
     }
+
     @Override
     public void generateAnnotation(CreateVO createVO, StringBuffer sb, String yes) {
 

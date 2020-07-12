@@ -4,6 +4,8 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -13,24 +15,24 @@ import javax.persistence.*;
 @Table(name = DictionaryCatalog.T_DICTIONARY_CATALOG)
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Data
-public class DictionaryCatalog {
-	
-	static final String T_DICTIONARY_CATALOG = "t_dictionary_catalog";
+public class DictionaryCatalog implements Serializable {
 
-	@Id
+    static final String T_DICTIONARY_CATALOG = "t_dictionary_catalog";
+
+    @Id
     @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id",length = 32)
+    @Column(name = "id", length = 32)
     private String id;
 
-    @Column
+    @Column(name = "catalog_name")
     private String catalogName;
 
-    @Column
+    @Column(name = "catalog_value")
     private String catalogValue;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
-    @Column
+    @Column(name = "sort_code")
     private String sortCode;
 }

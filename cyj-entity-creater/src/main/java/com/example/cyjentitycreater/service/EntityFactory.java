@@ -24,14 +24,17 @@ public class EntityFactory {
     public void setPoService(PoServiceImpl poService) {
         this.poService = poService;
     }
+
     @Autowired
     public void setVoService(VoServiceImpl voService) {
         this.voService = voService;
     }
+
     @Autowired
     public void setDtoService(DtoServiceImpl dtoService) {
         this.dtoService = dtoService;
     }
+
     @Autowired
     public void setBoService(BoServiceImpl boService) {
         this.boService = boService;
@@ -46,7 +49,7 @@ public class EntityFactory {
             return dtoService.entityGenerate(createVO);
         } else if (EntityType.BO.getType().equals(createVO.getType())) {
             return boService.entityGenerate(createVO);
-        }else {
+        } else {
             return null;
         }
     }

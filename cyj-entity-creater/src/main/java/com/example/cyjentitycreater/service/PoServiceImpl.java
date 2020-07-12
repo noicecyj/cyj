@@ -31,6 +31,10 @@ public class PoServiceImpl implements BeanService {
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
                 .append(createVO.getType())
                 .append(" implements Serializable {\r\n");
+        sb.append("\r\n");
+        sb.append("    static final String T_").append(createVO.getName().toUpperCase())
+                .append(" = \"t_").append(createVO.getName()).append("\";\r\n");
+        sb.append("\r\n");
         //生成属性注解
         generateProperty(createVO, sb);
         if (createVO.getMethod() != null && !yes.equals(createVO.getLombok())) {
@@ -71,6 +75,7 @@ public class PoServiceImpl implements BeanService {
         if (yes.equals(createVO.getLombok())) {
             sb.append("import lombok.Data;\r\n");
         }
+        sb.append("import org.hibernate.annotations.GenericGenerator;");
         sb.append("import javax.persistence.*;\r\n");
         sb.append("import java.io.Serializable;\r\n");
         sb.append("\r\n");
@@ -80,12 +85,13 @@ public class PoServiceImpl implements BeanService {
         sb.append(" * @date ").append(localDate).append("\r\n");
         sb.append(" */\r\n");
         sb.append("@Entity\r\n");
-        sb.append("@Table(name = \"T_")
-                .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
-                .append("\")\r\n");
+        sb.append("@Table(name = ")
+                .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()))).append(createVO.getType())
+                .append(".T_").append(createVO.getName().toUpperCase()).append(")\r\n");
         if (yes.equals(createVO.getLombok())) {
             sb.append("@Data\r\n");
         }
+        sb.append("@GenericGenerator(name = \"jpa-uuid\", strategy = \"uuid\")");
     }
 
     @Override
@@ -94,6 +100,7 @@ public class PoServiceImpl implements BeanService {
             if (entity.getId().equals(createVO.getPrimaryKey()) && entity.getEntityName().contains(idValue)) {
                 sb.append("    @Id\r\n");
                 sb.append("    @GeneratedValue(generator = \"jpa-uuid\")\r\n");
+                sb.append("    @Column(name = \"").append(entity.getEntityName()).append("\",length = 32)\r\n");
             } else {
                 sb.append("    @Column\r\n");
             }
