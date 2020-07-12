@@ -13,7 +13,7 @@ import java.util.List;
  * @date 2020/1/21 14:46
  */
 @Component
-public class DtoServiceImpl implements BeanService {
+public class DtoServiceImpl extends BaseService {
 
     public ResultVO entityGenerate(CreateVO createVO) {
 
@@ -27,31 +27,6 @@ public class DtoServiceImpl implements BeanService {
 
     @Override
     public void generateProperty(CreateVO createVO, StringBuffer sb) {
-
-    }
-
-    @Override
-    public void generateConstructor(CreateVO createVO, StringBuffer sb) {
-
-    }
-
-    @Override
-    public void generateGetterAndSetter(List<Entity> entityList, StringBuffer sb) {
-
-    }
-
-    @Override
-    public void generateToString(List<Entity> entityList, StringBuffer sb, String tableName) {
-
-    }
-
-    @Override
-    public void generateEquals(List<Entity> entityList, StringBuffer sb, String tableName) {
-
-    }
-
-    @Override
-    public void generateHashCode(List<Entity> entityList, StringBuffer sb) {
 
     }
 }
