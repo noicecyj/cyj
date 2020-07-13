@@ -40,7 +40,7 @@ public abstract class BaseService {
      * @param createVO 属性列表
      * @param sb       实体类生成字符串
      */
-    void generateConstructor(CreateVO createVO, StringBuffer sb){
+    void generateConstructor(CreateVO createVO, StringBuffer sb) {
         sb.append("    public ")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
                 .append("() {\r\n")
@@ -66,7 +66,7 @@ public abstract class BaseService {
      * @param entityList 属性列表
      * @param sb         实体类生成字符串
      */
-    void generateGetterAndSetter(List<Entity> entityList, StringBuffer sb){
+    void generateGetterAndSetter(List<Entity> entityList, StringBuffer sb) {
         entityList.forEach(entity -> sb.append("    public ")
                 .append(entity.getEntityProperty()).append(" ").append("get")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(entity.getEntityName())))
@@ -90,7 +90,7 @@ public abstract class BaseService {
      * @param sb         实体类生成字符串
      * @param tableName  表名
      */
-    void generateToString(List<Entity> entityList, StringBuffer sb, String tableName){
+    void generateToString(List<Entity> entityList, StringBuffer sb, String tableName) {
         sb.append("    @Override\r\n");
         sb.append("    public String toString() {\r\n");
         sb.append("        return \"")
@@ -118,7 +118,7 @@ public abstract class BaseService {
      * @param sb         实体类生成字符串
      * @param tableName  表名
      */
-    void generateEquals(List<Entity> entityList, StringBuffer sb, String tableName){
+    void generateEquals(List<Entity> entityList, StringBuffer sb, String tableName) {
         sb.append("    @Override\r\n");
         sb.append("    public boolean equals(Object o) {\r\n");
         sb.append("        if (this == o) return true;\r\n");
@@ -144,7 +144,7 @@ public abstract class BaseService {
      * @param entityList 属性列表
      * @param sb         实体类生成字符串
      */
-    void generateHashCode(List<Entity> entityList, StringBuffer sb){
+    void generateHashCode(List<Entity> entityList, StringBuffer sb) {
         sb.append("    @Override\r\n");
         sb.append("    public int hashCode() {\r\n");
         sb.append("        return Objects.hash(");

@@ -30,7 +30,9 @@ public class EntityFactory {
     public ResultVO entity(CreateVO createVO) {
         if (EntityType.PO.getType().equals(createVO.getType())) {
             return poService.entityGenerate(createVO);
-        } else if (EntityType.VO.getType().equals(createVO.getType())) {
+        } else if (EntityType.VO.getType().equals(createVO.getType()) ||
+                EntityType.BO.getType().equals(createVO.getType()) ||
+                EntityType.DTO.getType().equals(createVO.getType())) {
             return otherService.entityGenerate(createVO);
         } else {
             return null;
