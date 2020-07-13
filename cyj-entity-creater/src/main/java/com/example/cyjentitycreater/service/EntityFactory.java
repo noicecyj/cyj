@@ -4,7 +4,6 @@ import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.EntityType;
 import com.example.cyjentitycreater.entity.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,9 +15,7 @@ import org.springframework.stereotype.Service;
 public class EntityFactory {
 
     private PoServiceImpl poService;
-    private VoServiceImpl voService;
-    private DtoServiceImpl dtoService;
-    private BoServiceImpl boService;
+    private OtherServiceImpl otherService;
 
     @Autowired
     public void setPoService(PoServiceImpl poService) {
@@ -26,29 +23,15 @@ public class EntityFactory {
     }
 
     @Autowired
-    public void setVoService(VoServiceImpl voService) {
-        this.voService = voService;
-    }
-
-    @Autowired
-    public void setDtoService(DtoServiceImpl dtoService) {
-        this.dtoService = dtoService;
-    }
-
-    @Autowired
-    public void setBoService(BoServiceImpl boService) {
-        this.boService = boService;
+    public void setVoService(OtherServiceImpl voService) {
+        this.otherService = voService;
     }
 
     public ResultVO entity(CreateVO createVO) {
         if (EntityType.PO.getType().equals(createVO.getType())) {
             return poService.entityGenerate(createVO);
         } else if (EntityType.VO.getType().equals(createVO.getType())) {
-            return voService.entityGenerate(createVO);
-        } else if (EntityType.DTO.getType().equals(createVO.getType())) {
-            return dtoService.entityGenerate(createVO);
-        } else if (EntityType.BO.getType().equals(createVO.getType())) {
-            return boService.entityGenerate(createVO);
+            return otherService.entityGenerate(createVO);
         } else {
             return null;
         }
