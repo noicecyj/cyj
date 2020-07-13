@@ -1,7 +1,6 @@
 package com.example.cyjdictionary.service;
 
 import com.example.cyjdictionary.entity.Dictionary;
-import com.example.cyjdictionary.entity.DictionaryCatalog;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -11,19 +10,19 @@ import java.util.List;
  * @date 2020/1/21 14:46
  */
 public interface DictionaryService {
-    /**
-     * 查找所有字典
-     *
-     * @return 字典列表
-     */
-    List<Dictionary> findAll();
-    /**
-     * 根据id查找字典
-     *
-     * @param id 字典id
-     * @return 字典
-     */
-    Dictionary findOneById(String id);
+//    /**
+//     * 查找所有字典
+//     *
+//     * @return 字典列表
+//     */
+//    List<Dictionary> findAll();
+//    /**
+//     * 根据id查找字典
+//     *
+//     * @param id 字典id
+//     * @return 字典
+//     */
+//    Dictionary findOneById(String id);
     /**
      * 添加字典
      *
@@ -44,37 +43,38 @@ public interface DictionaryService {
      * @return 字典
      */
     Dictionary updateOne(Dictionary dictionary);
-    /**
-     * 获取字典数量
-     *
-     * @return 字典数量
-     */
-    long count();
+//    /**
+//     * 获取字典数量
+//     *
+//     * @return 字典数量
+//     */
+//    long count();
     /**
      * 根据目录id查找字典
      *
      * @param id 目录id
      * @return 字典列表
      */
-    List<Dictionary> findCatalogById(String id, String sortCode);
+    List<Dictionary> findCatalogById(String id);
     /**
      * 根据目录名称查找字典
      *
      * @param name 目录名称
      * @return 字典列表
      */
-    List<Dictionary> findCatalogByName(String name, String sortCode);
+    List<Dictionary> findCatalogByName(String name);
     /**
      * 根据目录代号查找字典
      *
      * @param value 目录代号
      * @return 字典列表
      */
-    List<Dictionary> findCatalogByValue(String value, String sortCode);
+    List<Dictionary> findCatalogByValue(String value);
 
     /**
      * 查找所有字典(分页排序)
      *
+     * @param id ID
      * @param pageNumber 页码
      * @param pageSize 条目
      * @param sortCode 排序列

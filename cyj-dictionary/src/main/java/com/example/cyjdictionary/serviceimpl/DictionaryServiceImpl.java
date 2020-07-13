@@ -1,9 +1,9 @@
 package com.example.cyjdictionary.serviceimpl;
 
+import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.entity.Dictionary;
 import com.example.cyjdictionary.entity.QDictionary;
 import com.example.cyjdictionary.entity.QDictionaryCatalog;
-import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -18,7 +18,7 @@ import java.util.List;
  * @date 2020/1/21 14:46
  */
 @Service
-public class DictionaryServiceImpl extends BaseService implements DictionaryService  {
+public class DictionaryServiceImpl extends BaseService implements DictionaryService {
 
     private DictionaryDao dictionaryDao;
 
@@ -28,23 +28,13 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findAll() {
-        return dictionaryDao.findAll();
-    }
-
-    @Override
-    public Dictionary findOneById(String id) {
-        return dictionaryDao.getOne(id);
-    }
-
-    @Override
     public Dictionary addOne(Dictionary dictionary) {
         return dictionaryDao.save(dictionary);
     }
 
     @Override
     public void deleteOne(String id) {
-         dictionaryDao.deleteById(id);
+        dictionaryDao.deleteById(id);
     }
 
     @Override
@@ -53,12 +43,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public long count() {
-        return dictionaryDao.count();
-    }
-
-    @Override
-    public List<Dictionary> findCatalogById(String id, String sortCode) {
+    public List<Dictionary> findCatalogById(String id) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -69,7 +54,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogByName(String name, String sortCode) {
+    public List<Dictionary> findCatalogByName(String name) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -80,7 +65,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogByValue(String value, String sortCode) {
+    public List<Dictionary> findCatalogByValue(String value) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -91,15 +76,15 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public Page<Dictionary> findAll(String id,Integer pageNumber, Integer pageSize, String sortCode) {
+    public Page<Dictionary> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
-        Pageable pageable = PageRequest.of(pageNumber -1, pageSize, sort);
-        List<Dictionary> dictionaryList = findCatalogById(id,sortCode);
-        List<Dictionary> dictionaryPage = page(dictionaryList,pageSize,pageNumber);
-        return new PageImpl<>(dictionaryPage,pageable, dictionaryList.size());
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+        List<Dictionary> dictionaryList = findCatalogById(id);
+        List<Dictionary> dictionaryPage = page(dictionaryList, pageSize, pageNumber);
+        return new PageImpl<>(dictionaryPage, pageable, dictionaryList.size());
     }
 
-    public static List<Dictionary> page(List<Dictionary> dataList, int pageSize,int currentPage) {
+    public static List<Dictionary> page(List<Dictionary> dataList, int pageSize, int currentPage) {
         List<Dictionary> currentPageList = new ArrayList<>();
         if (dataList != null && dataList.size() > 0) {
             int currIdx = (currentPage > 1 ? (currentPage - 1) * pageSize : 0);

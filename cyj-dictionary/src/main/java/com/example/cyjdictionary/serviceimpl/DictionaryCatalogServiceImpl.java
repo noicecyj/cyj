@@ -11,8 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author 曹元杰
  * @version 1.0
@@ -29,20 +27,10 @@ public class DictionaryCatalogServiceImpl extends BaseService implements Diction
     }
 
     @Override
-    public List<DictionaryCatalog> findAll() {
-        return dictionaryCatalogDao.findAll();
-    }
-
-    @Override
     public Page<DictionaryCatalog> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return dictionaryCatalogDao.findAll(pageable);
-    }
-
-    @Override
-    public DictionaryCatalog findOneById(String id) {
-        return dictionaryCatalogDao.getOne(id);
     }
 
     @Override
@@ -58,11 +46,6 @@ public class DictionaryCatalogServiceImpl extends BaseService implements Diction
     @Override
     public DictionaryCatalog updateOne(DictionaryCatalog dictionaryCatalog) {
         return dictionaryCatalogDao.saveAndFlush(dictionaryCatalog);
-    }
-
-    @Override
-    public long count() {
-        return dictionaryCatalogDao.count();
     }
 
     @Override

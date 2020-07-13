@@ -26,9 +26,6 @@ public class OtherServiceImpl extends BaseService {
                 .append(createVO.getType())
                 .append(" implements Serializable {\r\n");
         sb.append("\r\n");
-        sb.append("    static final String T_").append(createVO.getName().toUpperCase())
-                .append(" = \"t_").append(createVO.getName()).append("\";\r\n");
-        sb.append("\r\n");
         generateProperty(createVO, sb);
         if (createVO.getMethod() != null && !yes.equals(createVO.getLombok())) {
             for (String method : createVO.getMethod()) {

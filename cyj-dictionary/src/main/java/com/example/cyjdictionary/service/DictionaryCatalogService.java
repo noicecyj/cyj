@@ -3,21 +3,18 @@ package com.example.cyjdictionary.service;
 import com.example.cyjdictionary.entity.DictionaryCatalog;
 import org.springframework.data.domain.Page;
 
-import java.awt.print.Pageable;
-import java.util.List;
-
 /**
  * @author 曹元杰
  * @version 1.0
  * @date 2020/1/21 14:46
  */
 public interface DictionaryCatalogService {
-    /**
-     * 查找所有目录
-     *
-     * @return 目录列表
-     */
-    List<DictionaryCatalog> findAll();
+//    /**
+//     * 查找所有目录
+//     *
+//     * @return 目录列表
+//     */
+//    List<DictionaryCatalog> findAll();
 
     /**
      * 查找所有目录(分页排序)
@@ -29,13 +26,13 @@ public interface DictionaryCatalogService {
      */
     Page<DictionaryCatalog> findAll(Integer pageNumber, Integer pageSize, String sortCode);
 
-    /**
-     * 根据id查找目录
-     *
-     * @param id 目录id
-     * @return 目录
-     */
-    DictionaryCatalog findOneById(String id);
+//    /**
+//     * 根据id查找目录
+//     *
+//     * @param id 目录id
+//     * @return 目录
+//     */
+//    DictionaryCatalog findOneById(String id);
 
     /**
      * 添加目录
@@ -60,12 +57,12 @@ public interface DictionaryCatalogService {
      */
     DictionaryCatalog updateOne(DictionaryCatalog dictionaryCatalog);
 
-    /**
-     * 获取目录数量
-     *
-     * @return 目录数量
-     */
-    long count();
+//    /**
+//     * 获取目录数量
+//     *
+//     * @return 目录数量
+//     */
+//    long count();
 
     /**
      * 根据名称和代号进行模糊查询

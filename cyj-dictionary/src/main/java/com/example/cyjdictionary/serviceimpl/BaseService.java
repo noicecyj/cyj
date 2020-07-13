@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -20,7 +21,7 @@ public class BaseService {
     protected JPAQueryFactory queryFactory;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         queryFactory = new JPAQueryFactory(entityManager);
     }
 }

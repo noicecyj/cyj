@@ -5,7 +5,6 @@ import com.example.cyjdictionary.entity.Dictionary;
 import com.example.cyjdictionary.entity.DictionaryCatalog;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 import com.example.cyjdictionary.service.DictionaryService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -55,14 +54,14 @@ public class IndexController {
 
     @ApiOperation(value = "根据名称查询目录")
     @PostMapping(value = "findCatalogByName")
-    public List<Dictionary> findCatalogByName(@RequestParam("name") String name, @RequestParam("sortCode") String sortCode) {
-        return dictionaryService.findCatalogByName(name, sortCode);
+    public List<Dictionary> findCatalogByName(@RequestParam("name") String name) {
+        return dictionaryService.findCatalogByName(name);
     }
 
     @ApiOperation(value = "根据代码查询目录")
     @PostMapping(value = "findCatalogByValue")
-    public List<Dictionary> findCatalogByValue(@RequestParam("value") String value, @RequestParam("sortCode") String sortCode) {
-        return dictionaryService.findCatalogByValue(value, sortCode);
+    public List<Dictionary> findCatalogByValue(@RequestParam("value") String value) {
+        return dictionaryService.findCatalogByValue(value);
     }
 
     @ApiOperation(value = "删除目录")
