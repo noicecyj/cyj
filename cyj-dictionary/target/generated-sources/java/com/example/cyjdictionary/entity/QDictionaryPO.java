@@ -10,14 +10,14 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QDictionary is a Querydsl query type for Dictionary
+ * QDictionaryPO is a Querydsl query type for DictionaryPO
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QDictionary extends EntityPathBase<DictionaryPO> {
+public class QDictionaryPO extends EntityPathBase<DictionaryPO> {
 
-    private static final long serialVersionUID = -901011188L;
+    private static final long serialVersionUID = 1711644683L;
 
-    public static final QDictionary dictionary = new QDictionary("dictionary");
+    public static final QDictionaryPO dictionaryPO = new QDictionaryPO("dictionaryPO");
 
     public final StringPath dictionaryName = createString("dictionaryName");
 
@@ -29,15 +29,15 @@ public class QDictionary extends EntityPathBase<DictionaryPO> {
 
     public final StringPath sortCode = createString("sortCode");
 
-    public QDictionary(String variable) {
+    public QDictionaryPO(String variable) {
         super(DictionaryPO.class, forVariable(variable));
     }
 
-    public QDictionary(Path<? extends DictionaryPO> path) {
+    public QDictionaryPO(Path<? extends DictionaryPO> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QDictionary(PathMetadata metadata) {
+    public QDictionaryPO(PathMetadata metadata) {
         super(DictionaryPO.class, metadata);
     }
 

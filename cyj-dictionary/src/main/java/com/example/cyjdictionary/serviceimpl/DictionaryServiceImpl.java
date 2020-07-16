@@ -2,8 +2,8 @@ package com.example.cyjdictionary.serviceimpl;
 
 import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.entity.DictionaryPO;
-import com.example.cyjdictionary.entity.QDictionary;
-import com.example.cyjdictionary.entity.QDictionaryCatalog;
+import com.example.cyjdictionary.entity.QDictionaryPO;
+import com.example.cyjdictionary.entity.QDictionaryCatalogPO;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -44,8 +44,8 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
 
     @Override
     public List<DictionaryPO> findCatalogById(String id) {
-        QDictionary qDictionary = QDictionary.dictionary;
-        QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
+        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
+        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
         return queryFactory.selectFrom(qDictionary)
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))
@@ -55,8 +55,8 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
 
     @Override
     public List<DictionaryPO> findCatalogByName(String name) {
-        QDictionary qDictionary = QDictionary.dictionary;
-        QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
+        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
+        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
         return queryFactory.selectFrom(qDictionary)
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))
@@ -66,8 +66,8 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
 
     @Override
     public List<DictionaryPO> findCatalogByValue(String value) {
-        QDictionary qDictionary = QDictionary.dictionary;
-        QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
+        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
+        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
         return queryFactory.selectFrom(qDictionary)
                 .innerJoin(qDictionaryCatalog)
                 .on(qDictionary.pid.eq(qDictionaryCatalog.id))

@@ -10,14 +10,14 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QDictionaryCatalog is a Querydsl query type for DictionaryCatalog
+ * QDictionaryCatalogPO is a Querydsl query type for DictionaryCatalogPO
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QDictionaryCatalog extends EntityPathBase<DictionaryCatalogPO> {
+public class QDictionaryCatalogPO extends EntityPathBase<DictionaryCatalogPO> {
 
-    private static final long serialVersionUID = 618285421L;
+    private static final long serialVersionUID = 1466805292L;
 
-    public static final QDictionaryCatalog dictionaryCatalog = new QDictionaryCatalog("dictionaryCatalog");
+    public static final QDictionaryCatalogPO dictionaryCatalogPO = new QDictionaryCatalogPO("dictionaryCatalogPO");
 
     public final StringPath catalogName = createString("catalogName");
 
@@ -29,15 +29,15 @@ public class QDictionaryCatalog extends EntityPathBase<DictionaryCatalogPO> {
 
     public final StringPath sortCode = createString("sortCode");
 
-    public QDictionaryCatalog(String variable) {
+    public QDictionaryCatalogPO(String variable) {
         super(DictionaryCatalogPO.class, forVariable(variable));
     }
 
-    public QDictionaryCatalog(Path<? extends DictionaryCatalogPO> path) {
+    public QDictionaryCatalogPO(Path<? extends DictionaryCatalogPO> path) {
         super(path.getType(), path.getMetadata());
     }
 
-    public QDictionaryCatalog(PathMetadata metadata) {
+    public QDictionaryCatalogPO(PathMetadata metadata) {
         super(DictionaryCatalogPO.class, metadata);
     }
 
