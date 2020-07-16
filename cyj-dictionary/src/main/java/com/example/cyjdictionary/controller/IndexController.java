@@ -1,16 +1,13 @@
 package com.example.cyjdictionary.controller;
 
-
 import com.example.cyjdictionary.entity.Dictionary;
 import com.example.cyjdictionary.entity.DictionaryCatalog;
+import com.example.cyjdictionary.entity.ResultVO;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 import com.example.cyjdictionary.service.DictionaryService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @author 曹元杰
@@ -37,31 +34,31 @@ public class IndexController {
 
     @ApiOperation(value = "分页查询目录")
     @PostMapping(value = "catalogPage")
-    public Page<DictionaryCatalog> catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                                                  @RequestParam("pageSize") Integer pageSize,
-                                                  @RequestParam("sortCode") String sortCode) {
-        return dictionaryCatalogService.findAll(pageNumber - 1, pageSize, sortCode);
+    public ResultVO catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
+                                   @RequestParam("pageSize") Integer pageSize,
+                                   @RequestParam("sortCode") String sortCode) {
+        return ResultVO.success(dictionaryCatalogService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
     @ApiOperation(value = "保存目录")
     @PostMapping(value = "saveCatalog")
-    public DictionaryCatalog saveCatalog(@RequestBody DictionaryCatalog dictionaryCatalog) {
+    public ResultVO saveCatalog(@RequestBody DictionaryCatalog dictionaryCatalog) {
         if (dictionaryCatalog.getId() == null) {
-            return dictionaryCatalogService.addOne(dictionaryCatalog);
+            return ResultVO.success(dictionaryCatalogService.addOne(dictionaryCatalog));
         }
-        return dictionaryCatalogService.updateOne(dictionaryCatalog);
+        return ResultVO.success(dictionaryCatalogService.updateOne(dictionaryCatalog));
     }
 
     @ApiOperation(value = "根据名称查询目录")
     @PostMapping(value = "findCatalogByName")
-    public List<Dictionary> findCatalogByName(@RequestParam("name") String name) {
-        return dictionaryService.findCatalogByName(name);
+    public ResultVO findCatalogByName(@RequestParam("name") String name) {
+        return ResultVO.success(dictionaryService.findCatalogByName(name));
     }
 
     @ApiOperation(value = "根据代码查询目录")
     @PostMapping(value = "findCatalogByValue")
-    public List<Dictionary> findCatalogByValue(@RequestParam("value") String value) {
-        return dictionaryService.findCatalogByValue(value);
+    public ResultVO findCatalogByValue(@RequestParam("value") String value) {
+        return ResultVO.success(dictionaryService.findCatalogByValue(value));
     }
 
     @ApiOperation(value = "删除目录")
@@ -72,30 +69,31 @@ public class IndexController {
 
     @ApiOperation(value = "根据名称和代码模糊查询")
     @PostMapping(value = "findAllByCatalogNameContainsOrCatalogValueContains")
-    public Page<DictionaryCatalog> findAllByCatalogNameContainsOrCatalogValueContains(@RequestParam("catalogName") String catalogName,
-                                                                                      @RequestParam("catalogValue") String catalogValue,
-                                                                                      @RequestParam("pageNumber") Integer pageNumber,
-                                                                                      @RequestParam("pageSize") Integer pageSize,
-                                                                                      @RequestParam("sortCode") String sortCode) {
-        return dictionaryCatalogService.findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageNumber - 1, pageSize, sortCode);
+    public ResultVO findAllByCatalogNameContainsOrCatalogValueContains(@RequestParam("catalogName") String catalogName,
+                                                                       @RequestParam("catalogValue") String catalogValue,
+                                                                       @RequestParam("pageNumber") Integer pageNumber,
+                                                                       @RequestParam("pageSize") Integer pageSize,
+                                                                       @RequestParam("sortCode") String sortCode) {
+        return ResultVO.success(dictionaryCatalogService
+                .findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageNumber - 1, pageSize, sortCode));
     }
 
     @ApiOperation(value = "分页查询字典")
     @PostMapping(value = "dictionaryPage")
-    public Page<Dictionary> dictionaryFindAll(@RequestParam("id") String id,
-                                              @RequestParam("pageNumber") Integer pageNumber,
-                                              @RequestParam("pageSize") Integer pageSize,
-                                              @RequestParam("sortCode") String sortCode) {
-        return dictionaryService.findAll(id, pageNumber, pageSize, sortCode);
+    public ResultVO dictionaryFindAll(@RequestParam("id") String id,
+                                      @RequestParam("pageNumber") Integer pageNumber,
+                                      @RequestParam("pageSize") Integer pageSize,
+                                      @RequestParam("sortCode") String sortCode) {
+        return ResultVO.success(dictionaryService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
     @ApiOperation(value = "保存字典")
     @PostMapping(value = "saveDictionary")
-    public Dictionary saveDictionary(@RequestBody Dictionary dictionary) {
+    public ResultVO saveDictionary(@RequestBody Dictionary dictionary) {
         if (dictionary.getId() == null) {
-            return dictionaryService.addOne(dictionary);
+            return ResultVO.success(dictionaryService.addOne(dictionary));
         }
-        return dictionaryService.updateOne(dictionary);
+        return ResultVO.success(dictionaryService.updateOne(dictionary));
     }
 
     @ApiOperation(value = "删除字典")
