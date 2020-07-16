@@ -13,7 +13,7 @@ import com.querydsl.core.types.Path;
  * QDictionary is a Querydsl query type for Dictionary
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QDictionary extends EntityPathBase<Dictionary> {
+public class QDictionary extends EntityPathBase<DictionaryPO> {
 
     private static final long serialVersionUID = -901011188L;
 
@@ -30,15 +30,15 @@ public class QDictionary extends EntityPathBase<Dictionary> {
     public final StringPath sortCode = createString("sortCode");
 
     public QDictionary(String variable) {
-        super(Dictionary.class, forVariable(variable));
+        super(DictionaryPO.class, forVariable(variable));
     }
 
-    public QDictionary(Path<? extends Dictionary> path) {
+    public QDictionary(Path<? extends DictionaryPO> path) {
         super(path.getType(), path.getMetadata());
     }
 
     public QDictionary(PathMetadata metadata) {
-        super(Dictionary.class, metadata);
+        super(DictionaryPO.class, metadata);
     }
 
 }

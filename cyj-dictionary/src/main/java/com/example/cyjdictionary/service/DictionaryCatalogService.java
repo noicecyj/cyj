@@ -1,6 +1,6 @@
 package com.example.cyjdictionary.service;
 
-import com.example.cyjdictionary.entity.DictionaryCatalog;
+import com.example.cyjdictionary.entity.DictionaryCatalogPO;
 import org.springframework.data.domain.Page;
 
 /**
@@ -24,7 +24,7 @@ public interface DictionaryCatalogService {
      * @param sortCode 排序列
      * @return 目录列表分页
      */
-    Page<DictionaryCatalog> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+    Page<DictionaryCatalogPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
 
 //    /**
 //     * 根据id查找目录
@@ -37,10 +37,10 @@ public interface DictionaryCatalogService {
     /**
      * 添加目录
      *
-     * @param dictionaryCatalog 目录
+     * @param po 目录
      * @return 目录
      */
-    DictionaryCatalog addOne(DictionaryCatalog dictionaryCatalog);
+    DictionaryCatalogPO addOne(DictionaryCatalogPO po);
 
     /**
      * 删除目录
@@ -52,10 +52,10 @@ public interface DictionaryCatalogService {
     /**
      * 更新目录
      *
-     * @param dictionaryCatalog 目录
+     * @param po 目录
      * @return 目录
      */
-    DictionaryCatalog updateOne(DictionaryCatalog dictionaryCatalog);
+    DictionaryCatalogPO updateOne(DictionaryCatalogPO po);
 
 //    /**
 //     * 获取目录数量
@@ -74,9 +74,9 @@ public interface DictionaryCatalogService {
      * @param sortCode 排序列
      * @return 目录列表分页
      */
-    Page<DictionaryCatalog> findAllByCatalogNameContainsOrCatalogValueContains(String catalogName,
-                                                                                    String catalogValue,
-                                                                                    Integer pageNumber,
-                                                                                    Integer pageSize,
-                                                                                    String sortCode);
+    Page<DictionaryCatalogPO> findAllByCatalogNameContainsOrCatalogValueContains(String catalogName,
+                                                                                 String catalogValue,
+                                                                                 Integer pageNumber,
+                                                                                 Integer pageSize,
+                                                                                 String sortCode);
 }

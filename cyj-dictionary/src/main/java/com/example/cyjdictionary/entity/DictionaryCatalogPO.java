@@ -12,10 +12,10 @@ import java.io.Serializable;
  * @date 2020/1/21 14:46
  */
 @Entity
-@Table(name = DictionaryCatalog.T_DICTIONARY_CATALOG)
+@Table(name = DictionaryCatalogPO.T_DICTIONARY_CATALOG)
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Data
-public class DictionaryCatalog implements Serializable {
+public class DictionaryCatalogPO implements Serializable {
 
     static final String T_DICTIONARY_CATALOG = "t_dictionary_catalog";
 

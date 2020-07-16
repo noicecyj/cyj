@@ -1,7 +1,7 @@
 package com.example.cyjdictionary.controller;
 
-import com.example.cyjdictionary.entity.Dictionary;
-import com.example.cyjdictionary.entity.DictionaryCatalog;
+import com.example.cyjdictionary.entity.DictionaryPO;
+import com.example.cyjdictionary.entity.DictionaryCatalogPO;
 import com.example.cyjdictionary.entity.ResultVO;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 import com.example.cyjdictionary.service.DictionaryService;
@@ -42,11 +42,11 @@ public class IndexController {
 
     @ApiOperation(value = "保存目录")
     @PostMapping(value = "saveCatalog")
-    public ResultVO saveCatalog(@RequestBody DictionaryCatalog dictionaryCatalog) {
-        if (dictionaryCatalog.getId() == null) {
-            return ResultVO.success(dictionaryCatalogService.addOne(dictionaryCatalog));
+    public ResultVO saveCatalog(@RequestBody DictionaryCatalogPO dictionaryCatalogPO) {
+        if (dictionaryCatalogPO.getId() == null) {
+            return ResultVO.success(dictionaryCatalogService.addOne(dictionaryCatalogPO));
         }
-        return ResultVO.success(dictionaryCatalogService.updateOne(dictionaryCatalog));
+        return ResultVO.success(dictionaryCatalogService.updateOne(dictionaryCatalogPO));
     }
 
     @ApiOperation(value = "根据名称查询目录")
@@ -89,11 +89,11 @@ public class IndexController {
 
     @ApiOperation(value = "保存字典")
     @PostMapping(value = "saveDictionary")
-    public ResultVO saveDictionary(@RequestBody Dictionary dictionary) {
-        if (dictionary.getId() == null) {
-            return ResultVO.success(dictionaryService.addOne(dictionary));
+    public ResultVO saveDictionary(@RequestBody DictionaryPO dictionaryPO) {
+        if (dictionaryPO.getId() == null) {
+            return ResultVO.success(dictionaryService.addOne(dictionaryPO));
         }
-        return ResultVO.success(dictionaryService.updateOne(dictionary));
+        return ResultVO.success(dictionaryService.updateOne(dictionaryPO));
     }
 
     @ApiOperation(value = "删除字典")

@@ -1,7 +1,7 @@
 package com.example.cyjdictionary.serviceimpl;
 
 import com.example.cyjdictionary.dao.DictionaryDao;
-import com.example.cyjdictionary.entity.Dictionary;
+import com.example.cyjdictionary.entity.DictionaryPO;
 import com.example.cyjdictionary.entity.QDictionary;
 import com.example.cyjdictionary.entity.QDictionaryCatalog;
 import com.example.cyjdictionary.service.DictionaryService;
@@ -28,8 +28,8 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public Dictionary addOne(Dictionary dictionary) {
-        return dictionaryDao.save(dictionary);
+    public DictionaryPO addOne(DictionaryPO po) {
+        return dictionaryDao.save(po);
     }
 
     @Override
@@ -38,12 +38,12 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public Dictionary updateOne(Dictionary dictionary) {
-        return dictionaryDao.saveAndFlush(dictionary);
+    public DictionaryPO updateOne(DictionaryPO po) {
+        return dictionaryDao.saveAndFlush(po);
     }
 
     @Override
-    public List<Dictionary> findCatalogById(String id) {
+    public List<DictionaryPO> findCatalogById(String id) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -54,7 +54,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogByName(String name) {
+    public List<DictionaryPO> findCatalogByName(String name) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -65,7 +65,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public List<Dictionary> findCatalogByValue(String value) {
+    public List<DictionaryPO> findCatalogByValue(String value) {
         QDictionary qDictionary = QDictionary.dictionary;
         QDictionaryCatalog qDictionaryCatalog = QDictionaryCatalog.dictionaryCatalog;
         return queryFactory.selectFrom(qDictionary)
@@ -76,20 +76,20 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     }
 
     @Override
-    public Page<Dictionary> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+    public Page<DictionaryPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-        List<Dictionary> dictionaryList = findCatalogById(id);
-        List<Dictionary> dictionaryPage = page(dictionaryList, pageSize, pageNumber);
-        return new PageImpl<>(dictionaryPage, pageable, dictionaryList.size());
+        List<DictionaryPO> poList = findCatalogById(id);
+        List<DictionaryPO> poPage = page(poList, pageSize, pageNumber);
+        return new PageImpl<>(poPage, pageable, poList.size());
     }
 
-    public static List<Dictionary> page(List<Dictionary> dataList, int pageSize, int currentPage) {
-        List<Dictionary> currentPageList = new ArrayList<>();
+    public static List<DictionaryPO> page(List<DictionaryPO> dataList, int pageSize, int currentPage) {
+        List<DictionaryPO> currentPageList = new ArrayList<>();
         if (dataList != null && dataList.size() > 0) {
             int currIdx = (currentPage > 1 ? (currentPage - 1) * pageSize : 0);
             for (int i = 0; i < pageSize && i < dataList.size() - currIdx; i++) {
-                Dictionary data = dataList.get(currIdx + i);
+                DictionaryPO data = dataList.get(currIdx + i);
                 currentPageList.add(data);
             }
         }

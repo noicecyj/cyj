@@ -1,6 +1,6 @@
 package com.example.cyjdictionary.serviceimpl;
 
-import com.example.cyjdictionary.entity.DictionaryCatalog;
+import com.example.cyjdictionary.entity.DictionaryCatalogPO;
 import com.example.cyjdictionary.dao.DictionaryCatalogDao;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 
@@ -27,15 +27,15 @@ public class DictionaryCatalogServiceImpl extends BaseService implements Diction
     }
 
     @Override
-    public Page<DictionaryCatalog> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
+    public Page<DictionaryCatalogPO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return dictionaryCatalogDao.findAll(pageable);
     }
 
     @Override
-    public DictionaryCatalog addOne(DictionaryCatalog dictionaryCatalog) {
-        return dictionaryCatalogDao.save(dictionaryCatalog);
+    public DictionaryCatalogPO addOne(DictionaryCatalogPO po) {
+        return dictionaryCatalogDao.save(po);
     }
 
     @Override
@@ -44,16 +44,16 @@ public class DictionaryCatalogServiceImpl extends BaseService implements Diction
     }
 
     @Override
-    public DictionaryCatalog updateOne(DictionaryCatalog dictionaryCatalog) {
-        return dictionaryCatalogDao.saveAndFlush(dictionaryCatalog);
+    public DictionaryCatalogPO updateOne(DictionaryCatalogPO po) {
+        return dictionaryCatalogDao.saveAndFlush(po);
     }
 
     @Override
-    public Page<DictionaryCatalog> findAllByCatalogNameContainsOrCatalogValueContains(String catalogName,
-                                                                                           String catalogValue,
-                                                                                           Integer pageNumber,
-                                                                                           Integer pageSize,
-                                                                                           String sortCode) {
+    public Page<DictionaryCatalogPO> findAllByCatalogNameContainsOrCatalogValueContains(String catalogName,
+                                                                                        String catalogValue,
+                                                                                        Integer pageNumber,
+                                                                                        Integer pageSize,
+                                                                                        String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return dictionaryCatalogDao.findAllByCatalogNameContainsOrCatalogValueContains(catalogName,catalogValue,pageable);
