@@ -45,7 +45,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -68,7 +67,6 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>cyj-common</artifactId>
@@ -84,6 +82,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
