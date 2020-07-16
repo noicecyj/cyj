@@ -10,19 +10,7 @@ import java.util.List;
  * @date 2020/1/21 14:46
  */
 public interface DictionaryService {
-//    /**
-//     * 查找所有字典
-//     *
-//     * @return 字典列表
-//     */
-//    List<Dictionary> findAll();
-//    /**
-//     * 根据id查找字典
-//     *
-//     * @param id 字典id
-//     * @return 字典
-//     */
-//    Dictionary findOneById(String id);
+
     /**
      * 添加字典
      *
@@ -43,12 +31,7 @@ public interface DictionaryService {
      * @return 字典
      */
     DictionaryPO updateOne(DictionaryPO po);
-//    /**
-//     * 获取字典数量
-//     *
-//     * @return 字典数量
-//     */
-//    long count();
+
     /**
      * 根据目录id查找字典
      *

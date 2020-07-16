@@ -9,12 +9,6 @@ import org.springframework.data.domain.Page;
  * @date 2020/1/21 14:46
  */
 public interface DictionaryCatalogService {
-//    /**
-//     * 查找所有目录
-//     *
-//     * @return 目录列表
-//     */
-//    List<DictionaryCatalog> findAll();
 
     /**
      * 查找所有目录(分页排序)
@@ -25,14 +19,6 @@ public interface DictionaryCatalogService {
      * @return 目录列表分页
      */
     Page<DictionaryCatalogPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
-
-//    /**
-//     * 根据id查找目录
-//     *
-//     * @param id 目录id
-//     * @return 目录
-//     */
-//    DictionaryCatalog findOneById(String id);
 
     /**
      * 添加目录
@@ -56,13 +42,6 @@ public interface DictionaryCatalogService {
      * @return 目录
      */
     DictionaryCatalogPO updateOne(DictionaryCatalogPO po);
-
-//    /**
-//     * 获取目录数量
-//     *
-//     * @return 目录数量
-//     */
-//    long count();
 
     /**
      * 根据名称和代号进行模糊查询
