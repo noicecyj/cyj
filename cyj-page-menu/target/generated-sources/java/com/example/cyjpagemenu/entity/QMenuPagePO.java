@@ -1,4 +1,4 @@
-package com.example.cyjdictionary.entity;
+package com.example.cyjpagemenu.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QMenuPagePO extends EntityPathBase<MenuPagePO> {
 
-    private static final long serialVersionUID = -1880065149L;
+    private static final long serialVersionUID = 1923592731L;
 
     public static final QMenuPagePO menuPagePO = new QMenuPagePO("menuPagePO");
 

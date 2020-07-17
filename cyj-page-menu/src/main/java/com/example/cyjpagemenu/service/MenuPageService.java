@@ -1,4 +1,4 @@
-package com.example.cyjdictionary.service;
+package com.example.cyjpagemenu.service;
 
 /**
  * @author 曹元杰

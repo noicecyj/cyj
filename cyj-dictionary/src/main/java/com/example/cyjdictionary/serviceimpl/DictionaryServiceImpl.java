@@ -2,8 +2,8 @@ package com.example.cyjdictionary.serviceimpl;
 
 import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.entity.DictionaryPO;
-import com.example.cyjdictionary.entity.QDictionaryPO;
-import com.example.cyjdictionary.entity.QDictionaryCatalogPO;
+//import com.example.cyjdictionary.entity.QDictionaryPO;
+//import com.example.cyjdictionary.entity.QDictionaryCatalogPO;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -42,47 +42,47 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
         return dictionaryDao.saveAndFlush(po);
     }
 
-    @Override
-    public List<DictionaryPO> findCatalogById(String id) {
-        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
-        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
-        return queryFactory.selectFrom(qDictionary)
-                .innerJoin(qDictionaryCatalog)
-                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.id.eq(id))
-                .orderBy(qDictionary.sortCode.asc()).fetch();
-    }
+//    @Override
+//    public List<DictionaryPO> findCatalogById(String id) {
+//        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
+//        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
+//        return queryFactory.selectFrom(qDictionary)
+//                .innerJoin(qDictionaryCatalog)
+//                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
+//                .where(qDictionaryCatalog.id.eq(id))
+//                .orderBy(qDictionary.sortCode.asc()).fetch();
+//    }
+//
+//    @Override
+//    public List<DictionaryPO> findCatalogByName(String name) {
+//        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
+//        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
+//        return queryFactory.selectFrom(qDictionary)
+//                .innerJoin(qDictionaryCatalog)
+//                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
+//                .where(qDictionaryCatalog.catalogName.eq(name))
+//                .orderBy(qDictionary.sortCode.asc()).fetch();
+//    }
+//
+//    @Override
+//    public List<DictionaryPO> findCatalogByValue(String value) {
+//        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
+//        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
+//        return queryFactory.selectFrom(qDictionary)
+//                .innerJoin(qDictionaryCatalog)
+//                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
+//                .where(qDictionaryCatalog.catalogValue.eq(value))
+//                .orderBy(qDictionary.sortCode.asc()).fetch();
+//    }
 
-    @Override
-    public List<DictionaryPO> findCatalogByName(String name) {
-        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
-        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
-        return queryFactory.selectFrom(qDictionary)
-                .innerJoin(qDictionaryCatalog)
-                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.catalogName.eq(name))
-                .orderBy(qDictionary.sortCode.asc()).fetch();
-    }
-
-    @Override
-    public List<DictionaryPO> findCatalogByValue(String value) {
-        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
-        QDictionaryCatalogPO qDictionaryCatalog = QDictionaryCatalogPO.dictionaryCatalogPO;
-        return queryFactory.selectFrom(qDictionary)
-                .innerJoin(qDictionaryCatalog)
-                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.catalogValue.eq(value))
-                .orderBy(qDictionary.sortCode.asc()).fetch();
-    }
-
-    @Override
-    public Page<DictionaryPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
-        Sort sort = Sort.by(sortCode);
-        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-        List<DictionaryPO> poList = findCatalogById(id);
-        List<DictionaryPO> poPage = page(poList, pageSize, pageNumber);
-        return new PageImpl<>(poPage, pageable, poList.size());
-    }
+//    @Override
+//    public Page<DictionaryPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+//        Sort sort = Sort.by(sortCode);
+//        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+//        List<DictionaryPO> poList = findCatalogById(id);
+//        List<DictionaryPO> poPage = page(poList, pageSize, pageNumber);
+//        return new PageImpl<>(poPage, pageable, poList.size());
+//    }
 
     public static List<DictionaryPO> page(List<DictionaryPO> dataList, int pageSize, int currentPage) {
         List<DictionaryPO> currentPageList = new ArrayList<>();

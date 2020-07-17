@@ -11,6 +11,7 @@
         <module name="cyj-dictionary" />
         <module name="cyj-common" />
         <module name="cyj-discovery" />
+        <module name="cyj-page-menu" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
       <module name="cyj-dictionary" target="1.8" />
       <module name="cyj-discovery" target="1.8" />
       <module name="cyj-entity-creater" target="1.8" />
+      <module name="cyj-page-menu" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -29,6 +31,7 @@
       <module name="cyj-dictionary" options="-parameters" />
       <module name="cyj-discovery" options="-parameters" />
       <module name="cyj-entity-creater" options="-parameters" />
+      <module name="cyj-page-menu" options="-parameters" />
     </option>
   </component>
 </project>

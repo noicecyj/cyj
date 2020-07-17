@@ -1,6 +1,8 @@
-package com.example.cyjdictionary.entity;
+package com.example.cyjpagemenu.entity;
+
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
