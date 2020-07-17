@@ -39,22 +39,22 @@ public class IndexController {
     }
 
     @PostMapping(value = "saveCatalog")
-    public ResultVO saveCatalog(@RequestBody DictionaryCatalogPO dictionaryCatalogPO) {
-        if (dictionaryCatalogPO.getId() == null) {
-            return ResultVO.success(dictionaryCatalogService.addOne(dictionaryCatalogPO));
+    public ResultVO saveCatalog(@RequestBody DictionaryCatalogPO pd) {
+        if (pd.getId() == null) {
+            return ResultVO.success(dictionaryCatalogService.addOne(pd));
         }
-        return ResultVO.success(dictionaryCatalogService.updateOne(dictionaryCatalogPO));
+        return ResultVO.success(dictionaryCatalogService.updateOne(pd));
     }
 
-//    @PostMapping(value = "findCatalogByName")
-//    public ResultVO findCatalogByName(@RequestParam("name") String name) {
-//        return ResultVO.success(dictionaryService.findCatalogByName(name));
-//    }
-//
-//    @PostMapping(value = "findCatalogByValue")
-//    public ResultVO findCatalogByValue(@RequestParam("value") String value) {
-//        return ResultVO.success(dictionaryService.findCatalogByValue(value));
-//    }
+    @PostMapping(value = "findCatalogByName")
+    public ResultVO findCatalogByName(@RequestParam("name") String name) {
+        return ResultVO.success(dictionaryService.findCatalogByName(name));
+    }
+
+    @PostMapping(value = "findCatalogByValue")
+    public ResultVO findCatalogByValue(@RequestParam("value") String value) {
+        return ResultVO.success(dictionaryService.findCatalogByValue(value));
+    }
 
     @PostMapping(value = "catalogDelete")
     public void catalogDeleteOne(@RequestParam("id") String id) {
@@ -80,11 +80,11 @@ public class IndexController {
 //    }
 
     @PostMapping(value = "saveDictionary")
-    public ResultVO saveDictionary(@RequestBody DictionaryPO dictionaryPO) {
-        if (dictionaryPO.getId() == null) {
-            return ResultVO.success(dictionaryService.addOne(dictionaryPO));
+    public ResultVO saveDictionary(@RequestBody DictionaryPO pd) {
+        if (pd.getId() == null) {
+            return ResultVO.success(dictionaryService.addOne(pd));
         }
-        return ResultVO.success(dictionaryService.updateOne(dictionaryPO));
+        return ResultVO.success(dictionaryService.updateOne(pd));
     }
 
     @PostMapping(value = "dictionaryDelete")
