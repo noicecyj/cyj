@@ -5,6 +5,8 @@ import com.example.cyjentitycreater.entity.EntityType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -36,5 +38,22 @@ public class EntityFactory {
         } else {
             return null;
         }
+    }
+
+    public boolean createEntity(CreateVO createVO) {
+        try {
+        if (EntityType.PO.getType().equals(createVO.getType())) {
+                return poService.createJavaFile(createVO);
+        } else if (EntityType.VO.getType().equals(createVO.getType()) ||
+                EntityType.BO.getType().equals(createVO.getType()) ||
+                EntityType.DTO.getType().equals(createVO.getType())) {
+                return otherService.createJavaFile(createVO);
+        } else {
+            return false;
+        }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

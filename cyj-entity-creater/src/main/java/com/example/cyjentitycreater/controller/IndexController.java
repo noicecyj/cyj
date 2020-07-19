@@ -27,4 +27,10 @@ public class IndexController {
     public ResultVO entity(@RequestBody CreateVO createVO) {
         return ResultVO.success(entityFactory.entity(createVO));
     }
+
+    @RequestMapping(value = "createEntity")
+    public ResultVO createEntity(@RequestBody CreateVO createVO) {
+
+        return ResultVO.success(entityFactory.createEntity(createVO));
+    }
 }
