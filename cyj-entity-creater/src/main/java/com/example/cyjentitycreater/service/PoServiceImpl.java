@@ -29,9 +29,10 @@ public class PoServiceImpl extends BaseService {
         return generateMethod(createVO, sb);
     }
 
-    public boolean createJavaFile(CreateVO createVO) throws IOException {
+    public String[] createJavaFile(CreateVO createVO) throws IOException {
         String[] result = entityGenerate(createVO);
-        return createJavaFile(createVO, result);
+        createJavaFile(createVO, result);
+        return result;
     }
 
     @Override

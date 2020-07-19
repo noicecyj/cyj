@@ -35,25 +35,22 @@ public class EntityFactory {
                 EntityType.BO.getType().equals(createVO.getType()) ||
                 EntityType.DTO.getType().equals(createVO.getType())) {
             return otherService.entityGenerate(createVO);
-        } else {
-            return null;
         }
+        return null;
     }
 
-    public boolean createEntity(CreateVO createVO) {
+    public String[] createEntity(CreateVO createVO) {
         try {
-        if (EntityType.PO.getType().equals(createVO.getType())) {
+            if (EntityType.PO.getType().equals(createVO.getType())) {
                 return poService.createJavaFile(createVO);
-        } else if (EntityType.VO.getType().equals(createVO.getType()) ||
-                EntityType.BO.getType().equals(createVO.getType()) ||
-                EntityType.DTO.getType().equals(createVO.getType())) {
+            } else if (EntityType.VO.getType().equals(createVO.getType()) ||
+                    EntityType.BO.getType().equals(createVO.getType()) ||
+                    EntityType.DTO.getType().equals(createVO.getType())) {
                 return otherService.createJavaFile(createVO);
-        } else {
-            return false;
-        }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 }
