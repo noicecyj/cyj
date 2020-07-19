@@ -25,6 +25,6 @@ public class IndexController {
 
     @RequestMapping(value = "entity")
     public ResultVO entity(@RequestBody CreateVO createVO) {
-        return entityFactory.entity(createVO);
+        return ResultVO.success(entityFactory.entity(createVO));
     }
 }

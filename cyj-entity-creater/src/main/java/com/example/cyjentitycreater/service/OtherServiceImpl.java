@@ -1,13 +1,11 @@
 package com.example.cyjentitycreater.service;
 
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.entity.ResultVO;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
+import java.io.IOException;
 
-import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 
 /**
  * @author 曹元杰
@@ -17,7 +15,7 @@ import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 @Component
 public class OtherServiceImpl extends BaseService {
 
-    public ResultVO entityGenerate(CreateVO createVO) {
+    public String[] entityGenerate(CreateVO createVO) {
         StringBuffer sb = new StringBuffer();
         String yes = "Y";
         generateAnnotation(createVO, sb, yes);
@@ -26,52 +24,18 @@ public class OtherServiceImpl extends BaseService {
                 .append(createVO.getType())
                 .append(" implements Serializable {\r\n");
         sb.append("\r\n");
-        generateProperty(createVO, sb);
-        if (createVO.getMethod() != null && !yes.equals(createVO.getLombok())) {
-            for (String method : createVO.getMethod()) {
-                if ("Constructor".equals(method)) {
-                    generateConstructor(createVO, sb);
-                }
-                if ("Getter and Setter".equals(method)) {
-                    generateGetterAndSetter(createVO.getEntityData(), sb);
-                    sb.append("\r\n");
-                }
-                if ("toString".equals(method)) {
-                    generateToString(createVO.getEntityData(), sb, createVO.getName());
-                    sb.append("\r\n");
-                }
-                if ("equals and hashCode".equals(method)) {
-                    generateEquals(createVO.getEntityData(), sb, createVO.getName());
-                    sb.append("\r\n");
-                    generateHashCode(createVO.getEntityData(), sb);
-                }
-            }
-        }
-        sb.append("}");
-        String entityData = sb.toString();
-        return ResultVO.success(new String[]{entityData, entityName(createVO)});
+        return generateMethod(createVO, sb);
+    }
+
+    public boolean createJavaFile(CreateVO createVO) throws IOException {
+        String[] result = entityGenerate(createVO);
+        return createJavaFile(createVO,result);
     }
 
     @Override
     public void generateAnnotation(CreateVO createVO, StringBuffer sb, String yes) {
-        LocalDate localDate = LocalDate.now();
-        sb.append("package ").append("请填写包名").append(";\r\n");
-        if (BeanUtils.ifDate(createVO.getEntityData())) {
-            sb.append("import java.sql.Date;\r\n");
-        }
-        if (BeanUtils.ifTimestamp(createVO.getEntityData())) {
-            sb.append("import java.sql.Timestamp;\r\n");
-        }
-        if (yes.equals(createVO.getLombok())) {
-            sb.append("import lombok.Data;\r\n");
-        }
-        sb.append("import java.io.Serializable;\r\n");
-        sb.append("\r\n");
-        sb.append("/**\r\n");
-        sb.append(" * @author 曹元杰\r\n");
-        sb.append(" * @version 1.0\r\n");
-        sb.append(" * @date ").append(localDate).append("\r\n");
-        sb.append(" */\r\n");
+        generatePackage(createVO, sb, yes);
+        generateAuthor(sb);
         if (yes.equals(createVO.getLombok())) {
             sb.append("@Data\r\n");
         }

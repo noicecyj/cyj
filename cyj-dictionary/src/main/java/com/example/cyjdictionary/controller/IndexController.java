@@ -71,13 +71,13 @@ public class IndexController {
                 .findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageNumber - 1, pageSize, sortCode));
     }
 
-//    @PostMapping(value = "dictionaryPage")
-//    public ResultVO dictionaryFindAll(@RequestParam("id") String id,
-//                                      @RequestParam("pageNumber") Integer pageNumber,
-//                                      @RequestParam("pageSize") Integer pageSize,
-//                                      @RequestParam("sortCode") String sortCode) {
-//        return ResultVO.success(dictionaryService.findAll(id, pageNumber, pageSize, sortCode));
-//    }
+    @PostMapping(value = "dictionaryPage")
+    public ResultVO dictionaryFindAll(@RequestParam("id") String id,
+                                      @RequestParam("pageNumber") Integer pageNumber,
+                                      @RequestParam("pageSize") Integer pageSize,
+                                      @RequestParam("sortCode") String sortCode) {
+        return ResultVO.success(dictionaryService.findAll(id, pageNumber, pageSize, sortCode));
+    }
 
     @PostMapping(value = "saveDictionary")
     public ResultVO saveDictionary(@RequestBody DictionaryPO pd) {

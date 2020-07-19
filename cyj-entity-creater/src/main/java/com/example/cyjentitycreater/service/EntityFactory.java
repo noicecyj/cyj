@@ -2,7 +2,6 @@ package com.example.cyjentitycreater.service;
 
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.EntityType;
-import com.example.cyjentitycreater.entity.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,7 @@ public class EntityFactory {
         this.otherService = voService;
     }
 
-    public ResultVO entity(CreateVO createVO) {
+    public String[] entity(CreateVO createVO) {
         if (EntityType.PO.getType().equals(createVO.getType())) {
             return poService.entityGenerate(createVO);
         } else if (EntityType.VO.getType().equals(createVO.getType()) ||

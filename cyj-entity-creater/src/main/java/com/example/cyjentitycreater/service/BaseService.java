@@ -4,7 +4,14 @@ import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.Entity;
 import com.example.cyjentitycreater.utils.BeanUtils;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
+
+import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 
 /**
  * @author 曹元杰
@@ -152,5 +159,104 @@ public abstract class BaseService {
         sb.deleteCharAt(sb.length() - 2);
         sb.append(");\r\n");
         sb.append("    }\r\n");
+    }
+
+    /**
+     * 生成需要重写的方法
+     *
+     * @param createVO 表单
+     * @param sb       实体类生成字符串
+     */
+    String[] generateMethod(CreateVO createVO, StringBuffer sb) {
+        String yes = "Y";
+        generateProperty(createVO, sb);
+        if (createVO.getMethod() != null && !yes.equals(createVO.getLombok())) {
+            for (String method : createVO.getMethod()) {
+                if ("Constructor".equals(method)) {
+                    generateConstructor(createVO, sb);
+                }
+                if ("Getter and Setter".equals(method)) {
+                    generateGetterAndSetter(createVO.getEntityData(), sb);
+                    sb.append("\r\n");
+                }
+                if ("toString".equals(method)) {
+                    generateToString(createVO.getEntityData(), sb, createVO.getName());
+                    sb.append("\r\n");
+                }
+                if ("equals and hashCode".equals(method)) {
+                    generateEquals(createVO.getEntityData(), sb, createVO.getName());
+                    sb.append("\r\n");
+                    generateHashCode(createVO.getEntityData(), sb);
+                }
+            }
+        }
+        sb.append("}");
+        String entityData = sb.toString();
+        return new String[]{entityData, entityName(createVO)};
+    }
+
+    /**
+     * 生成需要的包
+     *
+     * @param createVO 表单
+     * @param yes      是
+     * @param sb       实体类生成字符串
+     */
+    void generatePackage(CreateVO createVO, StringBuffer sb, String yes) {
+        sb.append("package ").append("请填写包名").append(";\r\n");
+        if (BeanUtils.ifDate(createVO.getEntityData())) {
+            sb.append("import java.sql.Date;\r\n");
+        }
+        if (BeanUtils.ifTimestamp(createVO.getEntityData())) {
+            sb.append("import java.sql.Timestamp;\r\n");
+        }
+        if (yes.equals(createVO.getLombok())) {
+            sb.append("import lombok.Data;\r\n");
+        }
+    }
+
+    /**
+     * 生成作者
+     *
+     * @param sb  实体类生成字符串
+     */
+    void generateAuthor(StringBuffer sb) {
+        LocalDate localDate = LocalDate.now();
+        sb.append("import java.io.Serializable;\r\n");
+        sb.append("\r\n");
+        sb.append("/**\r\n");
+        sb.append(" * @author 曹元杰\r\n");
+        sb.append(" * @version 1.0\r\n");
+        sb.append(" * @date ").append(localDate).append("\r\n");
+        sb.append(" */\r\n");
+    }
+
+    /**
+     * 生成文件
+     *
+     * @param createVO  表单
+     * @param result    结果
+     */
+    boolean createJavaFile(CreateVO createVO,String[] result) throws IOException {
+        //文件放在src/main/java/ 目录下 命名为aaa.java
+        File file = new File(createVO.getPath() + "/" + result[1]);
+        //如果文件不存在，创建一个文件
+        if (file.createNewFile()) {
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            try {
+                fw = new FileWriter(file);
+                bw = new BufferedWriter(fw);
+                bw.write(result[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                assert bw != null;
+                bw.close();
+                fw.close();
+            }
+            return true;
+        }
+        return false;
     }
 }
