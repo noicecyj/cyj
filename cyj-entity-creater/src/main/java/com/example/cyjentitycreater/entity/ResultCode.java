@@ -44,6 +44,8 @@ public enum ResultCode {
     INTERFACE_REQUEST_TIMEOUT(60005, "接口请求超时"),
     INTERFACE_EXCEED_LOAD(60006, "接口负载过高"),
 
+    CREATE_ENTITY(3001, "生成失败"),
+
     /* 权限错误：70001-79999 */
     PERMISSION_NO_ACCESS(70001, "无访问权限");
 

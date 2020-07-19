@@ -218,7 +218,7 @@ public abstract class BaseService {
     /**
      * 生成作者
      *
-     * @param sb  实体类生成字符串
+     * @param sb 实体类生成字符串
      */
     void generateAuthor(StringBuffer sb) {
         LocalDate localDate = LocalDate.now();
@@ -234,10 +234,10 @@ public abstract class BaseService {
     /**
      * 生成文件
      *
-     * @param createVO  表单
-     * @param result    结果
+     * @param createVO 表单
+     * @param result   结果
      */
-    boolean createJavaFile(CreateVO createVO,String[] result) throws IOException {
+    boolean createJavaFile(CreateVO createVO, String[] result) throws IOException {
         //文件放在src/main/java/ 目录下 命名为aaa.java
         File file = new File(createVO.getPath() + "/" + result[1]);
         //如果文件不存在，创建一个文件
