@@ -9,4 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2020/1/21 14:46
  */
 public interface MenuPageDao extends JpaRepository<MenuPagePO,String> {
+
+    /**
+     * 查找所有菜单
+     *
+     * @param id ID
+     * @return 目录列表分页
+     */
+    MenuPagePO getAllById(String id);
 }

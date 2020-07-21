@@ -39,11 +39,11 @@ public class IndexController {
     }
 
     @PostMapping(value = "saveCatalog")
-    public ResultVO saveCatalog(@RequestBody DictionaryCatalogPO pd) {
-        if (pd.getId() == null) {
-            return ResultVO.success(dictionaryCatalogService.addOne(pd));
+    public ResultVO saveCatalog(@RequestBody DictionaryCatalogPO po) {
+        if (po.getId() == null) {
+            return ResultVO.success(dictionaryCatalogService.addOne(po));
         }
-        return ResultVO.success(dictionaryCatalogService.updateOne(pd));
+        return ResultVO.success(dictionaryCatalogService.updateOne(po));
     }
 
     @PostMapping(value = "findCatalogByName")

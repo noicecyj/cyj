@@ -237,7 +237,7 @@ public abstract class BaseService {
      * @param createVO 表单
      * @param result   结果
      */
-    boolean createJavaFile(CreateVO createVO, String[] result) throws IOException {
+    void createJavaFile(CreateVO createVO, String[] result) throws IOException {
         //文件放在src/main/java/ 目录下 命名为aaa.java
         File file = new File(createVO.getPath() + "/" + result[1]);
         //如果文件不存在，创建一个文件
@@ -255,8 +255,6 @@ public abstract class BaseService {
                 bw.close();
                 fw.close();
             }
-            return true;
         }
-        return false;
     }
 }

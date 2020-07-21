@@ -1,6 +1,9 @@
 package com.example.cyjpagemenu.service;
 
 import com.example.cyjpagemenu.entity.MenuPagePO;
+import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 /**
  * @author 曹元杰
@@ -16,12 +19,14 @@ public interface MenuPageService {
      * @return 菜单
      */
     MenuPagePO addOne(MenuPagePO po);
+
     /**
      * 删除菜单
      *
      * @param id 菜单id
      */
     void deleteOne(String id);
+
     /**
      * 更新菜单
      *
@@ -29,4 +34,12 @@ public interface MenuPageService {
      * @return 菜单
      */
     MenuPagePO updateOne(MenuPagePO po);
+
+    /**
+     * 查找所有菜单
+     *
+     * @param id ID
+     * @return 目录列表分页
+     */
+    MenuPagePO findAll(String id);
 }

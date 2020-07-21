@@ -33,19 +33,19 @@ public class MenuPagePO implements Serializable {
     private String parentCode;
 
     @Column(name = "page_name")
-    private String name;
+    private String pageName;
 
     @Column(name = "icon")
     private String icon;
 
     @Column(name = "page_path")
-    private String path;
+    private String pagePath;
 
     @Column(name = "sort_code")
     private String sortCode;
 
     @ManyToOne
-    @JoinColumn(name = "parent_code")
+    @JoinColumn(name = "parent_code",insertable = false,updatable = false)
     private MenuPagePO parent;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
