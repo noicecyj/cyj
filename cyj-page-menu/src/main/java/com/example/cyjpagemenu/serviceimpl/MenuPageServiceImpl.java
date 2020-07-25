@@ -39,7 +39,12 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
     }
 
     @Override
-    public MenuPagePO findAll(String id) {
-        return menuPageDao.getAllById(id);
+    public MenuPagePO findAll() {
+        return menuPageDao.getOne("1");
+    }
+
+    @Override
+    public long count() {
+        return menuPageDao.count();
     }
 }

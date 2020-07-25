@@ -31,12 +31,14 @@ public class IndexController {
     }
 
     @PostMapping(value = "MenuPageDelete")
-    public void MenuPageDeleteOne(@RequestParam("id") String id) {
+    public void menuPageDeleteOne(@RequestParam("id") String id) {
         menuPageService.deleteOne(id);
     }
 
     @PostMapping(value = "findAll")
-    public ResultVO findAll(@RequestParam("id") String id) {
-        return ResultVO.success(menuPageService.findAll(id));
+    public ResultVO findAll() {
+        long totalElements = menuPageService.count();
+        Object[] data = {menuPageService.findAll(),totalElements};
+        return ResultVO.success(data);
     }
 }

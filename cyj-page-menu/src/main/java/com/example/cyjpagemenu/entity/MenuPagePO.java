@@ -1,5 +1,6 @@
 package com.example.cyjpagemenu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,6 +18,7 @@ import java.util.Set;
 @Table(name = MenuPagePO.T_MENU_PAGE)
 @Data
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
 public class MenuPagePO implements Serializable {
 
     static final String T_MENU_PAGE = "t_menu_page";
@@ -26,11 +28,11 @@ public class MenuPagePO implements Serializable {
     @Column(name = "id", length = 32)
     private String id;
 
+    @Column(name = "pid", length = 32)
+    private String pid;
+
     @Column(name = "page_code", length = 10)
     private String pageCode;
-
-    @Column(name = "parent_code", length = 10)
-    private String parentCode;
 
     @Column(name = "page_name")
     private String pageName;
@@ -44,12 +46,7 @@ public class MenuPagePO implements Serializable {
     @Column(name = "sort_code")
     private String sortCode;
 
-    @ManyToOne
-    @JoinColumn(name = "parent_code",insertable = false,updatable = false)
-    private MenuPagePO parent;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_code")
+    @JoinColumn(name = "pid")
     private Set<MenuPagePO> children = new HashSet<>();
-
 }

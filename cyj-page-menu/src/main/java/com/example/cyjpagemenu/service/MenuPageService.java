@@ -38,8 +38,14 @@ public interface MenuPageService {
     /**
      * 查找所有菜单
      *
-     * @param id ID
      * @return 目录列表分页
      */
-    MenuPagePO findAll(String id);
+    MenuPagePO findAll();
+
+    /**
+     * 所有菜单数量
+     *
+     * @return 目录列表分页
+     */
+    long count();
 }
