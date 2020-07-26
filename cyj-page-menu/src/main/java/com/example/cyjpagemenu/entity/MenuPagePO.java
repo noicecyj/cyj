@@ -24,15 +24,11 @@ public class MenuPagePO implements Serializable {
     static final String T_MENU_PAGE = "t_menu_page";
 
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
     @Column(name = "id", length = 32)
     private String id;
 
     @Column(name = "pid", length = 32)
     private String pid;
-
-    @Column(name = "page_code", length = 10)
-    private String pageCode;
 
     @Column(name = "page_name")
     private String pageName;
@@ -48,5 +44,6 @@ public class MenuPagePO implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "pid")
+    @OrderBy("sortCode")
     private Set<MenuPagePO> children = new HashSet<>();
 }

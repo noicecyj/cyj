@@ -30,7 +30,7 @@ public class IndexController {
         return ResultVO.success(menuPageService.updateOne(po));
     }
 
-    @PostMapping(value = "MenuPageDelete")
+    @PostMapping(value = "menuPageDeleteOne")
     public void menuPageDeleteOne(@RequestParam("id") String id) {
         menuPageService.deleteOne(id);
     }
@@ -40,5 +40,10 @@ public class IndexController {
         long totalElements = menuPageService.count();
         Object[] data = {menuPageService.findAll(),totalElements};
         return ResultVO.success(data);
+    }
+
+    @PostMapping(value = "menuPageDelete")
+    public void menuPageDelete(@RequestParam("id") String id) {
+        menuPageService.deleteOne(id);
     }
 }

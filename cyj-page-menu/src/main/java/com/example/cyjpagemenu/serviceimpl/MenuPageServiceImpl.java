@@ -40,7 +40,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
 
     @Override
     public MenuPagePO findAll() {
-        return menuPageDao.getOne("1");
+        return menuPageDao.getOne("001");
     }
 
     @Override
