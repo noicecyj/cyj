@@ -35,6 +35,11 @@ public class IndexController {
         menuPageService.deleteOne(id);
     }
 
+    @PostMapping(value = "asideMenuConfig")
+    public ResultVO asideMenuConfig() {
+        return ResultVO.success(menuPageService.findAll());
+    }
+
     @PostMapping(value = "findAll")
     public ResultVO findAll() {
         long totalElements = menuPageService.count();

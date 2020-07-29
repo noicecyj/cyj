@@ -31,13 +31,13 @@ public class MenuPagePO implements Serializable {
     private String pid;
 
     @Column(name = "page_name")
-    private String pageName;
+    private String name;
 
     @Column(name = "icon")
     private String icon;
 
     @Column(name = "page_path")
-    private String pagePath;
+    private String path;
 
     @Column(name = "sort_code")
     private String sortCode;
