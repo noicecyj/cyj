@@ -1,11 +1,14 @@
 package com.example.cyjdictionary.controller;
 
-import com.example.cyjdictionary.entity.DictionaryPO;
 import com.example.cyjdictionary.entity.DictionaryCatalogPO;
+import com.example.cyjdictionary.entity.DictionaryPO;
 import com.example.cyjdictionary.entity.ResultVO;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 import com.example.cyjdictionary.service.DictionaryService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "dictionaryApi")
 public class IndexController {
+
+    private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     private DictionaryService dictionaryService;
 
@@ -35,7 +40,9 @@ public class IndexController {
     public ResultVO catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                    @RequestParam("pageSize") Integer pageSize,
                                    @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(dictionaryCatalogService.findAll(pageNumber - 1, pageSize, sortCode));
+        Page<DictionaryCatalogPO> pos = dictionaryCatalogService.findAll(pageNumber - 1, pageSize, sortCode);
+        logger.info("字典目录：{}", pos.getContent());
+        return ResultVO.success(pos);
     }
 
     @PostMapping(value = "saveCatalog")
