@@ -7,7 +7,7 @@ package com.example.cyjcommon.config;
  */
 public class SqlBuilder {
     public static String buildInsertSql() {
-        return "INSERT INTO " + "server_log" + " (" +
+        return "INSERT INTO " + "t_server_log" + " (" +
                 "id" + ", " +
                 "app_port" + ", " +
                 "class" + ", " +
