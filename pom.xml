@@ -28,11 +28,12 @@
     </dependencyManagement>
 
     <modules>
+        <module>cyj-common</module>
         <module>cyj-discovery</module>
         <module>cyj-entity-creater</module>
         <module>cyj-dictionary</module>
         <module>cyj-page-menu</module>
-        <module>cyj-common</module>
+        <module>cyj-log</module>
     </modules>
     
 </project>
