@@ -26,8 +26,6 @@
     <!-- 日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="stdout"/>
-        <appender-ref ref="application_file"/>
-        <appender-ref ref="error_file"/>
         <appender-ref ref="db_classic_mysql_pool"/>
     </root>
 
