@@ -1,7 +1,6 @@
 package com.example.cyjlog.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
@@ -12,26 +11,36 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = LogPO.T_LOG)
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 @Data
 public class LogPO {
 
-    static final String T_LOG = "t_data_server";
+    static final String T_LOG = "t_server_log";
 
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id", length = 32)
+    @Column(name = "id")
     private String id;
 
-    @Column(name = "server_name")
-    private String dictionaryName;
+    @Column(name = "app_port")
+    private String appPort;
 
-    @Column(name = "server_port")
-    private String serverPort;
+    @Column(name = "class")
+    private String className;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "classpath")
+    private String classpath;
 
-    @Column(name = "sort_code")
-    private String sortCode;
+    @Column(name = "method")
+    private String method;
+
+    @Column(name = "thread_name")
+    private String threadName;
+
+    @Column(name = "msg_level")
+    private String msgLevel;
+
+    @Column(name = "msg")
+    private String msg;
+
+    @Column(name = "create_date")
+    private String createDate;
 }

@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -18,6 +19,8 @@ public class QMenuPagePO extends EntityPathBase<MenuPagePO> {
     private static final long serialVersionUID = 1923592731L;
 
     public static final QMenuPagePO menuPagePO = new QMenuPagePO("menuPagePO");
+
+    public final SetPath<MenuPagePO, QMenuPagePO> children = this.<MenuPagePO, QMenuPagePO>createSet("children", MenuPagePO.class, QMenuPagePO.class, PathInits.DIRECT2);
 
     public final StringPath icon = createString("icon");
 
