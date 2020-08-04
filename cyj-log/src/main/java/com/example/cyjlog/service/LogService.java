@@ -33,10 +33,14 @@ public interface LogService {
      * @param name  名称
      * @param time1 时间1
      * @param time2 时间2
-     * @param type 类型
      * @return 日志数据
      */
-    List<LogPO> findLogsByPortAndTime(String name, String time1, String time2, String type);
+    List<LogPO> findLogsByPortAndTime(String name, String time1, String time2);
 
-
+    /**
+     * 根据端口删除日志
+     *
+     * @param port 端口
+     */
+    void deleteLogsByPort(String port);
 }

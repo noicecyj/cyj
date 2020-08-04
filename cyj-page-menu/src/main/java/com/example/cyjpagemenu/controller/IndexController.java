@@ -30,11 +30,6 @@ public class IndexController {
         return ResultVO.success(menuPageService.updateOne(po));
     }
 
-    @PostMapping(value = "menuPageDeleteOne")
-    public void menuPageDeleteOne(@RequestParam("id") String id) {
-        menuPageService.deleteOne(id);
-    }
-
     @PostMapping(value = "asideMenuConfig")
     public ResultVO asideMenuConfig() {
         return ResultVO.success(menuPageService.findAll());

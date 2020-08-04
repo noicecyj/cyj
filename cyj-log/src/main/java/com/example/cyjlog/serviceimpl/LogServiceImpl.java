@@ -44,15 +44,21 @@ public class LogServiceImpl extends BaseService implements LogService {
     }
 
     @Override
-    public List<LogPO> findLogsByPortAndTime(String port, String time1, String time2, String type) {
+    public List<LogPO> findLogsByPortAndTime(String port, String time1, String time2) {
         QLogPO po = QLogPO.logPO;
-        String type1 = "1";
-        String type2 = "2";
-        if (type1.equals(type)) {
-            return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.lt(time1)).fetch();
-        } else if (type2.equals(type)) {
+        if (time1 == null && time2 == null) {
+            return queryFactory.selectFrom(po).where(po.appPort.eq(port)).fetch();
+        } else if (time1 == null) {
             return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.gt(time2)).fetch();
+        } else if (time2 == null){
+            return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.lt(time1)).fetch();
         }
         return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.between(time1,time2)).fetch();
+    }
+
+    @Override
+    public void deleteLogsByPort(String port) {
+        List<LogPO> pos = logDao.findAllByAppPort(port);
+        logDao.deleteAll(pos);
     }
 }
