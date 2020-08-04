@@ -41,7 +41,6 @@ public class IndexController {
                                    @RequestParam("pageSize") Integer pageSize,
                                    @RequestParam("sortCode") String sortCode) {
         Page<DictionaryCatalogPO> pos = dictionaryCatalogService.findAll(pageNumber - 1, pageSize, sortCode);
-        logger.info("字典目录：{}", pos.getContent());
         return ResultVO.success(pos);
     }
 
