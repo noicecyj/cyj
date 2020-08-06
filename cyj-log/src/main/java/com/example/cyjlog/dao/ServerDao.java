@@ -11,17 +11,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ServerDao extends JpaRepository<ServerPO,String> {
 
     /**
-     * 根据端口查询服务
-     *
-     * @param port 端口
-     * @return 服务
-     */
-    ServerPO findByServerPort(String port);
-    /**
      * 根据名称查询服务
      *
      * @param name 名称
      * @return 服务
      */
     ServerPO findByServerName(String name);
+
 }

@@ -1,12 +1,12 @@
 package com.example.cyjlog.controller;
 
 import com.example.cyjlog.entity.LogPO;
-import com.example.cyjlog.entity.QLogPO;
 import com.example.cyjlog.entity.ResultVO;
 import com.example.cyjlog.entity.ServerPO;
 import com.example.cyjlog.serviceimpl.LogServiceImpl;
 import com.example.cyjlog.serviceimpl.ServerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,9 +42,11 @@ public class IndexController {
     }
 
     @PostMapping(value = "findAll")
-    public ResultVO findAll() {
-        Object[] data = {serverService.findAll(),serverService.findAll().size()};
-        return ResultVO.success(data);
+    public ResultVO findAll(@RequestParam("pageNumber") Integer pageNumber,
+                            @RequestParam("pageSize") Integer pageSize,
+                            @RequestParam("sortCode") String sortCode) {
+        Page<ServerPO> pos = serverService.findAll(pageNumber - 1, pageSize, sortCode);
+        return ResultVO.success(pos);
     }
 
     @PostMapping(value = "serverDelete")
@@ -53,22 +55,24 @@ public class IndexController {
     }
 
     @PostMapping(value = "findLogsByPort")
-    public List<LogPO> findLogsByPort(String port) {
+    public List<LogPO> findLogsByPort(@RequestParam("port") String port) {
         return logService.findLogsByPort(port);
     }
 
     @PostMapping(value = "findLogsByName")
-    public List<LogPO> findLogsByName(String name) {
+    public List<LogPO> findLogsByName(@RequestParam("name") String name) {
         return logService.findLogsByName(name);
     }
 
     @PostMapping(value = "findLogsByPortAndTime")
-    public List<LogPO> findLogsByPortAndTime(String port, String time1, String time2) {
-        return logService.findLogsByPortAndTime(port,time1,time2);
+    public List<LogPO> findLogsByPortAndTime(@RequestParam("port") String port,
+                                             @RequestParam("time1") String time1,
+                                             @RequestParam("time2") String time2) {
+        return logService.findLogsByPortAndTime(port, time1, time2);
     }
 
     @PostMapping(value = "deleteLogsByPort")
-    public void deleteLogsByPort(String port) {
+    public void deleteLogsByPort(@RequestParam("port") String port) {
         logService.deleteLogsByPort(port);
     }
 }

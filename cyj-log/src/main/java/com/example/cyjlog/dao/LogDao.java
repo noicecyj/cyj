@@ -17,5 +17,5 @@ public interface LogDao extends JpaRepository<LogPO,String> {
      * @param port 端口
      * @return 日志数据
      */
-    List<LogPO> findAllByAppPort(String port);
+    List<LogPO> findAllByAppPortOrderByCreateDate(String port);
 }

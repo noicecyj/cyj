@@ -1,8 +1,7 @@
 package com.example.cyjlog.service;
 
 import com.example.cyjlog.entity.ServerPO;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 /**
  * @author 曹元杰
@@ -36,5 +35,5 @@ public interface ServerService {
      *
      * @return 目录列表分页
      */
-    List<ServerPO> findAll();
+    Page<ServerPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
 }

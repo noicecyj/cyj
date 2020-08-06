@@ -4,9 +4,11 @@ import com.example.cyjlog.dao.ServerDao;
 import com.example.cyjlog.entity.ServerPO;
 import com.example.cyjlog.service.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author 曹元杰
@@ -39,7 +41,9 @@ public class ServerServiceImpl extends BaseService implements ServerService {
     }
 
     @Override
-    public List<ServerPO> findAll() {
-        return serverDao.findAll();
+    public Page<ServerPO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
+        Sort sort = Sort.by(sortCode);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        return serverDao.findAll(pageable);
     }
 }

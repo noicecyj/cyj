@@ -34,13 +34,13 @@ public class LogServiceImpl extends BaseService implements LogService {
 
     @Override
     public List<LogPO> findLogsByPort(String port) {
-        return logDao.findAllByAppPort(port);
+        return logDao.findAllByAppPortOrderByCreateDate(port);
     }
 
     @Override
     public List<LogPO> findLogsByName(String name) {
         ServerPO po = serverDao.findByServerName(name);
-        return logDao.findAllByAppPort(po.getServerPort());
+        return logDao.findAllByAppPortOrderByCreateDate(po.getServerPort());
     }
 
     @Override
@@ -58,7 +58,7 @@ public class LogServiceImpl extends BaseService implements LogService {
 
     @Override
     public void deleteLogsByPort(String port) {
-        List<LogPO> pos = logDao.findAllByAppPort(port);
+        List<LogPO> pos = logDao.findAllByAppPortOrderByCreateDate(port);
         logDao.deleteAll(pos);
     }
 }

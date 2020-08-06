@@ -1,15 +1,15 @@
 package com.example.cyjdictionary.serviceimpl;
 
+import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjdictionary.dao.DictionaryDao;
 import com.example.cyjdictionary.entity.DictionaryPO;
-import com.example.cyjdictionary.entity.QDictionaryPO;
 import com.example.cyjdictionary.entity.QDictionaryCatalogPO;
+import com.example.cyjdictionary.entity.QDictionaryPO;
 import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -80,19 +80,7 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
         List<DictionaryPO> poList = findCatalogById(id);
-        List<DictionaryPO> poPage = page(poList, pageSize, pageNumber);
+        List<DictionaryPO> poPage = CommonUtils.page(poList, pageSize, pageNumber);
         return new PageImpl<>(poPage, pageable, poList.size());
-    }
-
-    public static List<DictionaryPO> page(List<DictionaryPO> dataList, int pageSize, int currentPage) {
-        List<DictionaryPO> currentPageList = new ArrayList<>();
-        if (dataList != null && dataList.size() > 0) {
-            int currIdx = (currentPage > 1 ? (currentPage - 1) * pageSize : 0);
-            for (int i = 0; i < pageSize && i < dataList.size() - currIdx; i++) {
-                DictionaryPO data = dataList.get(currIdx + i);
-                currentPageList.add(data);
-            }
-        }
-        return currentPageList;
     }
 }

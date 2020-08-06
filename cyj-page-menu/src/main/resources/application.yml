@@ -9,7 +9,7 @@ eureka:
     prefer-ip-address: true
 spring:
   application:
-    name: cyj-dictionary
+    name: cyj-page-menu
   jpa:
     generate-ddl: false
     show-sql: true
