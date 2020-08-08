@@ -1,9 +1,6 @@
 package com.example.cyjpagemenu.service;
 
 import com.example.cyjpagemenu.entity.MenuPagePO;
-import org.springframework.data.domain.Page;
-
-import java.util.List;
 
 /**
  * @author 曹元杰
@@ -48,4 +45,11 @@ public interface MenuPageService {
      * @return 目录列表分页
      */
     long count();
+
+    /**
+     * 生成路由文件
+     *
+     * @param routePath 生成路径
+     */
+    void createRouteFile(String routePath);
 }

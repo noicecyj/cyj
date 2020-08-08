@@ -13,12 +13,14 @@
     </appender>
 
     <appender name="db_classic_mysql_pool" class="com.example.cyjpagemenu.config.ServerLogAppender">
-        <connectionSource class="ch.qos.logback.core.db.DriverManagerConnectionSource">
-            <driverClass>com.mysql.cj.jdbc.Driver</driverClass>
-            <url>jdbc:mysql://localhost:3306/server_log?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
-            </url>
-            <user>root</user>
-            <password>68762306</password>
+        <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
+            <dataSource class="org.apache.commons.dbcp2.BasicDataSource">
+                <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
+                <url>jdbc:mysql://localhost:3306/server_log?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
+                </url>
+                <username>root</username>
+                <password>68762306</password>
+            </dataSource>
         </connectionSource>
     </appender>
 

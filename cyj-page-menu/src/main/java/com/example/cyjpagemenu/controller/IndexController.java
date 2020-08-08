@@ -46,4 +46,10 @@ public class IndexController {
     public void menuPageDelete(@RequestParam("id") String id) {
         menuPageService.deleteOne(id);
     }
+
+    @PostMapping(value = "createRouteFile")
+    public ResultVO createRouteFile(@RequestParam("routePath") String routePath) {
+        menuPageService.createRouteFile(routePath);
+        return ResultVO.success();
+    }
 }

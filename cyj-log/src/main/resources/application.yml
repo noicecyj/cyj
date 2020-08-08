@@ -21,6 +21,3 @@ spring:
     url: jdbc:mysql://localhost:3306/server_log?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: 68762306
-logging:
-  level:
-    org.hibernate: INFO
