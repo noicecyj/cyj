@@ -6,6 +6,8 @@ import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -49,7 +51,11 @@ public class IndexController {
 
     @PostMapping(value = "createRouteFile")
     public ResultVO createRouteFile(@RequestParam("routePath") String routePath) {
-        menuPageService.createRouteFile(routePath);
+        try {
+            menuPageService.createRouteFile(routePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return ResultVO.success();
     }
 }

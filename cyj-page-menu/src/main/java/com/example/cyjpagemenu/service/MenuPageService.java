@@ -2,6 +2,8 @@ package com.example.cyjpagemenu.service;
 
 import com.example.cyjpagemenu.entity.MenuPagePO;
 
+import java.io.IOException;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -51,5 +53,5 @@ public interface MenuPageService {
      *
      * @param routePath 生成路径
      */
-    void createRouteFile(String routePath);
+    void createRouteFile(String routePath) throws IOException;
 }
