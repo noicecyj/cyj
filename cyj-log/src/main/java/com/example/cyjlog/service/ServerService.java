@@ -32,6 +32,9 @@ public interface ServerService {
     ServerPO updateOne(ServerPO po);
     /**
      * 查找所有菜单
+     * @param pageNumber 页码
+     * @param pageSize 椰树
+     * @param sortCode 排序代码
      *
      * @return 目录列表分页
      */

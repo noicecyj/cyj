@@ -52,6 +52,7 @@ public interface MenuPageService {
      * 生成路由文件
      *
      * @param routePath 生成路径
+     * @throws IOException 异常
      */
     void createRouteFile(String routePath) throws IOException;
 }
