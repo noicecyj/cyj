@@ -57,7 +57,7 @@ public class PoServiceImpl extends BaseService {
             if (entity.getId().equals(createVO.getPrimaryKey()) && entity.getEntityName().contains(idValue)) {
                 sb.append("    @Id\r\n");
                 sb.append("    @GeneratedValue(generator = \"jpa-uuid\")\r\n");
-                sb.append("    @Column(name = \"").append(entity.getEntityName()).append("\",length = 32)\r\n");
+                sb.append("    @Column(name = \"").append(entity.getEntityName()).append("\" ,length = 32)\r\n");
             } else {
                 sb.append("    @Column\r\n");
             }
