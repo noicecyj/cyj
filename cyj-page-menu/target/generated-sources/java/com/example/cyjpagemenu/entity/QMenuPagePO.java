@@ -22,6 +22,8 @@ public class QMenuPagePO extends EntityPathBase<MenuPagePO> {
 
     public final SetPath<MenuPagePO, QMenuPagePO> children = this.<MenuPagePO, QMenuPagePO>createSet("children", MenuPagePO.class, QMenuPagePO.class, PathInits.DIRECT2);
 
+    public final StringPath componentName = createString("componentName");
+
     public final StringPath icon = createString("icon");
 
     public final StringPath id = createString("id");

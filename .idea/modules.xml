@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/cyj-entity-creater/cyj-entity-creater.iml" filepath="$PROJECT_DIR$/cyj-entity-creater/cyj-entity-creater.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-log/cyj-log.iml" filepath="$PROJECT_DIR$/cyj-log/cyj-log.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-page-menu/cyj-page-menu.iml" filepath="$PROJECT_DIR$/cyj-page-menu/cyj-page-menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cyj-sso/cyj-sso.iml" filepath="$PROJECT_DIR$/cyj-sso/cyj-sso.iml" />
     </modules>
   </component>
 </project>
