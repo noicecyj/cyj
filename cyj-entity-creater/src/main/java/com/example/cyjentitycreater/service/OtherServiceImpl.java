@@ -29,7 +29,7 @@ public class OtherServiceImpl extends BaseService {
 
     public String[] createJavaFile(CreateVO createVO) throws IOException {
         String[] result = entityGenerate(createVO);
-        createJavaFile(createVO, result);
+        createJavaFile(createVO.getPath(), result);
         return result;
     }
 

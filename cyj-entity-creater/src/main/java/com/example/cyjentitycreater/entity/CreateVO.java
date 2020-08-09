@@ -18,4 +18,8 @@ public class CreateVO {
     private String lombok;
     private Integer primaryKey;
     private String path;
+    private String daoPath;
+    private String servicePath;
+    private String serviceImplPath;
+    private String controllerPath;
 }

@@ -1,11 +1,9 @@
 package com.example.sso.entity;
-
+import java.sql.Date;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
 
 /**
  * @author 曹元杰
@@ -20,7 +18,7 @@ public class ApiPO implements Serializable {
     static final String T_API = "t_api";
     @Id
     @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id", length = 32)
+    @Column(name = "id" ,length = 32)
     private String id;
 
     @Column

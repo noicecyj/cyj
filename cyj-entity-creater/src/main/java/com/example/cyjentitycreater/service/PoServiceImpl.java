@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+import static com.example.cyjentitycreater.utils.BeanUtils.*;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -29,9 +31,99 @@ public class PoServiceImpl extends BaseService {
         return generateMethod(createVO, sb);
     }
 
+    public String[] daoGenerate(CreateVO createVO) {
+        StringBuffer sb = new StringBuffer();
+        //pojo路径
+        String[] poPathArr = createVO.getPath().split("java");
+        String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".");
+        //dao路径
+        String[] poDaoPathArr = createVO.getDaoPath().split("java");
+        String poDaoPath = poDaoPathArr[1].substring(1).replaceAll("\\\\", ".");
+        sb.append("package ").append(poDaoPath).append(";\r\n");
+        String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()));
+        sb.append("import ").append(poPath).append(".").append(fileName).append(createVO.getType()).append(";\r\n");
+        sb.append("import org.springframework.data.jpa.repository.JpaRepository;\r\n");
+        generateAuthor(sb);
+        sb.append("public interface ").append(fileName).append("Dao extends JpaRepository<").append(fileName)
+                .append(createVO.getType()).append(",String> {\r\n");
+        sb.append("}\r\n");
+        String daoData = sb.toString();
+        return new String[]{daoData, entityDaoName(createVO)};
+    }
+
+    public String[] serviceGenerate(CreateVO createVO) {
+        StringBuffer sb = new StringBuffer();
+        //service路径
+        String[] poServicePathArr = createVO.getServicePath().split("java");
+        String poServicePath = poServicePathArr[1].substring(1).replaceAll("\\\\", ".");
+        sb.append("package ").append(poServicePath).append(";\r\n");
+        String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()));
+        generateAuthor(sb);
+        sb.append("public interface ").append(fileName).append("Service {\r\n");
+        sb.append("}\r\n");
+        String daoData = sb.toString();
+        return new String[]{daoData, entityServiceName(createVO)};
+    }
+
+    public String[] serviceImplGenerate(CreateVO createVO) {
+        StringBuffer sb = new StringBuffer();
+        //service路径
+        String[] poServicePathArr = createVO.getServicePath().split("java");
+        String poServicePath = poServicePathArr[1].substring(1).replaceAll("\\\\", ".");
+        //serviceImpl路径
+        String[] poServiceImplPathArr = createVO.getServiceImplPath().split("java");
+        String poServiceImplPath = poServiceImplPathArr[1].substring(1).replaceAll("\\\\", ".");
+        sb.append("package ").append(poServiceImplPath).append(";\r\n");
+        String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()));
+        sb.append("import ").append(poServicePath).append(".").append(fileName).append("Service").append(";\r\n");
+        sb.append("import org.springframework.stereotype.Service").append(";\r\n");
+        generateAuthor(sb);
+        sb.append("@Service\r\n");
+        sb.append("public class ").append(fileName).append("ServiceImpl extends BaseService implements ")
+                .append(fileName).append("Service {\r\n");
+        sb.append("}\r\n");
+        String daoData = sb.toString();
+        return new String[]{daoData, entityServiceImplName(createVO)};
+    }
+
+    public String[] controllerGenerate(CreateVO createVO) {
+        StringBuffer sb = new StringBuffer();
+        //controller路径
+        String[] poControllerPathArr = createVO.getControllerPath().split("java");
+        String poControllerPath = poControllerPathArr[1].substring(1).replaceAll("\\\\", ".");
+        sb.append("package ").append(poControllerPath).append(";\r\n");
+        sb.append("import org.springframework.web.bind.annotation.*;\r\n");
+        generateAuthor(sb);
+        sb.append("@RestController\r\n");
+        sb.append("@RequestMapping(value = \"Api\")\r\n");
+        sb.append("public class IndexController {\r\n");
+        sb.append("}\r\n");
+        String daoData = sb.toString();
+        return new String[]{daoData, controllerName()};
+    }
+
     public String[] createJavaFile(CreateVO createVO) throws IOException {
-        String[] result = entityGenerate(createVO);
-        createJavaFile(createVO, result);
+        String[] result = null;
+        if (!createVO.getEntityData().isEmpty()) {
+            result = entityGenerate(createVO);
+            createJavaFile(createVO.getPath(), result);
+        }
+        if (!createVO.getDaoPath().isEmpty()) {
+            String[] daoResult = daoGenerate(createVO);
+            createJavaFile(createVO.getDaoPath(), daoResult);
+        }
+        if (!createVO.getServicePath().isEmpty()){
+            String[] serviceResult = serviceGenerate(createVO);
+            createJavaFile(createVO.getServicePath(), serviceResult);
+        }
+        if (!createVO.getServiceImplPath().isEmpty()){
+            String[] serviceImplResult = serviceImplGenerate(createVO);
+            createJavaFile(createVO.getServiceImplPath(), serviceImplResult);
+        }
+        if (!createVO.getControllerPath().isEmpty()){
+            String[] controllerResult = controllerGenerate(createVO);
+            createJavaFile(createVO.getControllerPath(), controllerResult);
+        }
         return result;
     }
 
@@ -40,6 +132,8 @@ public class PoServiceImpl extends BaseService {
         generatePackage(createVO, sb, yes);
         sb.append("import org.hibernate.annotations.GenericGenerator;\r\n");
         sb.append("import javax.persistence.*;\r\n");
+        sb.append("import java.io.Serializable;\r\n");
+        sb.append("\r\n");
         generateAuthor(sb);
         sb.append("@Entity\r\n");
         sb.append("@Table(name = ")

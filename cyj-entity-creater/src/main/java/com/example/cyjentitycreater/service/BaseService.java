@@ -203,7 +203,10 @@ public abstract class BaseService {
      * @param sb       实体类生成字符串
      */
     void generatePackage(CreateVO createVO, StringBuffer sb, String yes) {
-        sb.append("package ").append("请填写包名").append(";\r\n");
+        //pojo路径
+        String[] poPathArr = createVO.getPath().split("java");
+        String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".");
+        sb.append("package ").append(poPath).append(";\r\n");
         if (BeanUtils.ifDate(createVO.getEntityData())) {
             sb.append("import java.sql.Date;\r\n");
         }
@@ -222,8 +225,6 @@ public abstract class BaseService {
      */
     void generateAuthor(StringBuffer sb) {
         LocalDate localDate = LocalDate.now();
-        sb.append("import java.io.Serializable;\r\n");
-        sb.append("\r\n");
         sb.append("/**\r\n");
         sb.append(" * @author 曹元杰\r\n");
         sb.append(" * @version 1.0\r\n");
@@ -234,12 +235,11 @@ public abstract class BaseService {
     /**
      * 生成文件
      *
-     * @param createVO 表单
-     * @param result   结果
+     * @param path 路径
      */
-    void createJavaFile(CreateVO createVO, String[] result) throws IOException {
+    void createJavaFile(String path, String[] result) throws IOException {
         //文件放在src/main/java/ 目录下 命名为aaa.java
-        File file = new File(createVO.getPath() + "/" + result[1]);
+        File file = new File(path + "/" + result[1]);
         //如果文件不存在，创建一个文件
         if (file.createNewFile()) {
             FileWriter fw = null;

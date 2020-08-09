@@ -60,4 +60,20 @@ public class BeanUtils {
         return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + createVO.getType() + ".java";
     }
 
+    public static String entityDaoName(CreateVO createVO) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "Dao.java";
+    }
+
+    public static String entityServiceName(CreateVO createVO) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "Service.java";
+    }
+
+    public static String entityServiceImplName(CreateVO createVO) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "ServiceImpl.java";
+    }
+
+    public static String controllerName() {
+        return "IndexController.java";
+    }
+
 }
