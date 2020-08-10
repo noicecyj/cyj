@@ -22,7 +22,7 @@ public class PageFunctionPO implements Serializable {
     @Column(name = "id" ,length = 32)
     private String id;
 
-    @Column(name = "id" ,length = 32)
+    @Column(name = "page_id" ,length = 32)
     private String pageId;
 
     @Column
