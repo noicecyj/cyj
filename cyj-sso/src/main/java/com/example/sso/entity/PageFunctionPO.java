@@ -29,10 +29,10 @@ public class PageFunctionPO implements Serializable {
     private String name;
 
     @Column
-    private String key;
+    private String keyFunction;
 
     @Column
-    private Integer status;
+    private int status;
 
     @Column
     private Date addTime;

@@ -27,7 +27,7 @@ public class RolePO implements Serializable {
     private String name;
 
     @Column
-    private Integer status;
+    private int status;
 
     @Column
     private String description;
