@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * @author 曹元杰
@@ -36,5 +37,13 @@ public class PageFunctionPO implements Serializable {
 
     @Column
     private Date addTime;
+
+    @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @JoinTable(name = "t_page_role_function",joinColumns = @JoinColumn(name="function_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
+    private List<RolePO> roles;
+
+    @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @JoinTable(name = "t_function_api",joinColumns = @JoinColumn(name="function_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "api_id",referencedColumnName = "id"))
+    private List<ApiPO> apis;
 
 }

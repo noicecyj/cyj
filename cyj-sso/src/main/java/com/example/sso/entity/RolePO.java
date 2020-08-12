@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * @author 曹元杰
@@ -38,4 +39,12 @@ public class RolePO implements Serializable {
     @Column
     private String sortCode;
 
+    @ManyToMany(mappedBy = "roles",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    private List<UserPO> users;
+
+    @ManyToMany(mappedBy = "roles",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    private List<MenuPagePO> menuPages;
+
+    @ManyToMany(mappedBy = "roles",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    private List<PageFunctionPO> pageFunctions;
 }
