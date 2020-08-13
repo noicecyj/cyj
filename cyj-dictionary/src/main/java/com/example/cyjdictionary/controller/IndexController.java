@@ -5,8 +5,6 @@ import com.example.cyjdictionary.entity.DictionaryPO;
 import com.example.cyjdictionary.entity.ResultVO;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
 import com.example.cyjdictionary.service.DictionaryService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "dictionaryApi")
 public class IndexController {
-
-    private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
 
     private DictionaryService dictionaryService;
 
@@ -86,11 +82,11 @@ public class IndexController {
     }
 
     @PostMapping(value = "saveDictionary")
-    public ResultVO saveDictionary(@RequestBody DictionaryPO pd) {
-        if (pd.getId() == null) {
-            return ResultVO.success(dictionaryService.addOne(pd));
+    public ResultVO saveDictionary(@RequestBody DictionaryPO po) {
+        if (po.getId() == null) {
+            return ResultVO.success(dictionaryService.addOne(po));
         }
-        return ResultVO.success(dictionaryService.updateOne(pd));
+        return ResultVO.success(dictionaryService.updateOne(po));
     }
 
     @PostMapping(value = "dictionaryDelete")
