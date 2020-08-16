@@ -40,7 +40,7 @@ public class IndexController {
     @PostMapping(value = "findAll")
     public ResultVO findAll() {
         long totalElements = menuPageService.count();
-        Object[] data = {menuPageService.findAll(),totalElements};
+        Object[] data = {menuPageService.findAll(), totalElements};
         return ResultVO.success(data);
     }
 

@@ -1,9 +1,8 @@
 package com.example.cyjdictionary.serviceimpl;
 
-import com.example.cyjdictionary.entity.DictionaryCatalogPO;
 import com.example.cyjdictionary.dao.DictionaryCatalogDao;
+import com.example.cyjdictionary.entity.DictionaryCatalogPO;
 import com.example.cyjdictionary.service.DictionaryCatalogService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -56,6 +55,6 @@ public class DictionaryCatalogServiceImpl extends BaseService implements Diction
                                                                                         String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
-        return dictionaryCatalogDao.findAllByCatalogNameContainsOrCatalogValueContains(catalogName,catalogValue,pageable);
+        return dictionaryCatalogDao.findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageable);
     }
 }

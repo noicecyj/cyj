@@ -19,12 +19,14 @@ public interface DictionaryService {
      * @return 字典
      */
     DictionaryPO addOne(DictionaryPO po);
+
     /**
      * 删除字典
      *
      * @param id 字典id
      */
     void deleteOne(String id);
+
     /**
      * 更新字典
      *
@@ -40,6 +42,7 @@ public interface DictionaryService {
      * @return 字典列表
      */
     List<DictionaryPO> findCatalogById(String id);
+
     /**
      * 根据目录名称查找字典
      *
@@ -47,6 +50,7 @@ public interface DictionaryService {
      * @return 字典列表
      */
     List<DictionaryPO> findCatalogByName(String name);
+
     /**
      * 根据目录代号查找字典
      *
@@ -58,10 +62,10 @@ public interface DictionaryService {
     /**
      * 查找所有字典(分页排序)
      *
-     * @param id ID
+     * @param id         ID
      * @param pageNumber 页码
-     * @param pageSize 条目
-     * @param sortCode 排序列
+     * @param pageSize   条目
+     * @param sortCode   排序列
      * @return 目录列表分页
      */
     Page<DictionaryPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);

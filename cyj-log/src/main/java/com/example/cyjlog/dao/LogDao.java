@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
-public interface LogDao extends JpaRepository<LogPO,String> {
+public interface LogDao extends JpaRepository<LogPO, String> {
     /**
      * 根据端口查询日志
      *

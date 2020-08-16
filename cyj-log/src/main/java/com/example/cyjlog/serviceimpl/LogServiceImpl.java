@@ -50,10 +50,10 @@ public class LogServiceImpl extends BaseService implements LogService {
             return queryFactory.selectFrom(po).where(po.appPort.eq(port)).fetch();
         } else if (time1 == null) {
             return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.gt(time2)).fetch();
-        } else if (time2 == null){
+        } else if (time2 == null) {
             return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.lt(time1)).fetch();
         }
-        return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.between(time1,time2)).fetch();
+        return queryFactory.selectFrom(po).where(po.appPort.eq(port), po.createDate.between(time1, time2)).fetch();
     }
 
     @Override

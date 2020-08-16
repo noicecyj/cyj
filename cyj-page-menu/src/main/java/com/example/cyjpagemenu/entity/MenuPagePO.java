@@ -18,7 +18,7 @@ import java.util.Set;
 @Table(name = MenuPagePO.T_MENU_PAGE)
 @Data
 @GenericGenerator(name = "jpa-uuid", strategy = "uuid")
-@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class MenuPagePO implements Serializable {
 
     static final String T_MENU_PAGE = "t_menu_page";

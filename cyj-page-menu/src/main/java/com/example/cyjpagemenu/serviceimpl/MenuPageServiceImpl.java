@@ -62,14 +62,14 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
 
     @Override
     public void createRouteFile(String routePath) throws IOException {
-        if (routePath.length() == 0 && "".equals(routePath)){
+        if (routePath.length() == 0 && "".equals(routePath)) {
             routePath = path;
         }
         logger.info(routePath);
         List<MenuPagePO> pos = menuPageDao.findAllByComponentNameIsNotNull();
         StringBuilder sb = new StringBuilder();
         sb.append("import BasicLayout from '@/layouts/BasicLayout';\r\n");
-        for (MenuPagePO po:pos){
+        for (MenuPagePO po : pos) {
             sb.append("import ").append(po.getComponentName()).append("Page").append(" from '@/pages/").append(po.getComponentName()).append("';\r\n");
         }
         sb.append("\r\n");
@@ -78,7 +78,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
         sb.append("    path: '/',\r\n");
         sb.append("    component: BasicLayout,\r\n");
         sb.append("    children: [\r\n");
-        for (MenuPagePO po:pos){
+        for (MenuPagePO po : pos) {
             sb.append("      {\r\n");
             sb.append("        path: '").append(po.getPath()).append("',\r\n");
             sb.append("        component: ").append(po.getComponentName()).append("Page").append(",\r\n");
@@ -88,7 +88,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
         sb.append("  },\r\n");
         sb.append("];\r\n");
         sb.append("export default routerConfig;\r\n");
-        File file = new File(routePath+"\\routes.js");
+        File file = new File(routePath + "\\routes.js");
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {

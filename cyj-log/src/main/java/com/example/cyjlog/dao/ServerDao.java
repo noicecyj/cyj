@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
-public interface ServerDao extends JpaRepository<ServerPO,String> {
+public interface ServerDao extends JpaRepository<ServerPO, String> {
 
     /**
      * 根据名称查询服务

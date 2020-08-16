@@ -32,10 +32,10 @@ public class BeanUtils {
         return sb.toString();
     }
 
-    public static String toLowerCaseFirstOne(String s){
-        if(Character.isLowerCase(s.charAt(0))){
+    public static String toLowerCaseFirstOne(String s) {
+        if (Character.isLowerCase(s.charAt(0))) {
             return s;
-        } else{
+        } else {
             return Character.toLowerCase(s.charAt(0)) + s.substring(1);
         }
     }

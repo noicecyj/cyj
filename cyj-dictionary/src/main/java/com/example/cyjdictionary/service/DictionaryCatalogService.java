@@ -14,8 +14,8 @@ public interface DictionaryCatalogService {
      * 查找所有目录(分页排序)
      *
      * @param pageNumber 页码
-     * @param pageSize 条目
-     * @param sortCode 排序列
+     * @param pageSize   条目
+     * @param sortCode   排序列
      * @return 目录列表分页
      */
     Page<DictionaryCatalogPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
@@ -46,11 +46,11 @@ public interface DictionaryCatalogService {
     /**
      * 根据名称和代号进行模糊查询
      *
-     * @param catalogName 目录名称
+     * @param catalogName  目录名称
      * @param catalogValue 目录代号
-     * @param pageNumber 页码
-     * @param pageSize 条目
-     * @param sortCode 排序列
+     * @param pageNumber   页码
+     * @param pageSize     条目
+     * @param sortCode     排序列
      * @return 目录列表分页
      */
     Page<DictionaryCatalogPO> findAllByCatalogNameContainsOrCatalogValueContains(String catalogName,

@@ -20,7 +20,6 @@ import static ch.qos.logback.core.db.DBHelper.closeStatement;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
-@SuppressWarnings("ALL")
 public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
 
     protected String insertPropertiesSql;
@@ -184,12 +183,12 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
 
     }
 
-    void bindLoggingMyInfoWithPreparedStatement(PreparedStatement stmt)throws SQLException{
+    void bindLoggingMyInfoWithPreparedStatement(PreparedStatement stmt) throws SQLException {
         String appPort = "8020";
         stmt.setString(APP_INDEX, appPort);
-        Date day=new Date();
+        Date day = new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        stmt.setString(CREATEDATE_INDEX,df.format(day));
+        stmt.setString(CREATEDATE_INDEX, df.format(day));
     }
 
     void bindLoggingEventWithInsertStatement(PreparedStatement stmt, ILoggingEvent event) throws SQLException {

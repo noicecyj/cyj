@@ -191,13 +191,13 @@ public class PoServiceImpl extends BaseService {
         sb.append("@RequestMapping(value = \"Api\")\r\n");
         sb.append("public class IndexController {\r\n");
         sb.append("\r\n");
-        for (File file:files){
+        for (File file : files) {
             String entityImpl = file.getName().split("\\.")[0];
             sb.append("    private ").append(entityImpl).append("Impl ")
                     .append(BeanUtils.toLowerCaseFirstOne(entityImpl)).append(";\r\n");
         }
         sb.append("\r\n");
-        for (File file:files){
+        for (File file : files) {
             String entityImpl = file.getName().split("\\.")[0];
             sb.append("    @Autowired\r\n");
             sb.append("    public void set").append(entityImpl).append("(").append(entityImpl)
@@ -207,7 +207,7 @@ public class PoServiceImpl extends BaseService {
             sb.append("    }\r\n");
             sb.append("\r\n");
         }
-        for (File file:files){
+        for (File file : files) {
             String entity = file.getName().split("Service")[0];
             String entityImpl = file.getName().split("\\.")[0];
             sb.append("    @PostMapping(value = \"").append(BeanUtils.toLowerCaseFirstOne(entity))

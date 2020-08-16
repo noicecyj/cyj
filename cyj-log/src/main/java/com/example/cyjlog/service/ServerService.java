@@ -17,12 +17,14 @@ public interface ServerService {
      * @return 字典
      */
     ServerPO addOne(ServerPO po);
+
     /**
      * 删除服务
      *
      * @param id 字典id
      */
     void deleteOne(String id);
+
     /**
      * 更新服务
      *
@@ -30,12 +32,13 @@ public interface ServerService {
      * @return 字典
      */
     ServerPO updateOne(ServerPO po);
+
     /**
      * 查找所有菜单
-     * @param pageNumber 页码
-     * @param pageSize 椰树
-     * @param sortCode 排序代码
      *
+     * @param pageNumber 页码
+     * @param pageSize   椰树
+     * @param sortCode   排序代码
      * @return 目录列表分页
      */
     Page<ServerPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);

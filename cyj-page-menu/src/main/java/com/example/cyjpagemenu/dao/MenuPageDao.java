@@ -10,7 +10,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
-public interface MenuPageDao extends JpaRepository<MenuPagePO,String> {
+public interface MenuPageDao extends JpaRepository<MenuPagePO, String> {
 
     /**
      * 查找路由组件
