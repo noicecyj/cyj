@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 
@@ -205,7 +207,7 @@ public abstract class BaseService {
     void generatePackage(CreateVO createVO, StringBuffer sb, String yes) {
         //pojo路径
         String[] poPathArr = createVO.getPath().split("java");
-        String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".");
+        String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
         sb.append("package ").append(poPath).append(";\r\n");
         if (BeanUtils.ifDate(createVO.getEntityData())) {
             sb.append("import java.sql.Date;\r\n");
@@ -256,5 +258,22 @@ public abstract class BaseService {
                 fw.close();
             }
         }
+    }
+
+    /**
+     * 获取文件
+     *
+     * @param path 路径
+     */
+    List<File> getFiles(String path) {
+        List<File> files = new ArrayList<>();
+        File file = new File(path);
+        File[] tempList = file.listFiles();
+        for (int i = 0; i < Objects.requireNonNull(tempList).length; i++) {
+            if (tempList[i].isFile()) {
+                files.add(tempList[i]);
+            }
+        }
+        return files;
     }
 }

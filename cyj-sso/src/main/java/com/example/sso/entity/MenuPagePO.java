@@ -42,12 +42,12 @@ public class MenuPagePO implements Serializable {
     @Column(name = "sort_code")
     private String sortCode;
 
-    @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
-    @JoinTable(name = "t_page_role",joinColumns = @JoinColumn(name="page_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinTable(name = "t_page_role", joinColumns = @JoinColumn(name = "page_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<RolePO> roles;
 
-    @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
-    @JoinTable(name = "t_page_api",joinColumns = @JoinColumn(name="page_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "api_id",referencedColumnName = "id"))
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinTable(name = "t_page_api", joinColumns = @JoinColumn(name = "page_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "api_id", referencedColumnName = "id"))
     private List<ApiPO> apis;
 
 }

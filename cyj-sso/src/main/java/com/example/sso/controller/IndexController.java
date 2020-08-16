@@ -7,15 +7,16 @@ import com.example.sso.serviceimpl.RoleServiceImpl;
 import com.example.sso.serviceimpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 /**
  * @author 曹元杰
  * @version 1.0
  * @date 2020-08-09
  */
 @RestController
-@RequestMapping(value = "SsoApi")
+@RequestMapping(value = "ssoApi")
 public class IndexController {
-    
+
     private UserServiceImpl userService;
     private RoleServiceImpl roleService;
     private PageFunctionServiceImpl pageFunctionService;
@@ -43,9 +44,9 @@ public class IndexController {
 
     @PostMapping(value = "userPage")
     public ResultVO userFindAll(@RequestParam("id") String id,
-                                      @RequestParam("pageNumber") Integer pageNumber,
-                                      @RequestParam("pageSize") Integer pageSize,
-                                      @RequestParam("sortCode") String sortCode) {
+                                @RequestParam("pageNumber") Integer pageNumber,
+                                @RequestParam("pageSize") Integer pageSize,
+                                @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(userService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
@@ -64,9 +65,9 @@ public class IndexController {
 
     @PostMapping(value = "rolePage")
     public ResultVO roleFindAll(@RequestParam("id") String id,
-                                      @RequestParam("pageNumber") Integer pageNumber,
-                                      @RequestParam("pageSize") Integer pageSize,
-                                      @RequestParam("sortCode") String sortCode) {
+                                @RequestParam("pageNumber") Integer pageNumber,
+                                @RequestParam("pageSize") Integer pageSize,
+                                @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(roleService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
@@ -85,9 +86,9 @@ public class IndexController {
 
     @PostMapping(value = "pageFunctionPage")
     public ResultVO pageFunctionFindAll(@RequestParam("id") String id,
-                                      @RequestParam("pageNumber") Integer pageNumber,
-                                      @RequestParam("pageSize") Integer pageSize,
-                                      @RequestParam("sortCode") String sortCode) {
+                                        @RequestParam("pageNumber") Integer pageNumber,
+                                        @RequestParam("pageSize") Integer pageSize,
+                                        @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(pageFunctionService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
@@ -106,9 +107,9 @@ public class IndexController {
 
     @PostMapping(value = "apiPage")
     public ResultVO apiFindAll(@RequestParam("id") String id,
-                                      @RequestParam("pageNumber") Integer pageNumber,
-                                      @RequestParam("pageSize") Integer pageSize,
-                                      @RequestParam("sortCode") String sortCode) {
+                               @RequestParam("pageNumber") Integer pageNumber,
+                               @RequestParam("pageSize") Integer pageSize,
+                               @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(apiService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
@@ -124,5 +125,5 @@ public class IndexController {
     public void apiDeleteOne(@RequestParam("id") String id) {
         apiService.deleteOne(id);
     }
-    
+
 }

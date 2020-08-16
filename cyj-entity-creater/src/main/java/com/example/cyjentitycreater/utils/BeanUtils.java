@@ -32,6 +32,14 @@ public class BeanUtils {
         return sb.toString();
     }
 
+    public static String toLowerCaseFirstOne(String s){
+        if(Character.isLowerCase(s.charAt(0))){
+            return s;
+        } else{
+            return Character.toLowerCase(s.charAt(0)) + s.substring(1);
+        }
+    }
+
     public static String captureName(String name) {
         char[] cs = name.toCharArray();
         cs[0] -= 32;

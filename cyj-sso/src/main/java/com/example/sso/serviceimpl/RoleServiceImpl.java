@@ -1,4 +1,5 @@
 package com.example.sso.serviceimpl;
+
 import com.example.sso.dao.RoleDao;
 import com.example.sso.entity.RolePO;
 import com.example.sso.service.RoleService;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
 /**
  * @author 曹元杰
  * @version 1.0

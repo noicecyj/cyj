@@ -39,12 +39,12 @@ public class RolePO implements Serializable {
     @Column
     private String sortCode;
 
-    @ManyToMany(mappedBy = "roles",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<UserPO> users;
 
-    @ManyToMany(mappedBy = "roles",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<MenuPagePO> menuPages;
 
-    @ManyToMany(mappedBy = "roles",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "roles", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<PageFunctionPO> pageFunctions;
 }

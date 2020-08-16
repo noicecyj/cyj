@@ -1,4 +1,5 @@
 package com.example.sso.entity;
+
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,7 +21,7 @@ public class ApiPO implements Serializable {
     static final String T_API = "t_api";
     @Id
     @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id" ,length = 32)
+    @Column(name = "id", length = 32)
     private String id;
 
     @Column
@@ -35,10 +36,10 @@ public class ApiPO implements Serializable {
     @Column
     private Date addTime;
 
-    @ManyToMany(mappedBy = "apis",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "apis", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<PageFunctionPO> pageFunctions;
 
-    @ManyToMany(mappedBy = "apis",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "apis", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<MenuPagePO> menuPages;
 
 }

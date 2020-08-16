@@ -1,4 +1,5 @@
 package com.example.sso.entity;
+
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,10 +21,10 @@ public class PageFunctionPO implements Serializable {
     static final String T_PAGE_FUNCTION = "t_page_function";
     @Id
     @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id" ,length = 32)
+    @Column(name = "id", length = 32)
     private String id;
 
-    @Column(name = "page_id" ,length = 32)
+    @Column(name = "page_id", length = 32)
     private String pageId;
 
     @Column
@@ -38,12 +39,12 @@ public class PageFunctionPO implements Serializable {
     @Column
     private Date addTime;
 
-    @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
-    @JoinTable(name = "t_page_role_function",joinColumns = @JoinColumn(name="function_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id"))
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinTable(name = "t_page_role_function", joinColumns = @JoinColumn(name = "function_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<RolePO> roles;
 
-    @ManyToMany(cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
-    @JoinTable(name = "t_function_api",joinColumns = @JoinColumn(name="function_id",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "api_id",referencedColumnName = "id"))
+    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinTable(name = "t_function_api", joinColumns = @JoinColumn(name = "function_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "api_id", referencedColumnName = "id"))
     private List<ApiPO> apis;
 
 }
