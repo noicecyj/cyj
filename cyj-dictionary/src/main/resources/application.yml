@@ -24,3 +24,11 @@ spring:
 logging:
   level:
     org.hibernate: INFO
+#feign的配置，连接超时及读取超时配置
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic

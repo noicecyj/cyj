@@ -1,0 +1,15 @@
+POST http://localhost:8010/pageMenuApi/findCatalogByName
+Content-Type: application/x-www-form-urlencoded
+
+name=实体类型
+###
+POST http://localhost:8030/dictionaryApi/findCatalogByName
+Content-Type: application/x-www-form-urlencoded
+
+name=实体类型
+###
+POST http://localhost:8010/pageMenuApi/findCatalogByName?name=asd
+Accept: application/json
+
+
+

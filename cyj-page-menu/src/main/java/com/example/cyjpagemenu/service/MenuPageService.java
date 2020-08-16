@@ -55,4 +55,5 @@ public interface MenuPageService {
      * @throws IOException 异常
      */
     void createRouteFile(String routePath) throws IOException;
+
 }

@@ -9,14 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author 曹元杰
  * @version 1.0
  * @date 2020/1/21 14:46
  */
 @RestController
-@RequestMapping(value = "dictionaryApi")
-public class IndexController {
+public class IndexController implements DictionaryController {
 
     private DictionaryService dictionaryService;
 
@@ -32,7 +33,7 @@ public class IndexController {
         this.dictionaryCatalogService = dictionaryCatalogService;
     }
 
-    @PostMapping(value = "catalogPage")
+    @Override
     public ResultVO catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                    @RequestParam("pageSize") Integer pageSize,
                                    @RequestParam("sortCode") String sortCode) {
@@ -40,7 +41,7 @@ public class IndexController {
         return ResultVO.success(pos);
     }
 
-    @PostMapping(value = "saveCatalog")
+    @Override
     public ResultVO saveCatalog(@RequestBody DictionaryCatalogPO po) {
         if (po.getId() == null) {
             return ResultVO.success(dictionaryCatalogService.addOne(po));
@@ -48,22 +49,22 @@ public class IndexController {
         return ResultVO.success(dictionaryCatalogService.updateOne(po));
     }
 
-    @PostMapping(value = "findCatalogByName")
-    public ResultVO findCatalogByName(@RequestParam("name") String name) {
-        return ResultVO.success(dictionaryService.findCatalogByName(name));
+    @Override
+    public List<DictionaryPO> findCatalogByName(@RequestParam("name") String name) {
+        return dictionaryService.findCatalogByName(name);
     }
 
-    @PostMapping(value = "findCatalogByValue")
-    public ResultVO findCatalogByValue(@RequestParam("value") String value) {
-        return ResultVO.success(dictionaryService.findCatalogByValue(value));
+    @Override
+    public List<DictionaryPO> findCatalogByValue(@RequestParam("value") String value) {
+        return dictionaryService.findCatalogByValue(value);
     }
 
-    @PostMapping(value = "catalogDelete")
+    @Override
     public void catalogDeleteOne(@RequestParam("id") String id) {
         dictionaryCatalogService.deleteOne(id);
     }
 
-    @PostMapping(value = "findAllByCatalogNameContainsOrCatalogValueContains")
+    @Override
     public ResultVO findAllByCatalogNameContainsOrCatalogValueContains(@RequestParam("catalogName") String catalogName,
                                                                        @RequestParam("catalogValue") String catalogValue,
                                                                        @RequestParam("pageNumber") Integer pageNumber,
@@ -73,7 +74,7 @@ public class IndexController {
                 .findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageNumber - 1, pageSize, sortCode));
     }
 
-    @PostMapping(value = "dictionaryPage")
+    @Override
     public ResultVO dictionaryFindAll(@RequestParam("id") String id,
                                       @RequestParam("pageNumber") Integer pageNumber,
                                       @RequestParam("pageSize") Integer pageSize,
@@ -81,7 +82,7 @@ public class IndexController {
         return ResultVO.success(dictionaryService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
-    @PostMapping(value = "saveDictionary")
+    @Override
     public ResultVO saveDictionary(@RequestBody DictionaryPO po) {
         if (po.getId() == null) {
             return ResultVO.success(dictionaryService.addOne(po));
@@ -89,7 +90,7 @@ public class IndexController {
         return ResultVO.success(dictionaryService.updateOne(po));
     }
 
-    @PostMapping(value = "dictionaryDelete")
+    @Override
     public void dictionaryDeleteOne(@RequestParam("id") String id) {
         dictionaryService.deleteOne(id);
     }

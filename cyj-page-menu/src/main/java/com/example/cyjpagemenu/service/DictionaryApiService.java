@@ -1,0 +1,37 @@
+package com.example.cyjpagemenu.service;
+
+import com.example.cyjpagemenu.entity.DictionaryPO;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+/**
+ * @author 曹元杰
+ * @version 1.0
+ * @date 2020/1/21 14:46
+ */
+@Component
+@FeignClient(name = "cyj-dictionary")
+public interface DictionaryApiService {
+
+    /**
+     * 根据目录名称查询字典
+     *
+     * @param name 目录名称
+     * @return 返回结果
+     */
+    @PostMapping(value = "findCatalogByName")
+    List<DictionaryPO> findCatalogByName(@RequestParam("name") String name);
+
+    /**
+     * 根据目录值查询字典
+     *
+     * @param value 目录值
+     * @return 返回结果
+     */
+    @PostMapping(value = "findCatalogByValue")
+    List<DictionaryPO> findCatalogByValue(@RequestParam("value") String value);
+}
