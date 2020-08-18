@@ -61,9 +61,10 @@ public class IndexController implements MenuPageController {
     }
 
     @Override
-    public ResultVO createRouteFile(@RequestParam("routePath") String routePath) {
+    public ResultVO createRouteFile() {
+        List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue("ROUTH_PATH");
         try {
-            menuPageService.createRouteFile(routePath);
+            menuPageService.createRouteFile(pos.get(0).getDictionaryValue());
         } catch (IOException e) {
             e.printStackTrace();
         }

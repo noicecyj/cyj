@@ -50,11 +50,10 @@ public interface MenuPageController {
     /**
      * 生成路由文件
      *
-     * @param routePath 路由路径
      * @return 返回结果
      */
     @PostMapping(value = "createRouteFile")
-    ResultVO createRouteFile(@RequestParam("routePath") String routePath);
+    ResultVO createRouteFile();
 
     /**
      * 根据目录名称查询字典

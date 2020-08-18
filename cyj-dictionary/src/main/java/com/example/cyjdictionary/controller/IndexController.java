@@ -17,6 +17,7 @@ import java.util.List;
  * @date 2020/1/21 14:46
  */
 @RestController
+@RequestMapping(value = "dictionaryApi")
 public class IndexController implements DictionaryController {
 
     private DictionaryService dictionaryService;

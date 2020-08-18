@@ -23,7 +23,7 @@ public interface DictionaryApiService {
      * @param name 目录名称
      * @return 返回结果
      */
-    @PostMapping(value = "findCatalogByName")
+    @PostMapping(value = "/dictionaryApi/findCatalogByName")
     List<DictionaryPO> findCatalogByName(@RequestParam("name") String name);
 
     /**
@@ -32,6 +32,6 @@ public interface DictionaryApiService {
      * @param value 目录值
      * @return 返回结果
      */
-    @PostMapping(value = "findCatalogByValue")
+    @PostMapping(value = "/dictionaryApi/findCatalogByValue")
     List<DictionaryPO> findCatalogByValue(@RequestParam("value") String value);
 }
