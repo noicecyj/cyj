@@ -12,6 +12,7 @@
         <module name="cyj-log" />
         <module name="cyj-entity-creater" />
         <module name="cyj-dictionary" />
+        <module name="cyj-workflow" />
         <module name="cyj-sso" />
         <module name="cyj-page-menu" />
       </profile>
@@ -27,6 +28,7 @@
       <module name="cyj-log" target="1.8" />
       <module name="cyj-page-menu" target="1.8" />
       <module name="cyj-sso" target="1.8" />
+      <module name="cyj-workflow" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -40,6 +42,7 @@
       <module name="cyj-log" options="-parameters" />
       <module name="cyj-page-menu" options="-parameters" />
       <module name="cyj-sso" options="-parameters" />
+      <module name="cyj-workflow" options="-parameters" />
     </option>
   </component>
 </project>

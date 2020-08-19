@@ -1,5 +1,6 @@
 package com.example.cyjpagemenu.controller;
 
+import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjpagemenu.entity.DictionaryPO;
 import com.example.cyjpagemenu.entity.MenuPagePO;
 import com.example.cyjpagemenu.entity.ResultVO;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -62,9 +64,10 @@ public class IndexController implements MenuPageController {
 
     @Override
     public ResultVO createRouteFile() {
-        List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue("ROUTH_PATH");
+        List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
+        HashMap<String,DictionaryPO> mapPo = CommonUtils.listToMap(pos,"dictionaryName");
         try {
-            menuPageService.createRouteFile(pos.get(0).getDictionaryValue());
+            menuPageService.createRouteFile(mapPo.get("routePath").getDictionaryValue());
         } catch (IOException e) {
             e.printStackTrace();
         }
