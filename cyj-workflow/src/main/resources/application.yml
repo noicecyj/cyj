@@ -21,5 +21,9 @@ spring:
     url: jdbc:mysql://localhost:3306/data_workflow?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: 68762306
+  activiti:
+    database-schema-update: true
+    history-level: full
+    db-history-used: true
 
 

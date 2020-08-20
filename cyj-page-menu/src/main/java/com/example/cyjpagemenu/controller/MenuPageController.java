@@ -56,6 +56,14 @@ public interface MenuPageController {
     ResultVO createRouteFile();
 
     /**
+     * 生成页面文件
+     *
+     * @return 返回结果
+     */
+    @PostMapping(value = "createComponentFile")
+    ResultVO createComponentFile(@RequestBody MenuPagePO po);
+
+    /**
      * 根据目录名称查询字典
      *
      * @param name 目录名称

@@ -65,9 +65,21 @@ public class IndexController implements MenuPageController {
     @Override
     public ResultVO createRouteFile() {
         List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
-        HashMap<String,DictionaryPO> mapPo = CommonUtils.listToMap(pos,"dictionaryName");
+        HashMap<String, DictionaryPO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
             menuPageService.createRouteFile(mapPo.get("routePath").getDictionaryValue());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ResultVO.success();
+    }
+
+    @Override
+    public ResultVO createComponentFile(@RequestBody MenuPagePO po) {
+        List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
+        HashMap<String, DictionaryPO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
+        try {
+            menuPageService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po);
         } catch (IOException e) {
             e.printStackTrace();
         }
