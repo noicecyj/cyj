@@ -217,8 +217,7 @@ public class PoServiceImpl extends BaseService {
         for (File file : files) {
             String entity = file.getName().split("Service")[0];
             String entityImpl = file.getName().split("\\.")[0];
-            sb.append("    @PostMapping(value = \"").append(BeanUtils.toLowerCaseFirstOne(entity))
-                    .append("Page\")\r\n");
+            sb.append("    @PostMapping(value = \"").append(BeanUtils.toLowerCaseFirstOne(entity)).append("Page\")\r\n");
             sb.append("    public ResultVO ").append(BeanUtils.toLowerCaseFirstOne(entity))
                     .append("FindAll(@RequestParam(\"id\") String id,\r\n");
             sb.append("              @RequestParam(\"pageNumber\") Integer pageNumber,\r\n");
@@ -228,7 +227,8 @@ public class PoServiceImpl extends BaseService {
                     .append(".findAll(id, pageNumber, pageSize, sortCode));\r\n");
             sb.append("    }\r\n");
             sb.append("\r\n");
-            sb.append("    @PostMapping(value = \"save").append(entity).append("\")\r\n");
+            sb.append("    @PostMapping(value = \"").append(BeanUtils.toLowerCaseFirstOne(entity))
+                    .append("Save\")\r\n");
             sb.append("    public ResultVO save").append(entity).append("(@RequestBody ")
                     .append(entity).append("PO po) {\r\n");
             sb.append("        if (po.getId() == null) {\r\n");

@@ -50,7 +50,7 @@ public class IndexController {
         return ResultVO.success(userService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
-    @PostMapping(value = "saveUser")
+    @PostMapping(value = "userSave")
     public ResultVO saveUser(@RequestBody UserPO po) {
         if (po.getId() == null) {
             return ResultVO.success(userService.addOne(po));
@@ -71,7 +71,7 @@ public class IndexController {
         return ResultVO.success(roleService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
-    @PostMapping(value = "saveRole")
+    @PostMapping(value = "roleSave")
     public ResultVO saveRole(@RequestBody RolePO po) {
         if (po.getId() == null) {
             return ResultVO.success(roleService.addOne(po));
@@ -92,7 +92,7 @@ public class IndexController {
         return ResultVO.success(pageFunctionService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
-    @PostMapping(value = "savePageFunction")
+    @PostMapping(value = "pageFunctionSave")
     public ResultVO savePageFunction(@RequestBody PageFunctionPO po) {
         if (po.getId() == null) {
             return ResultVO.success(pageFunctionService.addOne(po));
@@ -113,7 +113,7 @@ public class IndexController {
         return ResultVO.success(apiService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
-    @PostMapping(value = "saveApi")
+    @PostMapping(value = "apiSave")
     public ResultVO saveApi(@RequestBody ApiPO po) {
         if (po.getId() == null) {
             return ResultVO.success(apiService.addOne(po));
