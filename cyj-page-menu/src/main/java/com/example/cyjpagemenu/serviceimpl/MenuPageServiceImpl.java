@@ -117,7 +117,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
                 }
             }
             if (fileComponentIndex.createNewFile()) {
-                createFile(fileComponentIndex,createIndexJsx());
+                createFile(fileComponentIndex,createIndexJsx(po));
             }
             if (fileComponentCss.createNewFile()) {
                 createFile(fileComponentCss,createIndexCss());
@@ -256,69 +256,67 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
                 "}\r\n";
     }
 
-    private String createIndexJsx() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("import { ResponsiveGrid, Button, Table, Box, Dialog, Form, Input, Loading } from '@alifd/next';\r\n");
-        sb.append("import React, { useEffect } from 'react';\r\n");
-        sb.append("import { store as pageStore } from 'ice/PageMenu';\r\n");
-        sb.append("import styles from './index.module.scss';\r\n");
-        sb.append("\r\n");
-        sb.append("const { Cell } = ResponsiveGrid;\r\n");
-        sb.append("const FormItem = Form.Item;\r\n");
-        sb.append("\r\n");
-        sb.append("function MenuPage() {\r\n");
-        sb.append("  const [pagemenuState, pagemenuDispatchers] = pageStore.useModel('pagemenu');\r\n");
-        sb.append("  const dispatchers = pageStore.useModelDispatchers('pagemenu');\r\n");
-        sb.append("  const pagemenuTableData = JSON.parse(JSON.stringify(pagemenuState.pagemenuTableData));\r\n");
-        sb.append("\r\n");
-        sb.append("  useEffect(() => {\r\n");
-        sb.append("    pagemenuDispatchers.PageMenuPage();\r\n");
-        sb.append("  }, [pagemenuDispatchers]);\r\n");
-        sb.append("\r\n");
-        sb.append("  const menuPageRender = (value, index, record) => {\r\n");
-        sb.append("    return <div className={styles.opt}>\r\n");
-        sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => pagemenuDispatchers.editPageMenu(record)}> 编辑 </Button>\r\n");
-        sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => pagemenuDispatchers.deletePageMenu(record)} warning> 删除 </Button>\r\n");
-        sb.append("    </div>;\r\n");
-        sb.append("  };\r\n");
-        sb.append("\r\n");
-        sb.append("  return (\r\n");
-        sb.append("    <ResponsiveGrid gap={20}>\r\n");
-        sb.append("      <Cell colSpan={12}>\r\n");
-        sb.append("        <div className={styles.Main}>\r\n");
-        sb.append("          <div className={styles.add}>\r\n");
-        sb.append("            <Button type=\"primary\" onClick={() => pagemenuDispatchers.editPageMenu()}> 添加菜单 </Button>\r\n");
-        sb.append("            <Button type=\"primary\" onClick={() => pagemenuDispatchers.createRouteFile()}> 生成路由文件 </Button>\r\n");
-        sb.append("            <Dialog title=\"菜单\" visible={pagemenuState.pagemenuVisible}\r\n");
-        sb.append("              onOk={() => pagemenuDispatchers.savePageMenu({\r\n");
-        sb.append("                pagemenuFormData: pagemenuState.pagemenuFormData\r\n");
-        sb.append("              })}\r\n");
-        sb.append("              onCancel={() => dispatchers.setState({ pagemenuVisible: false })}\r\n");
-        sb.append("              onClose={() => dispatchers.setState({ pagemenuVisible: false })}\r\n");
-        sb.append("              style={{ width: '30%' }}>\r\n");
-        sb.append("              <Form style={{ width: '100%' }} {...pagemenuState.formItemLayout}\r\n");
-        sb.append("                value={pagemenuState.pagemenuFormData}\r\n");
-        sb.append("                onChange={value => dispatchers.setState({ pagemenuFormData: value })}>\r\n");
-        sb.append("                  11111111111111111111111\r\n");
-        sb.append("              </Form>\r\n");
-        sb.append("            </Dialog>\r\n");
-        sb.append("          </div>\r\n");
-        sb.append("          <Loading tip=\"加载中...\" visible={pagemenuState.pagemenuLoadingVisible}>\r\n");
-        sb.append("            <Table hasBorder className={styles.Table} dataSource={pagemenuTableData} isTree primaryKey=\"id\">\r\n");
-        sb.append("              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={menuPageRender} />\r\n");
-        sb.append("            </Table>\r\n");
-        sb.append("            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n");
-        sb.append("              <div className={styles.total}> 共 <span>{pagemenuState.pagemenuTotal}</span> 条 </div>\r\n");
-        sb.append("            </Box>\r\n");
-        sb.append("          </Loading>\r\n");
-        sb.append("        </div>\r\n");
-        sb.append("      </Cell>\r\n");
-        sb.append("    </ResponsiveGrid>\r\n");
-        sb.append("  )\r\n");
-        sb.append("}\r\n");
-        sb.append("\r\n");
-        sb.append("export default MenuPage;\r\n");
-        return null;
+    private String createIndexJsx(MenuPagePO po) {
+        return "import { ResponsiveGrid, Button, Table, Box, Dialog, Form, Input, Loading } from '@alifd/next';\r\n" +
+                "import React, { useEffect } from 'react';\r\n" +
+                "import { store as pageStore } from 'ice/" + po.getComponentName() + "Page';\r\n" +
+                "import styles from './index.module.scss';\r\n" +
+                "\r\n" +
+                "const { Cell } = ResponsiveGrid;\r\n" +
+                "const FormItem = Form.Item;\r\n" +
+                "\r\n" +
+                "function " + po.getComponentName() + "Page() {\r\n" +
+                "  const [" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State, " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers] = pageStore.useModel('" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "');\r\n" +
+                "  const dispatchers = pageStore.useModelDispatchers('" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "');\r\n" +
+                "  const " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData = JSON.parse(JSON.stringify(" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData));\r\n" +
+                "\r\n" +
+                "  useEffect(() => {\r\n" +
+                "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page();\r\n" +
+                "  }, [" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers]);\r\n" +
+                "\r\n" +
+                "  const " + po.getComponentName() + "PageRender = (value, index, record) => {\r\n" +
+                "    return <div className={styles.opt}>\r\n" +
+                "      <Button type=\"primary\" size=\"small\" onClick={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers.edit" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "(record)}> 编辑 </Button>\r\n" +
+                "      <Button type=\"primary\" size=\"small\" onClick={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers.delete" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "(record)} warning> 删除 </Button>\r\n" +
+                "    </div>;\r\n" +
+                "  };\r\n" +
+                "\r\n" +
+                "  return (\r\n" +
+                "    <ResponsiveGrid gap={20}>\r\n" +
+                "      <Cell colSpan={12}>\r\n" +
+                "        <div className={styles.Main}>\r\n" +
+                "          <div className={styles.add}>\r\n" +
+                "            <Button type=\"primary\" onClick={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers.edit" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "()}> 添加菜单 </Button>\r\n" +
+                "            <Button type=\"primary\" onClick={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers.createRouteFile()}> 生成路由文件 </Button>\r\n" +
+                "            <Dialog title=\"菜单\" visible={" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible}\r\n" +
+                "              onOk={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers.save" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "({\r\n" +
+                "                " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData\r\n" +
+                "              })}\r\n" +
+                "              onCancel={() => dispatchers.setState({ " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: false })}\r\n" +
+                "              onClose={() => dispatchers.setState({ " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: false })}\r\n" +
+                "              style={{ width: '30%' }}>\r\n" +
+                "              <Form style={{ width: '100%' }} {..." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State.formItemLayout}\r\n" +
+                "                value={" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData}\r\n" +
+                "                onChange={value => dispatchers.setState({ " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: value })}>\r\n" +
+                "                  11111111111111111111111\r\n" +
+                "              </Form>\r\n" +
+                "            </Dialog>\r\n" +
+                "          </div>\r\n" +
+                "          <Loading tip=\"加载中...\" visible={" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "LoadingVisible}>\r\n" +
+                "            <Table hasBorder className={styles.Table} dataSource={" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData} isTree primaryKey=\"id\">\r\n" +
+                "              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={" + po.getComponentName() + "PageRender} />\r\n" +
+                "            </Table>\r\n" +
+                "            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n" +
+                "              <div className={styles.total}> 共 <span>{" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Total}</span> 条 </div>\r\n" +
+                "            </Box>\r\n" +
+                "          </Loading>\r\n" +
+                "        </div>\r\n" +
+                "      </Cell>\r\n" +
+                "    </ResponsiveGrid>\r\n" +
+                "  )\r\n" +
+                "}\r\n" +
+                "\r\n" +
+                "export default " + po.getComponentName() + "Page;\r\n";
     }
 
     private String createIndexCss() {
