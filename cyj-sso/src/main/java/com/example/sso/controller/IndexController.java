@@ -43,11 +43,10 @@ public class IndexController {
     }
 
     @PostMapping(value = "userPage")
-    public ResultVO userFindAll(@RequestParam("id") String id,
-                                @RequestParam("pageNumber") Integer pageNumber,
+    public ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                 @RequestParam("pageSize") Integer pageSize,
                                 @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(userService.findAll(id, pageNumber, pageSize, sortCode));
+        return ResultVO.success(userService.findAll(pageNumber, pageSize, sortCode));
     }
 
     @PostMapping(value = "userSave")
@@ -64,11 +63,10 @@ public class IndexController {
     }
 
     @PostMapping(value = "rolePage")
-    public ResultVO roleFindAll(@RequestParam("id") String id,
-                                @RequestParam("pageNumber") Integer pageNumber,
+    public ResultVO roleFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                 @RequestParam("pageSize") Integer pageSize,
                                 @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(roleService.findAll(id, pageNumber, pageSize, sortCode));
+        return ResultVO.success(roleService.findAll(pageNumber, pageSize, sortCode));
     }
 
     @PostMapping(value = "roleSave")
@@ -85,11 +83,10 @@ public class IndexController {
     }
 
     @PostMapping(value = "pageFunctionPage")
-    public ResultVO pageFunctionFindAll(@RequestParam("id") String id,
-                                        @RequestParam("pageNumber") Integer pageNumber,
+    public ResultVO pageFunctionFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                         @RequestParam("pageSize") Integer pageSize,
                                         @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(pageFunctionService.findAll(id, pageNumber, pageSize, sortCode));
+        return ResultVO.success(pageFunctionService.findAll(pageNumber, pageSize, sortCode));
     }
 
     @PostMapping(value = "pageFunctionSave")
@@ -106,11 +103,10 @@ public class IndexController {
     }
 
     @PostMapping(value = "apiPage")
-    public ResultVO apiFindAll(@RequestParam("id") String id,
-                               @RequestParam("pageNumber") Integer pageNumber,
+    public ResultVO apiFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                @RequestParam("pageSize") Integer pageSize,
                                @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(apiService.findAll(id, pageNumber, pageSize, sortCode));
+        return ResultVO.success(apiService.findAll(pageNumber, pageSize, sortCode));
     }
 
     @PostMapping(value = "apiSave")

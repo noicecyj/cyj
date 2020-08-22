@@ -41,7 +41,7 @@ public class ApiServiceImpl extends BaseService implements ApiService {
     }
 
     @Override
-    public Page<ApiPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+    public Page<ApiPO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return apiDao.findAll(pageable);

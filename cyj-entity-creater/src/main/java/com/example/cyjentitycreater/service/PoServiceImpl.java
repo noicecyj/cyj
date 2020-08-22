@@ -219,8 +219,7 @@ public class PoServiceImpl extends BaseService {
             String entityImpl = file.getName().split("\\.")[0];
             sb.append("    @PostMapping(value = \"").append(BeanUtils.toLowerCaseFirstOne(entity)).append("Page\")\r\n");
             sb.append("    public ResultVO ").append(BeanUtils.toLowerCaseFirstOne(entity))
-                    .append("FindAll(@RequestParam(\"id\") String id,\r\n");
-            sb.append("              @RequestParam(\"pageNumber\") Integer pageNumber,\r\n");
+                    .append("FindAll(@RequestParam(\"pageNumber\") Integer pageNumber,\r\n");
             sb.append("              @RequestParam(\"pageSize\") Integer pageSize,\r\n");
             sb.append("              @RequestParam(\"sortCode\") String sortCode) {\r\n");
             sb.append("        return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(entityImpl))

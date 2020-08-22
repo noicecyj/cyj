@@ -41,7 +41,7 @@ public class RoleServiceImpl extends BaseService implements RoleService {
     }
 
     @Override
-    public Page<RolePO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+    public Page<RolePO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return roleDao.findAll(pageable);

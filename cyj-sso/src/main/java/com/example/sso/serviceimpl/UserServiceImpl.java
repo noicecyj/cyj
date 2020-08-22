@@ -41,7 +41,7 @@ public class UserServiceImpl extends BaseService implements UserService {
     }
 
     @Override
-    public Page<UserPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+    public Page<UserPO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return userDao.findAll(pageable);

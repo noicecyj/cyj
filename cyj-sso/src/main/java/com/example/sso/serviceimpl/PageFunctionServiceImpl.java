@@ -41,7 +41,7 @@ public class PageFunctionServiceImpl extends BaseService implements PageFunction
     }
 
     @Override
-    public Page<PageFunctionPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+    public Page<PageFunctionPO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return pageFunctionDao.findAll(pageable);

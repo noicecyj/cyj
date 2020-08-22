@@ -36,11 +36,10 @@ public interface RoleService {
     /**
      * 查找所有实体(分页排序)
      *
-     * @param id         ID
      * @param pageNumber 页码
      * @param pageSize   条目
      * @param sortCode   排序列
      * @return 实体列表分页
      */
-    Page<RolePO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);
+    Page<RolePO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
 }

@@ -45,6 +45,9 @@ public class MenuPagePO implements Serializable {
     @Column(name = "api_path")
     private String apiPath;
 
+    @Column(name = "is_component")
+    private String isComponent;
+
     @Column(name = "sort_code")
     private String sortCode;
 

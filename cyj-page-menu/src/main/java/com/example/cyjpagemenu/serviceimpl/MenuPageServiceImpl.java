@@ -97,9 +97,9 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
         File fileComponentModels = new File(pagePath + "/" +
                 po.getComponentName() + "/models" + po.getPath() + ".jsx");
         File dirComponentService = new File(pagePath + "/" +
-                po.getComponentName() + "/service");
+                po.getComponentName() + "/services");
         File fileComponentService = new File(pagePath + "/" +
-                po.getComponentName() + "/service" + po.getPath() + ".jsx");
+                po.getComponentName() + "/services" + po.getPath() + ".jsx");
         File fileComponentIndex = new File(pagePath + "/" +
                 po.getComponentName() + "/index.jsx");
         File fileComponentCss = new File(pagePath + "/" +
@@ -113,7 +113,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
             }
             if (dirComponentService.mkdir()) {
                 if (fileComponentService.createNewFile()) {
-                    createFile(dirComponentService,createServiceJsx(po));
+                    createFile(fileComponentService,createServiceJsx(po));
                 }
             }
             if (fileComponentIndex.createNewFile()) {
@@ -123,6 +123,8 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
                 createFile(fileComponentCss,createIndexCss());
             }
         }
+        po.setIsComponent("已生成");
+        updateOne(po);
     }
 
     private void createFile(File file,String context) throws IOException {
@@ -142,86 +144,62 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
     }
 
     private String createModelsJsx(MenuPagePO po) {
-        return "import " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service from '../services/" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "'\r\n" +
-                "\r\n" +
-                "export default {\r\n" +
-                "\r\n" +
-                "  namespace: '" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "',\r\n" +
-                "\r\n" +
-                "  state: {\r\n" +
-                "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData: [],\r\n" +
-                "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: false,\r\n" +
-                "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: {},\r\n" +
-                "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "LoadingVisible: true,\r\n" +
-                "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Total: 0,\r\n" +
-                "    formItemLayout: {\r\n" +
-                "      labelCol: {\r\n" +
-                "        fixedSpan: 6\r\n" +
-                "      },\r\n" +
-                "      wrapperCol: {\r\n" +
-                "        span: 40\r\n" +
-                "      }\r\n" +
-                "    }\r\n" +
-                "  },\r\n" +
-                "\r\n" +
-                "  reducers: {\r\n" +
-                "    setState(prevState, payload) {\r\n" +
-                "      return { ...prevState, ...payload }\r\n" +
-                "    }\r\n" +
-                "  },\r\n" +
-                "\r\n" +
-                "  effects: (dispatch) => ({\r\n" +
-                "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page() {\r\n" +
-                "      " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page().then(res => {\r\n" +
-                "        const payload = {\r\n" +
-                "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Total: res.data[1],\r\n" +
-                "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData: [res.data[0]],\r\n" +
-                "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "LoadingVisible: false\r\n" +
-                "        }\r\n" +
-                "        dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" +
-                "      })\r\n" +
-                "    },\r\n" +
-                "    edit" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "(data) {\r\n" +
-                "      if (data) {\r\n" +
-                "        const payload = {\r\n" +
-                "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: data,\r\n" +
-                "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: true\r\n" +
-                "        }\r\n" +
-                "        dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" +
-                "      } else {\r\n" +
-                "        const payload = {\r\n" +
+        return "import " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service from '../services" +
+                po.getPath() + "'\r\n" +
+                "\r\n" + "export default {\r\n" + "\r\n" + "  namespace: '" +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "',\r\n" +
+                "\r\n" + "  state: {\r\n" + "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "TableData: [],\r\n" + "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "Visible: false,\r\n" + "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "FormData: {},\r\n" + "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "LoadingVisible: true,\r\n" + "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "Total: 0,\r\n" + "    formItemLayout: {\r\n" + "      labelCol: {\r\n" + "        fixedSpan: 6\r\n" +
+                "      },\r\n" + "      wrapperCol: {\r\n" + "        span: 40\r\n" + "      }\r\n" + "    }\r\n" +
+                "  },\r\n" + "\r\n" + "  reducers: {\r\n" + "    setState(prevState, payload) {\r\n" +
+                "      return { ...prevState, ...payload }\r\n" + "    }\r\n" + "  },\r\n" + "\r\n" +
+                "  effects: (dispatch) => ({\r\n" + "    " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "Page() {\r\n" + "      " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page().then(res => {\r\n" +
+                "        const payload = {\r\n" + "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "Total: res.data[1],\r\n" + "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "TableData: [res.data[0]],\r\n" + "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "LoadingVisible: false\r\n" + "        }\r\n" + "        dispatch." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" + "      })\r\n" +
+                "    },\r\n" + "    edit" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "(data) {\r\n" +
+                "      if (data) {\r\n" + "        const payload = {\r\n" + "          " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: data,\r\n" + "          " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: true\r\n" +
+                "        }\r\n" + "        dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                ".setState(payload);\r\n" + "      } else {\r\n" + "        const payload = {\r\n" +
                 "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: {},\r\n" +
                 "          " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: true\r\n" +
-                "        }\r\n" +
-                "        dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" +
-                "      }\r\n" +
-                "    },\r\n" +
+                "        }\r\n" + "        dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                ".setState(payload);\r\n" + "      }\r\n" + "    },\r\n" +
                 "    delete" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "(data) {\r\n" +
-                "      " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Delete(data).then(() => {\r\n" +
-                "        " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page().then(res => {\r\n" +
-                "          const payload = {\r\n" +
-                "            " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Total: res.data[1],\r\n" +
-                "            " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData: [res.data[0]],\r\n" +
-                "          }\r\n" +
-                "          dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" +
-                "        })\r\n" +
-                "      })\r\n" +
-                "    },\r\n" +
-                "    save" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "(data) {\r\n" +
-                "      " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Save(data." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData).then(() => {\r\n" +
-                "        " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page().then(res => {\r\n" +
-                "          const payload = {\r\n" +
-                "            " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Total: res.data[1],\r\n" +
-                "            " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData: [res.data[0]],\r\n" +
-                "          }\r\n" +
-                "          dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" +
-                "        })\r\n" +
-                "      })\r\n" +
-                "      const payload = { " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: false }\r\n" +
-                "      dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" +
-                "    },\r\n" +
-                "  })\r\n" +
-                "};\r\n";
+                "      " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Delete(data).then(() => {\r\n" +
+                "        " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page().then(res => {\r\n" +
+                "          const payload = {\r\n" + "            " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Total: res.data[1],\r\n" + "            " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData: [res.data[0]],\r\n" +
+                "          }\r\n" + "          dispatch." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                ".setState(payload);\r\n" + "        })\r\n" + "      })\r\n" + "    },\r\n" + "    save" +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "(data) {\r\n" + "      " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Save(data." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData).then(() => {\r\n" + "        " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Service." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Page().then(res => {\r\n" +
+                "          const payload = {\r\n" + "            " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Total: res.data[1],\r\n" +
+                "            " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) +
+                "TableData: [res.data[0]],\r\n" + "          }\r\n" + "          dispatch." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" +
+                "        })\r\n" + "      })\r\n" + "      const payload = { " +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: false }\r\n" + "      dispatch." +
+                BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + ".setState(payload);\r\n" + "    },\r\n" +
+                "  })\r\n" + "};";
     }
 
     private String createServiceJsx(MenuPagePO po) {
@@ -253,21 +231,21 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
                 "      data\r\n" +
                 "    })\r\n" +
                 "  },\r\n" +
-                "}\r\n";
+                "}";
     }
 
     private String createIndexJsx(MenuPagePO po) {
         return "import { ResponsiveGrid, Button, Table, Box, Dialog, Form, Input, Loading } from '@alifd/next';\r\n" +
                 "import React, { useEffect } from 'react';\r\n" +
-                "import { store as pageStore } from 'ice/" + po.getComponentName() + "Page';\r\n" +
+                "import { store as pageStore } from 'ice/" + po.getComponentName() + "';\r\n" +
                 "import styles from './index.module.scss';\r\n" +
                 "\r\n" +
                 "const { Cell } = ResponsiveGrid;\r\n" +
                 "const FormItem = Form.Item;\r\n" +
                 "\r\n" +
                 "function " + po.getComponentName() + "Page() {\r\n" +
-                "  const [" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State, " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers] = pageStore.useModel('" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "');\r\n" +
-                "  const dispatchers = pageStore.useModelDispatchers('" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "');\r\n" +
+                "  const [" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State, " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers] = pageStore.useModel('" + po.getPath().substring(1) + "');\r\n" +
+                "  const dispatchers = pageStore.useModelDispatchers('" + po.getPath().substring(1) + "');\r\n" +
                 "  const " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData = JSON.parse(JSON.stringify(" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "TableData));\r\n" +
                 "\r\n" +
                 "  useEffect(() => {\r\n" +
@@ -316,7 +294,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
                 "  )\r\n" +
                 "}\r\n" +
                 "\r\n" +
-                "export default " + po.getComponentName() + "Page;\r\n";
+                "export default " + po.getComponentName() + "Page;";
     }
 
     private String createIndexCss() {
@@ -368,7 +346,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
                 "      color: #5584FF;\r\n" +
                 "    }\r\n" +
                 "  }\r\n" +
-                "}\r\n";
+                "}";
     }
 
 }

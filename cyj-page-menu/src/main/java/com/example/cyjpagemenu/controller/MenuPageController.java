@@ -58,6 +58,7 @@ public interface MenuPageController {
     /**
      * 生成页面文件
      *
+     * @param po 菜单
      * @return 返回结果
      */
     @PostMapping(value = "createComponentFile")
