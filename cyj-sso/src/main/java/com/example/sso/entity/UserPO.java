@@ -35,6 +35,9 @@ public class UserPO implements Serializable {
     @Column
     private String phone;
 
+    @Column
+    private String sortCode;
+
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinTable(name = "t_user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<RolePO> roles;

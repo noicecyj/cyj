@@ -36,6 +36,9 @@ public class ApiPO implements Serializable {
     @Column
     private Date addTime;
 
+    @Column
+    private String sortCode;
+
     @ManyToMany(mappedBy = "apis", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<PageFunctionPO> pageFunctions;
 

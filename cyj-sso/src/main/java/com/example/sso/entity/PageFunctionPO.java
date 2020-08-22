@@ -39,6 +39,9 @@ public class PageFunctionPO implements Serializable {
     @Column
     private Date addTime;
 
+    @Column
+    private String sortCode;
+
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinTable(name = "t_page_role_function", joinColumns = @JoinColumn(name = "function_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<RolePO> roles;
