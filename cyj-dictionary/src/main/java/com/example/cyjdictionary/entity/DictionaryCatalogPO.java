@@ -13,15 +13,15 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = DictionaryCatalogPO.T_DICTIONARY_CATALOG)
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 @Data
 public class DictionaryCatalogPO implements Serializable {
 
     static final String T_DICTIONARY_CATALOG = "t_dictionary_catalog";
 
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id", length = 32)
+    @GeneratedValue(generator = "uuid2")
+    @Column(name = "id", length = 36)
     private String id;
 
     @Column(name = "catalog_name")

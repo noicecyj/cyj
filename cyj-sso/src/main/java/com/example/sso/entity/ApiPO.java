@@ -16,12 +16,12 @@ import java.util.List;
 @Entity
 @Table(name = ApiPO.T_API)
 @Data
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 public class ApiPO implements Serializable {
     static final String T_API = "t_api";
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id", length = 32)
+    @GeneratedValue(generator = "uuid2")
+    @Column(name = "id", length = 36)
     private String id;
 
     @Column

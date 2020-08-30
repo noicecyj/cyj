@@ -36,6 +36,7 @@
         <module>cyj-log</module>
         <module>cyj-sso</module>
         <module>cyj-workflow</module>
+        <module>cyj-query</module>
     </modules>
     
 </project>

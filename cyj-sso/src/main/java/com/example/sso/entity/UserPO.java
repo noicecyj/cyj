@@ -15,12 +15,12 @@ import java.util.List;
 @Entity
 @Table(name = UserPO.T_USER)
 @Data
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 public class UserPO implements Serializable {
     static final String T_USER = "t_user";
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id", length = 32)
+    @GeneratedValue(generator = "uuid2")
+    @Column(name = "id", length = 36)
     private String id;
 
     @Column

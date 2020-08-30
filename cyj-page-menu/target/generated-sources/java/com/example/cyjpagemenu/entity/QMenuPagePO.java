@@ -20,6 +20,8 @@ public class QMenuPagePO extends EntityPathBase<MenuPagePO> {
 
     public static final QMenuPagePO menuPagePO = new QMenuPagePO("menuPagePO");
 
+    public final StringPath apiPath = createString("apiPath");
+
     public final SetPath<MenuPagePO, QMenuPagePO> children = this.<MenuPagePO, QMenuPagePO>createSet("children", MenuPagePO.class, QMenuPagePO.class, PathInits.DIRECT2);
 
     public final StringPath componentName = createString("componentName");
@@ -27,6 +29,8 @@ public class QMenuPagePO extends EntityPathBase<MenuPagePO> {
     public final StringPath icon = createString("icon");
 
     public final StringPath id = createString("id");
+
+    public final StringPath isComponent = createString("isComponent");
 
     public final StringPath name = createString("name");
 

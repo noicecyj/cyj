@@ -16,12 +16,12 @@ import java.util.List;
 @Entity
 @Table(name = PageFunctionPO.T_PAGE_FUNCTION)
 @Data
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 public class PageFunctionPO implements Serializable {
     static final String T_PAGE_FUNCTION = "t_page_function";
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id", length = 32)
+    @GeneratedValue(generator = "uuid2")
+    @Column(name = "id", length = 36)
     private String id;
 
     @Column(name = "page_id", length = 32)

@@ -14,6 +14,7 @@
         <module name="cyj-dictionary" />
         <module name="cyj-workflow" />
         <module name="cyj-sso" />
+        <module name="cyj-query" />
         <module name="cyj-page-menu" />
       </profile>
     </annotationProcessing>
@@ -27,6 +28,7 @@
       <module name="cyj-entity-creater" target="1.8" />
       <module name="cyj-log" target="1.8" />
       <module name="cyj-page-menu" target="1.8" />
+      <module name="cyj-query" target="1.8" />
       <module name="cyj-sso" target="1.8" />
       <module name="cyj-workflow" target="1.8" />
     </bytecodeTargetLevel>
@@ -41,6 +43,7 @@
       <module name="cyj-entity-creater" options="-parameters" />
       <module name="cyj-log" options="-parameters" />
       <module name="cyj-page-menu" options="-parameters" />
+      <module name="cyj-query" options="-parameters" />
       <module name="cyj-sso" options="-parameters" />
       <module name="cyj-workflow" options="-parameters" />
     </option>

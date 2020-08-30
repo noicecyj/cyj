@@ -28,8 +28,10 @@ public class PoServiceImpl extends BaseService {
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
                 .append(createVO.getType())
                 .append(" implements Serializable {\r\n");
+        sb.append("\r\n");
         sb.append("    static final String T_").append(createVO.getName().toUpperCase())
                 .append(" = \"t_").append(createVO.getName()).append("\";\r\n");
+        sb.append("\r\n");
         return generateMethod(createVO, sb);
     }
 
@@ -96,14 +98,13 @@ public class PoServiceImpl extends BaseService {
         sb.append("    /**\r\n");
         sb.append("     * 查找所有实体(分页排序)\r\n");
         sb.append("     *\r\n");
-        sb.append("     * @param id ID\r\n");
         sb.append("     * @param pageNumber 页码\r\n");
         sb.append("     * @param pageSize 条目\r\n");
         sb.append("     * @param sortCode 排序列\r\n");
         sb.append("     * @return 实体列表分页\r\n");
         sb.append("     */\r\n");
         sb.append("    Page<").append(fileName)
-                .append("PO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);\r\n");
+                .append("PO> findAll(Integer pageNumber, Integer pageSize, String sortCode);\r\n");
         sb.append("}\r\n");
         String daoData = sb.toString();
         return new String[]{daoData, entityServiceName(createVO)};
@@ -166,7 +167,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("\r\n");
         sb.append("    @Override\r\n");
         sb.append("    public Page<").append(fileName)
-                .append("PO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
+                .append("PO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
         sb.append("        Sort sort = Sort.by(sortCode);\r\n");
         sb.append("        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);\r\n");
         sb.append("        return ").append(BeanUtils.underline2Camel(createVO.getName()))
@@ -195,7 +196,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("import org.springframework.beans.factory.annotation.Autowired;\r\n");
         generateAuthor(sb);
         sb.append("@RestController\r\n");
-        sb.append("@RequestMapping(value = \"Api\")\r\n");
+        sb.append("@RequestMapping(value = \"").append(createVO.getName()).append("Api\")\r\n");
         sb.append("public class IndexController {\r\n");
         sb.append("\r\n");
         for (File file : files) {
@@ -223,7 +224,7 @@ public class PoServiceImpl extends BaseService {
             sb.append("              @RequestParam(\"pageSize\") Integer pageSize,\r\n");
             sb.append("              @RequestParam(\"sortCode\") String sortCode) {\r\n");
             sb.append("        return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(entityImpl))
-                    .append(".findAll(id, pageNumber, pageSize, sortCode));\r\n");
+                    .append(".findAll(pageNumber, pageSize, sortCode));\r\n");
             sb.append("    }\r\n");
             sb.append("\r\n");
             sb.append("    @PostMapping(value = \"").append(BeanUtils.toLowerCaseFirstOne(entity))
@@ -281,10 +282,10 @@ public class PoServiceImpl extends BaseService {
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
                 .append(createVO.getType())
                 .append(".T_").append(createVO.getName().toUpperCase()).append(")\r\n");
+        sb.append("@GenericGenerator(name = \"uuid2\", strategy = \"org.hibernate.id.UUIDGenerator\")\r\n");
         if (yes.equals(createVO.getLombok())) {
             sb.append("@Data\r\n");
         }
-        sb.append("@GenericGenerator(name = \"jpa-uuid\", strategy = \"uuid\")\r\n");
     }
 
     @Override
@@ -292,8 +293,8 @@ public class PoServiceImpl extends BaseService {
         createVO.getEntityData().forEach(entity -> {
             if (entity.getId().equals(createVO.getPrimaryKey()) && entity.getEntityName().equals(idValue)) {
                 sb.append("    @Id\r\n");
-                sb.append("    @GeneratedValue(generator = \"jpa-uuid\")\r\n");
-                sb.append("    @Column(name = \"").append(entity.getEntityName()).append("\" ,length = 32)\r\n");
+                sb.append("    @GeneratedValue(generator = \"uuid2\")\r\n");
+                sb.append("    @Column(name = \"").append(entity.getEntityName()).append("\", length = 36)\r\n");
             } else {
                 sb.append("    @Column\r\n");
             }

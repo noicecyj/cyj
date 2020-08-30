@@ -15,13 +15,13 @@ import java.util.List;
 @Entity
 @Table(name = MenuPagePO.T_MENU_PAGE)
 @Data
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 public class MenuPagePO implements Serializable {
 
     static final String T_MENU_PAGE = "t_menu_page";
 
     @Id
-    @Column(name = "id", length = 32)
+    @Column(name = "id", length = 36)
     private String id;
 
     @Column(name = "pid", length = 32)

@@ -12,15 +12,15 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = ServerPO.T_SERVER)
-@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 @Data
 public class ServerPO {
 
     static final String T_SERVER = "t_data_server";
 
     @Id
-    @GeneratedValue(generator = "jpa-uuid")
-    @Column(name = "id", length = 32)
+    @GeneratedValue(generator = "uuid2")
+    @Column(name = "id", length = 36)
     private String id;
 
     @Column(name = "server_name")
