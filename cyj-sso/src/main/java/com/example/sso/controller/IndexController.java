@@ -46,7 +46,7 @@ public class IndexController {
     public ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                 @RequestParam("pageSize") Integer pageSize,
                                 @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(userService.findAll(pageNumber, pageSize, sortCode));
+        return ResultVO.success(userService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
     @PostMapping(value = "userSave")
@@ -66,7 +66,7 @@ public class IndexController {
     public ResultVO roleFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                 @RequestParam("pageSize") Integer pageSize,
                                 @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(roleService.findAll(pageNumber, pageSize, sortCode));
+        return ResultVO.success(roleService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
     @PostMapping(value = "roleSave")
@@ -86,7 +86,7 @@ public class IndexController {
     public ResultVO pageFunctionFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                         @RequestParam("pageSize") Integer pageSize,
                                         @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(pageFunctionService.findAll(pageNumber, pageSize, sortCode));
+        return ResultVO.success(pageFunctionService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
     @PostMapping(value = "pageFunctionSave")
@@ -106,7 +106,7 @@ public class IndexController {
     public ResultVO apiFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                @RequestParam("pageSize") Integer pageSize,
                                @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(apiService.findAll(pageNumber, pageSize, sortCode));
+        return ResultVO.success(apiService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
     @PostMapping(value = "apiSave")

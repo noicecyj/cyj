@@ -23,7 +23,7 @@ public class IndexController {
     public ResultVO sqlFindAll(@RequestParam("pageNumber") Integer pageNumber,
               @RequestParam("pageSize") Integer pageSize,
               @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(sqlService.findAll(pageNumber, pageSize, sortCode));
+        return ResultVO.success(sqlService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
     @PostMapping(value = "sqlSave")

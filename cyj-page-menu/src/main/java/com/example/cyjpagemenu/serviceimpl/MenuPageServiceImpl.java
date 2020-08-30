@@ -301,8 +301,9 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
                 "          <div className={styles.add}>\r\n" +
                 "            <Button type=\"primary\" onClick={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Edit()}> 添加菜单 </Button>\r\n" +
                 "            <Dialog title=\"菜单\" visible={" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible}\r\n" +
-                "              onOk={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers.save" + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "({\r\n" +
-                "                " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData\r\n" +
+                "              onOk={() => " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Dispatchers." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Save({\r\n" +
+                "                " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData: " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "FormData,\r\n" +
+                "                " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Current: " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "State." + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Current\r\n" +
                 "              })}\r\n" +
                 "              onCancel={() => dispatchers.setState({ " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: false })}\r\n" +
                 "              onClose={() => dispatchers.setState({ " + BeanUtils.toLowerCaseFirstOne(po.getComponentName()) + "Visible: false })}\r\n" +

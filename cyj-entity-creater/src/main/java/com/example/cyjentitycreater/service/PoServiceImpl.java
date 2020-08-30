@@ -224,7 +224,7 @@ public class PoServiceImpl extends BaseService {
             sb.append("              @RequestParam(\"pageSize\") Integer pageSize,\r\n");
             sb.append("              @RequestParam(\"sortCode\") String sortCode) {\r\n");
             sb.append("        return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(entityImpl))
-                    .append(".findAll(pageNumber, pageSize, sortCode));\r\n");
+                    .append(".findAll(pageNumber - 1, pageSize, sortCode));\r\n");
             sb.append("    }\r\n");
             sb.append("\r\n");
             sb.append("    @PostMapping(value = \"").append(BeanUtils.toLowerCaseFirstOne(entity))
