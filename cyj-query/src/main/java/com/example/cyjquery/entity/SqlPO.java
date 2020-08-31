@@ -28,6 +28,12 @@ public class SqlPO implements Serializable {
     private String sqlStr;
 
     @Column
+    private String sqlDescription;
+
+    @Column
+    private String sqlType;
+
+    @Column
     private String sortCode;
 
 }

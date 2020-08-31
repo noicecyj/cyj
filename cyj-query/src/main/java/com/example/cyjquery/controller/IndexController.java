@@ -1,8 +1,11 @@
 package com.example.cyjquery.controller;
-import com.example.cyjquery.entity.*;
-import com.example.cyjquery.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+
+import com.example.cyjquery.entity.ResultVO;
+import com.example.cyjquery.entity.SqlPO;
+import com.example.cyjquery.serviceimpl.SqlServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -21,8 +24,8 @@ public class IndexController {
 
     @PostMapping(value = "sqlPage")
     public ResultVO sqlFindAll(@RequestParam("pageNumber") Integer pageNumber,
-              @RequestParam("pageSize") Integer pageSize,
-              @RequestParam("sortCode") String sortCode) {
+                               @RequestParam("pageSize") Integer pageSize,
+                               @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(sqlService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
@@ -37,6 +40,17 @@ public class IndexController {
     @PostMapping(value = "sqlDelete")
     public void sqlDeleteOne(@RequestParam("id") String id) {
         sqlService.deleteOne(id);
+    }
+
+    @PostMapping(value = "doSql")
+    public ResultVO doSql(@RequestParam("sqlStr") String sqlStr, @RequestParam("sqlType") String sqlType) {
+        String query = "查询";
+        if (query.equals(sqlType)) {
+            return ResultVO.success(sqlService.queryBySql(sqlStr));
+        } else {
+            sqlService.excuteSql(sqlStr);
+            return ResultVO.success();
+        }
     }
 
 }
