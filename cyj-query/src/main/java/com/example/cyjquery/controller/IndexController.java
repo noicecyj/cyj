@@ -45,12 +45,17 @@ public class IndexController {
     @PostMapping(value = "doSql")
     public ResultVO doSql(@RequestParam("sqlStr") String sqlStr, @RequestParam("sqlType") String sqlType) {
         String query = "查询";
-        if (query.equals(sqlType)) {
-            return ResultVO.success(sqlService.queryBySql(sqlStr));
-        } else {
-            sqlService.excuteSql(sqlStr);
-            return ResultVO.success();
+        try {
+            if (query.equals(sqlType)) {
+                return ResultVO.success(sqlService.queryBySql(sqlStr));
+            } else {
+                sqlService.excuteSql(sqlStr);
+                return ResultVO.success();
+            }
+        }catch (Exception e){
+            return ResultVO.failure(e.getCause().getCause());
         }
+
     }
 
 }
