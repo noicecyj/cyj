@@ -1,7 +1,7 @@
 package com.example.cyjentitycreater.utils;
 
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.entity.Entity;
+import com.example.cyjentitycreater.entity.EntityPO;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -46,18 +46,18 @@ public class BeanUtils {
         return String.valueOf(cs);
     }
 
-    public static Boolean ifDate(List<Entity> entityList) {
-        for (Entity entity : entityList) {
-            if ("Date".equals(entity.getEntityProperty())) {
+    public static Boolean ifDate(List<EntityPO> poList) {
+        for (EntityPO po : poList) {
+            if ("Date".equals(po.getEntityProperty())) {
                 return true;
             }
         }
         return false;
     }
 
-    public static Boolean ifTimestamp(List<Entity> entityList) {
-        for (Entity entity : entityList) {
-            if ("Timestamp".equals(entity.getEntityProperty())) {
+    public static Boolean ifTimestamp(List<EntityPO> poList) {
+        for (EntityPO po : poList) {
+            if ("Timestamp".equals(po.getEntityProperty())) {
                 return true;
             }
         }

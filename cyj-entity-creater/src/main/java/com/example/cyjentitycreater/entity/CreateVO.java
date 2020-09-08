@@ -11,11 +11,11 @@ import java.util.List;
  */
 @Data
 public class CreateVO {
-    private List<Entity> entityData;
+    private List<EntityPO> poList;
     private String type;
     private String name;
     private String[] method;
     private String lombok;
-    private Integer primaryKey;
+    private String primaryKey;
     private String path;
 }

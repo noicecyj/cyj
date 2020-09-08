@@ -2,7 +2,6 @@ package com.example.cyjpagemenu.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,7 +16,6 @@ import java.util.Set;
 @Entity
 @Table(name = MenuPagePO.T_MENU_PAGE)
 @Data
-@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler", "fieldHandler"})
 public class MenuPagePO implements Serializable {
 

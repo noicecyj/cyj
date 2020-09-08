@@ -1,9 +1,14 @@
 package com.example.cyjentitycreater.service;
 
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.entity.Entity;
+import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -26,6 +31,17 @@ public abstract class BaseService {
     private final String integerValue = "Integer";
     private final String stringValue = "String";
 
+    @Autowired
+    @PersistenceContext
+    protected EntityManager entityManager;
+
+    protected JPAQueryFactory queryFactory;
+
+    @PostConstruct
+    public void init() {
+        queryFactory = new JPAQueryFactory(entityManager);
+    }
+
     /**
      * 生成注解
      *
@@ -33,7 +49,7 @@ public abstract class BaseService {
      * @param sb       实体类生成字符串
      * @param yes      是否使用lombok
      */
-    abstract void generateAnnotation(CreateVO createVO, StringBuffer sb, String yes);
+    public abstract void generateAnnotation(CreateVO createVO, StringBuffer sb, String yes);
 
     /**
      * 生成属性
@@ -41,7 +57,7 @@ public abstract class BaseService {
      * @param createVO 属性列表
      * @param sb       实体类生成字符串
      */
-    abstract void generateProperty(CreateVO createVO, StringBuffer sb);
+    public abstract void generateProperty(CreateVO createVO, StringBuffer sb);
 
     /**
      * 生成重写构造方法
@@ -58,13 +74,13 @@ public abstract class BaseService {
         sb.append("    public ")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
                 .append("(");
-        createVO.getEntityData().forEach(entity -> sb.append(entity.getEntityProperty()).append(" ")
-                .append(BeanUtils.underline2Camel(entity.getEntityName())).append(", "));
+        createVO.getPoList().forEach(po -> sb.append(po.getEntityProperty()).append(" ")
+                .append(BeanUtils.underline2Camel(po.getEntityName())).append(", "));
         sb.deleteCharAt(sb.length() - 2);
         sb.append(") {\r\n");
-        createVO.getEntityData().forEach(entity -> sb.append("        this.")
-                .append(BeanUtils.underline2Camel(entity.getEntityName())).append(" = ")
-                .append(BeanUtils.underline2Camel(entity.getEntityName())).append(";\r\n"));
+        createVO.getPoList().forEach(po -> sb.append("        this.")
+                .append(BeanUtils.underline2Camel(po.getEntityName())).append(" = ")
+                .append(BeanUtils.underline2Camel(po.getEntityName())).append(";\r\n"));
         sb.append("    }\r\n")
                 .append("\r\n");
     }
@@ -72,47 +88,47 @@ public abstract class BaseService {
     /**
      * 生成重写getter和setter的方法
      *
-     * @param entityList 属性列表
+     * @param poList 属性列表
      * @param sb         实体类生成字符串
      */
-    void generateGetterAndSetter(List<Entity> entityList, StringBuffer sb) {
-        entityList.forEach(entity -> sb.append("    public ")
-                .append(entity.getEntityProperty()).append(" ").append("get")
-                .append(BeanUtils.captureName(BeanUtils.underline2Camel(entity.getEntityName())))
+    void generateGetterAndSetter(List<EntityPO> poList, StringBuffer sb) {
+        poList.forEach(po -> sb.append("    public ")
+                .append(po.getEntityProperty()).append(" ").append("get")
+                .append(BeanUtils.captureName(BeanUtils.underline2Camel(po.getEntityName())))
                 .append("()").append(" {\r\n").append("        return ")
-                .append(BeanUtils.underline2Camel(entity.getEntityName()))
+                .append(BeanUtils.underline2Camel(po.getEntityName()))
                 .append(";\r\n").append("    }\r\n").append("\r\n")
                 .append("    public void ").append("set")
-                .append(BeanUtils.captureName(BeanUtils.underline2Camel(entity.getEntityName())))
-                .append("(").append(entity.getEntityProperty())
-                .append(" ").append(BeanUtils.underline2Camel(entity.getEntityName()))
+                .append(BeanUtils.captureName(BeanUtils.underline2Camel(po.getEntityName())))
+                .append("(").append(po.getEntityProperty())
+                .append(" ").append(BeanUtils.underline2Camel(po.getEntityName()))
                 .append(") {\r\n").append("        this.")
-                .append(BeanUtils.underline2Camel(entity.getEntityName()))
-                .append(" = ").append(BeanUtils.underline2Camel(entity.getEntityName()))
+                .append(BeanUtils.underline2Camel(po.getEntityName()))
+                .append(" = ").append(BeanUtils.underline2Camel(po.getEntityName()))
                 .append(";\r\n").append("    }\r\n").append("\r\n"));
     }
 
     /**
      * 生成重写getter和setter的方法
      *
-     * @param entityList 属性列表
+     * @param poList 属性列表
      * @param sb         实体类生成字符串
      * @param tableName  表名
      */
-    void generateToString(List<Entity> entityList, StringBuffer sb, String tableName) {
+    void generateToString(List<EntityPO> poList, StringBuffer sb, String tableName) {
         sb.append("    @Override\r\n");
         sb.append("    public String toString() {\r\n");
         sb.append("        return \"")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName))).append("{\" +\r\n");
-        entityList.forEach(entity -> {
-            if (idValue.equals(entity.getEntityName()) && integerValue.equals(entity.getEntityProperty())) {
+        poList.forEach(po -> {
+            if (idValue.equals(po.getEntityName()) && integerValue.equals(po.getEntityProperty())) {
                 sb.append("            \"id=\" + id +\r\n");
-            } else if (!stringValue.equals(entity.getEntityProperty())) {
-                sb.append("            \", ").append(entity.getEntityName())
-                        .append("=\" + ").append(entity.getEntityName()).append(" + \r\n");
+            } else if (!stringValue.equals(po.getEntityProperty())) {
+                sb.append("            \", ").append(po.getEntityName())
+                        .append("=\" + ").append(po.getEntityName()).append(" + \r\n");
             } else {
-                sb.append("            \", ").append(entity.getEntityName())
-                        .append("='\" + ").append(entity.getEntityName()).append(" + ")
+                sb.append("            \", ").append(po.getEntityName())
+                        .append("='\" + ").append(po.getEntityName()).append(" + ")
                         .append(" '\\'' ").append(" + \r\n");
             }
         });
@@ -123,11 +139,11 @@ public abstract class BaseService {
     /**
      * 生成重写Equals的方法
      *
-     * @param entityList 属性列表
+     * @param poList 属性列表
      * @param sb         实体类生成字符串
      * @param tableName  表名
      */
-    void generateEquals(List<Entity> entityList, StringBuffer sb, String tableName) {
+    void generateEquals(List<EntityPO> poList, StringBuffer sb, String tableName) {
         sb.append("    @Override\r\n");
         sb.append("    public boolean equals(Object o) {\r\n");
         sb.append("        if (this == o) return true;\r\n");
@@ -135,13 +151,13 @@ public abstract class BaseService {
         sb.append("        ").append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName)))
                 .append(" that = (").append(BeanUtils.captureName(BeanUtils.underline2Camel(tableName)))
                 .append(") o;\r\n");
-        entityList.forEach(entity -> {
-            if (idValue.equals(entity.getEntityName()) && integerValue.equals(entity.getEntityProperty())) {
+        poList.forEach(po -> {
+            if (idValue.equals(po.getEntityName()) && integerValue.equals(po.getEntityProperty())) {
                 sb.append("        return Objects.equals(id, that.id) &&\r\n");
             } else {
                 sb.append("                Objects.equals(")
-                        .append(entity.getEntityName()).append(", that.")
-                        .append(entity.getEntityName()).append(") &&\r\n");
+                        .append(po.getEntityName()).append(", that.")
+                        .append(po.getEntityName()).append(") &&\r\n");
             }
         });
         sb.append("    }\r\n");
@@ -150,14 +166,14 @@ public abstract class BaseService {
     /**
      * 生成重写HashCode的方法
      *
-     * @param entityList 属性列表
+     * @param poList 属性列表
      * @param sb         实体类生成字符串
      */
-    void generateHashCode(List<Entity> entityList, StringBuffer sb) {
+    void generateHashCode(List<EntityPO> poList, StringBuffer sb) {
         sb.append("    @Override\r\n");
         sb.append("    public int hashCode() {\r\n");
         sb.append("        return Objects.hash(");
-        entityList.forEach(entity -> sb.append(entity.getEntityName()).append(", "));
+        poList.forEach(po -> sb.append(po.getEntityName()).append(", "));
         sb.deleteCharAt(sb.length() - 2);
         sb.append(");\r\n");
         sb.append("    }\r\n");
@@ -169,7 +185,7 @@ public abstract class BaseService {
      * @param createVO 表单
      * @param sb       实体类生成字符串
      */
-    String[] generateMethod(CreateVO createVO, StringBuffer sb) {
+    public String[] generateMethod(CreateVO createVO, StringBuffer sb) {
         String yes = "Y";
         generateProperty(createVO, sb);
         if (createVO.getMethod() != null && !yes.equals(createVO.getLombok())) {
@@ -178,17 +194,17 @@ public abstract class BaseService {
                     generateConstructor(createVO, sb);
                 }
                 if ("Getter and Setter".equals(method)) {
-                    generateGetterAndSetter(createVO.getEntityData(), sb);
+                    generateGetterAndSetter(createVO.getPoList(), sb);
                     sb.append("\r\n");
                 }
                 if ("toString".equals(method)) {
-                    generateToString(createVO.getEntityData(), sb, createVO.getName());
+                    generateToString(createVO.getPoList(), sb, createVO.getName());
                     sb.append("\r\n");
                 }
                 if ("equals and hashCode".equals(method)) {
-                    generateEquals(createVO.getEntityData(), sb, createVO.getName());
+                    generateEquals(createVO.getPoList(), sb, createVO.getName());
                     sb.append("\r\n");
-                    generateHashCode(createVO.getEntityData(), sb);
+                    generateHashCode(createVO.getPoList(), sb);
                 }
             }
         }
@@ -204,15 +220,15 @@ public abstract class BaseService {
      * @param yes      是
      * @param sb       实体类生成字符串
      */
-    void generatePackage(CreateVO createVO, StringBuffer sb, String yes) {
+    public void generatePackage(CreateVO createVO, StringBuffer sb, String yes) {
         //pojo路径
         String[] poPathArr = createVO.getPath().split("java");
         String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
         sb.append("package ").append(poPath).append(";\r\n");
-        if (BeanUtils.ifDate(createVO.getEntityData())) {
+        if (BeanUtils.ifDate(createVO.getPoList())) {
             sb.append("import java.sql.Date;\r\n");
         }
-        if (BeanUtils.ifTimestamp(createVO.getEntityData())) {
+        if (BeanUtils.ifTimestamp(createVO.getPoList())) {
             sb.append("import java.sql.Timestamp;\r\n");
         }
         if (yes.equals(createVO.getLombok())) {
@@ -225,7 +241,7 @@ public abstract class BaseService {
      *
      * @param sb 实体类生成字符串
      */
-    void generateAuthor(StringBuffer sb) {
+    public void generateAuthor(StringBuffer sb) {
         LocalDate localDate = LocalDate.now();
         sb.append("/**\r\n");
         sb.append(" * @author 曹元杰\r\n");
@@ -239,7 +255,7 @@ public abstract class BaseService {
      *
      * @param path 路径
      */
-    void createJavaFile(String path, String[] result) throws IOException {
+    public void createJavaFile(String path, String[] result) throws IOException {
         //文件放在src/main/java/ 目录下 命名为aaa.java
         File file = new File(path + "/" + result[1]);
         //如果文件不存在，创建一个文件
@@ -265,7 +281,7 @@ public abstract class BaseService {
      *
      * @param path 路径
      */
-    List<File> getFiles(String path) {
+    public List<File> getFiles(String path) {
         List<File> files = new ArrayList<>();
         File file = new File(path);
         File[] tempList = file.listFiles();

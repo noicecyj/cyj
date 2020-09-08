@@ -1,6 +1,7 @@
-package com.example.cyjentitycreater.service;
+package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.service.BaseService;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -44,7 +45,7 @@ public class OtherServiceImpl extends BaseService {
 
     @Override
     public void generateProperty(CreateVO createVO, StringBuffer sb) {
-        createVO.getEntityData().forEach(entity -> {
+        createVO.getPoList().forEach(entity -> {
             sb.append("    private ")
                     .append(entity.getEntityProperty()).append(" ")
                     .append(BeanUtils.underline2Camel(entity.getEntityName()))

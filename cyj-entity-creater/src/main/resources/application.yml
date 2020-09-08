@@ -10,9 +10,14 @@ eureka:
 spring:
   application:
     name: cyj-entity-creater
-  thymeleaf:
-    check-template: false
-    check-template-location: false
-logging:
-  level:
-    org.hibernate: INFO
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/data_entity?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: 68762306

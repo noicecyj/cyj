@@ -1,6 +1,7 @@
-package com.example.cyjentitycreater.service;
+package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.service.BaseService;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -254,7 +255,7 @@ public class PoServiceImpl extends BaseService {
 
     public String[] createJavaFile(CreateVO createVO) throws IOException {
         String[] result = null;
-        if (!createVO.getEntityData().isEmpty()) {
+        if (!createVO.getPoList().isEmpty()) {
             result = entityGenerate(createVO);
             createJavaFile(createVO.getPath() + "\\entity", result);
         }
@@ -290,7 +291,7 @@ public class PoServiceImpl extends BaseService {
 
     @Override
     public void generateProperty(CreateVO createVO, StringBuffer sb) {
-        createVO.getEntityData().forEach(entity -> {
+        createVO.getPoList().forEach(entity -> {
             if (entity.getId().equals(createVO.getPrimaryKey()) && entity.getEntityName().equals(idValue)) {
                 sb.append("    @Id\r\n");
                 sb.append("    @GeneratedValue(generator = \"uuid2\")\r\n");
