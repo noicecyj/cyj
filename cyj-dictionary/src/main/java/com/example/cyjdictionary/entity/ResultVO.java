@@ -7,7 +7,6 @@ import lombok.Data;
  * @version 1.0
  * @date 2020/7/07 14:46
  */
-
 @Data
 public class ResultVO {
     private static final long serialVersionUID = -3948389268046368059L;

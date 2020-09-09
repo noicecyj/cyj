@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "logApi")
-public class IndexController {
+public class IndexController implements LogController {
 
     private ServerServiceImpl serverService;
     private LogServiceImpl logService;
@@ -33,7 +33,7 @@ public class IndexController {
         this.logService = logService;
     }
 
-    @PostMapping(value = "saveServer")
+    @Override
     public ResultVO saveServer(@RequestBody ServerPO po) {
         if (po.getId() == null) {
             return ResultVO.success(serverService.addOne(po));
@@ -41,7 +41,7 @@ public class IndexController {
         return ResultVO.success(serverService.updateOne(po));
     }
 
-    @PostMapping(value = "findAll")
+    @Override
     public ResultVO findAll(@RequestParam("pageNumber") Integer pageNumber,
                             @RequestParam("pageSize") Integer pageSize,
                             @RequestParam("sortCode") String sortCode) {
@@ -49,21 +49,38 @@ public class IndexController {
         return ResultVO.success(pos);
     }
 
-    @PostMapping(value = "serverDelete")
+    @Override
     public void serverDelete(@RequestParam("id") String id) {
         serverService.deleteOne(id);
     }
 
+    /**
+     * 根据端口查询日志
+     * @param port 端口
+     * @return 返回值
+     */
     @PostMapping(value = "findLogsByPort")
     public List<LogPO> findLogsByPort(@RequestParam("port") String port) {
         return logService.findLogsByPort(port);
     }
 
+    /**
+     *
+     * @param name 服务名
+     * @return 返回值
+     */
     @PostMapping(value = "findLogsByName")
     public List<LogPO> findLogsByName(@RequestParam("name") String name) {
         return logService.findLogsByName(name);
     }
 
+    /**
+     *
+     * @param port 端口
+     * @param time1 时间1
+     * @param time2 时间2
+     * @return 返回值
+     */
     @PostMapping(value = "findLogsByPortAndTime")
     public List<LogPO> findLogsByPortAndTime(@RequestParam("port") String port,
                                              @RequestParam("time1") String time1,
@@ -71,6 +88,10 @@ public class IndexController {
         return logService.findLogsByPortAndTime(port, time1, time2);
     }
 
+    /**
+     *
+     * @param port 端口
+     */
     @PostMapping(value = "deleteLogsByPort")
     public void deleteLogsByPort(@RequestParam("port") String port) {
         logService.deleteLogsByPort(port);

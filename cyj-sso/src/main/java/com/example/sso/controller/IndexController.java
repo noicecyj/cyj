@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(value = "ssoApi")
-public class IndexController {
+public class IndexController implements UserController, RoleController, PageFunctionController, ApiController {
 
     private UserServiceImpl userService;
     private RoleServiceImpl roleService;
@@ -42,14 +42,14 @@ public class IndexController {
         this.apiService = apiService;
     }
 
-    @PostMapping(value = "userPage")
+    @Override
     public ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                 @RequestParam("pageSize") Integer pageSize,
                                 @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(userService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
-    @PostMapping(value = "userSave")
+    @Override
     public ResultVO saveUser(@RequestBody UserPO po) {
         if (po.getId() == null) {
             return ResultVO.success(userService.addOne(po));
@@ -57,19 +57,19 @@ public class IndexController {
         return ResultVO.success(userService.updateOne(po));
     }
 
-    @PostMapping(value = "userDelete")
+    @Override
     public void userDeleteOne(@RequestParam("id") String id) {
         userService.deleteOne(id);
     }
 
-    @PostMapping(value = "rolePage")
+    @Override
     public ResultVO roleFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                 @RequestParam("pageSize") Integer pageSize,
                                 @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(roleService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
-    @PostMapping(value = "roleSave")
+    @Override
     public ResultVO saveRole(@RequestBody RolePO po) {
         if (po.getId() == null) {
             return ResultVO.success(roleService.addOne(po));
@@ -77,19 +77,19 @@ public class IndexController {
         return ResultVO.success(roleService.updateOne(po));
     }
 
-    @PostMapping(value = "roleDelete")
+    @Override
     public void roleDeleteOne(@RequestParam("id") String id) {
         roleService.deleteOne(id);
     }
 
-    @PostMapping(value = "pageFunctionPage")
+    @Override
     public ResultVO pageFunctionFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                         @RequestParam("pageSize") Integer pageSize,
                                         @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(pageFunctionService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
-    @PostMapping(value = "pageFunctionSave")
+    @Override
     public ResultVO savePageFunction(@RequestBody PageFunctionPO po) {
         if (po.getId() == null) {
             return ResultVO.success(pageFunctionService.addOne(po));
@@ -97,19 +97,19 @@ public class IndexController {
         return ResultVO.success(pageFunctionService.updateOne(po));
     }
 
-    @PostMapping(value = "pageFunctionDelete")
+    @Override
     public void pageFunctionDeleteOne(@RequestParam("id") String id) {
         pageFunctionService.deleteOne(id);
     }
 
-    @PostMapping(value = "apiPage")
+    @Override
     public ResultVO apiFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                @RequestParam("pageSize") Integer pageSize,
                                @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(apiService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
-    @PostMapping(value = "apiSave")
+    @Override
     public ResultVO saveApi(@RequestBody ApiPO po) {
         if (po.getId() == null) {
             return ResultVO.success(apiService.addOne(po));
@@ -117,7 +117,7 @@ public class IndexController {
         return ResultVO.success(apiService.updateOne(po));
     }
 
-    @PostMapping(value = "apiDelete")
+    @Override
     public void apiDeleteOne(@RequestParam("id") String id) {
         apiService.deleteOne(id);
     }

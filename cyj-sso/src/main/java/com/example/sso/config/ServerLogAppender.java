@@ -266,10 +266,6 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
         return baseIndex;
     }
 
-    /**
-     * Add an exception statement either as a batch or execute immediately if
-     * batch updates are not supported.
-     */
     void updateExceptionStatement(PreparedStatement exceptionStatement, String txt, short i, long eventId) throws SQLException {
         exceptionStatement.setLong(1, eventId);
         exceptionStatement.setShort(2, i);

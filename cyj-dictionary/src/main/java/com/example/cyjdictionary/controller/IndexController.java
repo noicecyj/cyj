@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "dictionaryApi")
-public class IndexController implements DictionaryController {
+public class IndexController implements DictionaryController, CatalogController {
 
     private DictionaryService dictionaryService;
 
@@ -51,28 +51,8 @@ public class IndexController implements DictionaryController {
     }
 
     @Override
-    public List<DictionaryPO> findCatalogByName(@RequestParam("name") String name) {
-        return dictionaryService.findCatalogByName(name);
-    }
-
-    @Override
-    public List<DictionaryPO> findCatalogByValue(@RequestParam("value") String value) {
-        return dictionaryService.findCatalogByValue(value);
-    }
-
-    @Override
     public void catalogDeleteOne(@RequestParam("id") String id) {
         dictionaryCatalogService.deleteOne(id);
-    }
-
-    @Override
-    public ResultVO findAllByCatalogNameContainsOrCatalogValueContains(@RequestParam("catalogName") String catalogName,
-                                                                       @RequestParam("catalogValue") String catalogValue,
-                                                                       @RequestParam("pageNumber") Integer pageNumber,
-                                                                       @RequestParam("pageSize") Integer pageSize,
-                                                                       @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(dictionaryCatalogService
-                .findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageNumber - 1, pageSize, sortCode));
     }
 
     @Override
@@ -94,5 +74,47 @@ public class IndexController implements DictionaryController {
     @Override
     public void dictionaryDeleteOne(@RequestParam("id") String id) {
         dictionaryService.deleteOne(id);
+    }
+
+    /**
+     * 根据目录名称查询字典
+     *
+     * @param name 目录名称
+     * @return 返回结果
+     */
+    @PostMapping(value = "findCatalogByName")
+    public List<DictionaryPO> findCatalogByName(@RequestParam("name") String name) {
+        return dictionaryService.findCatalogByName(name);
+    }
+
+    /**
+     * 根据目录值查询字典
+     *
+     * @param value 目录值
+     * @return 返回结果
+     */
+    @PostMapping(value = "findCatalogByValue")
+    public List<DictionaryPO> findCatalogByValue(@RequestParam("value") String value) {
+        return dictionaryService.findCatalogByValue(value);
+    }
+
+    /**
+     * 根据目录名称或者值模糊查询
+     *
+     * @param catalogName  目录名称
+     * @param catalogValue 目录值
+     * @param pageNumber   页码
+     * @param pageSize     条目
+     * @param sortCode     排序列
+     * @return 返回结果
+     */
+    @PostMapping(value = "findAllByCatalogNameContainsOrCatalogValueContains")
+    public ResultVO findAllByCatalogNameContainsOrCatalogValueContains(@RequestParam("catalogName") String catalogName,
+                                                                       @RequestParam("catalogValue") String catalogValue,
+                                                                       @RequestParam("pageNumber") Integer pageNumber,
+                                                                       @RequestParam("pageSize") Integer pageSize,
+                                                                       @RequestParam("sortCode") String sortCode) {
+        return ResultVO.success(dictionaryCatalogService
+                .findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageNumber - 1, pageSize, sortCode));
     }
 }

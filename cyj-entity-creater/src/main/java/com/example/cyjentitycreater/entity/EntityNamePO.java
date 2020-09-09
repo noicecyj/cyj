@@ -13,8 +13,8 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = EntityNamePO.T_ENTITY_NAME)
-@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 @Data
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 public class EntityNamePO implements Serializable {
 
     static final String T_ENTITY_NAME = "t_entity_name";

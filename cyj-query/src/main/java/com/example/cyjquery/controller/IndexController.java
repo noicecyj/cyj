@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(value = "sqlApi")
-public class IndexController {
+public class IndexController implements QueryController {
 
     private SqlServiceImpl sqlService;
 
@@ -22,14 +22,14 @@ public class IndexController {
         this.sqlService = sqlService;
     }
 
-    @PostMapping(value = "sqlPage")
+    @Override
     public ResultVO sqlFindAll(@RequestParam("pageNumber") Integer pageNumber,
                                @RequestParam("pageSize") Integer pageSize,
                                @RequestParam("sortCode") String sortCode) {
         return ResultVO.success(sqlService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
-    @PostMapping(value = "sqlSave")
+    @Override
     public ResultVO saveSql(@RequestBody SqlPO po) {
         if (po.getId() == null) {
             return ResultVO.success(sqlService.addOne(po));
@@ -37,11 +37,17 @@ public class IndexController {
         return ResultVO.success(sqlService.updateOne(po));
     }
 
-    @PostMapping(value = "sqlDelete")
+    @Override
     public void sqlDeleteOne(@RequestParam("id") String id) {
         sqlService.deleteOne(id);
     }
 
+    /**
+     * 通过sql查询
+     * @param sqlStr sql语句
+     * @param sqlType sql类型
+     * @return 返回值
+     */
     @PostMapping(value = "doSql")
     public ResultVO doSql(@RequestParam("sqlStr") String sqlStr, @RequestParam("sqlType") String sqlType) {
         String query = "查询";
