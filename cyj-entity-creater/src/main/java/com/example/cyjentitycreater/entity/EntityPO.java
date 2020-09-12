@@ -32,4 +32,7 @@ public class EntityPO implements Serializable {
 
     @Column(name = "entity_property")
     private String entityProperty;
+
+    @Column(name = "sort_code")
+    private String sortCode;
 }

@@ -2,6 +2,7 @@ package com.example.cyjentitycreater.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,12 +11,9 @@ import java.util.List;
  * @date 2020/7/03 14:46
  */
 @Data
-public class CreateVO {
+public class CreateVO implements Serializable {
     private List<EntityPO> poList;
     private String type;
     private String name;
-    private String[] method;
-    private String lombok;
-    private String primaryKey;
     private String path;
 }

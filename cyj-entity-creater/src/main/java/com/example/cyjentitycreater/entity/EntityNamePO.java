@@ -30,12 +30,10 @@ public class EntityNamePO implements Serializable {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "is_lombok")
-    private String isLombok;
-
-    @Column(name = "method")
-    private String method;
-
     @Column(name = "path")
     private String path;
+
+    @Column(name = "sort_code")
+    private String sortCode;
+
 }

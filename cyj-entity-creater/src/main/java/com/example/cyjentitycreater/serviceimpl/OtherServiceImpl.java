@@ -1,11 +1,13 @@
 package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.service.BaseService;
+import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+
+import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 
 
 /**
@@ -16,41 +18,27 @@ import java.io.IOException;
 @Component
 public class OtherServiceImpl extends BaseService {
 
-    public String[] entityGenerate(CreateVO createVO) {
-        StringBuffer sb = new StringBuffer();
-        String yes = "Y";
-        generateAnnotation(createVO, sb, yes);
-        sb.append("public class ")
-                .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
-                .append(createVO.getType())
-                .append(" implements Serializable {\r\n");
+    public String[] entityGenerate(CreateVO createVO, StringBuffer sb) {
+        generatePackage1(createVO, sb);
         sb.append("\r\n");
-        return generateMethod(createVO, sb);
+        generatePackage2(createVO, sb);
+        sb.append("@Data\r\n");
+        generateClass(createVO, sb);
+        for (EntityPO entityPO : createVO.getPoList()) {
+            sb.append("    private ").append(entityPO.getEntityProperty()).append(" ")
+                    .append(BeanUtils.underline2Camel(entityPO.getEntityName())).append(";\r\n");
+            sb.append("\r\n");
+        }
+        sb.append("}");
+        String entityData = sb.toString();
+        return new String[]{entityData, entityName(createVO)};
     }
+
 
     public String[] createJavaFile(CreateVO createVO) throws IOException {
-        String[] result = entityGenerate(createVO);
+        StringBuffer sb = new StringBuffer();
+        String[] result = entityGenerate(createVO, sb);
         createJavaFile(createVO.getPath(), result);
         return result;
-    }
-
-    @Override
-    public void generateAnnotation(CreateVO createVO, StringBuffer sb, String yes) {
-        generatePackage(createVO, sb, yes);
-        generateAuthor(sb);
-        if (yes.equals(createVO.getLombok())) {
-            sb.append("@Data\r\n");
-        }
-    }
-
-    @Override
-    public void generateProperty(CreateVO createVO, StringBuffer sb) {
-        createVO.getPoList().forEach(entity -> {
-            sb.append("    private ")
-                    .append(entity.getEntityProperty()).append(" ")
-                    .append(BeanUtils.underline2Camel(entity.getEntityName()))
-                    .append(";\r\n");
-            sb.append("\r\n");
-        });
     }
 }

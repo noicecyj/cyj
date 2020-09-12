@@ -44,10 +44,11 @@ public class IndexController implements EntityController, EntityNameController {
     }
 
     @Override
-    public ResultVO entityFindAll(@RequestParam("pageNumber") Integer pageNumber,
+    public ResultVO entityFindAll(@RequestParam("id") String id,
+                                  @RequestParam("pageNumber") Integer pageNumber,
                                   @RequestParam("pageSize") Integer pageSize,
                                   @RequestParam("sortCode") String sortCode) {
-        Page<EntityPO> pos = entityService.findAll(pageNumber - 1, pageSize, sortCode);
+        Page<EntityPO> pos = entityService.findAll(id, pageNumber, pageSize, sortCode);
         return ResultVO.success(pos);
     }
 
@@ -87,6 +88,7 @@ public class IndexController implements EntityController, EntityNameController {
 
     /**
      * 生成实体代码
+     *
      * @param createVO 实体参数
      * @return 返回值
      */
@@ -97,6 +99,7 @@ public class IndexController implements EntityController, EntityNameController {
 
     /**
      * 生成实体类文件
+     *
      * @param createVO 实体参数
      * @return 返回值
      */
@@ -104,4 +107,6 @@ public class IndexController implements EntityController, EntityNameController {
     public ResultVO createEntity(@RequestBody CreateVO createVO) {
         return ResultVO.success(entityFactory.createEntity(createVO));
     }
+
+
 }
