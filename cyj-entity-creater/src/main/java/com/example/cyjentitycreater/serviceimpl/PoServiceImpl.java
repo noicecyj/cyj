@@ -267,8 +267,8 @@ public class PoServiceImpl extends BaseService {
         return new String[]{daoData, controllerName()};
     }
 
-    public String[] createJavaFile(CreateVO createVO) throws IOException {
-        String[] result = null;
+    public void createJavaFile(CreateVO createVO) throws IOException {
+        String[] result;
         StringBuffer sb = new StringBuffer();
         if (!createVO.getPoList().isEmpty()) {
             result = entityGenerate(createVO,sb);
@@ -282,7 +282,6 @@ public class PoServiceImpl extends BaseService {
         createJavaFile(createVO.getPath() + "\\serviceimpl", serviceImplResult);
         String[] controllerResult = controllerGenerate(createVO);
         createJavaFile(createVO.getPath() + "\\controller", controllerResult);
-        return result;
     }
 
 }

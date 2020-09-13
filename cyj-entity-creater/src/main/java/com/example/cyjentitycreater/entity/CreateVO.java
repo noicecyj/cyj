@@ -12,8 +12,9 @@ import java.util.List;
  */
 @Data
 public class CreateVO implements Serializable {
-    private List<EntityPO> poList;
+    private String id;
     private String type;
     private String name;
     private String path;
+    private List<EntityPO> poList;
 }

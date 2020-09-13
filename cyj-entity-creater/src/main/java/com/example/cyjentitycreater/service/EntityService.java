@@ -53,4 +53,18 @@ public interface EntityService {
      * @return 字典列表
      */
     List<EntityPO> findEntityById(String id);
+
+    /**
+     * 上移属性
+     *
+     * @param id id
+     */
+    void upEntity(String id);
+
+    /**
+     * 下移属性
+     *
+     * @param id id
+     */
+    void downEntity(String id);
 }

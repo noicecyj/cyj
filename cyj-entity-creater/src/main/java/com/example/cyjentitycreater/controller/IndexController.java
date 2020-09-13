@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -87,17 +89,6 @@ public class IndexController implements EntityController, EntityNameController {
     }
 
     /**
-     * 生成实体代码
-     *
-     * @param createVO 实体参数
-     * @return 返回值
-     */
-    @RequestMapping(value = "entity")
-    public ResultVO entity(@RequestBody CreateVO createVO) {
-        return ResultVO.success(entityFactory.entity(createVO));
-    }
-
-    /**
      * 生成实体类文件
      *
      * @param createVO 实体参数
@@ -105,8 +96,29 @@ public class IndexController implements EntityController, EntityNameController {
      */
     @RequestMapping(value = "createEntity")
     public ResultVO createEntity(@RequestBody CreateVO createVO) {
-        return ResultVO.success(entityFactory.createEntity(createVO));
+        List<EntityPO> poList = entityService.findEntityById(createVO.getId());
+        createVO.setPoList(poList);
+        entityFactory.createEntity(createVO);
+        return ResultVO.success();
     }
 
+    /**
+     * 上移属性
+     *
+     * @param id id
+     */
+    @RequestMapping(value = "upEntity")
+    public void upEntity(@RequestParam("id") String id) {
+        entityService.upEntity(id);
+    }
 
+    /**
+     * 下移属性
+     *
+     * @param id id
+     */
+    @RequestMapping(value = "downEntity")
+    public void downEntity(@RequestParam("id") String id) {
+        entityService.downEntity(id);
+    }
 }

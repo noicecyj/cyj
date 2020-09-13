@@ -59,6 +59,15 @@ public class BaseService {
         sb.append("\r\n");
     }
 
+    public void generatePackage1(CreateVO createVO, StringBuffer sb) {
+        //pojo路径
+        String[] poPathArr = createVO.getPath().split("java");
+        String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
+        sb.append("package ").append(poPath).append(";\r\n");
+        sb.append("\r\n");
+        sb.append("import lombok.Data;\r\n");
+    }
+
     public void generatePackage2(CreateVO createVO, StringBuffer sb) {
         sb.append("import java.io.Serializable;\r\n");
         if (BeanUtils.ifDate(createVO.getPoList())) {
@@ -69,15 +78,6 @@ public class BaseService {
         }
         sb.append("\r\n");
         generateAuthor(sb);
-    }
-
-    public void generatePackage1(CreateVO createVO, StringBuffer sb) {
-        //pojo路径
-        String[] poPathArr = createVO.getPath().split("java");
-        String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
-        sb.append("package ").append(poPath).append(";\r\n");
-        sb.append("\r\n");
-        sb.append("import lombok.Data;\r\n");
     }
 
     /**

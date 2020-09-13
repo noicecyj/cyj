@@ -11,6 +11,7 @@ import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author 曹元杰
@@ -60,5 +61,37 @@ public class EntityServiceImpl extends BaseService implements EntityService {
                 .on(qEntityPO.pid.eq(qEntityNamePO.id))
                 .where(qEntityNamePO.id.eq(id))
                 .orderBy(qEntityPO.sortCode.asc()).fetch();
+    }
+
+    @Override
+    public void upEntity(String id) {
+        Optional<EntityPO> po = entityDao.findById(id);
+        if (po.isPresent()){
+            String sortCode1 = po.get().getSortCode();
+            List<EntityPO> poList = entityDao.findByPidAndSortCodeBeforeOrderBySortCodeDesc(po.get().getPid(),sortCode1);
+            if (!poList.isEmpty()){
+                String sortCode2 = poList.get(0).getSortCode();
+                poList.get(0).setSortCode(sortCode1);
+                po.get().setSortCode(sortCode2);
+                updateOne(poList.get(0));
+                updateOne(po.get());
+            }
+        }
+    }
+
+    @Override
+    public void downEntity(String id) {
+        Optional<EntityPO> po = entityDao.findById(id);
+        if (po.isPresent()){
+            String sortCode1 = po.get().getSortCode();
+            List<EntityPO> poList = entityDao.findByPidAndSortCodeAfterOrderBySortCode(po.get().getPid(),sortCode1);
+            if (!poList.isEmpty()){
+                String sortCode2 = poList.get(0).getSortCode();
+                poList.get(0).setSortCode(sortCode1);
+                po.get().setSortCode(sortCode2);
+                updateOne(poList.get(0));
+                updateOne(po.get());
+            }
+        }
     }
 }
