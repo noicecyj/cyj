@@ -2,11 +2,10 @@ package com.example.sso.service;
 
 import com.example.sso.entity.UserPO;
 import org.springframework.data.domain.Page;
-
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-08-09
+ * @date 2020-09-13
  */
 public interface UserService {
 
@@ -37,8 +36,8 @@ public interface UserService {
      * 查找所有实体(分页排序)
      *
      * @param pageNumber 页码
-     * @param pageSize   条目
-     * @param sortCode   排序列
+     * @param pageSize 条目
+     * @param sortCode 排序列
      * @return 实体列表分页
      */
     Page<UserPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);

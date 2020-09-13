@@ -1,7 +1,7 @@
 package com.example.sso.controller;
 
-import com.example.sso.entity.ResultVO;
 import com.example.sso.entity.UserPO;
+import com.example.sso.entity.ResultVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-08-09
+ * @date 2020-09-13
  */
 public interface UserController {
 
@@ -21,8 +21,8 @@ public interface UserController {
      * @param sortCode   排序列
      * @return 返回结果
      */
-    @PostMapping(value = "userPage")
-    ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
+     @PostMapping(value = "userPage")
+     ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
                          @RequestParam("pageSize") Integer pageSize,
                          @RequestParam("sortCode") String sortCode);
 
@@ -32,14 +32,15 @@ public interface UserController {
      * @param po 对象
      * @return 返回结果
      */
-    @PostMapping(value = "userSave")
-    ResultVO saveUser(@RequestBody UserPO po);
+     @PostMapping(value = "userSave")
+     ResultVO userSave(@RequestBody UserPO po);
 
     /**
      * 删除对象
      *
      * @param id 对象ID
      */
-    @PostMapping(value = "userDelete")
-    void userDeleteOne(@RequestParam("id") String id);
+     @PostMapping(value = "userDelete")
+     void userDelete(@RequestParam("id") String id);
+
 }

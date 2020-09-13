@@ -4,19 +4,20 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2020-09-13
  */
 @Entity
 @Table(name = ServerPO.T_SERVER)
-@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 @Data
-public class ServerPO {
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+public class ServerPO implements Serializable {
 
-    static final String T_SERVER = "t_data_server";
+    static final String T_SERVER = "t_server";
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -34,4 +35,5 @@ public class ServerPO {
 
     @Column(name = "sort_code")
     private String sortCode;
+
 }

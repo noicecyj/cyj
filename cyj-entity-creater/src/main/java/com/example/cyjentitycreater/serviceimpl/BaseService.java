@@ -3,6 +3,8 @@ package com.example.cyjentitycreater.serviceimpl;
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +31,8 @@ public class BaseService {
     protected EntityManager entityManager;
 
     protected JPAQueryFactory queryFactory;
+
+    private final Logger logger = LoggerFactory.getLogger(BaseService.class);
 
     @PostConstruct
     public void init() {
@@ -90,19 +94,20 @@ public class BaseService {
         File file = new File(path + "/" + result[1]);
         //如果文件不存在，创建一个文件
         if (file.createNewFile()) {
-            FileWriter fw = null;
-            BufferedWriter bw = null;
-            try {
-                fw = new FileWriter(file);
-                bw = new BufferedWriter(fw);
-                bw.write(result[0]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                assert bw != null;
-                bw.close();
-                fw.close();
-            }
+            logger.info("生成文件,路径为：{}",path + "/" + result[1]);
+        }
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        try {
+            fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            bw.write(result[0]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            assert bw != null;
+            bw.close();
+            fw.close();
         }
     }
 

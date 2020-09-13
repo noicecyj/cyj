@@ -1,7 +1,7 @@
 package com.example.sso.serviceimpl;
 
-import com.example.sso.dao.UserDao;
 import com.example.sso.entity.UserPO;
+import com.example.sso.dao.UserDao;
 import com.example.sso.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-08-09
+ * @date 2020-09-13
  */
 @Service
 public class UserServiceImpl extends BaseService implements UserService {

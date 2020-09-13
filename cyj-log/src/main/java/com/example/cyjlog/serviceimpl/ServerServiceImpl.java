@@ -1,7 +1,7 @@
 package com.example.cyjlog.serviceimpl;
 
-import com.example.cyjlog.dao.ServerDao;
 import com.example.cyjlog.entity.ServerPO;
+import com.example.cyjlog.dao.ServerDao;
 import com.example.cyjlog.service.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2020-09-13
  */
 @Service
 public class ServerServiceImpl extends BaseService implements ServerService {
@@ -46,4 +46,5 @@ public class ServerServiceImpl extends BaseService implements ServerService {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return serverDao.findAll(pageable);
     }
+
 }

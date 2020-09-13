@@ -1,13 +1,12 @@
 package com.example.cyjlog.controller;
 
 import com.example.cyjlog.entity.LogPO;
-import com.example.cyjlog.entity.ResultVO;
-import com.example.cyjlog.entity.ServerPO;
-import com.example.cyjlog.serviceimpl.LogServiceImpl;
-import com.example.cyjlog.serviceimpl.ServerServiceImpl;
+import com.example.cyjlog.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -18,40 +17,13 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "logApi")
-public class IndexController implements LogController {
+public class IndexController {
 
-    private ServerServiceImpl serverService;
-    private LogServiceImpl logService;
-
-    @Autowired
-    public void setServerService(ServerServiceImpl serverService) {
-        this.serverService = serverService;
-    }
+    private IndexServiceImpl logService;
 
     @Autowired
-    public void setLogService(LogServiceImpl logService) {
+    public void setLogService(IndexServiceImpl logService) {
         this.logService = logService;
-    }
-
-    @Override
-    public ResultVO saveServer(@RequestBody ServerPO po) {
-        if (po.getId() == null) {
-            return ResultVO.success(serverService.addOne(po));
-        }
-        return ResultVO.success(serverService.updateOne(po));
-    }
-
-    @Override
-    public ResultVO findAll(@RequestParam("pageNumber") Integer pageNumber,
-                            @RequestParam("pageSize") Integer pageSize,
-                            @RequestParam("sortCode") String sortCode) {
-        Page<ServerPO> pos = serverService.findAll(pageNumber - 1, pageSize, sortCode);
-        return ResultVO.success(pos);
-    }
-
-    @Override
-    public void serverDelete(@RequestParam("id") String id) {
-        serverService.deleteOne(id);
     }
 
     /**

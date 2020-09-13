@@ -80,8 +80,12 @@ public class BeanUtils {
         return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "ServiceImpl.java";
     }
 
-    public static String controllerName() {
-        return "IndexController.java";
+    public static String entityControllerName(CreateVO createVO) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "Controller.java";
+    }
+
+    public static String entityControllerImplName(CreateVO createVO) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "ControllerImpl.java";
     }
 
 }

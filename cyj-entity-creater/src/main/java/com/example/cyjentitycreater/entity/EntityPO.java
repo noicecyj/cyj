@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2020-09-13
  */
 @Entity
 @Table(name = EntityPO.T_ENTITY)
@@ -24,15 +24,16 @@ public class EntityPO implements Serializable {
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "pid", length = 36)
+    @Column
     private String pid;
 
-    @Column(name = "entity_name")
+    @Column
     private String entityName;
 
-    @Column(name = "entity_property")
+    @Column
     private String entityProperty;
 
-    @Column(name = "sort_code")
+    @Column
     private String sortCode;
+
 }

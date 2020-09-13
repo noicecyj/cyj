@@ -5,41 +5,38 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-08-09
+ * @date 2020-09-13
  */
 @Entity
 @Table(name = UserPO.T_USER)
 @Data
 @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 public class UserPO implements Serializable {
+
     static final String T_USER = "t_user";
+
     @Id
     @GeneratedValue(generator = "uuid2")
     @Column(name = "id", length = 36)
     private String id;
 
     @Column
-    private String username;
+    private String name;
 
     @Column
     private String password;
 
     @Column
-    private String name;
-
-    @Column
     private String phone;
 
     @Column
-    private String sortCode;
+    private String username;
 
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinTable(name = "t_user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<RolePO> roles;
+    @Column
+    private String sortCode;
 
 }

@@ -25,7 +25,7 @@ public class MenuPagePO implements Serializable {
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "pid", length = 32)
+    @Column(name = "pid", length = 36)
     private String pid;
 
     @Column(name = "page_name")

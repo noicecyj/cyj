@@ -16,5 +16,6 @@ public class CreateVO implements Serializable {
     private String type;
     private String name;
     private String path;
+    private String api;
     private List<EntityPO> poList;
 }

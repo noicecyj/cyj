@@ -1,7 +1,7 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.dao.EntityNameDao;
 import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.dao.EntityNameDao;
 import com.example.cyjentitycreater.service.EntityNameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2020-09-13
  */
 @Service
-public class EntityNameServiceImpl implements EntityNameService {
+public class EntityNameServiceImpl extends BaseService implements EntityNameService {
 
     private EntityNameDao entityNameDao;
 
@@ -46,4 +46,5 @@ public class EntityNameServiceImpl implements EntityNameService {
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return entityNameDao.findAll(pageable);
     }
+
 }

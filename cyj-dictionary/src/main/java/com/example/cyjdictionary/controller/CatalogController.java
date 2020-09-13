@@ -1,6 +1,6 @@
 package com.example.cyjdictionary.controller;
 
-import com.example.cyjdictionary.entity.DictionaryCatalogPO;
+import com.example.cyjdictionary.entity.CatalogPO;
 import com.example.cyjdictionary.entity.ResultVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2020-09-13
  */
 public interface CatalogController {
 
     /**
-     * 查询所有目录
+     * 查询所有对象
      *
      * @param pageNumber 页码
      * @param pageSize   条目
@@ -23,23 +23,24 @@ public interface CatalogController {
      */
     @PostMapping(value = "catalogPage")
     ResultVO catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                            @RequestParam("pageSize") Integer pageSize,
-                            @RequestParam("sortCode") String sortCode);
+                         @RequestParam("pageSize") Integer pageSize,
+                         @RequestParam("sortCode") String sortCode);
 
     /**
-     * 保存目录
+     * 保存对象
      *
-     * @param po 目录
+     * @param po 对象
      * @return 返回结果
      */
-    @PostMapping(value = "saveCatalog")
-    ResultVO saveCatalog(@RequestBody DictionaryCatalogPO po);
+    @PostMapping(value = "catalogSave")
+    ResultVO catalogSave(@RequestBody CatalogPO po);
 
     /**
-     * 删除目录
+     * 删除对象
      *
-     * @param id 目录ID
+     * @param id 对象ID
      */
     @PostMapping(value = "catalogDelete")
-    void catalogDeleteOne(@RequestParam("id") String id);
+    void catalogDelete(@RequestParam("id") String id);
+
 }

@@ -1,10 +1,12 @@
 package com.example.cyjquery.controller;
 
 import com.example.cyjquery.entity.ResultVO;
-import com.example.cyjquery.entity.SqlPO;
-import com.example.cyjquery.serviceimpl.SqlServiceImpl;
+import com.example.cyjquery.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 曹元杰
@@ -13,52 +15,34 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping(value = "sqlApi")
-public class IndexController implements QueryController {
+public class IndexController {
 
-    private SqlServiceImpl sqlService;
+    private IndexServiceImpl indexService;
 
     @Autowired
-    public void setSqlService(SqlServiceImpl sqlService) {
-        this.sqlService = sqlService;
-    }
-
-    @Override
-    public ResultVO sqlFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                               @RequestParam("pageSize") Integer pageSize,
-                               @RequestParam("sortCode") String sortCode) {
-        return ResultVO.success(sqlService.findAll(pageNumber - 1, pageSize, sortCode));
-    }
-
-    @Override
-    public ResultVO saveSql(@RequestBody SqlPO po) {
-        if (po.getId() == null) {
-            return ResultVO.success(sqlService.addOne(po));
-        }
-        return ResultVO.success(sqlService.updateOne(po));
-    }
-
-    @Override
-    public void sqlDeleteOne(@RequestParam("id") String id) {
-        sqlService.deleteOne(id);
+    public void setIndexService(IndexServiceImpl indexService) {
+        this.indexService = indexService;
     }
 
     /**
      * 通过sql查询
-     * @param sqlStr sql语句
+     *
+     * @param sqlStr  sql语句
      * @param sqlType sql类型
      * @return 返回值
      */
     @PostMapping(value = "doSql")
-    public ResultVO doSql(@RequestParam("sqlStr") String sqlStr, @RequestParam("sqlType") String sqlType) {
+    public ResultVO doSql(@RequestParam("sqlStr") String sqlStr,
+                          @RequestParam("sqlType") String sqlType) {
         String query = "查询";
         try {
             if (query.equals(sqlType)) {
-                return ResultVO.success(sqlService.queryBySql(sqlStr));
+                return ResultVO.success(indexService.queryBySql(sqlStr));
             } else {
-                sqlService.excuteSql(sqlStr);
+                indexService.excuteSql(sqlStr);
                 return ResultVO.success();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResultVO.failure(e.getCause().getCause());
         }
 

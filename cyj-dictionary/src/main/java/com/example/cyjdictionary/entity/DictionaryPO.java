@@ -9,12 +9,12 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2020-09-13
  */
 @Entity
 @Table(name = DictionaryPO.T_DICTIONARY)
-@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 @Data
+@GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
 public class DictionaryPO implements Serializable {
 
     static final String T_DICTIONARY = "t_dictionary";
@@ -24,15 +24,16 @@ public class DictionaryPO implements Serializable {
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "pid", length = 36)
+    @Column
     private String pid;
 
-    @Column(name = "dictionary_name")
+    @Column
     private String dictionaryName;
 
-    @Column(name = "dictionary_value")
+    @Column
     private String dictionaryValue;
 
-    @Column(name = "sort_code")
+    @Column
     private String sortCode;
+
 }

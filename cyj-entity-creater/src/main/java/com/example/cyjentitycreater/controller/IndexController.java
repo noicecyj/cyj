@@ -2,14 +2,11 @@ package com.example.cyjentitycreater.controller;
 
 
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.entity.ResultVO;
 import com.example.cyjentitycreater.service.EntityFactory;
-import com.example.cyjentitycreater.serviceimpl.EntityNameServiceImpl;
-import com.example.cyjentitycreater.serviceimpl.EntityServiceImpl;
+import com.example.cyjentitycreater.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,11 +21,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "entityCreateApi")
-public class IndexController implements EntityController, EntityNameController {
+public class IndexController {
 
     private EntityFactory entityFactory;
-    private EntityServiceImpl entityService;
-    private EntityNameServiceImpl entityNameService;
+    private IndexServiceImpl indexService;
 
     @Autowired
     public void setEntityFactory(EntityFactory entityFactory) {
@@ -36,56 +32,25 @@ public class IndexController implements EntityController, EntityNameController {
     }
 
     @Autowired
-    public void setEntityService(EntityServiceImpl entityService) {
-        this.entityService = entityService;
+    public void setIndexService(IndexServiceImpl indexService) {
+        this.indexService = indexService;
     }
 
-    @Autowired
-    public void setEntityNameService(EntityNameServiceImpl entityNameService) {
-        this.entityNameService = entityNameService;
-    }
-
-    @Override
-    public ResultVO entityFindAll(@RequestParam("id") String id,
-                                  @RequestParam("pageNumber") Integer pageNumber,
-                                  @RequestParam("pageSize") Integer pageSize,
-                                  @RequestParam("sortCode") String sortCode) {
-        Page<EntityPO> pos = entityService.findAll(id, pageNumber, pageSize, sortCode);
-        return ResultVO.success(pos);
-    }
-
-    @Override
-    public ResultVO entityNameFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                                      @RequestParam("pageSize") Integer pageSize,
-                                      @RequestParam("sortCode") String sortCode) {
-        Page<EntityNamePO> pos = entityNameService.findAll(pageNumber - 1, pageSize, sortCode);
-        return ResultVO.success(pos);
-    }
-
-    @Override
-    public ResultVO saveEntity(@RequestBody EntityPO po) {
-        if (po.getId() == null) {
-            return ResultVO.success(entityService.addOne(po));
-        }
-        return ResultVO.success(entityService.updateOne(po));
-    }
-
-    @Override
-    public ResultVO saveEntityName(@RequestBody EntityNamePO po) {
-        if (po.getId() == null) {
-            return ResultVO.success(entityNameService.addOne(po));
-        }
-        return ResultVO.success(entityNameService.updateOne(po));
-    }
-
-    @Override
-    public void entityDeleteOne(@RequestParam("id") String id) {
-        entityService.deleteOne(id);
-    }
-
-    @Override
-    public void entityNameDeleteOne(@RequestParam("id") String id) {
-        entityNameService.deleteOne(id);
+    /**
+     * 查询所有对象
+     *
+     * @param id id
+     * @param pageNumber 页码
+     * @param pageSize   条目
+     * @param sortCode   排序列
+     * @return 返回结果
+     */
+    @RequestMapping(value = "entityPage")
+    ResultVO entityFindAll(@RequestParam("id") String id,
+                           @RequestParam("pageNumber") Integer pageNumber,
+                           @RequestParam("pageSize") Integer pageSize,
+                           @RequestParam("sortCode") String sortCode){
+        return ResultVO.success(indexService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
     /**
@@ -96,7 +61,7 @@ public class IndexController implements EntityController, EntityNameController {
      */
     @RequestMapping(value = "createEntity")
     public ResultVO createEntity(@RequestBody CreateVO createVO) {
-        List<EntityPO> poList = entityService.findEntityById(createVO.getId());
+        List<EntityPO> poList = indexService.findEntityById(createVO.getId());
         createVO.setPoList(poList);
         entityFactory.createEntity(createVO);
         return ResultVO.success();
@@ -109,7 +74,7 @@ public class IndexController implements EntityController, EntityNameController {
      */
     @RequestMapping(value = "upEntity")
     public void upEntity(@RequestParam("id") String id) {
-        entityService.upEntity(id);
+        indexService.upEntity(id);
     }
 
     /**
@@ -119,6 +84,6 @@ public class IndexController implements EntityController, EntityNameController {
      */
     @RequestMapping(value = "downEntity")
     public void downEntity(@RequestParam("id") String id) {
-        entityService.downEntity(id);
+        indexService.downEntity(id);
     }
 }

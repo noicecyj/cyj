@@ -39,15 +39,15 @@ public class ResultVO {
         return result;
     }
 
-    public static ResultVO failure(ResultCode resultCode) {
+    public static ResultVO failure() {
         ResultVO result = new ResultVO();
-        result.setResultCode(resultCode);
+        result.setResultCode(ResultCode.FAILURE);
         return result;
     }
 
-    public static ResultVO failure(ResultCode resultCode, Object data) {
+    public static ResultVO failure(Object data) {
         ResultVO result = new ResultVO();
-        result.setResultCode(resultCode);
+        result.setResultCode(ResultCode.FAILURE);
         result.setData(data);
         return result;
     }
