@@ -1,7 +1,7 @@
 package com.example.cyjpagemenu.controller;
 
-import com.example.cyjpagemenu.entity.MenuPagePO;
-import com.example.cyjpagemenu.entity.ResultVO;
+import com.example.cyjpagemenu.entity.po.MenuPagePO;
+import com.example.cyjpagemenu.entity.vo.ResultVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

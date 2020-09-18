@@ -2,6 +2,7 @@ package com.example.cyjpagemenu.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
+import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.querydsl.core.types.dsl.*;
 
 import com.querydsl.core.types.PathMetadata;
@@ -13,7 +14,7 @@ import com.querydsl.core.types.Path;
  * QDictionaryPO is a Querydsl query type for DictionaryPO
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QDictionaryPO extends EntityPathBase<DictionaryPO> {
+public class QDictionaryPO extends EntityPathBase<DictionaryDTO> {
 
     private static final long serialVersionUID = 2009698467L;
 
@@ -30,15 +31,15 @@ public class QDictionaryPO extends EntityPathBase<DictionaryPO> {
     public final StringPath sortCode = createString("sortCode");
 
     public QDictionaryPO(String variable) {
-        super(DictionaryPO.class, forVariable(variable));
+        super(DictionaryDTO.class, forVariable(variable));
     }
 
-    public QDictionaryPO(Path<? extends DictionaryPO> path) {
+    public QDictionaryPO(Path<? extends DictionaryDTO> path) {
         super(path.getType(), path.getMetadata());
     }
 
     public QDictionaryPO(PathMetadata metadata) {
-        super(DictionaryPO.class, metadata);
+        super(DictionaryDTO.class, metadata);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.MenuPagePO;
+import com.example.cyjpagemenu.entity.po.MenuPagePO;
+import com.example.cyjpagemenu.entity.vo.MenuPageVO;
 
 import java.io.IOException;
 
@@ -39,7 +40,7 @@ public interface MenuPageService {
      *
      * @return 目录列表分页
      */
-    MenuPagePO findAll();
+    MenuPageVO findAll();
 
     /**
      * 所有菜单数量

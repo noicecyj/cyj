@@ -1,9 +1,9 @@
 package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
-import com.example.cyjpagemenu.entity.DictionaryPO;
-import com.example.cyjpagemenu.entity.MenuPagePO;
-import com.example.cyjpagemenu.entity.ResultVO;
+import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
+import com.example.cyjpagemenu.entity.po.MenuPagePO;
+import com.example.cyjpagemenu.entity.vo.ResultVO;
 import com.example.cyjpagemenu.service.DictionaryApiService;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +64,8 @@ public class IndexController implements MenuPageController {
 
     @Override
     public ResultVO createRouteFile() {
-        List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
-        HashMap<String, DictionaryPO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
+        List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
+        HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
             menuPageService.createRouteFile(mapPo.get("routePath").getDictionaryValue());
         } catch (IOException e) {
@@ -76,8 +76,8 @@ public class IndexController implements MenuPageController {
 
     @Override
     public ResultVO createComponentFile(@RequestBody MenuPagePO po) {
-        List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
-        HashMap<String, DictionaryPO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
+        List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
+        HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
             menuPageService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po);
         } catch (IOException e) {
@@ -88,13 +88,13 @@ public class IndexController implements MenuPageController {
 
     @Override
     public ResultVO findCatalogByName(@RequestParam("name") String name) {
-        List<DictionaryPO> pos = dictionaryApiService.findCatalogByName(name);
+        List<DictionaryDTO> pos = dictionaryApiService.findCatalogByName(name);
         return ResultVO.success(pos);
     }
 
     @Override
     public ResultVO findCatalogByValue(@RequestParam("value") String value) {
-        List<DictionaryPO> pos = dictionaryApiService.findCatalogByValue(value);
+        List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue(value);
         return ResultVO.success(pos);
     }
 }

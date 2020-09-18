@@ -1,6 +1,6 @@
 package com.example.cyjpagemenu.dao;
 
-import com.example.cyjpagemenu.entity.MenuPagePO;
+import com.example.cyjpagemenu.entity.po.MenuPagePO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

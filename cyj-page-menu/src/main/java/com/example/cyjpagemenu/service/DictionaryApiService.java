@@ -1,6 +1,6 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.DictionaryPO;
+import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,7 @@ public interface DictionaryApiService {
      * @return 返回结果
      */
     @PostMapping(value = "/dictionaryApi/findCatalogByName")
-    List<DictionaryPO> findCatalogByName(@RequestParam("name") String name);
+    List<DictionaryDTO> findCatalogByName(@RequestParam("name") String name);
 
     /**
      * 根据目录值查询字典
@@ -33,5 +33,5 @@ public interface DictionaryApiService {
      * @return 返回结果
      */
     @PostMapping(value = "/dictionaryApi/findCatalogByValue")
-    List<DictionaryPO> findCatalogByValue(@RequestParam("value") String value);
+    List<DictionaryDTO> findCatalogByValue(@RequestParam("value") String value);
 }

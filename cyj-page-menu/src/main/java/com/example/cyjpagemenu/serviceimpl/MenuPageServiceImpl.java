@@ -1,7 +1,9 @@
 package com.example.cyjpagemenu.serviceimpl;
 
+import com.example.cyjcommon.utils.VoPoConverter;
 import com.example.cyjpagemenu.dao.MenuPageDao;
-import com.example.cyjpagemenu.entity.MenuPagePO;
+import com.example.cyjpagemenu.entity.po.MenuPagePO;
+import com.example.cyjpagemenu.entity.vo.MenuPageVO;
 import com.example.cyjpagemenu.service.MenuPageService;
 import com.example.cyjpagemenu.utils.BeanUtils;
 import org.slf4j.Logger;
@@ -49,8 +51,11 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
     }
 
     @Override
-    public MenuPagePO findAll() {
-        return menuPageDao.getOne("001");
+    public MenuPageVO findAll() {
+        MenuPagePO menuPagePO = menuPageDao.getOne("001");
+        MenuPageVO menuPageVO = new MenuPageVO();
+        VoPoConverter.copyProperties(menuPagePO,menuPageVO);
+        return menuPageVO;
     }
 
     @Override
