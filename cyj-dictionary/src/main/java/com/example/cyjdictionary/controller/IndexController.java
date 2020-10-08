@@ -69,17 +69,4 @@ public class IndexController {
                 .findAllByCatalogNameContainsOrCatalogValueContains(catalogName, catalogValue, pageNumber - 1, pageSize, sortCode));
     }
 
-    /**
-     * 查询所有字典
-     *
-     * @param id         目录ID
-     * @param pageNumber 页码
-     * @param pageSize   条目
-     * @param sortCode   排序列
-     * @return 返回结果
-     */
-    @PostMapping(value = "dictionaryPage")
-    public ResultVO findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
-        return ResultVO.success(indexService.findAll(id, pageNumber, pageSize, sortCode));
-    }
 }

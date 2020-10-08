@@ -1,4 +1,4 @@
-package com.example.cyjpagemenu.entity.po;
+package com.example.cyjpagemenu.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -42,9 +42,6 @@ public class MenuPagePO implements Serializable {
 
     @Column(name = "api_path")
     private String apiPath;
-
-    @Column(name = "is_component")
-    private String isComponent;
 
     @Column(name = "sort_code")
     private String sortCode;

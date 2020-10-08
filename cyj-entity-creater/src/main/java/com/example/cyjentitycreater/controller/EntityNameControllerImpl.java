@@ -1,9 +1,14 @@
 package com.example.cyjentitycreater.controller;
 
-import com.example.cyjentitycreater.entity.*;
-import com.example.cyjentitycreater.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjcommon.utils.VoPoConverter;
+import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.entity.EntityNameVO;
+import com.example.cyjentitycreater.entity.ResultVO;
+import com.example.cyjentitycreater.serviceimpl.EntityNameServiceImpl;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 曹元杰
@@ -27,7 +32,11 @@ public class EntityNameControllerImpl implements EntityNameController {
     }
 
     @Override
-    public ResultVO entityNameSave(EntityNamePO po) {
+    public ResultVO entityNameSave(EntityNameVO vo) {
+        EntityNamePO po = new EntityNamePO();
+        VoPoConverter.copyProperties(vo, po);
+        String relEntity = StringUtils.join(vo.getRelEntity(), ",");
+        po.setRelEntity(relEntity);
         if (po.getId() == null) {
             return ResultVO.success(entityNameService.addOne(po));
         }

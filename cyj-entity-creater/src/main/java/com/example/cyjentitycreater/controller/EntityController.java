@@ -13,18 +13,20 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 public interface EntityController {
 
-//    /**
-//     * 查询所有对象
-//     *
-//     * @param pageNumber 页码
-//     * @param pageSize   条目
-//     * @param sortCode   排序列
-//     * @return 返回结果
-//     */
-//    @PostMapping(value = "entityPage")
-//    ResultVO entityFindAll(@RequestParam("pageNumber") Integer pageNumber,
-//                         @RequestParam("pageSize") Integer pageSize,
-//                         @RequestParam("sortCode") String sortCode);
+    /**
+     * 查询所有对象
+     *
+     * @param id         id
+     * @param pageNumber 页码
+     * @param pageSize   条目
+     * @param sortCode   排序列
+     * @return 返回结果
+     */
+    @PostMapping(value = "entityPage")
+    ResultVO entityFindAll(@RequestParam("id") String id,
+                           @RequestParam("pageNumber") Integer pageNumber,
+                           @RequestParam("pageSize") Integer pageSize,
+                           @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象

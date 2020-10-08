@@ -1,10 +1,15 @@
 package com.example.cyjentitycreater.controller;
 
 
+import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.entity.DictionaryDTO;
 import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.entity.ResultVO;
+import com.example.cyjentitycreater.service.DictionaryApiService;
 import com.example.cyjentitycreater.service.EntityFactory;
+import com.example.cyjentitycreater.serviceimpl.ComponentServiceImpl;
+import com.example.cyjentitycreater.serviceimpl.EntityServiceImpl;
 import com.example.cyjentitycreater.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -25,6 +32,9 @@ public class IndexController {
 
     private EntityFactory entityFactory;
     private IndexServiceImpl indexService;
+    private EntityServiceImpl entityService;
+    private ComponentServiceImpl componentService;
+    private DictionaryApiService dictionaryApiService;
 
     @Autowired
     public void setEntityFactory(EntityFactory entityFactory) {
@@ -36,21 +46,19 @@ public class IndexController {
         this.indexService = indexService;
     }
 
-    /**
-     * 查询所有对象
-     *
-     * @param id id
-     * @param pageNumber 页码
-     * @param pageSize   条目
-     * @param sortCode   排序列
-     * @return 返回结果
-     */
-    @RequestMapping(value = "entityPage")
-    ResultVO entityFindAll(@RequestParam("id") String id,
-                           @RequestParam("pageNumber") Integer pageNumber,
-                           @RequestParam("pageSize") Integer pageSize,
-                           @RequestParam("sortCode") String sortCode){
-        return ResultVO.success(indexService.findAll(id, pageNumber, pageSize, sortCode));
+    @Autowired
+    public void setEntityService(EntityServiceImpl entityService) {
+        this.entityService = entityService;
+    }
+
+    @Autowired
+    public void setComponentService(ComponentServiceImpl componentService) {
+        this.componentService = componentService;
+    }
+
+    @Autowired
+    public void setDictionaryApiService(DictionaryApiService dictionaryApiService) {
+        this.dictionaryApiService = dictionaryApiService;
     }
 
     /**
@@ -61,9 +69,27 @@ public class IndexController {
      */
     @RequestMapping(value = "createEntity")
     public ResultVO createEntity(@RequestBody CreateVO createVO) {
-        List<EntityPO> poList = indexService.findEntityById(createVO.getId());
+        List<EntityPO> poList = entityService.findEntityById(createVO.getId());
         createVO.setPoList(poList);
         entityFactory.createEntity(createVO);
+        return ResultVO.success();
+    }
+
+    /**
+     * 生成组件文件
+     *
+     * @param createVO 实体参数
+     * @return 返回值
+     */
+    @RequestMapping(value = "createComponentFile")
+    public ResultVO createComponentFile(@RequestBody CreateVO createVO) {
+        List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
+        HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
+        try {
+            componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), createVO);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return ResultVO.success();
     }
 
@@ -85,5 +111,15 @@ public class IndexController {
     @RequestMapping(value = "downEntity")
     public void downEntity(@RequestParam("id") String id) {
         indexService.downEntity(id);
+    }
+
+    /**
+     * 选择所有实体
+     *
+     * @return 实体列表
+     */
+    @RequestMapping(value = "selectEntityFindAll")
+    public ResultVO selectEntityFindAll() {
+        return ResultVO.success(indexService.findAll());
     }
 }

@@ -1,6 +1,6 @@
 package com.example.cyjentitycreater.controller;
 
-import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.entity.EntityNameVO;
 import com.example.cyjentitycreater.entity.ResultVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,11 +29,11 @@ public interface EntityNameController {
     /**
      * 保存对象
      *
-     * @param po 对象
+     * @param vo 对象
      * @return 返回结果
      */
     @PostMapping(value = "entityNameSave")
-    ResultVO entityNameSave(@RequestBody EntityNamePO po);
+    ResultVO entityNameSave(@RequestBody EntityNameVO vo);
 
     /**
      * 删除对象

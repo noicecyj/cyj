@@ -1,6 +1,5 @@
-package com.example.cyjpagemenu.entity.vo;
+package com.example.cyjpagemenu.entity;
 
-import com.example.cyjpagemenu.entity.ResultCode;
 import lombok.Data;
 
 /**

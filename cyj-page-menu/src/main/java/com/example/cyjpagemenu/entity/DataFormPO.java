@@ -1,4 +1,4 @@
-package com.example.cyjdictionary.entity;
+package com.example.cyjpagemenu.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
@@ -9,29 +9,26 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-10-02
+ * @date 2020-10-08
  */
 @Entity
-@Table(name = DictionaryPO.T_DICTIONARY)
+@Table(name = DataFormPO.T_DATA_FORM)
 @Data
 @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-public class DictionaryPO implements Serializable {
+public class DataFormPO implements Serializable {
 
-    static final String T_DICTIONARY = "t_dictionary";
+    static final String T_DATA_FORM = "t_data_form";
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "pid")
-    private String pid;
+    @Column(name = "data_form_name")
+    private String dataFormName;
 
-    @Column(name = "dictionary_name")
-    private String dictionaryName;
-
-    @Column(name = "dictionary_value")
-    private String dictionaryValue;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "sort_code")
     private String sortCode;

@@ -2,8 +2,8 @@ package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
-import com.example.cyjpagemenu.entity.po.MenuPagePO;
-import com.example.cyjpagemenu.entity.vo.ResultVO;
+import com.example.cyjpagemenu.entity.MenuPagePO;
+import com.example.cyjpagemenu.entity.ResultVO;
 import com.example.cyjpagemenu.service.DictionaryApiService;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,18 +68,6 @@ public class IndexController implements MenuPageController {
         HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
             menuPageService.createRouteFile(mapPo.get("routePath").getDictionaryValue());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ResultVO.success();
-    }
-
-    @Override
-    public ResultVO createComponentFile(@RequestBody MenuPagePO po) {
-        List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
-        HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
-        try {
-            menuPageService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po);
         } catch (IOException e) {
             e.printStackTrace();
         }

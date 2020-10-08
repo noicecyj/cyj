@@ -2,7 +2,6 @@ package com.example.cyjpagemenu.entity;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
-import com.example.cyjpagemenu.entity.po.MenuPagePO;
 import com.querydsl.core.types.dsl.*;
 
 import com.querydsl.core.types.PathMetadata;

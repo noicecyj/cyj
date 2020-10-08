@@ -1,7 +1,7 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.po.MenuPagePO;
-import com.example.cyjpagemenu.entity.vo.MenuPageVO;
+import com.example.cyjpagemenu.entity.MenuPagePO;
+import com.example.cyjpagemenu.entity.MenuPageVO;
 
 import java.io.IOException;
 
@@ -56,14 +56,5 @@ public interface MenuPageService {
      * @throws IOException 异常
      */
     void createRouteFile(String routePath) throws IOException;
-
-    /**
-     * 生成路由文件
-     *
-     * @param pagePath 生成路径
-     * @param po       组件
-     * @throws IOException 异常
-     */
-    void createComponentFile(String pagePath, MenuPagePO po) throws IOException;
 
 }

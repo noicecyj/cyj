@@ -88,4 +88,7 @@ public class BeanUtils {
         return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "ControllerImpl.java";
     }
 
+    public static String componentName(CreateVO createVO) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + ".jsx";
+    }
 }

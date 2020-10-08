@@ -1,9 +1,11 @@
 package com.example.cyjdictionary.controller;
 
-import com.example.cyjdictionary.entity.*;
-import com.example.cyjdictionary.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjdictionary.entity.DictionaryPO;
+import com.example.cyjdictionary.entity.ResultVO;
+import com.example.cyjdictionary.serviceimpl.DictionaryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 曹元杰
@@ -19,6 +21,11 @@ public class DictionaryControllerImpl implements DictionaryController {
     @Autowired
     public void setDictionaryService(DictionaryServiceImpl dictionaryService) {
         this.dictionaryService = dictionaryService;
+    }
+
+    @Override
+    public ResultVO dictionaryFindAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+        return ResultVO.success(dictionaryService.findAll(id, pageNumber, pageSize, sortCode));
     }
 
     @Override

@@ -1,9 +1,9 @@
-package com.example.cyjpagemenu.entity.vo;
+package com.example.cyjpagemenu.entity;
 
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author 曹元杰
@@ -20,8 +20,7 @@ public class MenuPageVO implements Serializable {
     private String path;
     private String componentName;
     private String apiPath;
-    private String isComponent;
     private String sortCode;
-    private Set<MenuPageVO> children;
+    private List<MenuPageVO> children;
 
 }

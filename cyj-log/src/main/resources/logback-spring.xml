@@ -19,7 +19,7 @@
         <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
             <dataSource class="org.apache.commons.dbcp2.BasicDataSource">
                 <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
-                <url>jdbc:mysql://localhost:3306/server_log?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
+                <url>jdbc:mysql://localhost:3306/data_user?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
                 </url>
                 <username>root</username>
                 <password>68762306</password>

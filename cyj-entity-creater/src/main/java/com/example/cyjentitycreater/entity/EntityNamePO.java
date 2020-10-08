@@ -36,6 +36,9 @@ public class EntityNamePO implements Serializable {
     @Column
     private String api;
 
+    @Column(name = "rel_entity")
+    private String relEntity;
+
     @Column
     private String sortCode;
 

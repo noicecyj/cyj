@@ -22,6 +22,11 @@ public class EntityControllerImpl implements EntityController {
     }
 
     @Override
+    public ResultVO entityFindAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
+        return ResultVO.success(entityService.findAll(id, pageNumber, pageSize, sortCode));
+    }
+
+    @Override
     public ResultVO entitySave(EntityPO po) {
         if (po.getId() == null) {
             return ResultVO.success(entityService.addOne(po));

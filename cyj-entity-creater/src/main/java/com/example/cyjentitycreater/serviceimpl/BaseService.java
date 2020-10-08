@@ -15,9 +15,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author 曹元杰
@@ -87,14 +84,14 @@ public class BaseService {
     /**
      * 生成文件
      *
-     * @param path 路径
+     * @param path   路径
+     * @param result 内容
      */
     public void createJavaFile(String path, String[] result) throws IOException {
-        //文件放在src/main/java/ 目录下 命名为aaa.java
         File file = new File(path + "/" + result[1]);
         //如果文件不存在，创建一个文件
         if (file.createNewFile()) {
-            logger.info("生成文件,路径为：{}",path + "/" + result[1]);
+            logger.info("生成文件,路径为：{}", path + "/" + result[1]);
         }
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -112,19 +109,16 @@ public class BaseService {
     }
 
     /**
-     * 获取文件
+     * 生成文件夹
      *
      * @param path 路径
      */
-    public List<File> getFiles(String path) {
-        List<File> files = new ArrayList<>();
+    public void createJavaFile(String path) {
         File file = new File(path);
-        File[] tempList = file.listFiles();
-        for (int i = 0; i < Objects.requireNonNull(tempList).length; i++) {
-            if (tempList[i].isFile()) {
-                files.add(tempList[i]);
+        if (!file.exists()) {
+            if (file.mkdirs()) {
+                logger.info("生成文件夹,路径为：{}", path);
             }
         }
-        return files;
     }
 }
