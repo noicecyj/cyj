@@ -36,7 +36,7 @@ public class EntityNamePO implements Serializable {
     @Column
     private String api;
 
-    @Column(name = "rel_entity")
+    @Column
     private String relEntity;
 
     @Column

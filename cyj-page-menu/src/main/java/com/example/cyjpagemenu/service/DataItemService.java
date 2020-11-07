@@ -1,13 +1,13 @@
-package com.example.cyjentitycreater.service;
+package com.example.cyjpagemenu.service;
 
-import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjpagemenu.entity.DataItemPO;
 import org.springframework.data.domain.Page;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-10-08
  */
-public interface EntityNameService {
+public interface DataItemService {
 
     /**
      * 添加实体
@@ -15,7 +15,7 @@ public interface EntityNameService {
      * @param po 实体
      * @return 实体
      */
-    EntityNamePO addOne(EntityNamePO po);
+    DataItemPO addOne(DataItemPO po);
 
     /**
      * 删除实体
@@ -30,7 +30,7 @@ public interface EntityNameService {
      * @param po 实体
      * @return 实体
      */
-    EntityNamePO updateOne(EntityNamePO po);
+    DataItemPO updateOne(DataItemPO po);
 
     /**
      * 查找所有实体(分页排序)
@@ -40,14 +40,5 @@ public interface EntityNameService {
      * @param sortCode 排序列
      * @return 实体列表分页
      */
-    Page<EntityNamePO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
-
-    /**
-     * 查找实体
-     *
-     * @param id 实体id
-     * @return 实体
-     */
-    EntityNamePO findOneById(String id);
-
+    Page<DataItemPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
 }

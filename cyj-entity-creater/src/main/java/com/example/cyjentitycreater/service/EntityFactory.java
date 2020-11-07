@@ -30,18 +30,6 @@ public class EntityFactory {
         this.otherService = voService;
     }
 
-    public String[] entity(CreateVO createVO) {
-        StringBuffer sb = new StringBuffer();
-        if (EntityType.PO.getType().equals(createVO.getType())) {
-            return poService.entityGenerate(createVO,sb);
-        } else if (EntityType.VO.getType().equals(createVO.getType()) ||
-                EntityType.BO.getType().equals(createVO.getType()) ||
-                EntityType.DTO.getType().equals(createVO.getType())) {
-            return otherService.entityGenerate(createVO,sb);
-        }
-        return null;
-    }
-
     public void createEntity(CreateVO createVO) {
         try {
             if (EntityType.PO.getType().equals(createVO.getType())) {

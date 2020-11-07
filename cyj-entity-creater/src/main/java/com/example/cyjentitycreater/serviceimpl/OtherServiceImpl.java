@@ -18,7 +18,8 @@ import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 @Component
 public class OtherServiceImpl extends BaseService {
 
-    public String[] entityGenerate(CreateVO createVO, StringBuffer sb) {
+    public String[] entityGenerate(CreateVO createVO) {
+        StringBuffer sb = new StringBuffer();
         generatePackage1(createVO, sb);
         sb.append("\r\n");
         generatePackage2(createVO, sb);
@@ -36,8 +37,7 @@ public class OtherServiceImpl extends BaseService {
 
 
     public String[] createJavaFile(CreateVO createVO) throws IOException {
-        StringBuffer sb = new StringBuffer();
-        String[] result = entityGenerate(createVO, sb);
+        String[] result = entityGenerate(createVO);
         createJavaFile(createVO.getPath(), result);
         return result;
     }

@@ -1,9 +1,9 @@
 package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.utils.BeanUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -18,22 +18,28 @@ import static com.example.cyjentitycreater.utils.BeanUtils.componentName;
 @Component
 public class ComponentServiceImpl extends BaseService {
 
-    private final Logger logger = LoggerFactory.getLogger(ComponentServiceImpl.class);
+    private EntityNameServiceImpl entityNameService;
+
+    @Autowired
+    public void setEntityNameService(EntityNameServiceImpl entityNameService) {
+        this.entityNameService = entityNameService;
+    }
 
     public void createComponentFile(String pagePath, CreateVO createVO) throws IOException {
-        String componentName = BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()));
+        EntityNamePO po = entityNameService.findOneById(createVO.getId());
+        String componentName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         String componentPath = pagePath + "/" + componentName;
         createJavaFile(componentPath + "/models");
         createJavaFile(componentPath + "/services");
-        createJavaFile(componentPath + "/models", createModelsJsx(createVO));
-        createJavaFile(componentPath + "/services", createServiceJsx(createVO));
-        createJavaFile(componentPath, createIndexJsx(createVO));
+        createJavaFile(componentPath + "/models", createModelsJsx(po));
+        createJavaFile(componentPath + "/services", createServiceJsx(po));
+        createJavaFile(componentPath, createIndexJsx(po));
         createJavaFile(componentPath, createIndexCss());
     }
 
-    private String[] createModelsJsx(CreateVO createVO) {
+    private String[] createModelsJsx(EntityNamePO po) {
         StringBuilder sb = new StringBuilder();
-        String underComponentName = BeanUtils.underline2Camel(createVO.getName());
+        String underComponentName = BeanUtils.underline2Camel(po.getName());
         sb.append("import ").append(underComponentName).append("Service from '../services/").append(BeanUtils.captureName(underComponentName)).append("';\r\n");
         sb.append("\r\n");
         sb.append("export default {\r\n");
@@ -47,10 +53,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("    ").append(underComponentName).append("LoadingVisible: true,\r\n");
         sb.append("    ").append(underComponentName).append("Total: 0,\r\n");
         sb.append("    ").append(underComponentName).append("Current: 1,\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntities = po.getRelEntity().split(",");
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("    ").append(underRelEntity).append("TableData: [],\r\n");
                 sb.append("    ").append(underRelEntity).append("Visible: false,\r\n");
                 sb.append("    ").append(underRelEntity).append("FormData: {},\r\n");
@@ -87,12 +94,13 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("          ").append(underComponentName).append("LoadingVisible: false,\r\n");
         sb.append("        };\r\n");
         sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntities = po.getRelEntity().split(",");
             sb.append("        if (data !== 1) {\r\n");
             sb.append("          const payload2 = {\r\n");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("            ").append(underRelEntity).append("DivVisible: true,\r\n");
             }
             sb.append("          };\r\n");
@@ -123,10 +131,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("            ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
         sb.append("            ").append(underComponentName).append("TableData: res.data.content,\r\n");
         sb.append("            ").append(underComponentName).append("Current: data.").append(underComponentName).append("Current,\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntities = po.getRelEntity().split(",");
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("            ").append(underRelEntity).append("DivVisible: true,\r\n");
             }
         }
@@ -142,10 +151,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("            ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
         sb.append("            ").append(underComponentName).append("TableData: res.data.content,\r\n");
         sb.append("            ").append(underComponentName).append("Current: data.").append(underComponentName).append("Current,\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntityies = po.getRelEntity().split(",");
+            for (String relEntity : relEntityies) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("            ").append(underRelEntity).append("DivVisible: true,\r\n");
             }
         }
@@ -156,10 +166,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("      const payload = { ").append(underComponentName).append("Visible: false };\r\n");
         sb.append("      dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
         sb.append("    },\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntities = po.getRelEntity().split(",");
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("    ").append(underRelEntity).append("Page(data) {\r\n");
                 sb.append("      ").append(underComponentName).append("Service.").append(underRelEntity).append("Page(data.id, data.current).then(res => {\r\n");
                 sb.append("        const payload = {\r\n");
@@ -220,22 +231,22 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("  }),\r\n");
         sb.append("};");
         String modelData = sb.toString();
-        return new String[]{modelData, componentName(createVO)};
+        return new String[]{modelData, componentName(po)};
     }
 
-    private String[] createServiceJsx(CreateVO createVO) {
+    private String[] createServiceJsx(EntityNamePO po) {
         StringBuilder sb = new StringBuilder();
-        String underComponentName = BeanUtils.underline2Camel(createVO.getName());
+        String underComponentName = BeanUtils.underline2Camel(po.getName());
         sb.append("import { request } from 'ice';\r\n");
         sb.append("\r\n");
         sb.append("export default {\r\n");
         sb.append("  ").append(underComponentName).append("Page(value) {\r\n");
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(createVO.getApi()).append("/").append(underComponentName).append("Page',\r\n");
+        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Page',\r\n");
         sb.append("      method: 'post',\r\n");
         sb.append("      params: {\r\n");
         sb.append("        pageNumber: value,\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
             sb.append("        pageSize: 5,\r\n");
         } else {
             sb.append("        pageSize: 13,\r\n");
@@ -246,7 +257,7 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("  },\r\n");
         sb.append("  ").append(underComponentName).append("Delete(record) {\r\n");
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(createVO.getApi()).append("/").append(underComponentName).append("Delete',\r\n");
+        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Delete',\r\n");
         sb.append("      method: 'post',\r\n");
         sb.append("      params: {\r\n");
         sb.append("        id: record.id,\r\n");
@@ -255,18 +266,19 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("  },\r\n");
         sb.append("  ").append(underComponentName).append("Save(data) {\r\n");
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(createVO.getApi()).append("/").append(underComponentName).append("Save',\r\n");
+        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Save',\r\n");
         sb.append("      method: 'post',\r\n");
         sb.append("      data,\r\n");
         sb.append("    });\r\n");
         sb.append("  },\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntities = po.getRelEntity().split(",");
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("  ").append(underRelEntity).append("Page(id, value) {\r\n");
                 sb.append("    return request({\r\n");
-                sb.append("      url: '/").append(createVO.getApi()).append("/").append(underRelEntity).append("Page',\r\n");
+                sb.append("      url: '/").append(po.getApi()).append("/").append(underRelEntity).append("Page',\r\n");
                 sb.append("      method: 'post',\r\n");
                 sb.append("      params: {\r\n");
                 sb.append("        id,\r\n");
@@ -278,7 +290,7 @@ public class ComponentServiceImpl extends BaseService {
                 sb.append("  },\r\n");
                 sb.append("  ").append(underRelEntity).append("Delete(record) {\r\n");
                 sb.append("    return request({\r\n");
-                sb.append("      url: '/").append(createVO.getApi()).append("/").append(underRelEntity).append("Delete',\r\n");
+                sb.append("      url: '/").append(po.getApi()).append("/").append(underRelEntity).append("Delete',\r\n");
                 sb.append("      method: 'post',\r\n");
                 sb.append("      params: {\r\n");
                 sb.append("        id: record.id,\r\n");
@@ -287,7 +299,7 @@ public class ComponentServiceImpl extends BaseService {
                 sb.append("  },\r\n");
                 sb.append("  ").append(underRelEntity).append("Save(data, id) {\r\n");
                 sb.append("    return request({\r\n");
-                sb.append("      url: '/").append(createVO.getApi()).append("/").append(underRelEntity).append("Save',\r\n");
+                sb.append("      url: '/").append(po.getApi()).append("/").append(underRelEntity).append("Save',\r\n");
                 sb.append("      method: 'post',\r\n");
                 sb.append("      data: { ...data, pid: id },\r\n");
                 sb.append("    });\r\n");
@@ -296,12 +308,12 @@ public class ComponentServiceImpl extends BaseService {
         }
         sb.append("};");
         String serviceData = sb.toString();
-        return new String[]{serviceData, componentName(createVO)};
+        return new String[]{serviceData, componentName(po)};
     }
 
-    private String[] createIndexJsx(CreateVO createVO) {
+    private String[] createIndexJsx(EntityNamePO po) {
         StringBuilder sb = new StringBuilder();
-        String underComponentName = BeanUtils.underline2Camel(createVO.getName());
+        String underComponentName = BeanUtils.underline2Camel(po.getName());
         sb.append("import { ResponsiveGrid, Button, Table, Box, Dialog, Form, Loading, Pagination } from '@alifd/next';\r\n");
         sb.append("import React, { useEffect } from 'react';\r\n");
         sb.append("import { store as pageStore } from 'ice/").append(BeanUtils.captureName(underComponentName)).append("';\r\n");
@@ -327,10 +339,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("      })} warning> 删除 </Button>\r\n");
         sb.append("    </div>;\r\n");
         sb.append("  };\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntities = po.getRelEntity().split(",");
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("\r\n");
                 sb.append("  const ").append(underRelEntity).append("PageRender = (value, index, record) => {\r\n");
                 sb.append("    return <div className={styles.opt}>\r\n");
@@ -366,7 +379,7 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("            </Dialog>\r\n");
         sb.append("          </div>\r\n");
         sb.append("          <Loading tip=\"加载中...\" visible={").append(underComponentName).append("State.").append(underComponentName).append("LoadingVisible}>\r\n");
-        sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underComponentName).append("TableData} isTree primaryKey=\"id\">\r\n");
+        sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underComponentName).append("TableData}>\r\n");
         sb.append("              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={").append(underComponentName).append("PageRender} />\r\n");
         sb.append("            </Table>\r\n");
         sb.append("            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n");
@@ -377,10 +390,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("          </Loading>\r\n");
         sb.append("        </div>\r\n");
         sb.append("      </Cell>\r\n");
-        if (createVO.getRelEntity() != null && !"".equals(createVO.getRelEntity())) {
-            String[] relEntitys = createVO.getRelEntity().split(",");
-            for (String relEntity : relEntitys) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String[] relEntities = po.getRelEntity().split(",");
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
                 sb.append("      <Cell colSpan={12} hidden={").append(underComponentName).append("State.").append(underRelEntity).append("DivVisible}>\r\n");
                 sb.append("        <div className={styles.Main}>\r\n");
                 sb.append("          <div className={styles.add}>\r\n");
@@ -402,7 +416,7 @@ public class ComponentServiceImpl extends BaseService {
                 sb.append("            </Dialog>\r\n");
                 sb.append("          </div>\r\n");
                 sb.append("          <Loading tip=\"加载中...\" visible={").append(underComponentName).append("State.").append(underRelEntity).append("LoadingVisible}>\r\n");
-                sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underRelEntity).append("TableData} isTree primaryKey=\"id\">\r\n");
+                sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underRelEntity).append("TableData}>\r\n");
                 sb.append("              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={").append(underRelEntity).append("PageRender} />\r\n");
                 sb.append("            </Table>\r\n");
                 sb.append("            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n");

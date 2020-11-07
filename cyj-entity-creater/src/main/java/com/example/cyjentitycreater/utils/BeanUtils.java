@@ -1,6 +1,7 @@
 package com.example.cyjentitycreater.utils;
 
 import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 
 import java.util.List;
@@ -68,27 +69,27 @@ public class BeanUtils {
         return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + createVO.getType() + ".java";
     }
 
-    public static String entityDaoName(CreateVO createVO) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "Dao.java";
+    public static String entityDaoName(EntityNamePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())) + "Dao.java";
     }
 
-    public static String entityServiceName(CreateVO createVO) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "Service.java";
+    public static String entityServiceName(EntityNamePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())) + "Service.java";
     }
 
-    public static String entityServiceImplName(CreateVO createVO) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "ServiceImpl.java";
+    public static String entityServiceImplName(EntityNamePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())) + "ServiceImpl.java";
     }
 
-    public static String entityControllerName(CreateVO createVO) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "Controller.java";
+    public static String entityControllerName(EntityNamePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())) + "Controller.java";
     }
 
-    public static String entityControllerImplName(CreateVO createVO) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + "ControllerImpl.java";
+    public static String entityControllerImplName(EntityNamePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())) + "ControllerImpl.java";
     }
 
-    public static String componentName(CreateVO createVO) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + ".jsx";
+    public static String componentName(EntityNamePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())) + ".jsx";
     }
 }
