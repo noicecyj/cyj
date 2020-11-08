@@ -1,16 +1,17 @@
 package com.example.cyjdictionary.controller;
 
-import com.example.cyjdictionary.entity.DictionaryPO;
-import com.example.cyjdictionary.entity.ResultVO;
-import com.example.cyjdictionary.serviceimpl.DictionaryServiceImpl;
+import com.example.cyjcommon.utils.VoPoConverter;
+import com.example.cyjdictionary.entity.*;
+import com.example.cyjdictionary.serviceimpl.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-09
  */
 @RestController
 @RequestMapping(value = "dictionaryApi")
@@ -29,7 +30,9 @@ public class DictionaryControllerImpl implements DictionaryController {
     }
 
     @Override
-    public ResultVO dictionarySave(DictionaryPO po) {
+    public ResultVO dictionarySave(Map<String, Object> vo) {
+        DictionaryPO po = new DictionaryPO();
+        VoPoConverter.copyProperties(vo, po);
         if (po.getId() == null) {
             return ResultVO.success(dictionaryService.addOne(po));
         }

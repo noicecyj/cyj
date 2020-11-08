@@ -1,14 +1,17 @@
 package com.example.cyjdictionary.controller;
 
+import com.example.cyjcommon.utils.VoPoConverter;
 import com.example.cyjdictionary.entity.*;
 import com.example.cyjdictionary.serviceimpl.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Map;
+
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-09
  */
 @RestController
 @RequestMapping(value = "dictionaryApi")
@@ -27,7 +30,9 @@ public class CatalogControllerImpl implements CatalogController {
     }
 
     @Override
-    public ResultVO catalogSave(CatalogPO po) {
+    public ResultVO catalogSave(Map<String, Object> vo) {
+        CatalogPO po = new CatalogPO();
+        VoPoConverter.copyProperties(vo, po);
         if (po.getId() == null) {
             return ResultVO.success(catalogService.addOne(po));
         }

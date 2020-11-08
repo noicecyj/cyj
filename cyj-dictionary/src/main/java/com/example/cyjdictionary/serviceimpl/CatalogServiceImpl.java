@@ -1,19 +1,16 @@
 package com.example.cyjdictionary.serviceimpl;
 
-import com.example.cyjdictionary.entity.CatalogPO;
-import com.example.cyjdictionary.dao.CatalogDao;
-import com.example.cyjdictionary.service.CatalogService;
+import com.example.cyjdictionary.entity.*;
+import com.example.cyjdictionary.dao.*;
+import com.example.cyjdictionary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-09
  */
 @Service
 public class CatalogServiceImpl extends BaseService implements CatalogService {
@@ -45,6 +42,14 @@ public class CatalogServiceImpl extends BaseService implements CatalogService {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return catalogDao.findAll(pageable);
+    }
+
+    @Override
+    public CatalogPO findOneById(String id) {
+        if (catalogDao.findById(id).isPresent()){
+            return catalogDao.findById(id).get();
+        }
+        return null;
     }
 
 }

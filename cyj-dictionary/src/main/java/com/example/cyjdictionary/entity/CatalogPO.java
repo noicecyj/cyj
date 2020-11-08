@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-09
  */
 @Entity
 @Table(name = CatalogPO.T_CATALOG)
@@ -24,16 +24,16 @@ public class CatalogPO implements Serializable {
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column
+    @Column(name = "catalog_name")
     private String catalogName;
 
-    @Column
+    @Column(name = "catalog_value")
     private String catalogValue;
 
-    @Column
+    @Column(name = "description")
     private String description;
 
-    @Column
+    @Column(name = "sort_code")
     private String sortCode;
 
 }

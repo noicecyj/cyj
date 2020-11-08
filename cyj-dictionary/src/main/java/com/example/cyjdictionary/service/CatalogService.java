@@ -1,11 +1,11 @@
 package com.example.cyjdictionary.service;
 
-import com.example.cyjdictionary.entity.CatalogPO;
+import com.example.cyjdictionary.entity.*;
 import org.springframework.data.domain.Page;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-09
  */
 public interface CatalogService {
 
@@ -41,4 +41,13 @@ public interface CatalogService {
      * @return 实体列表分页
      */
     Page<CatalogPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+
+    /**
+     * 查找实体
+     *
+     * @param id 实体id
+     * @return 实体
+     */
+    CatalogPO findOneById(String id);
+
 }
