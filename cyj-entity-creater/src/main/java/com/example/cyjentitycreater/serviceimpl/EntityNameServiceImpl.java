@@ -1,19 +1,16 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.entity.EntityNamePO;
-import com.example.cyjentitycreater.dao.EntityNameDao;
-import com.example.cyjentitycreater.service.EntityNameService;
+import com.example.cyjentitycreater.entity.*;
+import com.example.cyjentitycreater.dao.*;
+import com.example.cyjentitycreater.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-08
+ * @date 2020-11-09
  */
 @Service
 public class EntityNameServiceImpl extends BaseService implements EntityNameService {

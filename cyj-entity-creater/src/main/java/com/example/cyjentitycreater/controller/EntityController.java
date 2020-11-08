@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-09
  */
 public interface EntityController {
 
@@ -25,9 +25,9 @@ public interface EntityController {
      */
     @PostMapping(value = "entityPage")
     ResultVO entityFindAll(@RequestParam("id") String id,
-                           @RequestParam("pageNumber") Integer pageNumber,
-                           @RequestParam("pageSize") Integer pageSize,
-                           @RequestParam("sortCode") String sortCode);
+                         @RequestParam("pageNumber") Integer pageNumber,
+                         @RequestParam("pageSize") Integer pageSize,
+                         @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象

@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-08
+ * @date 2020-11-09
  */
 public interface EntityNameController {
 
