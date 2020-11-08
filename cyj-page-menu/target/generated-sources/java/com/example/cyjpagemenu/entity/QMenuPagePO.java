@@ -30,8 +30,6 @@ public class QMenuPagePO extends EntityPathBase<MenuPagePO> {
 
     public final StringPath id = createString("id");
 
-    public final StringPath isComponent = createString("isComponent");
-
     public final StringPath name = createString("name");
 
     public final StringPath path = createString("path");

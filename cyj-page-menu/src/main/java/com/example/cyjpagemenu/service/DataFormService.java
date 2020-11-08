@@ -1,11 +1,11 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.DataFormPO;
+import com.example.cyjpagemenu.entity.*;
 import org.springframework.data.domain.Page;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-10-08
+ * @date 2020-11-09
  */
 public interface DataFormService {
 
@@ -41,4 +41,13 @@ public interface DataFormService {
      * @return 实体列表分页
      */
     Page<DataFormPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+
+    /**
+     * 查找实体
+     *
+     * @param id 实体id
+     * @return 实体
+     */
+    DataFormPO findOneById(String id);
+
 }

@@ -19,11 +19,15 @@ public class QEntityNamePO extends EntityPathBase<EntityNamePO> {
 
     public static final QEntityNamePO entityNamePO = new QEntityNamePO("entityNamePO");
 
+    public final StringPath api = createString("api");
+
     public final StringPath id = createString("id");
 
     public final StringPath name = createString("name");
 
     public final StringPath path = createString("path");
+
+    public final StringPath relEntity = createString("relEntity");
 
     public final StringPath sortCode = createString("sortCode");
 

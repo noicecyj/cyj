@@ -1,15 +1,16 @@
 package com.example.cyjpagemenu.controller;
 
-import com.example.cyjpagemenu.entity.DataFormPO;
-import com.example.cyjpagemenu.entity.ResultVO;
+import com.example.cyjpagemenu.entity.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-10-08
+ * @date 2020-11-09
  */
 public interface DataFormController {
 
@@ -29,11 +30,11 @@ public interface DataFormController {
     /**
      * 保存对象
      *
-     * @param po 对象
+     * @param vo 对象
      * @return 返回结果
      */
     @PostMapping(value = "dataFormSave")
-    ResultVO dataFormSave(@RequestBody DataFormPO po);
+    ResultVO dataFormSave(@RequestBody Map<String, Object> vo);
 
     /**
      * 删除对象
