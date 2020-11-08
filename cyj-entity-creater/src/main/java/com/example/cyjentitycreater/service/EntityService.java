@@ -52,5 +52,5 @@ public interface EntityService {
      * @param id 目录id
      * @return 字典列表
      */
-    List<EntityPO> findEntityById(String id);
+    List<EntityPO> findOneById(String id);
 }

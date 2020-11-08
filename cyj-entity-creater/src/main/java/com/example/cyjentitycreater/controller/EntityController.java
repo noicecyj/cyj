@@ -1,10 +1,11 @@
 package com.example.cyjentitycreater.controller;
 
-import com.example.cyjentitycreater.entity.EntityPO;
-import com.example.cyjentitycreater.entity.ResultVO;
+import com.example.cyjentitycreater.entity.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 /**
  * @author 曹元杰
@@ -31,11 +32,11 @@ public interface EntityController {
     /**
      * 保存对象
      *
-     * @param po 对象
+     * @param vo 对象
      * @return 返回结果
      */
     @PostMapping(value = "entitySave")
-    ResultVO entitySave(@RequestBody EntityPO po);
+    ResultVO entitySave(@RequestBody Map<String, Object> vo);
 
     /**
      * 删除对象

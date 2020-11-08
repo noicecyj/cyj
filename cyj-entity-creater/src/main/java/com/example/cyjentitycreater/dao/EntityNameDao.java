@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-08
  */
-public interface EntityNameDao extends JpaRepository<EntityNamePO,String> {
+public interface EntityNameDao extends JpaRepository<EntityNamePO, String> {
 }

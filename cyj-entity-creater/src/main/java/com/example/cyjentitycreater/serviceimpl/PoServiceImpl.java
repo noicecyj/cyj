@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.example.cyjentitycreater.utils.BeanUtils.*;
 
@@ -21,51 +24,76 @@ public class PoServiceImpl extends BaseService {
 
     private EntityNameServiceImpl entityNameService;
 
+    private EntityServiceImpl entityService;
+
     @Autowired
     public void setEntityNameService(EntityNameServiceImpl entityNameService) {
         this.entityNameService = entityNameService;
     }
 
+    @Autowired
+    public void setEntityService(EntityServiceImpl entityService) {
+        this.entityService = entityService;
+    }
+
     public void createJavaFile(CreateVO createVO) throws IOException {
         EntityNamePO po = entityNameService.findOneById(createVO.getId());
-        String[] result;
         if (!createVO.getPoList().isEmpty()) {
-            result = entityGenerate(createVO);
+            String[] result = entityGenerate(po);
             createJavaFile(createVO.getPath() + "\\entity", result);
         }
 
         String[] daoResult = daoGenerate(po);
         createJavaFile(po.getPath() + "\\dao", daoResult);
-        String[] serviceResult = serviceGenerate(po);
+        String[] serviceResult = serviceGenerate(po, null);
         createJavaFile(po.getPath() + "\\service", serviceResult);
-        String[] serviceImplResult = serviceImplGenerate(po);
+        String[] serviceImplResult = serviceImplGenerate(po, null);
         createJavaFile(po.getPath() + "\\serviceimpl", serviceImplResult);
-        String[] controllerInteResult = controllerInteGenerate(po);
+        String[] controllerInteResult = controllerInteGenerate(po, null);
         createJavaFile(po.getPath() + "\\controller", controllerInteResult);
-        String[] controllerResult = controllerGenerate(po);
+        String[] controllerResult = controllerGenerate(po, null);
         createJavaFile(po.getPath() + "\\controller", controllerResult);
         if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
-            for (String relEntity : relEntities) {
-                String underRelEntity = BeanUtils.underline2Camel(relEntity);
-
+            Pattern p = Pattern.compile("[(.*?)]");
+            Matcher m = p.matcher(po.getRelEntity());
+            while (m.find()) {
+                String[] relEntities = m.group().substring(1, m.group().length() - 1).split(",");
+                for (String relEntity : relEntities) {
+                    EntityNamePO subpo = entityNameService.findOneById(relEntity);
+                    List<EntityPO> poList = entityService.findOneById(po.getId());
+                    if (!poList.isEmpty()) {
+                        String[] subresult = entityGenerate(subpo);
+                        createJavaFile(createVO.getPath() + "\\entity", subresult);
+                    }
+                    String[] subdaoResult = daoGenerate(po);
+                    createJavaFile(po.getPath() + "\\dao", subdaoResult);
+                    String[] subserviceResult = serviceGenerate(po, po.getName());
+                    createJavaFile(po.getPath() + "\\service", subserviceResult);
+                    String[] subserviceImplResult = serviceImplGenerate(po, po.getName());
+                    createJavaFile(po.getPath() + "\\serviceimpl", subserviceImplResult);
+                    String[] subcontrollerInteResult = controllerInteGenerate(po, po.getName());
+                    createJavaFile(po.getPath() + "\\controller", subcontrollerInteResult);
+                    String[] subcontrollerResult = controllerGenerate(po, po.getName());
+                    createJavaFile(po.getPath() + "\\controller", subcontrollerResult);
+                }
             }
         }
     }
 
-    public String[] entityGenerate(CreateVO createVO) {
+    public String[] entityGenerate(EntityNamePO po) {
+        List<EntityPO> poList = entityService.findOneById(po.getId());
         StringBuffer sb = new StringBuffer();
-        generatePackage1(createVO, sb);
+        generatePackage1(po, sb);
         sb.append("import org.hibernate.annotations.GenericGenerator;\r\n");
         sb.append("\r\n");
         sb.append("import javax.persistence.*;\r\n");
-        generatePackage2(createVO, sb);
+        generatePackage2(poList, sb);
         sb.append("@Entity\r\n");
-        sb.append("@Table(name = ").append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName()))).append(createVO.getType()).append(".T_").append(createVO.getName().toUpperCase()).append(")\r\n");
+        sb.append("@Table(name = ").append(BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()))).append(po.getType()).append(".T_").append(po.getName().toUpperCase()).append(")\r\n");
         sb.append("@Data\r\n");
         sb.append("@GenericGenerator(name = \"uuid2\", strategy = \"org.hibernate.id.UUIDGenerator\")\r\n");
-        generateClass(createVO, sb);
-        for (EntityPO entityPO : createVO.getPoList()) {
+        generateClass(po, sb);
+        for (EntityPO entityPO : poList) {
             String idValue = "id";
             if (entityPO.getEntityName().equals(idValue)) {
                 sb.append("    @Id\r\n");
@@ -79,7 +107,7 @@ public class PoServiceImpl extends BaseService {
         }
         sb.append("}");
         String entityData = sb.toString();
-        return new String[]{entityData, entityName(createVO)};
+        return new String[]{entityData, entityName(po)};
     }
 
     public String[] daoGenerate(EntityNamePO po) {
@@ -102,17 +130,17 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityDaoData, entityDaoName(po)};
     }
 
-    public String[] serviceGenerate(EntityNamePO po) {
+    public String[] serviceGenerate(EntityNamePO po, String entityName) {
         StringBuffer sb = new StringBuffer();
         String[] PathArr = po.getPath().split("java");
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
+        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.*";
         //service路径
         String poServicePath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".service";
         sb.append("package ").append(poServicePath).append(";\r\n");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         sb.append("\r\n");
-        sb.append("import ").append(poPath).append(".").append(fileName).append(po.getType()).append(";\r\n");
+        sb.append("import ").append(poPath).append(";\r\n");
         sb.append("import org.springframework.data.domain.Page;");
         sb.append("\r\n");
         generateAuthor(sb);
@@ -144,39 +172,52 @@ public class PoServiceImpl extends BaseService {
         sb.append("    /**\r\n");
         sb.append("     * 查找所有实体(分页排序)\r\n");
         sb.append("     *\r\n");
+        if (entityName != null) {
+            sb.append("     * @param id         id\r\n");
+        }
         sb.append("     * @param pageNumber 页码\r\n");
         sb.append("     * @param pageSize 条目\r\n");
         sb.append("     * @param sortCode 排序列\r\n");
         sb.append("     * @return 实体列表分页\r\n");
         sb.append("     */\r\n");
-        sb.append("    Page<").append(fileName).append("PO> findAll(Integer pageNumber, Integer pageSize, String sortCode);\r\n");
+        if (entityName != null) {
+            sb.append("    Page<").append(fileName).append("PO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);\r\n");
+        } else {
+            sb.append("    Page<").append(fileName).append("PO> findAll(Integer pageNumber, Integer pageSize, String sortCode);\r\n");
+        }
+        sb.append("\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 查找实体\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param id 实体id\r\n");
+        sb.append("     * @return 实体\r\n");
+        sb.append("     */\r\n");
+        sb.append("    ").append(fileName).append("PO findOneById(String id);\r\n");
+        sb.append("\r\n");
         sb.append("}\r\n");
         String entityServiceData = sb.toString();
         return new String[]{entityServiceData, entityServiceName(po)};
     }
 
-    public String[] serviceImplGenerate(EntityNamePO po) {
+    public String[] serviceImplGenerate(EntityNamePO po, String entityName) {
         StringBuffer sb = new StringBuffer();
         String[] PathArr = po.getPath().split("java");
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
+        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.*";
         //dao路径
-        String poDaoPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".dao";
+        String poDaoPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".dao.*";
         //service路径
-        String poServicePath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".service";
+        String poServicePath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".service.*";
         //serviceImpl路径
         String poServiceImplPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".serviceimpl";
         sb.append("package ").append(poServiceImplPath).append(";\r\n");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         sb.append("\r\n");
-        sb.append("import ").append(poPath).append(".").append(fileName).append(po.getType()).append(";\r\n");
-        sb.append("import ").append(poDaoPath).append(".").append(fileName).append("Dao;\r\n");
-        sb.append("import ").append(poServicePath).append(".").append(fileName).append("Service;\r\n");
+        sb.append("import ").append(poPath).append(";\r\n");
+        sb.append("import ").append(poDaoPath).append(";\r\n");
+        sb.append("import ").append(poServicePath).append(";\r\n");
         sb.append("import org.springframework.beans.factory.annotation.Autowired;\r\n");
-        sb.append("import org.springframework.data.domain.Page;\r\n");
-        sb.append("import org.springframework.data.domain.PageRequest;\r\n");
-        sb.append("import org.springframework.data.domain.Pageable;\r\n");
-        sb.append("import org.springframework.data.domain.Sort;\r\n");
+        sb.append("import org.springframework.data.domain.*;\r\n");
         sb.append("import org.springframework.stereotype.Service;\r\n");
         sb.append("\r\n");
         generateAuthor(sb);
@@ -206,10 +247,37 @@ public class PoServiceImpl extends BaseService {
         sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("    @Override\r\n");
-        sb.append("    public Page<").append(fileName).append("PO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
-        sb.append("        Sort sort = Sort.by(sortCode);\r\n");
-        sb.append("        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);\r\n");
-        sb.append("        return ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findAll(pageable);\r\n");
+        if (entityName != null) {
+            sb.append("    public Page<").append(fileName).append("PO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
+            sb.append("        Sort sort = Sort.by(sortCode);\r\n");
+            sb.append("        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);\r\n");
+            sb.append("        List<").append(fileName).append("PO> poList = findOneById(id);\r\n");
+            sb.append("        List<").append(fileName).append("PO> poPage = CommonUtils.page(poList, pageSize, pageNumber);\r\n");
+            sb.append("        return new PageImpl<>(poPage, pageable, poList.size());\r\n");
+        } else {
+            sb.append("    public Page<").append(fileName).append("PO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
+            sb.append("        Sort sort = Sort.by(sortCode);\r\n");
+            sb.append("        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);\r\n");
+            sb.append("        return ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findAll(pageable);\r\n");
+        }
+        sb.append("    }\r\n");
+        sb.append("\r\n");
+        sb.append("    @Override\r\n");
+        sb.append("    public ").append(fileName).append("PO findOneById(String id) {\r\n");
+        if (entityName != null) {
+            sb.append("        Q").append(fileName).append("PO q").append(fileName).append("PO = Q").append(fileName).append("PO.").append(BeanUtils.underline2Camel(po.getName())).append("PO;\r\n");
+            sb.append("        Q").append(entityName).append("PO q").append(entityName).append("PO = Q").append(entityName).append("PO.").append(BeanUtils.toLowerCaseFirstOne(entityName)).append("PO;\r\n");
+            sb.append("        return queryFactory.selectFrom(q").append(entityName).append("PO)\r\n");
+            sb.append("                .innerJoin(q").append(entityName).append("PO)\r\n");
+            sb.append("                .on(q").append(fileName).append("PO.pid.eq(q").append(entityName).append("PO.id))\r\n");
+            sb.append("                .where(q").append(entityName).append("PO.id.eq(id))\r\n");
+            sb.append("                .orderBy(q").append(fileName).append("PO.sortCode.asc()).fetch();\r\n");
+        } else {
+            sb.append("        if (").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).isPresent()){\r\n");
+            sb.append("            return ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).get();\r\n");
+            sb.append("        }\r\n");
+            sb.append("        return null;\r\n");
+        }
         sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("}\r\n");
@@ -217,23 +285,22 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityServiceImplData, entityServiceImplName(po)};
     }
 
-    public String[] controllerInteGenerate(EntityNamePO po) {
+    public String[] controllerInteGenerate(EntityNamePO po, String entityName) {
         StringBuffer sb = new StringBuffer();
         String[] PathArr = po.getPath().split("java");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.";
+        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.*";
         //controller路径
         String poControllerPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".controller";
-        String entityPath = poPath + fileName + "PO";
-        String resultPath = poPath + "ResultVO";
         sb.append("package ").append(poControllerPath).append(";\r\n");
         sb.append("\r\n");
-        sb.append("import ").append(entityPath).append(";\r\n");
-        sb.append("import ").append(resultPath).append(";\r\n");
+        sb.append("import ").append(poPath).append(";\r\n");
         sb.append("import org.springframework.web.bind.annotation.PostMapping;\r\n");
         sb.append("import org.springframework.web.bind.annotation.RequestBody;\r\n");
         sb.append("import org.springframework.web.bind.annotation.RequestParam;\r\n");
+        sb.append("\r\n");
+        sb.append("import java.util.Map;\r\n");
         sb.append("\r\n");
         generateAuthor(sb);
         sb.append("public interface ").append(fileName).append("Controller {\r\n");
@@ -247,18 +314,23 @@ public class PoServiceImpl extends BaseService {
         sb.append("     * @return 返回结果\r\n");
         sb.append("     */\r\n");
         sb.append("    @PostMapping(value = \"").append(BeanUtils.underline2Camel(po.getName())).append("Page\")\r\n");
-        sb.append("    ResultVO ").append(BeanUtils.underline2Camel(po.getName())).append("FindAll(@RequestParam(\"pageNumber\") Integer pageNumber,\r\n");
+        if (entityName != null) {
+            sb.append("    ResultVO ").append(BeanUtils.underline2Camel(po.getName())).append("FindAll(@RequestParam(\"id\") String id,\r\n");
+            sb.append("                         @RequestParam(\"pageNumber\") Integer pageNumber,\r\n");
+        } else {
+            sb.append("    ResultVO ").append(BeanUtils.underline2Camel(po.getName())).append("FindAll(@RequestParam(\"pageNumber\") Integer pageNumber,\r\n");
+        }
         sb.append("                         @RequestParam(\"pageSize\") Integer pageSize,\r\n");
         sb.append("                         @RequestParam(\"sortCode\") String sortCode);\r\n");
         sb.append("\r\n");
         sb.append("    /**\r\n");
         sb.append("     * 保存对象\r\n");
         sb.append("     *\r\n");
-        sb.append("     * @param po 对象\r\n");
+        sb.append("     * @param vo 对象\r\n");
         sb.append("     * @return 返回结果\r\n");
         sb.append("     */\r\n");
         sb.append("    @PostMapping(value = \"").append(BeanUtils.underline2Camel(po.getName())).append("Save\")\r\n");
-        sb.append("    ResultVO ").append(BeanUtils.underline2Camel(po.getName())).append("Save(@RequestBody ").append(fileName).append("PO po);\r\n");
+        sb.append("    ResultVO ").append(BeanUtils.underline2Camel(po.getName())).append("Save(@RequestBody Map<String, Object> vo);\r\n");
         sb.append("\r\n");
         sb.append("    /**\r\n");
         sb.append("     * 删除对象\r\n");
@@ -273,7 +345,7 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityControllerData, entityControllerName(po)};
     }
 
-    public String[] controllerGenerate(EntityNamePO po) {
+    public String[] controllerGenerate(EntityNamePO po, String entityName) {
         StringBuffer sb = new StringBuffer();
         String[] PathArr = po.getPath().split("java");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
@@ -285,10 +357,13 @@ public class PoServiceImpl extends BaseService {
         String poControllerPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".controller";
         sb.append("package ").append(poControllerPath).append(";\r\n");
         sb.append("\r\n");
+        sb.append("import com.example.cyjcommon.utils.VoPoConverter;\r\n");
         sb.append("import ").append(poPath).append(";\r\n");
         sb.append("import ").append(poServiceImplPath).append(";\r\n");
         sb.append("import org.springframework.web.bind.annotation.*;\r\n");
         sb.append("import org.springframework.beans.factory.annotation.Autowired;\r\n");
+        sb.append("\r\n");
+        sb.append("import java.util.Map;\r\n");
         sb.append("\r\n");
         generateAuthor(sb);
         sb.append("@RestController\r\n");
@@ -303,12 +378,19 @@ public class PoServiceImpl extends BaseService {
         sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("    @Override\r\n");
-        sb.append("    public ResultVO ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("FindAll(Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
-        sb.append("        return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Service.findAll(pageNumber - 1, pageSize, sortCode));\r\n");
+        if (entityName != null) {
+            sb.append("    public ResultVO ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("FindAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
+            sb.append("        return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Service.findAll(id, pageNumber, pageSize, sortCode));\r\n");
+        } else {
+            sb.append("    public ResultVO ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("FindAll(Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
+            sb.append("        return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Service.findAll(pageNumber - 1, pageSize, sortCode));\r\n");
+        }
         sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("    @Override\r\n");
-        sb.append("    public ResultVO ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Save").append("(").append(fileName).append("PO po) {\r\n");
+        sb.append("    public ResultVO ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Save").append("(Map<String, Object> vo) {\r\n");
+        sb.append("        ").append(fileName).append("PO po = new ").append(fileName).append("PO();\r\n");
+        sb.append("        VoPoConverter.copyProperties(vo, po);\r\n");
         sb.append("        if (po.getId() == null) {\r\n");
         sb.append("            return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Service.addOne(po));\r\n");
         sb.append("        }\r\n");

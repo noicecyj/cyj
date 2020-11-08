@@ -1,6 +1,5 @@
 package com.example.cyjentitycreater.utils;
 
-import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 
@@ -65,8 +64,8 @@ public class BeanUtils {
         return false;
     }
 
-    public static String entityName(CreateVO createVO) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())) + createVO.getType() + ".java";
+    public static String entityName(EntityNamePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())) + po.getType() + ".java";
     }
 
     public static String entityDaoName(EntityNamePO po) {

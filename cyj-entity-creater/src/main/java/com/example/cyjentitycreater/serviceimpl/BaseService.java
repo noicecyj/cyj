@@ -1,6 +1,7 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author 曹元杰
@@ -50,31 +52,31 @@ public class BaseService {
         sb.append(" */\r\n");
     }
 
-    public void generateClass(CreateVO createVO, StringBuffer sb) {
+    public void generateClass(EntityNamePO po, StringBuffer sb) {
         sb.append("public class ")
-                .append(BeanUtils.captureName(BeanUtils.underline2Camel(createVO.getName())))
-                .append(createVO.getType()).append(" implements Serializable {\r\n");
+                .append(BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())))
+                .append(po.getType()).append(" implements Serializable {\r\n");
         sb.append("\r\n");
-        sb.append("    static final String T_").append(createVO.getName().toUpperCase())
-                .append(" = \"t_").append(createVO.getName()).append("\";\r\n");
+        sb.append("    static final String T_").append(po.getName().toUpperCase())
+                .append(" = \"t_").append(po.getName()).append("\";\r\n");
         sb.append("\r\n");
     }
 
-    public void generatePackage1(CreateVO createVO, StringBuffer sb) {
+    public void generatePackage1(EntityNamePO po, StringBuffer sb) {
         //pojo路径
-        String[] poPathArr = createVO.getPath().split("java");
+        String[] poPathArr = po.getPath().split("java");
         String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
         sb.append("package ").append(poPath).append(";\r\n");
         sb.append("\r\n");
         sb.append("import lombok.Data;\r\n");
     }
 
-    public void generatePackage2(CreateVO createVO, StringBuffer sb) {
+    public void generatePackage2(List<EntityPO> poList, StringBuffer sb) {
         sb.append("import java.io.Serializable;\r\n");
-        if (BeanUtils.ifDate(createVO.getPoList())) {
+        if (BeanUtils.ifDate(poList)) {
             sb.append("import java.sql.Date;\r\n");
         }
-        if (BeanUtils.ifTimestamp(createVO.getPoList())) {
+        if (BeanUtils.ifTimestamp(poList)) {
             sb.append("import java.sql.Timestamp;\r\n");
         }
         sb.append("\r\n");

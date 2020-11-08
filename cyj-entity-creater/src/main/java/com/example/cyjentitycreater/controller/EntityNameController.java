@@ -1,15 +1,16 @@
 package com.example.cyjentitycreater.controller;
 
-import com.example.cyjentitycreater.entity.EntityNameVO;
-import com.example.cyjentitycreater.entity.ResultVO;
+import com.example.cyjentitycreater.entity.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-11-08
  */
 public interface EntityNameController {
 
@@ -23,8 +24,8 @@ public interface EntityNameController {
      */
     @PostMapping(value = "entityNamePage")
     ResultVO entityNameFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                               @RequestParam("pageSize") Integer pageSize,
-                               @RequestParam("sortCode") String sortCode);
+                         @RequestParam("pageSize") Integer pageSize,
+                         @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象
@@ -33,7 +34,7 @@ public interface EntityNameController {
      * @return 返回结果
      */
     @PostMapping(value = "entityNameSave")
-    ResultVO entityNameSave(@RequestBody EntityNameVO vo);
+    ResultVO entityNameSave(@RequestBody Map<String, Object> vo);
 
     /**
      * 删除对象

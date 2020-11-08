@@ -1,9 +1,14 @@
 package com.example.cyjentitycreater.controller;
 
-import com.example.cyjentitycreater.entity.*;
-import com.example.cyjentitycreater.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjcommon.utils.VoPoConverter;
+import com.example.cyjentitycreater.entity.EntityPO;
+import com.example.cyjentitycreater.entity.ResultVO;
+import com.example.cyjentitycreater.serviceimpl.EntityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author 曹元杰
@@ -27,7 +32,9 @@ public class EntityControllerImpl implements EntityController {
     }
 
     @Override
-    public ResultVO entitySave(EntityPO po) {
+    public ResultVO entitySave(Map<String, Object> vo) {
+        EntityPO po = new EntityPO();
+        VoPoConverter.copyProperties(vo, po);
         if (po.getId() == null) {
             return ResultVO.success(entityService.addOne(po));
         }

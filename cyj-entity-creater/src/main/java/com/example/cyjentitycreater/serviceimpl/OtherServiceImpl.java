@@ -1,11 +1,14 @@
 package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.List;
 
 import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 
@@ -18,27 +21,42 @@ import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 @Component
 public class OtherServiceImpl extends BaseService {
 
-    public String[] entityGenerate(CreateVO createVO) {
+    private EntityNameServiceImpl entityNameService;
+
+    private EntityServiceImpl entityService;
+
+    @Autowired
+    public void setEntityNameService(EntityNameServiceImpl entityNameService) {
+        this.entityNameService = entityNameService;
+    }
+
+    @Autowired
+    public void setEntityService(EntityServiceImpl entityService) {
+        this.entityService = entityService;
+    }
+
+    public String[] entityGenerate(EntityNamePO po) {
+        List<EntityPO> poList = entityService.findOneById(po.getId());
         StringBuffer sb = new StringBuffer();
-        generatePackage1(createVO, sb);
+        generatePackage1(po, sb);
         sb.append("\r\n");
-        generatePackage2(createVO, sb);
+        generatePackage2(poList, sb);
         sb.append("@Data\r\n");
-        generateClass(createVO, sb);
-        for (EntityPO entityPO : createVO.getPoList()) {
+        generateClass(po, sb);
+        for (EntityPO entityPO : poList) {
             sb.append("    private ").append(entityPO.getEntityProperty()).append(" ")
                     .append(BeanUtils.underline2Camel(entityPO.getEntityName())).append(";\r\n");
             sb.append("\r\n");
         }
         sb.append("}");
         String entityData = sb.toString();
-        return new String[]{entityData, entityName(createVO)};
+        return new String[]{entityData, entityName(po)};
     }
 
 
-    public String[] createJavaFile(CreateVO createVO) throws IOException {
-        String[] result = entityGenerate(createVO);
+    public void createJavaFile(CreateVO createVO) throws IOException {
+        EntityNamePO po = entityNameService.findOneById(createVO.getId());
+        String[] result = entityGenerate(po);
         createJavaFile(createVO.getPath(), result);
-        return result;
     }
 }
