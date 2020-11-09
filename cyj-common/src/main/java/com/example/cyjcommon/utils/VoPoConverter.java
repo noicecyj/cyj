@@ -31,7 +31,7 @@ public class VoPoConverter {
      */
     public static <T> T copyProperties(Object src, Class<T> descClass) {
         DozerBeanMapper dozer = new DozerBeanMapper();
-        return (T) dozer.map(src, descClass);
+        return dozer.map(src, descClass);
     }
 
     /**
@@ -42,7 +42,7 @@ public class VoPoConverter {
      * @return 目标
      */
     public static <T> List<T> copyList(@SuppressWarnings("rawtypes") List srcList, Class<T> descClass) {
-        List<T> descList = new ArrayList<T>();
+        List<T> descList = new ArrayList<>();
         if (srcList != null) {
             for (Object obj : srcList) {
                 T t = VoPoConverter.copyProperties(obj, descClass);

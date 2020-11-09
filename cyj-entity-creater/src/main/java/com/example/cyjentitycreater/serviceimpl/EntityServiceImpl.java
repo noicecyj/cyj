@@ -1,15 +1,17 @@
 package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjcommon.utils.CommonUtils;
-import com.example.cyjentitycreater.entity.*;
-import com.example.cyjentitycreater.dao.*;
-import com.example.cyjentitycreater.service.*;
+import com.example.cyjentitycreater.dao.EntityDao;
+import com.example.cyjentitycreater.entity.EntityPO;
+import com.example.cyjentitycreater.entity.QEntityNamePO;
+import com.example.cyjentitycreater.entity.QEntityPO;
+import com.example.cyjentitycreater.service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
+
 /**
  * @author 曹元杰
  * @version 1.0

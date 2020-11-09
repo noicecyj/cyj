@@ -193,7 +193,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("     */\r\n");
         if (entityName != null) {
             sb.append("    List<").append(fileName).append("PO> findOneById(String id);\r\n");
-        }else {
+        } else {
             sb.append("    ").append(fileName).append("PO findOneById(String id);\r\n");
         }
         sb.append("\r\n");

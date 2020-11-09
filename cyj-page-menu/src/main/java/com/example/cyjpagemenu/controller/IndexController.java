@@ -1,9 +1,9 @@
 package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
-import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.example.cyjpagemenu.entity.MenuPagePO;
 import com.example.cyjpagemenu.entity.ResultVO;
+import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.example.cyjpagemenu.service.DictionaryApiService;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

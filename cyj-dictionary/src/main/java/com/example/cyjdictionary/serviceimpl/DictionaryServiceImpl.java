@@ -1,15 +1,17 @@
 package com.example.cyjdictionary.serviceimpl;
 
 import com.example.cyjcommon.utils.CommonUtils;
-import com.example.cyjdictionary.entity.*;
-import com.example.cyjdictionary.dao.*;
-import com.example.cyjdictionary.service.*;
+import com.example.cyjdictionary.dao.DictionaryDao;
+import com.example.cyjdictionary.entity.DictionaryPO;
+import com.example.cyjdictionary.entity.QCatalogPO;
+import com.example.cyjdictionary.entity.QDictionaryPO;
+import com.example.cyjdictionary.service.DictionaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-
 import java.util.List;
+
 /**
  * @author 曹元杰
  * @version 1.0

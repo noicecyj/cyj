@@ -1,6 +1,6 @@
 package com.example.cyjentitycreater.controller;
 
-import com.example.cyjentitycreater.entity.*;
+import com.example.cyjentitycreater.entity.ResultVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,9 +25,9 @@ public interface EntityController {
      */
     @PostMapping(value = "entityPage")
     ResultVO entityFindAll(@RequestParam("id") String id,
-                         @RequestParam("pageNumber") Integer pageNumber,
-                         @RequestParam("pageSize") Integer pageSize,
-                         @RequestParam("sortCode") String sortCode);
+                           @RequestParam("pageNumber") Integer pageNumber,
+                           @RequestParam("pageSize") Integer pageSize,
+                           @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象

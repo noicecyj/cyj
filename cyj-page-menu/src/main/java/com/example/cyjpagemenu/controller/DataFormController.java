@@ -1,6 +1,6 @@
 package com.example.cyjpagemenu.controller;
 
-import com.example.cyjpagemenu.entity.*;
+import com.example.cyjpagemenu.entity.ResultVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,8 +24,8 @@ public interface DataFormController {
      */
     @PostMapping(value = "dataFormPage")
     ResultVO dataFormFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                         @RequestParam("pageSize") Integer pageSize,
-                         @RequestParam("sortCode") String sortCode);
+                             @RequestParam("pageSize") Integer pageSize,
+                             @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象

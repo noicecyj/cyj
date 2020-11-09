@@ -1,6 +1,6 @@
 package com.example.cyjdictionary.controller;
 
-import com.example.cyjdictionary.entity.*;
+import com.example.cyjdictionary.entity.ResultVO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,8 +24,8 @@ public interface CatalogController {
      */
     @PostMapping(value = "catalogPage")
     ResultVO catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                         @RequestParam("pageSize") Integer pageSize,
-                         @RequestParam("sortCode") String sortCode);
+                            @RequestParam("pageSize") Integer pageSize,
+                            @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象

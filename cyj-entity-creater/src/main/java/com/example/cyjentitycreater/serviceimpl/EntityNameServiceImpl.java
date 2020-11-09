@@ -1,10 +1,13 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.entity.*;
-import com.example.cyjentitycreater.dao.*;
-import com.example.cyjentitycreater.service.*;
+import com.example.cyjentitycreater.dao.EntityNameDao;
+import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.service.EntityNameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -46,7 +49,7 @@ public class EntityNameServiceImpl extends BaseService implements EntityNameServ
 
     @Override
     public EntityNamePO findOneById(String id) {
-        if (entityNameDao.findById(id).isPresent()){
+        if (entityNameDao.findById(id).isPresent()) {
             return entityNameDao.findById(id).get();
         }
         return null;
