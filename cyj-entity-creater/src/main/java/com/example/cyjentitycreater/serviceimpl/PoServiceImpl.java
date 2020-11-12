@@ -77,7 +77,7 @@ public class PoServiceImpl extends BaseService {
 
     public String[] entityGenerate(EntityNamePO po) {
         List<EntityPO> poList = entityService.findOneById(po.getId());
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         generatePackage1(po, sb);
         sb.append("import org.hibernate.annotations.GenericGenerator;\r\n");
         sb.append("\r\n");
@@ -106,12 +106,13 @@ public class PoServiceImpl extends BaseService {
     }
 
     public String[] daoGenerate(EntityNamePO po) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String[] PathArr = po.getPath().split("java");
+        String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
+        String poPath = packetPath + ".entity";
         //dao路径
-        String poDaoPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".dao";
+        String poDaoPath = packetPath + ".dao";
         sb.append("package ").append(poDaoPath).append(";\r\n");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         sb.append("\r\n");
@@ -126,12 +127,13 @@ public class PoServiceImpl extends BaseService {
     }
 
     public String[] serviceGenerate(EntityNamePO po, String entityName) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String[] PathArr = po.getPath().split("java");
+        String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.*";
+        String poPath = packetPath + ".entity.*";
         //service路径
-        String poServicePath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".service";
+        String poServicePath = packetPath + ".service";
         sb.append("package ").append(poServicePath).append(";\r\n");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         sb.append("\r\n");
@@ -203,16 +205,17 @@ public class PoServiceImpl extends BaseService {
     }
 
     public String[] serviceImplGenerate(EntityNamePO po, String entityName) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String[] PathArr = po.getPath().split("java");
+        String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.*";
+        String poPath = packetPath + ".entity.*";
         //dao路径
-        String poDaoPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".dao.*";
+        String poDaoPath = packetPath + ".dao.*";
         //service路径
-        String poServicePath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".service.*";
+        String poServicePath = packetPath + ".service.*";
         //serviceImpl路径
-        String poServiceImplPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".serviceimpl";
+        String poServiceImplPath = packetPath + ".serviceimpl";
         sb.append("package ").append(poServiceImplPath).append(";\r\n");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
 
@@ -299,13 +302,14 @@ public class PoServiceImpl extends BaseService {
     }
 
     public String[] controllerInteGenerate(EntityNamePO po, String entityName) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String[] PathArr = po.getPath().split("java");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
+        String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.*";
+        String poPath = packetPath + ".entity.*";
         //controller路径
-        String poControllerPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".controller";
+        String poControllerPath = packetPath + ".controller";
         sb.append("package ").append(poControllerPath).append(";\r\n");
         sb.append("\r\n");
         sb.append("import ").append(poPath).append(";\r\n");
@@ -362,15 +366,16 @@ public class PoServiceImpl extends BaseService {
     }
 
     public String[] controllerGenerate(EntityNamePO po, String entityName) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String[] PathArr = po.getPath().split("java");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
+        String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
-        String poPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity.*";
+        String poPath = packetPath + ".entity.*";
         //serviceImpl路径
-        String poServiceImplPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".serviceimpl.*";
+        String poServiceImplPath = packetPath + ".serviceimpl.*";
         //controller路径
-        String poControllerPath = PathArr[1].substring(1).replaceAll("\\\\", ".") + ".controller";
+        String poControllerPath = packetPath + ".controller";
         sb.append("package ").append(poControllerPath).append(";\r\n");
         sb.append("\r\n");
         sb.append("import com.example.cyjcommon.utils.VoPoConverter;\r\n");

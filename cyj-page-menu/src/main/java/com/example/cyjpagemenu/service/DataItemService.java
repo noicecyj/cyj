@@ -1,14 +1,13 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.DataItemPO;
+import com.example.cyjpagemenu.entity.*;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
-
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2020-11-12
  */
 public interface DataItemService {
 
@@ -40,8 +39,8 @@ public interface DataItemService {
      *
      * @param id         id
      * @param pageNumber 页码
-     * @param pageSize   条目
-     * @param sortCode   排序列
+     * @param pageSize 条目
+     * @param sortCode 排序列
      * @return 实体列表分页
      */
     Page<DataItemPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);

@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2020-11-12
  */
 @Entity
 @Table(name = DataFormPO.T_DATA_FORM)
@@ -26,6 +26,9 @@ public class DataFormPO implements Serializable {
 
     @Column(name = "data_form_name")
     private String dataFormName;
+
+    @Column(name = "data_form_type")
+    private String dataFormType;
 
     @Column(name = "description")
     private String description;

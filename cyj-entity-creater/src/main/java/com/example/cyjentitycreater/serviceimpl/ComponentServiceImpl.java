@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-import static com.example.cyjentitycreater.utils.BeanUtils.componentName;
-
 /**
  * @author 曹元杰
  * @version 1.0
@@ -31,16 +29,27 @@ public class ComponentServiceImpl extends BaseService {
         String componentPath = pagePath + "/" + componentName;
         createJavaFile(componentPath + "/models");
         createJavaFile(componentPath + "/services");
-        createJavaFile(componentPath + "/models", createModelsJsx(po));
-        createJavaFile(componentPath + "/services", createServiceJsx(po));
-        createJavaFile(componentPath, createIndexJsx(po));
+        createJavaFile(componentPath + "/models", createModelsJsx(po, null));
+        createJavaFile(componentPath + "/services", createServiceJsx(po, null));
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+            String[] relEntities = str.split(",");
+            for (String relEntity : relEntities) {
+                EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                createJavaFile(componentPath + "/models", createModelsJsx(subPo, po.getName()));
+                createJavaFile(componentPath + "/services", createServiceJsx(subPo, po.getName()));
+            }
+            createJavaFile(componentPath, createIndexJsx(po, relEntities));
+        } else {
+            createJavaFile(componentPath, createIndexJsx(po, null));
+        }
         createJavaFile(componentPath, createIndexCss());
     }
 
-    private String[] createModelsJsx(EntityNamePO po) {
+    private String[] createModelsJsx(EntityNamePO po, String entityName) {
         StringBuilder sb = new StringBuilder();
         String underComponentName = BeanUtils.underline2Camel(po.getName());
-        sb.append("import ").append(underComponentName).append("Service from '../services/").append(BeanUtils.captureName(underComponentName)).append("';\r\n");
+        sb.append("import ").append(underComponentName).append("Service from '../services/").append(underComponentName).append("';\r\n");
         sb.append("\r\n");
         sb.append("export default {\r\n");
         sb.append("\r\n");
@@ -53,29 +62,22 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("    ").append(underComponentName).append("LoadingVisible: true,\r\n");
         sb.append("    ").append(underComponentName).append("Total: 0,\r\n");
         sb.append("    ").append(underComponentName).append("Current: 1,\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
-            for (String relEntity : relEntities) {
-                EntityNamePO relPo = entityNameService.findOneById(relEntity);
-                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("    ").append(underRelEntity).append("TableData: [],\r\n");
-                sb.append("    ").append(underRelEntity).append("Visible: false,\r\n");
-                sb.append("    ").append(underRelEntity).append("FormData: {},\r\n");
-                sb.append("    ").append(underRelEntity).append("LoadingVisible: true,\r\n");
-                sb.append("    ").append(underRelEntity).append("Total: 0,\r\n");
-                sb.append("    ").append(underRelEntity).append("Current: 1,\r\n");
-                sb.append("    ").append(underRelEntity).append("DivVisible: true,\r\n");
-            }
-            sb.append("    ").append(underComponentName).append("Id: '',\r\n");
+        if (entityName != null) {
+            sb.append("    ").append("divVisible: true,\r\n");
+            sb.append("    ").append(BeanUtils.underline2Camel(entityName)).append("Id: '',\r\n");
+        } else {
+            sb.append("    formItemLayout: {\r\n");
+            sb.append("      labelCol: {\r\n");
+            sb.append("        fixedSpan: 6,\r\n");
+            sb.append("      },\r\n");
+            sb.append("      wrapperCol: {\r\n");
+            sb.append("        span: 40,\r\n");
+            sb.append("      },\r\n");
+            sb.append("    },\r\n");
+            sb.append("    // <=============================自定义状态 start =============================>\r\n");
+            sb.append("    \r\n");
+            sb.append("    // <=============================自定义状态 end   =============================>\r\n");
         }
-        sb.append("    formItemLayout: {\r\n");
-        sb.append("      labelCol: {\r\n");
-        sb.append("        fixedSpan: 6,\r\n");
-        sb.append("      },\r\n");
-        sb.append("      wrapperCol: {\r\n");
-        sb.append("        span: 40,\r\n");
-        sb.append("      },\r\n");
-        sb.append("    },\r\n");
         sb.append("  },\r\n");
         sb.append("\r\n");
         sb.append("  reducers: {\r\n");
@@ -85,6 +87,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("  },\r\n");
         sb.append("\r\n");
         sb.append("  effects: (dispatch) => ({\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 数据\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param {*} data\r\n");
+        sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Page(data) {\r\n");
         sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data).then(res => {\r\n");
         sb.append("        const payload = {\r\n");
@@ -93,37 +100,34 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("          ").append(underComponentName).append("Current: data,\r\n");
         sb.append("          ").append(underComponentName).append("LoadingVisible: false,\r\n");
         sb.append("        };\r\n");
-        sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
-            sb.append("        if (data !== 1) {\r\n");
-            sb.append("          const payload2 = {\r\n");
-            for (String relEntity : relEntities) {
-                EntityNamePO relPo = entityNameService.findOneById(relEntity);
-                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("            ").append(underRelEntity).append("DivVisible: true,\r\n");
-            }
-            sb.append("          };\r\n");
-            sb.append("          dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload2);\r\n");
-            sb.append("        }\r\n");
-        }
+        sb.append("        dispatch.").append(underComponentName).append(".setState(payload);\r\n");
         sb.append("      });\r\n");
         sb.append("    },\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 编辑\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param {*} data\r\n");
+        sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Edit(data) {\r\n");
         sb.append("      if (data) {\r\n");
         sb.append("        const payload = {\r\n");
         sb.append("          ").append(underComponentName).append("FormData: data,\r\n");
         sb.append("          ").append(underComponentName).append("Visible: true,\r\n");
         sb.append("        };\r\n");
-        sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
+        sb.append("        dispatch.").append(underComponentName).append(".setState(payload);\r\n");
         sb.append("      } else {\r\n");
         sb.append("        const payload = {\r\n");
         sb.append("          ").append(underComponentName).append("FormData: {},\r\n");
         sb.append("          ").append(underComponentName).append("Visible: true,\r\n");
         sb.append("        };\r\n");
-        sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
+        sb.append("        dispatch.").append(underComponentName).append(".setState(payload);\r\n");
         sb.append("      }\r\n");
         sb.append("    },\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 删除\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param {*} data\r\n");
+        sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Delete(data) {\r\n");
         sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Delete(data.record).then(() => {\r\n");
         sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.").append(underComponentName).append("Current).then(res => {\r\n");
@@ -131,19 +135,16 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("            ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
         sb.append("            ").append(underComponentName).append("TableData: res.data.content,\r\n");
         sb.append("            ").append(underComponentName).append("Current: data.").append(underComponentName).append("Current,\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
-            for (String relEntity : relEntities) {
-                EntityNamePO relPo = entityNameService.findOneById(relEntity);
-                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("            ").append(underRelEntity).append("DivVisible: true,\r\n");
-            }
-        }
         sb.append("          };\r\n");
-        sb.append("          dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
+        sb.append("          dispatch.").append(underComponentName).append(".setState(payload);\r\n");
         sb.append("        });\r\n");
         sb.append("      });\r\n");
         sb.append("    },\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 保存\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param {*} data\r\n");
+        sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Save(data) {\r\n");
         sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Save(data.").append(underComponentName).append("FormData).then(() => {\r\n");
         sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.").append(underComponentName).append("Current).then(res => {\r\n");
@@ -151,102 +152,96 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("            ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
         sb.append("            ").append(underComponentName).append("TableData: res.data.content,\r\n");
         sb.append("            ").append(underComponentName).append("Current: data.").append(underComponentName).append("Current,\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntityies = po.getRelEntity().split(",");
-            for (String relEntity : relEntityies) {
-                EntityNamePO relPo = entityNameService.findOneById(relEntity);
-                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("            ").append(underRelEntity).append("DivVisible: true,\r\n");
-            }
-        }
         sb.append("          };\r\n");
-        sb.append("          dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
+        sb.append("          dispatch.").append(underComponentName).append(".setState(payload);\r\n");
         sb.append("        });\r\n");
         sb.append("      });\r\n");
         sb.append("      const payload = { ").append(underComponentName).append("Visible: false };\r\n");
-        sb.append("      dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
+        sb.append("      dispatch.").append(underComponentName).append(".setState(payload);\r\n");
         sb.append("    },\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
-            for (String relEntity : relEntities) {
-                EntityNamePO relPo = entityNameService.findOneById(relEntity);
-                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("    ").append(underRelEntity).append("Page(data) {\r\n");
-                sb.append("      ").append(underComponentName).append("Service.").append(underRelEntity).append("Page(data.id, data.current).then(res => {\r\n");
-                sb.append("        const payload = {\r\n");
-                sb.append("          ").append(underRelEntity).append("Total: res.data.totalElements,\r\n");
-                sb.append("          ").append(underRelEntity).append("TableData: res.data.content,\r\n");
-                sb.append("          ").append(underRelEntity).append("Current: data,\r\n");
-                sb.append("          ").append(underRelEntity).append("LoadingVisible: false,\r\n");
-                sb.append("        };\r\n");
-                sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-                sb.append("      });\r\n");
-                sb.append("    },\r\n");
-                sb.append("    ").append(underRelEntity).append("Edit(data) {\r\n");
-                sb.append("      if (data) {\r\n");
-                sb.append("        const payload = {\r\n");
-                sb.append("          ").append(underRelEntity).append("FormData: data,\r\n");
-                sb.append("          ").append(underRelEntity).append("Visible: true,\r\n");
-                sb.append("        };\r\n");
-                sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-                sb.append("      } else {\r\n");
-                sb.append("        const payload = {\r\n");
-                sb.append("          ").append(underRelEntity).append("FormData: {},\r\n");
-                sb.append("          ").append(underRelEntity).append("Visible: true,\r\n");
-                sb.append("        };\r\n");
-                sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-                sb.append("      }\r\n");
-                sb.append("    },\r\n");
-                sb.append("    ").append(underRelEntity).append("Save(data) {\r\n");
-                sb.append("      ").append(underComponentName).append("Service.").append(underRelEntity).append("Save(data.").append(underRelEntity).append("FormData, data.").append(underRelEntity).append("Id).then(() => {\r\n");
-                sb.append("        ").append(underComponentName).append("Service.").append(underRelEntity).append("Page(data.").append(underRelEntity).append("Id, data.").append(underRelEntity).append("Current).then(res => {\r\n");
-                sb.append("          const payload = {\r\n");
-                sb.append("            ").append(underRelEntity).append("Total: res.data.totalElements,\r\n");
-                sb.append("            ").append(underRelEntity).append("TableData: res.data.content,\r\n");
-                sb.append("            ").append(underRelEntity).append("Current: data.").append(underRelEntity).append("Current,\r\n");
-                sb.append("          };\r\n");
-                sb.append("          dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-                sb.append("        });\r\n");
-                sb.append("      });\r\n");
-                sb.append("      const payload = { ").append(underRelEntity).append("Visible: false };\r\n");
-                sb.append("      dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-                sb.append("    },\r\n");
-                sb.append("    ").append(underRelEntity).append("OnRowClick(data) {\r\n");
-                sb.append("      ").append(underComponentName).append("Service.").append(underRelEntity).append("Page(data.record.id, 1).then(res => {\r\n");
-                sb.append("        const payload = {\r\n");
-                sb.append("          ").append(underRelEntity).append("Total: res.data.totalElements,\r\n");
-                sb.append("          ").append(underRelEntity).append("TableData: res.data.content,\r\n");
-                sb.append("          ").append(underRelEntity).append("Current: 1,\r\n");
-                sb.append("          ").append(underRelEntity).append("DivVisible: !data.selected,\r\n");
-                sb.append("        };\r\n");
-                sb.append("        dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-                sb.append("      });\r\n");
-                sb.append("      const payload = {\r\n");
-                sb.append("        ").append(underComponentName).append("Id: data.record.id,\r\n");
-                sb.append("      };\r\n");
-                sb.append("      dispatch.").append(BeanUtils.captureName(underComponentName)).append(".setState(payload);\r\n");
-                sb.append("    },\r\n");
-            }
+        sb.append("    /**\r\n");
+        sb.append("     * 获取字典\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param {*} data\r\n");
+        sb.append("     */\r\n");
+        sb.append("    findCatalogByValue(data) {\r\n");
+        sb.append("      ").append(underComponentName).append("Service.findCatalogByValue(data).then(res => {\r\n");
+        sb.append("        const formArr = [];\r\n");
+        sb.append("        res.forEach(item => {\r\n");
+        sb.append("          formArr.push({\r\n");
+        sb.append("            label: item.dictionaryName,\r\n");
+        sb.append("            value: item.dictionaryValue,\r\n");
+        sb.append("          });\r\n");
+        sb.append("        });\r\n");
+        sb.append("        const payload = JSON.parse(JSON.stringify({\r\n");
+        sb.append("          data: formArr,\r\n");
+        sb.append("        }).replace(/data/g, data));\r\n");
+        sb.append("        dispatch.").append(underComponentName).append(".setState(payload);\r\n");
+        sb.append("      });\r\n");
+        sb.append("    },\r\n");
+        sb.append("    // <=============================可选方法 start =============================>\r\n");
+        if (entityName != null) {
+            sb.append("    /**\r\n");
+            sb.append("     * 点击行\r\n");
+            sb.append("     *\r\n");
+            sb.append("     * @param {*} data\r\n");
+            sb.append("     */\r\n");
+            sb.append("    onRowClick(data) {\r\n");
+            sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.record.id, 1).then(res => {\r\n");
+            sb.append("        const payload = {\r\n");
+            sb.append("          ").append("divVisible: !data.selected,\r\n");
+            sb.append("          ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
+            sb.append("          ").append(underComponentName).append("TableData: res.data.content,\r\n");
+            sb.append("          ").append(underComponentName).append("Current: 1,\r\n");
+            sb.append("        };\r\n");
+            sb.append("        dispatch.").append(underComponentName).append(".setState(payload);\r\n");
+            sb.append("      });\r\n");
+            sb.append("      const payload = {\r\n");
+            sb.append("        ").append(BeanUtils.underline2Camel(entityName)).append("Id: data.record.id,\r\n");
+            sb.append("        ").append(underComponentName).append("LoadingVisible: false,\r\n");
+            sb.append("      };\r\n");
+            sb.append("      dispatch.").append(underComponentName).append(".setState(payload);\r\n");
+            sb.append("    },\r\n");
         }
+        sb.append("    // <=============================可选方法 end   =============================>\r\n");
+        sb.append("    // <=============================自定义方法 start =============================>\r\n");
+        sb.append("\r\n");
+        sb.append("    // <=============================自定义方法 end   =============================>\r\n");
         sb.append("  }),\r\n");
         sb.append("};");
         String modelData = sb.toString();
-        return new String[]{modelData, componentName(po)};
+        return new String[]{modelData, underComponentName + ".jsx"};
     }
 
-    private String[] createServiceJsx(EntityNamePO po) {
+    private String[] createServiceJsx(EntityNamePO po, String entityName) {
         StringBuilder sb = new StringBuilder();
         String underComponentName = BeanUtils.underline2Camel(po.getName());
         sb.append("import { request } from 'ice';\r\n");
         sb.append("\r\n");
         sb.append("export default {\r\n");
-        sb.append("  ").append(underComponentName).append("Page(value) {\r\n");
+        sb.append("  /**\r\n");
+        sb.append("   * 数据\r\n");
+        sb.append("   *\r\n");
+        if (entityName != null) {
+            sb.append("   * @param {*} id\r\n");
+        }
+        sb.append("   * @param {*} value\r\n");
+        sb.append("   * @return {*} \r\n");
+        sb.append("   */\r\n");
+        if (entityName != null) {
+            sb.append("  ").append(underComponentName).append("Page(id, value) {\r\n");
+        }else {
+            sb.append("  ").append(underComponentName).append("Page(value) {\r\n");
+        }
         sb.append("    return request({\r\n");
         sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Page',\r\n");
         sb.append("      method: 'post',\r\n");
         sb.append("      params: {\r\n");
+        if (entityName != null) {
+            sb.append("        id,\r\n");
+        }
         sb.append("        pageNumber: value,\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+        if (entityName != null) {
             sb.append("        pageSize: 5,\r\n");
         } else {
             sb.append("        pageSize: 13,\r\n");
@@ -255,6 +250,36 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("      },\r\n");
         sb.append("    });\r\n");
         sb.append("  },\r\n");
+        sb.append("  /**\r\n");
+        sb.append("   * 保存\r\n");
+        sb.append("   *\r\n");
+        sb.append("   * @param {*} ").append(underComponentName).append("FormData\r\n");
+        if (entityName != null) {
+            sb.append("   * @param {*} ").append(BeanUtils.underline2Camel(entityName)).append("Id\r\n");
+        }
+        sb.append("   * @return {*} \r\n");
+        sb.append("   */\r\n");
+        if (entityName != null) {
+            sb.append("  entitySave(").append(underComponentName).append("FormData, ").append(BeanUtils.underline2Camel(entityName)).append("Id) {\r\n");
+        }else {
+            sb.append("  ").append(underComponentName).append("Save(data) {\r\n");
+        }
+        sb.append("    return request({\r\n");
+        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Save',\r\n");
+        sb.append("      method: 'post',\r\n");
+        if (entityName != null) {
+            sb.append("      data: { ...").append(underComponentName).append("FormData, pid: ").append(BeanUtils.underline2Camel(entityName)).append("Id },\r\n");
+        }else {
+            sb.append("      data,\r\n");
+        }
+        sb.append("    });\r\n");
+        sb.append("  },\r\n");
+        sb.append("  /**\r\n");
+        sb.append("   * 删除\r\n");
+        sb.append("   *\r\n");
+        sb.append("   * @param {*} record\r\n");
+        sb.append("   * @return {*} \r\n");
+        sb.append("   */\r\n");
         sb.append("  ").append(underComponentName).append("Delete(record) {\r\n");
         sb.append("    return request({\r\n");
         sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Delete',\r\n");
@@ -264,54 +289,30 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("      },\r\n");
         sb.append("    });\r\n");
         sb.append("  },\r\n");
-        sb.append("  ").append(underComponentName).append("Save(data) {\r\n");
+        sb.append("  /**\r\n");
+        sb.append("   * 获取字典\r\n");
+        sb.append("   *\r\n");
+        sb.append("   * @param {*} value\r\n");
+        sb.append("   * @return {*} \r\n");
+        sb.append("   */\r\n");
+        sb.append("  findCatalogByValue(value) {\r\n");
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Save',\r\n");
+        sb.append("      url: '/dictionaryApi/findCatalogByValue',\r\n");
         sb.append("      method: 'post',\r\n");
-        sb.append("      data,\r\n");
+        sb.append("      params: {\r\n");
+        sb.append("        value,\r\n");
+        sb.append("      },\r\n");
         sb.append("    });\r\n");
         sb.append("  },\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
-            for (String relEntity : relEntities) {
-                EntityNamePO relPo = entityNameService.findOneById(relEntity);
-                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("  ").append(underRelEntity).append("Page(id, value) {\r\n");
-                sb.append("    return request({\r\n");
-                sb.append("      url: '/").append(po.getApi()).append("/").append(underRelEntity).append("Page',\r\n");
-                sb.append("      method: 'post',\r\n");
-                sb.append("      params: {\r\n");
-                sb.append("        id,\r\n");
-                sb.append("        pageNumber: value,\r\n");
-                sb.append("        pageSize: 5,\r\n");
-                sb.append("        sortCode: 'sortCode',\r\n");
-                sb.append("      },\r\n");
-                sb.append("    });\r\n");
-                sb.append("  },\r\n");
-                sb.append("  ").append(underRelEntity).append("Delete(record) {\r\n");
-                sb.append("    return request({\r\n");
-                sb.append("      url: '/").append(po.getApi()).append("/").append(underRelEntity).append("Delete',\r\n");
-                sb.append("      method: 'post',\r\n");
-                sb.append("      params: {\r\n");
-                sb.append("        id: record.id,\r\n");
-                sb.append("      },\r\n");
-                sb.append("    });\r\n");
-                sb.append("  },\r\n");
-                sb.append("  ").append(underRelEntity).append("Save(data, id) {\r\n");
-                sb.append("    return request({\r\n");
-                sb.append("      url: '/").append(po.getApi()).append("/").append(underRelEntity).append("Save',\r\n");
-                sb.append("      method: 'post',\r\n");
-                sb.append("      data: { ...data, pid: id },\r\n");
-                sb.append("    });\r\n");
-                sb.append("  },\r\n");
-            }
-        }
+        sb.append("  // <=============================自定义请求 start =============================>\r\n");
+        sb.append("\r\n");
+        sb.append("  // <=============================自定义请求 end   =============================>\r\n");
         sb.append("};");
         String serviceData = sb.toString();
-        return new String[]{serviceData, componentName(po)};
+        return new String[]{serviceData, underComponentName + ".jsx"};
     }
 
-    private String[] createIndexJsx(EntityNamePO po) {
+    private String[] createIndexJsx(EntityNamePO po, String[] relEntities) {
         StringBuilder sb = new StringBuilder();
         String underComponentName = BeanUtils.underline2Camel(po.getName());
         sb.append("import { ResponsiveGrid, Button, Table, Box, Dialog, Form, Loading, Pagination } from '@alifd/next';\r\n");
@@ -323,15 +324,34 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("const FormItem = Form.Item;\r\n");
         sb.append("\r\n");
         sb.append("function ").append(BeanUtils.captureName(underComponentName)).append("Page() {\r\n");
-        sb.append("  const [").append(underComponentName).append("State, ").append(underComponentName).append("Dispatchers] = pageStore.useModel('").append(BeanUtils.captureName(underComponentName)).append("');\r\n");
-        sb.append("  const dispatchers = pageStore.useModelDispatchers('").append(BeanUtils.captureName(underComponentName)).append("');\r\n");
+
+        sb.append("  const [").append(underComponentName).append("State, ").append(underComponentName).append("Dispatchers] = pageStore.useModel('").append(underComponentName).append("');\r\n");
+        sb.append("  const ").append(underComponentName).append(" = pageStore.useModelDispatchers('").append(underComponentName).append("');\r\n");
         sb.append("\r\n");
+        if (relEntities != null) {
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
+                sb.append("  const [").append(underRelEntity).append("State, ").append(underRelEntity).append("Dispatchers] = pageStore.useModel('").append(underRelEntity).append("');\r\n");
+                sb.append("  const ").append(underRelEntity).append(" = pageStore.useModelDispatchers('").append(underRelEntity).append("');\r\n");
+                sb.append("\r\n");
+            }
+        }
         sb.append("  useEffect(() => {\r\n");
+        sb.append("    // <=============================自定义初始化数据 start =============================>\r\n");
+        sb.append("\r\n");
+        sb.append("    // <=============================自定义初始化数据 end   =============================>\r\n");
         sb.append("    ").append(underComponentName).append("Dispatchers.").append(underComponentName).append("Page(1);\r\n");
         sb.append("  }, [").append(underComponentName).append("Dispatchers]);\r\n");
         sb.append("\r\n");
         sb.append("  const ").append(underComponentName).append("PageRender = (value, index, record) => {\r\n");
         sb.append("    return <div className={styles.opt}>\r\n");
+        sb.append("      {/* <=============================自定义组件 start =============================> */}\r\n");
+        sb.append("\r\n");
+        sb.append("      {/* <=============================自定义组件 end   =============================> */}\r\n");
+        sb.append("      {/* <=============================可选组件 start =============================> */}\r\n");
+        sb.append("\r\n");
+        sb.append("      {/* <=============================可选组件 end   =============================> */}\r\n");
         sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => ").append(underComponentName).append("Dispatchers.").append(underComponentName).append("Edit(record)}> 编辑 </Button>\r\n");
         sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => ").append(underComponentName).append("Dispatchers.").append(underComponentName).append("Delete({\r\n");
         sb.append("        record,\r\n");
@@ -339,24 +359,29 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("      })} warning> 删除 </Button>\r\n");
         sb.append("    </div>;\r\n");
         sb.append("  };\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
+        sb.append("\r\n");
+        if (relEntities != null) {
             for (String relEntity : relEntities) {
                 EntityNamePO relPo = entityNameService.findOneById(relEntity);
                 String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("\r\n");
                 sb.append("  const ").append(underRelEntity).append("PageRender = (value, index, record) => {\r\n");
                 sb.append("    return <div className={styles.opt}>\r\n");
-                sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => ").append(underComponentName).append("Dispatchers.").append(underRelEntity).append("Edit(record)}> 编辑 </Button>\r\n");
-                sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => ").append(underComponentName).append("Dispatchers.").append(underRelEntity).append("Delete({\r\n");
+                sb.append("      {/* <=============================自定义组件 start =============================> */}\r\n");
+                sb.append("\r\n");
+                sb.append("      {/* <=============================自定义组件 end   =============================> */}\r\n");
+                sb.append("      {/* <=============================可选组件 start =============================> */}\r\n");
+                sb.append("\r\n");
+                sb.append("      {/* <=============================可选组件 end   =============================> */}\r\n");
+                sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => ").append(underRelEntity).append("Dispatchers.").append(underRelEntity).append("Edit(record)}> 编辑 </Button>\r\n");
+                sb.append("      <Button type=\"primary\" size=\"small\" onClick={() => ").append(underRelEntity).append("Dispatchers.").append(underRelEntity).append("Delete({\r\n");
                 sb.append("        record,\r\n");
-                sb.append("        ").append(underRelEntity).append("Current: ").append(underComponentName).append("State.").append(underRelEntity).append("Current\r\n");
+                sb.append("        ").append(underRelEntity).append("Current: ").append(underRelEntity).append("State.").append(underRelEntity).append("Current\r\n");
                 sb.append("      })} warning> 删除 </Button>\r\n");
                 sb.append("    </div>;\r\n");
                 sb.append("  };\r\n");
+                sb.append("\r\n");
             }
         }
-        sb.append("\r\n");
         sb.append("  return (\r\n");
         sb.append("    <ResponsiveGrid gap={20}>\r\n");
         sb.append("      <Cell colSpan={12}>\r\n");
@@ -368,19 +393,37 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("                ").append(underComponentName).append("FormData: ").append(underComponentName).append("State.").append(underComponentName).append("FormData,\r\n");
         sb.append("                ").append(underComponentName).append("Current: ").append(underComponentName).append("State.").append(underComponentName).append("Current,\r\n");
         sb.append("              })}\r\n");
-        sb.append("              onCancel={() => dispatchers.setState({ ").append(underComponentName).append("Visible: false })}\r\n");
-        sb.append("              onClose={() => dispatchers.setState({ ").append(underComponentName).append("Visible: false })}\r\n");
+        sb.append("              onCancel={() => ").append(underComponentName).append(".setState({ ").append(underComponentName).append("Visible: false })}\r\n");
+        sb.append("              onClose={() => ").append(underComponentName).append(".setState({ ").append(underComponentName).append("Visible: false })}\r\n");
         sb.append("              style={{ width: '30%' }}>\r\n");
         sb.append("              <Form style={{ width: '100%' }} {...").append(underComponentName).append("State.formItemLayout}\r\n");
         sb.append("                value={").append(underComponentName).append("State.").append(underComponentName).append("FormData}\r\n");
-        sb.append("                onChange={value => dispatchers.setState({ ").append(underComponentName).append("FormData: value })}>\r\n");
+        sb.append("                onChange={value => ").append(underComponentName).append(".setState({ ").append(underComponentName).append("FormData: value })}>\r\n");
+        sb.append("                {/* <=============================自定义表单 start =============================> */}\r\n");
         sb.append("                  11111111111111111111111\r\n");
+        sb.append("                {/* <=============================自定义表单 end   =============================> */}\r\n");
         sb.append("              </Form>\r\n");
         sb.append("            </Dialog>\r\n");
         sb.append("          </div>\r\n");
         sb.append("          <Loading tip=\"加载中...\" visible={").append(underComponentName).append("State.").append(underComponentName).append("LoadingVisible}>\r\n");
-        sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underComponentName).append("TableData}>\r\n");
+        if (relEntities != null) {
+            sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underComponentName).append("TableData}\r\n");
+            sb.append("              rowSelection={{\r\n");
+            sb.append("                mode: 'single',\r\n");
+            sb.append("                onSelect: (selected, record) => {\r\n");
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
+                sb.append("                  ").append(underRelEntity).append("Dispatchers.onRowClick({ selected, record });\r\n");
+            }
+            sb.append("                },\r\n");
+            sb.append("              }} >\r\n");
+        } else {
+            sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underComponentName).append("TableData}>\r\n");
+        }
+        sb.append("              {/* <=============================自定义表单 start =============================> */}\r\n");
         sb.append("              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={").append(underComponentName).append("PageRender} />\r\n");
+        sb.append("              {/* <=============================自定义表单 end   =============================> */}\r\n");
         sb.append("            </Table>\r\n");
         sb.append("            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n");
         sb.append("              <div className={styles.total}> 共 <span>{").append(underComponentName).append("State.").append(underComponentName).append("Total}</span> 条 </div>\r\n");
@@ -390,40 +433,43 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("          </Loading>\r\n");
         sb.append("        </div>\r\n");
         sb.append("      </Cell>\r\n");
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String[] relEntities = po.getRelEntity().split(",");
+        if (relEntities != null) {
             for (String relEntity : relEntities) {
                 EntityNamePO relPo = entityNameService.findOneById(relEntity);
                 String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("      <Cell colSpan={12} hidden={").append(underComponentName).append("State.").append(underRelEntity).append("DivVisible}>\r\n");
+                sb.append("      <Cell colSpan={12} hidden={").append(underRelEntity).append("State.divVisible}>\r\n");
                 sb.append("        <div className={styles.Main}>\r\n");
                 sb.append("          <div className={styles.add}>\r\n");
-                sb.append("            <Button type=\"primary\" onClick={() => ").append(underComponentName).append("Dispatchers.").append(underRelEntity).append("Edit()}> 添加菜单 </Button>\r\n");
-                sb.append("            <Dialog title=\"菜单\" visible={").append(underComponentName).append("State.").append(underRelEntity).append("Visible}\r\n");
-                sb.append("              onOk={() => ").append(underComponentName).append("Dispatchers.").append(underRelEntity).append("Save({\r\n");
-                sb.append("                ").append(underRelEntity).append("FormData: ").append(underComponentName).append("State.").append(underRelEntity).append("FormData,\r\n");
-                sb.append("                ").append(underRelEntity).append("Current: ").append(underComponentName).append("State.").append(underRelEntity).append("Current,\r\n");
-                sb.append("                ").append(underComponentName).append("Id: ").append(underComponentName).append("State.").append(underComponentName).append("Id,\r\n");
+                sb.append("            <Button type=\"primary\" onClick={() => ").append(underRelEntity).append("Dispatchers.").append(underRelEntity).append("Edit()}> 添加菜单 </Button>\r\n");
+                sb.append("            <Dialog title=\"菜单\" visible={").append(underRelEntity).append("State.").append(underRelEntity).append("Visible}\r\n");
+                sb.append("              onOk={() => ").append(underRelEntity).append("Dispatchers.").append(underRelEntity).append("Save({\r\n");
+                sb.append("                ").append(underRelEntity).append("FormData: ").append(underRelEntity).append("State.").append(underRelEntity).append("FormData,\r\n");
+                sb.append("                ").append(underRelEntity).append("Current: ").append(underRelEntity).append("State.").append(underRelEntity).append("Current,\r\n");
+                sb.append("                ").append(underComponentName).append("Id: ").append(underRelEntity).append("State.").append(underComponentName).append("Id,\r\n");
                 sb.append("              })}\r\n");
-                sb.append("              onCancel={() => dispatchers.setState({ ").append(underRelEntity).append("Visible: false })}\r\n");
-                sb.append("              onClose={() => dispatchers.setState({ ").append(underRelEntity).append("Visible: false })}\r\n");
+                sb.append("              onCancel={() => ").append(underRelEntity).append(".setState({ ").append(underRelEntity).append("Visible: false })}\r\n");
+                sb.append("              onClose={() => ").append(underRelEntity).append(".setState({ ").append(underRelEntity).append("Visible: false })}\r\n");
                 sb.append("              style={{ width: '30%' }}>\r\n");
-                sb.append("              <Form style={{ width: '100%' }} {...").append(underComponentName).append("State.formItemLayout}\r\n");
-                sb.append("                value={").append(underComponentName).append("State.").append(underRelEntity).append("FormData}\r\n");
-                sb.append("                onChange={value => dispatchers.setState({ ").append(underRelEntity).append("FormData: value })}>\r\n");
+                sb.append("              <Form style={{ width: '100%' }} {...").append(underRelEntity).append("State.formItemLayout}\r\n");
+                sb.append("                value={").append(underRelEntity).append("State.").append(underRelEntity).append("FormData}\r\n");
+                sb.append("                onChange={value => ").append(underRelEntity).append(".setState({ ").append(underRelEntity).append("FormData: value })}>\r\n");
+                sb.append("                {/* <=============================自定义表单 start =============================> */}\r\n");
                 sb.append("                  11111111111111111111111\r\n");
+                sb.append("                {/* <=============================自定义表单 end   =============================> */}\r\n");
                 sb.append("              </Form>\r\n");
                 sb.append("            </Dialog>\r\n");
                 sb.append("          </div>\r\n");
-                sb.append("          <Loading tip=\"加载中...\" visible={").append(underComponentName).append("State.").append(underRelEntity).append("LoadingVisible}>\r\n");
-                sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underRelEntity).append("TableData}>\r\n");
+                sb.append("          <Loading tip=\"加载中...\" visible={").append(underRelEntity).append("State.").append(underRelEntity).append("LoadingVisible}>\r\n");
+                sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underRelEntity).append("State.").append(underRelEntity).append("TableData}>\r\n");
+                sb.append("              {/* <=============================自定义表单 start =============================> */}\r\n");
                 sb.append("              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={").append(underRelEntity).append("PageRender} />\r\n");
+                sb.append("              {/* <=============================自定义表单 end   =============================> */}\r\n");
                 sb.append("            </Table>\r\n");
                 sb.append("            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n");
-                sb.append("              <div className={styles.total}> 共 <span>{").append(underComponentName).append("State.").append(underRelEntity).append("Total}</span> 条 </div>\r\n");
+                sb.append("              <div className={styles.total}> 共 <span>{").append(underRelEntity).append("State.").append(underRelEntity).append("Total}</span> 条 </div>\r\n");
                 sb.append("            </Box>\r\n");
-                sb.append("            <Pagination onChange={current => ").append(underComponentName).append("Dispatchers.").append(underRelEntity).append("Page({ id: ").append(underComponentName).append("State.").append(underComponentName).append("Id, current })}\r\n");
-                sb.append("              stype=\"simple\" pageSize={5} total={").append(underComponentName).append("State.").append(underRelEntity).append("Total} />\r\n");
+                sb.append("            <Pagination onChange={current => ").append(underRelEntity).append("Dispatchers.").append(underRelEntity).append("Page({ id: ").append(underRelEntity).append("State.").append(underComponentName).append("Id, current })}\r\n");
+                sb.append("              stype=\"simple\" pageSize={5} total={").append(underRelEntity).append("State.").append(underRelEntity).append("Total} />\r\n");
                 sb.append("          </Loading>\r\n");
                 sb.append("        </div>\r\n");
                 sb.append("      </Cell>\r\n");

@@ -1,19 +1,16 @@
 package com.example.cyjpagemenu.serviceimpl;
 
-import com.example.cyjpagemenu.dao.DataFormDao;
-import com.example.cyjpagemenu.entity.DataFormPO;
-import com.example.cyjpagemenu.service.DataFormService;
+import com.example.cyjpagemenu.entity.*;
+import com.example.cyjpagemenu.dao.*;
+import com.example.cyjpagemenu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2020-11-12
  */
 @Service
 public class DataFormServiceImpl extends BaseService implements DataFormService {
@@ -49,7 +46,7 @@ public class DataFormServiceImpl extends BaseService implements DataFormService 
 
     @Override
     public DataFormPO findOneById(String id) {
-        if (dataFormDao.findById(id).isPresent()) {
+        if (dataFormDao.findById(id).isPresent()){
             return dataFormDao.findById(id).get();
         }
         return null;

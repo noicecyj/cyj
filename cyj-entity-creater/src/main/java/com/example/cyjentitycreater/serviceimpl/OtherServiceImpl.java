@@ -37,7 +37,7 @@ public class OtherServiceImpl extends BaseService {
 
     public String[] entityGenerate(EntityNamePO po) {
         List<EntityPO> poList = entityService.findOneById(po.getId());
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         generatePackage1(po, sb);
         sb.append("\r\n");
         generatePackage2(poList, sb);

@@ -43,7 +43,7 @@ public class BaseService {
      *
      * @param sb 实体类生成字符串
      */
-    public void generateAuthor(StringBuffer sb) {
+    public void generateAuthor(StringBuilder sb) {
         LocalDate localDate = LocalDate.now();
         sb.append("/**\r\n");
         sb.append(" * @author 曹元杰\r\n");
@@ -52,7 +52,7 @@ public class BaseService {
         sb.append(" */\r\n");
     }
 
-    public void generateClass(EntityNamePO po, StringBuffer sb) {
+    public void generateClass(EntityNamePO po, StringBuilder sb) {
         sb.append("public class ")
                 .append(BeanUtils.captureName(BeanUtils.underline2Camel(po.getName())))
                 .append(po.getType()).append(" implements Serializable {\r\n");
@@ -62,7 +62,7 @@ public class BaseService {
         sb.append("\r\n");
     }
 
-    public void generatePackage1(EntityNamePO po, StringBuffer sb) {
+    public void generatePackage1(EntityNamePO po, StringBuilder sb) {
         //pojo路径
         String[] poPathArr = po.getPath().split("java");
         String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
@@ -71,7 +71,7 @@ public class BaseService {
         sb.append("import lombok.Data;\r\n");
     }
 
-    public void generatePackage2(List<EntityPO> poList, StringBuffer sb) {
+    public void generatePackage2(List<EntityPO> poList, StringBuilder sb) {
         sb.append("import java.io.Serializable;\r\n");
         if (BeanUtils.ifDate(poList)) {
             sb.append("import java.sql.Date;\r\n");
