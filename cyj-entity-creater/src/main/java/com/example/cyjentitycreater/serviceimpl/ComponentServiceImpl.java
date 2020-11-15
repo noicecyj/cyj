@@ -62,18 +62,18 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("    ").append(underComponentName).append("LoadingVisible: true,\r\n");
         sb.append("    ").append(underComponentName).append("Total: 0,\r\n");
         sb.append("    ").append(underComponentName).append("Current: 1,\r\n");
+        sb.append("    formItemLayout: {\r\n");
+        sb.append("      labelCol: {\r\n");
+        sb.append("        fixedSpan: 6,\r\n");
+        sb.append("      },\r\n");
+        sb.append("      wrapperCol: {\r\n");
+        sb.append("        span: 40,\r\n");
+        sb.append("      },\r\n");
+        sb.append("    },\r\n");
         if (entityName != null) {
             sb.append("    ").append("divVisible: true,\r\n");
             sb.append("    ").append(BeanUtils.underline2Camel(entityName)).append("Id: '',\r\n");
         } else {
-            sb.append("    formItemLayout: {\r\n");
-            sb.append("      labelCol: {\r\n");
-            sb.append("        fixedSpan: 6,\r\n");
-            sb.append("      },\r\n");
-            sb.append("      wrapperCol: {\r\n");
-            sb.append("        span: 40,\r\n");
-            sb.append("      },\r\n");
-            sb.append("    },\r\n");
             sb.append("    // <=============================自定义状态 start =============================>\r\n");
             sb.append("    \r\n");
             sb.append("    // <=============================自定义状态 end   =============================>\r\n");
@@ -93,11 +93,19 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("     * @param {*} data\r\n");
         sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Page(data) {\r\n");
-        sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data).then(res => {\r\n");
+        if (entityName != null) {
+            sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.id, data.current).then(res => {\r\n");
+        } else {
+            sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data).then(res => {\r\n");
+        }
         sb.append("        const payload = {\r\n");
         sb.append("          ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
         sb.append("          ").append(underComponentName).append("TableData: res.data.content,\r\n");
-        sb.append("          ").append(underComponentName).append("Current: data,\r\n");
+        if (entityName != null) {
+            sb.append("          ").append(underComponentName).append("Current: data.current,\r\n");
+        } else {
+            sb.append("          ").append(underComponentName).append("Current: data,\r\n");
+        }
         sb.append("          ").append(underComponentName).append("LoadingVisible: false,\r\n");
         sb.append("        };\r\n");
         sb.append("        dispatch.").append(underComponentName).append(".setState(payload);\r\n");
@@ -110,8 +118,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Edit(data) {\r\n");
         sb.append("      if (data) {\r\n");
+        sb.append("        const fromData = {\r\n");
+        sb.append("          ...data,\r\n");
+        sb.append("        }\r\n");
         sb.append("        const payload = {\r\n");
-        sb.append("          ").append(underComponentName).append("FormData: data,\r\n");
+        sb.append("          ").append(underComponentName).append("FormData: fromData,\r\n");
         sb.append("          ").append(underComponentName).append("Visible: true,\r\n");
         sb.append("        };\r\n");
         sb.append("        dispatch.").append(underComponentName).append(".setState(payload);\r\n");
@@ -130,7 +141,11 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Delete(data) {\r\n");
         sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Delete(data.record).then(() => {\r\n");
-        sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.").append(underComponentName).append("Current).then(res => {\r\n");
+        if (entityName != null) {
+            sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.record.id, data.").append(underComponentName).append("Current).then(res => {\r\n");
+        } else {
+            sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.").append(underComponentName).append("Current).then(res => {\r\n");
+        }
         sb.append("          const payload = {\r\n");
         sb.append("            ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
         sb.append("            ").append(underComponentName).append("TableData: res.data.content,\r\n");
@@ -146,8 +161,13 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("     * @param {*} data\r\n");
         sb.append("     */\r\n");
         sb.append("    ").append(underComponentName).append("Save(data) {\r\n");
-        sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Save(data.").append(underComponentName).append("FormData).then(() => {\r\n");
-        sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.").append(underComponentName).append("Current).then(res => {\r\n");
+        if (entityName != null) {
+            sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Save(data.").append(underComponentName).append("FormData, data.").append(BeanUtils.underline2Camel(entityName)).append("Id).then(() => {\r\n");
+            sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.").append(BeanUtils.underline2Camel(entityName)).append("Id, data.").append(underComponentName).append("Current).then(res => {\r\n");
+        } else {
+            sb.append("      ").append(underComponentName).append("Service.").append(underComponentName).append("Save(data.").append(underComponentName).append("FormData).then(() => {\r\n");
+            sb.append("        ").append(underComponentName).append("Service.").append(underComponentName).append("Page(data.").append(underComponentName).append("Current).then(res => {\r\n");
+        }
         sb.append("          const payload = {\r\n");
         sb.append("            ").append(underComponentName).append("Total: res.data.totalElements,\r\n");
         sb.append("            ").append(underComponentName).append("TableData: res.data.content,\r\n");
@@ -230,7 +250,7 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("   */\r\n");
         if (entityName != null) {
             sb.append("  ").append(underComponentName).append("Page(id, value) {\r\n");
-        }else {
+        } else {
             sb.append("  ").append(underComponentName).append("Page(value) {\r\n");
         }
         sb.append("    return request({\r\n");
@@ -260,8 +280,8 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("   * @return {*} \r\n");
         sb.append("   */\r\n");
         if (entityName != null) {
-            sb.append("  entitySave(").append(underComponentName).append("FormData, ").append(BeanUtils.underline2Camel(entityName)).append("Id) {\r\n");
-        }else {
+            sb.append("  ").append(underComponentName).append("Save(").append(underComponentName).append("FormData, ").append(BeanUtils.underline2Camel(entityName)).append("Id) {\r\n");
+        } else {
             sb.append("  ").append(underComponentName).append("Save(data) {\r\n");
         }
         sb.append("    return request({\r\n");
@@ -269,7 +289,7 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("      method: 'post',\r\n");
         if (entityName != null) {
             sb.append("      data: { ...").append(underComponentName).append("FormData, pid: ").append(BeanUtils.underline2Camel(entityName)).append("Id },\r\n");
-        }else {
+        } else {
             sb.append("      data,\r\n");
         }
         sb.append("    });\r\n");

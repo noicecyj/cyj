@@ -1,13 +1,13 @@
 package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
-import com.example.cyjpagemenu.entity.MenuPagePO;
 import com.example.cyjpagemenu.entity.ResultVO;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.example.cyjpagemenu.service.DictionaryApiService;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +21,8 @@ import java.util.List;
  * @date 2020/1/21 14:46
  */
 @RestController
-public class IndexController implements MenuPageController {
+@RequestMapping(value = "pageMenuApi")
+public class IndexController {
 
     private MenuPageServiceImpl menuPageService;
 
@@ -37,32 +38,22 @@ public class IndexController implements MenuPageController {
         this.dictionaryApiService = dictionaryApiService;
     }
 
-    @Override
-    public ResultVO saveMenuPage(@RequestBody MenuPagePO po) {
-        if (po.getId() == null) {
-            return ResultVO.success(menuPageService.addOne(po));
-        }
-        return ResultVO.success(menuPageService.updateOne(po));
-    }
-
-    @Override
+    /**
+     * 生成菜单配置
+     *
+     * @return 返回结果
+     */
+    @PostMapping(value = "asideMenuConfig")
     public ResultVO asideMenuConfig() {
         return ResultVO.success(menuPageService.findAll());
     }
 
-    @Override
-    public ResultVO findAll() {
-        long totalElements = menuPageService.count();
-        Object[] data = {menuPageService.findAll(), totalElements};
-        return ResultVO.success(data);
-    }
-
-    @Override
-    public void menuPageDelete(@RequestParam("id") String id) {
-        menuPageService.deleteOne(id);
-    }
-
-    @Override
+    /**
+     * 生成路由文件
+     *
+     * @return 返回结果
+     */
+    @PostMapping(value = "createRouteFile")
     public ResultVO createRouteFile() {
         List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
         HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
@@ -74,15 +65,38 @@ public class IndexController implements MenuPageController {
         return ResultVO.success();
     }
 
-    @Override
+    /**
+     * 根据目录名称查询字典
+     *
+     * @param name 目录名称
+     * @return 返回结果
+     */
+    @PostMapping(value = "findCatalogByName")
     public ResultVO findCatalogByName(@RequestParam("name") String name) {
         List<DictionaryDTO> pos = dictionaryApiService.findCatalogByName(name);
         return ResultVO.success(pos);
     }
 
-    @Override
+    /**
+     * 根据目录值查询字典
+     *
+     * @param value 目录值
+     * @return 返回结果
+     */
+    @PostMapping(value = "findCatalogByValue")
     public ResultVO findCatalogByValue(@RequestParam("value") String value) {
         List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue(value);
         return ResultVO.success(pos);
+    }
+
+    /**
+     * 根据名称获取表单
+     *
+     * @param name 名称
+     * @return 返回结果
+     */
+    @PostMapping(value = "findDataFormByName")
+    public ResultVO findDataFormByName(String name) {
+        return null;
     }
 }

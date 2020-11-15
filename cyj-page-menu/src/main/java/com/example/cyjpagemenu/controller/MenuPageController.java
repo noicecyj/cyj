@@ -24,14 +24,6 @@ public interface MenuPageController {
     ResultVO saveMenuPage(@RequestBody MenuPagePO po);
 
     /**
-     * 生成菜单配置
-     *
-     * @return 返回结果
-     */
-    @PostMapping(value = "asideMenuConfig")
-    ResultVO asideMenuConfig();
-
-    /**
      * 查询所有页面
      *
      * @return 返回结果
@@ -47,29 +39,4 @@ public interface MenuPageController {
     @PostMapping(value = "menuPageDelete")
     void menuPageDelete(@RequestParam("id") String id);
 
-    /**
-     * 生成路由文件
-     *
-     * @return 返回结果
-     */
-    @PostMapping(value = "createRouteFile")
-    ResultVO createRouteFile();
-
-    /**
-     * 根据目录名称查询字典
-     *
-     * @param name 目录名称
-     * @return 返回结果
-     */
-    @PostMapping(value = "findCatalogByName")
-    ResultVO findCatalogByName(@RequestParam("name") String name);
-
-    /**
-     * 根据目录值查询字典
-     *
-     * @param value 目录值
-     * @return 返回结果
-     */
-    @PostMapping(value = "findCatalogByValue")
-    ResultVO findCatalogByValue(@RequestParam("value") String value);
 }
