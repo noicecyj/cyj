@@ -239,11 +239,36 @@ public class PoServiceImpl extends BaseService {
         sb.append("public class ").append(fileName).append("ServiceImpl extends BaseService implements ").append(fileName).append("Service {\r\n");
         sb.append("\r\n");
         sb.append("    private ").append(fileName).append("Dao ").append(BeanUtils.underline2Camel(po.getName())).append("Dao;\r\n");
+        if (entityName == null){
+            if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+                String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+                String[] relEntities = str.split(",");
+                for (String relEntity : relEntities) {
+                    EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    String subFileName = BeanUtils.captureName(BeanUtils.underline2Camel(subPo.getName()));
+                    sb.append("    private ").append(subFileName).append("Dao ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao;\r\n");
+                }
+            }
+        }
         sb.append("\r\n");
         sb.append("    @Autowired\r\n");
         sb.append("    public void set").append(fileName).append("Dao(").append(fileName).append("Dao ").append(BeanUtils.underline2Camel(po.getName())).append("Dao) {\r\n");
         sb.append("        this.").append(BeanUtils.underline2Camel(po.getName())).append("Dao = ").append(BeanUtils.underline2Camel(po.getName())).append("Dao;\r\n");
         sb.append("    }\r\n");
+        if (entityName == null){
+            if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+                String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+                String[] relEntities = str.split(",");
+                for (String relEntity : relEntities) {
+                    EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    String subFileName = BeanUtils.captureName(BeanUtils.underline2Camel(subPo.getName()));
+                    sb.append("\r\n");
+                    sb.append("    @Autowired\r\n");
+                    sb.append("    public void set").append(subFileName).append("Dao(").append(subFileName).append("Dao ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao) {\r\n");
+                    sb.append("        this.").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao = ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao;\r\n");
+                    sb.append("    }\r\n");                }
+            }
+        }
         sb.append("\r\n");
         sb.append("    @Override\r\n");
         sb.append("    public ").append(fileName).append("PO addOne(").append(fileName).append("PO po) {\r\n");
@@ -253,6 +278,16 @@ public class PoServiceImpl extends BaseService {
         sb.append("    @Override\r\n");
         sb.append("    public void deleteOne(String id) {\r\n");
         sb.append("        ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.deleteById(id);\r\n");
+        if (entityName == null){
+            if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+                String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+                String[] relEntities = str.split(",");
+                for (String relEntity : relEntities) {
+                    EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    sb.append("        ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao.deleteByPid(id);\r\n");
+                }
+            }
+        }
         sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("    @Override\r\n");
