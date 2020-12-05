@@ -1,8 +1,10 @@
 package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
+import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjpagemenu.entity.DataItemPO;
-import com.example.cyjpagemenu.entity.ResultVO;
+import com.example.cyjpagemenu.entity.DataTableItemPO;
+import com.example.cyjpagemenu.entity.DataTablePO;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.example.cyjpagemenu.service.DictionaryApiService;
 import com.example.cyjpagemenu.serviceimpl.IndexServiceImpl;
@@ -118,7 +120,8 @@ public class IndexController {
      */
     @PostMapping(value = "findDataTableByName")
     public ResultVO findDataTableByName(@RequestParam("name") String name) {
-        List<DataItemPO> pos = indexService.findDataTableByName(name);
-        return ResultVO.success(pos);
+        DataTablePO po = indexService.findOneByName(name);
+        List<DataTableItemPO> pos = indexService.findDataTableByName(name);
+        return ResultVO.success();
     }
 }

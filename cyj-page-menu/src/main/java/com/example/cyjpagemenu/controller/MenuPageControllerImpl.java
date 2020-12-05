@@ -1,7 +1,7 @@
 package com.example.cyjpagemenu.controller;
 
+import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjpagemenu.entity.MenuPagePO;
-import com.example.cyjpagemenu.entity.ResultVO;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

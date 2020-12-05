@@ -1,4 +1,4 @@
-package com.example.cyjlog.entity;
+package com.example.cyjcommon.utils;
 
 import lombok.Data;
 

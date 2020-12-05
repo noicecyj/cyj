@@ -1,6 +1,6 @@
 package com.example.cyjlog.controller;
 
-import com.example.cyjlog.entity.ResultVO;
+import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjlog.entity.ServerPO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

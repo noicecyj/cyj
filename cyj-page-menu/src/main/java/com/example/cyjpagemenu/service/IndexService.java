@@ -1,6 +1,8 @@
 package com.example.cyjpagemenu.service;
 
 import com.example.cyjpagemenu.entity.DataItemPO;
+import com.example.cyjpagemenu.entity.DataTableItemPO;
+import com.example.cyjpagemenu.entity.DataTablePO;
 
 import java.util.List;
 
@@ -25,5 +27,13 @@ public interface IndexService {
      * @param name 名称
      * @return 返回结果
      */
-    List<DataItemPO> findDataTableByName(String name);
+    List<DataTableItemPO> findDataTableByName(String name);
+
+    /**
+     * 查找实体
+     *
+     * @param name 实体name
+     * @return 实体
+     */
+    DataTablePO findOneByName(String name);
 }

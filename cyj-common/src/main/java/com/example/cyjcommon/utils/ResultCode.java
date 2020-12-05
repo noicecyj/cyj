@@ -1,4 +1,4 @@
-package com.example.cyjdictionary.entity;
+package com.example.cyjcommon.utils;
 
 /**
  * @author 曹元杰

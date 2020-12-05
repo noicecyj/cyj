@@ -1,6 +1,6 @@
 package com.example.cyjquery.controller;
 
-import com.example.cyjquery.entity.ResultVO;
+import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjquery.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,11 +1,10 @@
 package com.example.cyjentitycreater.controller;
 
-
+import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.DictionaryDTO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
-import com.example.cyjentitycreater.entity.ResultVO;
 import com.example.cyjentitycreater.service.DictionaryApiService;
 import com.example.cyjentitycreater.service.EntityFactory;
 import com.example.cyjentitycreater.serviceimpl.ComponentServiceImpl;

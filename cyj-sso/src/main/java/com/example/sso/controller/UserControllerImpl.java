@@ -1,6 +1,6 @@
 package com.example.sso.controller;
 
-import com.example.sso.entity.ResultVO;
+import com.example.cyjcommon.utils.ResultVO;
 import com.example.sso.entity.UserPO;
 import com.example.sso.serviceimpl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
