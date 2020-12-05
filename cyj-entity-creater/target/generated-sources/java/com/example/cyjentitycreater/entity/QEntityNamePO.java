@@ -21,6 +21,8 @@ public class QEntityNamePO extends EntityPathBase<EntityNamePO> {
 
     public final StringPath api = createString("api");
 
+    public final StringPath formModelCode = createString("formModelCode");
+
     public final StringPath id = createString("id");
 
     public final StringPath name = createString("name");
@@ -30,6 +32,8 @@ public class QEntityNamePO extends EntityPathBase<EntityNamePO> {
     public final StringPath relEntity = createString("relEntity");
 
     public final StringPath sortCode = createString("sortCode");
+
+    public final StringPath tableModelCode = createString("tableModelCode");
 
     public final StringPath type = createString("type");
 

@@ -19,6 +19,8 @@ public class QDataItemPO extends EntityPathBase<DataItemPO> {
 
     public static final QDataItemPO dataItemPO = new QDataItemPO("dataItemPO");
 
+    public final StringPath dataSource = createString("dataSource");
+
     public final StringPath id = createString("id");
 
     public final StringPath label = createString("label");

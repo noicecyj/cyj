@@ -23,8 +23,7 @@ public class IndexServiceImpl extends BaseService implements IndexService {
         return queryFactory.selectFrom(qDataItemPO)
                 .innerJoin(qDataFormPO)
                 .on(qDataItemPO.pid.eq(qDataFormPO.id))
-                .where(qDataFormPO.dataFormName.eq(name)
-                        .and(qDataFormPO.dataFormType.eq("表单")))
+                .where(qDataFormPO.dataFormName.eq(name))
                 .orderBy(qDataItemPO.sortCode.asc()).fetch();
     }
 
@@ -35,8 +34,7 @@ public class IndexServiceImpl extends BaseService implements IndexService {
         return queryFactory.selectFrom(qDataItemPO)
                 .innerJoin(qDataFormPO)
                 .on(qDataItemPO.pid.eq(qDataFormPO.id))
-                .where(qDataFormPO.dataFormName.eq(name)
-                        .and(qDataFormPO.dataFormType.eq("表格")))
+                .where(qDataFormPO.dataFormName.eq(name))
                 .orderBy(qDataItemPO.sortCode.asc()).fetch();
     }
 }
