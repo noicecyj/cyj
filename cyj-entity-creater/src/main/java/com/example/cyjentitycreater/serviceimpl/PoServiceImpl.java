@@ -341,13 +341,11 @@ public class PoServiceImpl extends BaseService {
         String[] PathArr = po.getPath().split("java");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
-        //entity路径
-        String poPath = packetPath + ".entity.*";
         //controller路径
         String poControllerPath = packetPath + ".controller";
         sb.append("package ").append(poControllerPath).append(";\r\n");
         sb.append("\r\n");
-        sb.append("import ").append(poPath).append(";\r\n");
+        sb.append("import com.example.cyjcommon.utils.ResultVO;\r\n");
         sb.append("import org.springframework.web.bind.annotation.PostMapping;\r\n");
         sb.append("import org.springframework.web.bind.annotation.RequestBody;\r\n");
         sb.append("import org.springframework.web.bind.annotation.RequestParam;\r\n");
@@ -413,6 +411,7 @@ public class PoServiceImpl extends BaseService {
         String poControllerPath = packetPath + ".controller";
         sb.append("package ").append(poControllerPath).append(";\r\n");
         sb.append("\r\n");
+        sb.append("import com.example.cyjcommon.utils.ResultVO;\r\n");
         sb.append("import com.example.cyjcommon.utils.VoPoConverter;\r\n");
         sb.append("import ").append(poPath).append(";\r\n");
         sb.append("import ").append(poServiceImplPath).append(";\r\n");
