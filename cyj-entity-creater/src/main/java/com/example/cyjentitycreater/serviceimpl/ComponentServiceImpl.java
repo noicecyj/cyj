@@ -1,6 +1,5 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,7 @@ public class ComponentServiceImpl extends BaseService {
         this.entityNameService = entityNameService;
     }
 
-    public void createComponentFile(String pagePath, CreateVO createVO) throws IOException {
-        EntityNamePO po = entityNameService.findOneById(createVO.getId());
+    public void createComponentFile(String pagePath, EntityNamePO po) throws IOException {
         String componentName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         String componentPath = pagePath + "/" + componentName;
         createJavaFile(componentPath + "/models");

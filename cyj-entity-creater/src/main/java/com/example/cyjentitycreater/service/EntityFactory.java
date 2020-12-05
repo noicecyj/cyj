@@ -1,6 +1,6 @@
 package com.example.cyjentitycreater.service;
 
-import com.example.cyjentitycreater.entity.CreateVO;
+import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityType;
 import com.example.cyjentitycreater.serviceimpl.OtherServiceImpl;
 import com.example.cyjentitycreater.serviceimpl.PoServiceImpl;
@@ -30,14 +30,14 @@ public class EntityFactory {
         this.otherService = voService;
     }
 
-    public void createEntity(CreateVO createVO) {
+    public void createEntity(EntityNamePO po) {
         try {
-            if (EntityType.PO.getType().equals(createVO.getType())) {
-                poService.createJavaFile(createVO);
-            } else if (EntityType.VO.getType().equals(createVO.getType()) ||
-                    EntityType.BO.getType().equals(createVO.getType()) ||
-                    EntityType.DTO.getType().equals(createVO.getType())) {
-                otherService.createJavaFile(createVO);
+            if (EntityType.PO.getType().equals(po.getType())) {
+                poService.createJavaFile(po);
+            } else if (EntityType.VO.getType().equals(po.getType()) ||
+                    EntityType.BO.getType().equals(po.getType()) ||
+                    EntityType.DTO.getType().equals(po.getType())) {
+                otherService.createJavaFile(po);
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -4,12 +4,12 @@ package com.example.cyjentitycreater.controller;
 import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.DictionaryDTO;
-import com.example.cyjentitycreater.entity.EntityPO;
+import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.ResultVO;
 import com.example.cyjentitycreater.service.DictionaryApiService;
 import com.example.cyjentitycreater.service.EntityFactory;
 import com.example.cyjentitycreater.serviceimpl.ComponentServiceImpl;
-import com.example.cyjentitycreater.serviceimpl.EntityServiceImpl;
+import com.example.cyjentitycreater.serviceimpl.EntityNameServiceImpl;
 import com.example.cyjentitycreater.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +32,7 @@ public class IndexController {
 
     private EntityFactory entityFactory;
     private IndexServiceImpl indexService;
-    private EntityServiceImpl entityService;
+    private EntityNameServiceImpl entityNameService;
     private ComponentServiceImpl componentService;
     private DictionaryApiService dictionaryApiService;
 
@@ -47,8 +47,8 @@ public class IndexController {
     }
 
     @Autowired
-    public void setEntityService(EntityServiceImpl entityService) {
-        this.entityService = entityService;
+    public void setEntityNameService(EntityNameServiceImpl entityNameService) {
+        this.entityNameService = entityNameService;
     }
 
     @Autowired
@@ -69,9 +69,8 @@ public class IndexController {
      */
     @RequestMapping(value = "createEntity")
     public ResultVO createEntity(@RequestBody CreateVO createVO) {
-        List<EntityPO> poList = entityService.findOneById(createVO.getId());
-        createVO.setPoList(poList);
-        entityFactory.createEntity(createVO);
+        EntityNamePO po = entityNameService.findOneById(createVO.getId());
+        entityFactory.createEntity(po);
         return ResultVO.success();
     }
 
@@ -83,10 +82,11 @@ public class IndexController {
      */
     @RequestMapping(value = "createComponentFile")
     public ResultVO createComponentFile(@RequestBody CreateVO createVO) {
+        EntityNamePO po = entityNameService.findOneById(createVO.getId());
         List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
         HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
-            componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), createVO);
+            componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po);
         } catch (IOException e) {
             e.printStackTrace();
         }

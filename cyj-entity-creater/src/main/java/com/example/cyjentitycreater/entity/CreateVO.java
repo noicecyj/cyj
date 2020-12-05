@@ -3,7 +3,6 @@ package com.example.cyjentitycreater.entity;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author 曹元杰
@@ -14,9 +13,4 @@ import java.util.List;
 public class CreateVO implements Serializable {
     private String id;
     private String type;
-    private String name;
-    private String path;
-    private String relEntity;
-    private String api;
-    private List<EntityPO> poList;
 }

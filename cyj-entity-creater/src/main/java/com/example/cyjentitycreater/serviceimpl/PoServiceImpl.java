@@ -1,6 +1,5 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
@@ -34,14 +33,10 @@ public class PoServiceImpl extends BaseService {
         this.entityService = entityService;
     }
 
-    public void createJavaFile(CreateVO createVO) throws IOException {
-        EntityNamePO po = entityNameService.findOneById(createVO.getId());
-        if (!createVO.getPoList().isEmpty()) {
-            String[] result = entityGenerate(po);
-            createJavaFile(createVO.getPath() + "\\entity", result);
-        }
-
-        String[] daoResult = daoGenerate(po);
+    public void createJavaFile(EntityNamePO po) throws IOException {
+        String[] result = entityGenerate(po);
+        createJavaFile(po.getPath() + "\\entity", result);
+        String[] daoResult = daoGenerate(po, null);
         createJavaFile(po.getPath() + "\\dao", daoResult);
         String[] serviceResult = serviceGenerate(po, null);
         createJavaFile(po.getPath() + "\\service", serviceResult);
@@ -56,12 +51,9 @@ public class PoServiceImpl extends BaseService {
             String[] relEntities = str.split(",");
             for (String relEntity : relEntities) {
                 EntityNamePO subPo = entityNameService.findOneById(relEntity);
-                List<EntityPO> poList = entityService.findOneById(subPo.getId());
-                if (!poList.isEmpty()) {
-                    String[] subResult = entityGenerate(subPo);
-                    createJavaFile(subPo.getPath() + "\\entity", subResult);
-                }
-                String[] subDaoResult = daoGenerate(subPo);
+                String[] subResult = entityGenerate(subPo);
+                createJavaFile(subPo.getPath() + "\\entity", subResult);
+                String[] subDaoResult = daoGenerate(subPo, po.getName());
                 createJavaFile(subPo.getPath() + "\\dao", subDaoResult);
                 String[] subServiceResult = serviceGenerate(subPo, po.getName());
                 createJavaFile(subPo.getPath() + "\\service", subServiceResult);
@@ -105,7 +97,7 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityData, entityName(po)};
     }
 
-    public String[] daoGenerate(EntityNamePO po) {
+    public String[] daoGenerate(EntityNamePO po, String entityName) {
         StringBuilder sb = new StringBuilder();
         String[] PathArr = po.getPath().split("java");
         String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
@@ -121,6 +113,14 @@ public class PoServiceImpl extends BaseService {
         sb.append("\r\n");
         generateAuthor(sb);
         sb.append("public interface ").append(fileName).append("Dao extends JpaRepository<").append(fileName).append(po.getType()).append(", String> {\r\n");
+        if (entityName != null) {
+            sb.append("    /**\r\n");
+            sb.append("     * 删除实体\r\n");
+            sb.append("     *\r\n");
+            sb.append("     * @param pid 实体pid\r\n");
+            sb.append("     */\r\n");
+            sb.append("    void deleteByPid(String pid);\r\n");
+        }
         sb.append("}\r\n");
         String entityDaoData = sb.toString();
         return new String[]{entityDaoData, entityDaoName(po)};

@@ -1,6 +1,5 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
@@ -54,9 +53,8 @@ public class OtherServiceImpl extends BaseService {
     }
 
 
-    public void createJavaFile(CreateVO createVO) throws IOException {
-        EntityNamePO po = entityNameService.findOneById(createVO.getId());
+    public void createJavaFile(EntityNamePO po) throws IOException {
         String[] result = entityGenerate(po);
-        createJavaFile(createVO.getPath(), result);
+        createJavaFile(po.getPath(), result);
     }
 }
