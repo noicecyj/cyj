@@ -33,22 +33,22 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     @Override
     public List<DictionaryPO> findCatalogByName(String name) {
         QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
-        QCatalogPO qDictionaryCatalog = QCatalogPO.catalogPO;
+        QCatalogPO qCatalogPO = QCatalogPO.catalogPO;
         return queryFactory.selectFrom(qDictionary)
-                .innerJoin(qDictionaryCatalog)
-                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.catalogName.eq(name))
+                .innerJoin(qCatalogPO)
+                .on(qDictionary.pid.eq(qCatalogPO.id))
+                .where(qCatalogPO.catalogName.eq(name))
                 .orderBy(qDictionary.sortCode.asc()).fetch();
     }
 
     @Override
     public List<DictionaryPO> findCatalogByValue(String value) {
         QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
-        QCatalogPO qDictionaryCatalog = QCatalogPO.catalogPO;
+        QCatalogPO qCatalogPO = QCatalogPO.catalogPO;
         return queryFactory.selectFrom(qDictionary)
-                .innerJoin(qDictionaryCatalog)
-                .on(qDictionary.pid.eq(qDictionaryCatalog.id))
-                .where(qDictionaryCatalog.catalogValue.eq(value))
+                .innerJoin(qCatalogPO)
+                .on(qDictionary.pid.eq(qCatalogPO.id))
+                .where(qCatalogPO.catalogValue.eq(value))
                 .orderBy(qDictionary.sortCode.asc()).fetch();
     }
 

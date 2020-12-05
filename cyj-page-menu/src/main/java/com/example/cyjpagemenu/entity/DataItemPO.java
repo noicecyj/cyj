@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-12
+ * @date 2020-11-16
  */
 @Entity
 @Table(name = DataItemPO.T_DATA_ITEM)
@@ -38,6 +38,9 @@ public class DataItemPO implements Serializable {
 
     @Column(name = "type")
     private String type;
+
+    @Column(name = "data_source")
+    private String dataSource;
 
     @Column(name = "sort_code")
     private String sortCode;

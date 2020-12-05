@@ -11,5 +11,9 @@ name=实体类型
 POST http://localhost:8010/pageMenuApi/findCatalogByName?name=asd
 Accept: application/json
 
+###
+POST http://localhost:8010/pageMenuApi/findDataFormByName?name=245
+Accept: application/json
+
 
 

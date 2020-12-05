@@ -1,9 +1,11 @@
 package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
+import com.example.cyjpagemenu.entity.DataItemPO;
 import com.example.cyjpagemenu.entity.ResultVO;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.example.cyjpagemenu.service.DictionaryApiService;
+import com.example.cyjpagemenu.serviceimpl.IndexServiceImpl;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,9 +26,16 @@ import java.util.List;
 @RequestMapping(value = "pageMenuApi")
 public class IndexController {
 
+    private IndexServiceImpl indexService;
+
     private MenuPageServiceImpl menuPageService;
 
     private DictionaryApiService dictionaryApiService;
+
+    @Autowired
+    public void setIndexService(IndexServiceImpl indexService) {
+        this.indexService = indexService;
+    }
 
     @Autowired
     public void setMenuPageService(MenuPageServiceImpl menuPageService) {
@@ -96,7 +105,20 @@ public class IndexController {
      * @return 返回结果
      */
     @PostMapping(value = "findDataFormByName")
-    public ResultVO findDataFormByName(String name) {
-        return null;
+    public ResultVO findDataFormByName(@RequestParam("name") String name) {
+        List<DataItemPO> pos = indexService.findDataFormByName(name);
+        return ResultVO.success(pos);
+    }
+
+    /**
+     * 根据名称获取表格
+     *
+     * @param name 名称
+     * @return 返回结果
+     */
+    @PostMapping(value = "findDataTableByName")
+    public ResultVO findDataTableByName(@RequestParam("name") String name) {
+        List<DataItemPO> pos = indexService.findDataTableByName(name);
+        return ResultVO.success(pos);
     }
 }

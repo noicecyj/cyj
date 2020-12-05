@@ -21,6 +21,8 @@ public class QDataFormPO extends EntityPathBase<DataFormPO> {
 
     public final StringPath dataFormName = createString("dataFormName");
 
+    public final StringPath dataFormType = createString("dataFormType");
+
     public final StringPath description = createString("description");
 
     public final StringPath id = createString("id");

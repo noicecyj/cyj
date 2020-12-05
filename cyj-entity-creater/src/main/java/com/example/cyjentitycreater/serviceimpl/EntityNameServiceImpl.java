@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-10
+ * @date 2020-11-17
  */
 @Service
 public class EntityNameServiceImpl extends BaseService implements EntityNameService {

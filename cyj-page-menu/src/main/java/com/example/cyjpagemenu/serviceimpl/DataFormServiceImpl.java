@@ -10,16 +10,22 @@ import org.springframework.stereotype.Service;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-12
+ * @date 2020-11-16
  */
 @Service
 public class DataFormServiceImpl extends BaseService implements DataFormService {
 
     private DataFormDao dataFormDao;
+    private DataItemDao dataItemDao;
 
     @Autowired
     public void setDataFormDao(DataFormDao dataFormDao) {
         this.dataFormDao = dataFormDao;
+    }
+
+    @Autowired
+    public void setDataItemDao(DataItemDao dataItemDao) {
+        this.dataItemDao = dataItemDao;
     }
 
     @Override
@@ -30,6 +36,7 @@ public class DataFormServiceImpl extends BaseService implements DataFormService 
     @Override
     public void deleteOne(String id) {
         dataFormDao.deleteById(id);
+        dataItemDao.deleteByPid(id);
     }
 
     @Override

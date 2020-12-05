@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-10
+ * @date 2020-11-17
  */
 @Entity
 @Table(name = EntityNamePO.T_ENTITY_NAME)
@@ -38,6 +38,12 @@ public class EntityNamePO implements Serializable {
 
     @Column(name = "rel_entity")
     private String relEntity;
+
+    @Column(name = "form_model_code")
+    private String formModelCode;
+
+    @Column(name = "table_model_code")
+    private String tableModelCode;
 
     @Column(name = "sort_code")
     private String sortCode;
