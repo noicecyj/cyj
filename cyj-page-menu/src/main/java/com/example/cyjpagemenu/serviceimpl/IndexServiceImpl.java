@@ -1,6 +1,6 @@
 package com.example.cyjpagemenu.serviceimpl;
 
-import com.example.cyjpagemenu.dao.DataTableDao;
+import com.example.cyjpagemenu.dao.IndexDataTableDao;
 import com.example.cyjpagemenu.entity.*;
 import com.example.cyjpagemenu.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +16,11 @@ import java.util.List;
 @Service
 public class IndexServiceImpl extends BaseService implements IndexService {
 
-    private DataTableDao dataTableDao;
+    private IndexDataTableDao indexDataTableDao;
 
     @Autowired
-    public void setDataTableDao(DataTableDao dataTableDao) {
-        this.dataTableDao = dataTableDao;
+    public void setIndexDataTableDao(IndexDataTableDao indexDataTableDao) {
+        this.indexDataTableDao = indexDataTableDao;
     }
 
     @Override
@@ -47,8 +47,8 @@ public class IndexServiceImpl extends BaseService implements IndexService {
 
     @Override
     public DataTablePO findOneByName(String name) {
-        if (dataTableDao.findDataTablePOByDataTableName(name).isPresent()){
-            return dataTableDao.findDataTablePOByDataTableName(name).get();
+        if (indexDataTableDao.findDataTablePOByDataTableName(name).isPresent()){
+            return indexDataTableDao.findDataTablePOByDataTableName(name).get();
         }
         return null;
     }
