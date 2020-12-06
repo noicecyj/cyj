@@ -218,7 +218,6 @@ public class PoServiceImpl extends BaseService {
         String poServiceImplPath = packetPath + ".serviceimpl";
         sb.append("package ").append(poServiceImplPath).append(";\r\n");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
-
         sb.append("\r\n");
         if (entityName != null) {
             sb.append("import com.example.cyjcommon.utils.CommonUtils;\r\n");
@@ -250,11 +249,7 @@ public class PoServiceImpl extends BaseService {
                 }
             }
         }
-        sb.append("\r\n");
-        sb.append("    @Autowired\r\n");
-        sb.append("    public void set").append(fileName).append("Dao(").append(fileName).append("Dao ").append(BeanUtils.underline2Camel(po.getName())).append("Dao) {\r\n");
-        sb.append("        this.").append(BeanUtils.underline2Camel(po.getName())).append("Dao = ").append(BeanUtils.underline2Camel(po.getName())).append("Dao;\r\n");
-        sb.append("    }\r\n");
+        generateSet(po, sb, fileName);
         if (entityName == null){
             if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
                 String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
@@ -262,11 +257,8 @@ public class PoServiceImpl extends BaseService {
                 for (String relEntity : relEntities) {
                     EntityNamePO subPo = entityNameService.findOneById(relEntity);
                     String subFileName = BeanUtils.captureName(BeanUtils.underline2Camel(subPo.getName()));
-                    sb.append("\r\n");
-                    sb.append("    @Autowired\r\n");
-                    sb.append("    public void set").append(subFileName).append("Dao(").append(subFileName).append("Dao ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao) {\r\n");
-                    sb.append("        this.").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao = ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao;\r\n");
-                    sb.append("    }\r\n");                }
+                    generateSet(subPo, sb, subFileName);
+                }
             }
         }
         sb.append("\r\n");
@@ -334,6 +326,14 @@ public class PoServiceImpl extends BaseService {
         sb.append("}\r\n");
         String entityServiceImplData = sb.toString();
         return new String[]{entityServiceImplData, entityServiceImplName(po)};
+    }
+
+    private void generateSet(EntityNamePO po, StringBuilder sb, String fileName) {
+        sb.append("\r\n");
+        sb.append("    @Autowired\r\n");
+        sb.append("    public void set").append(fileName).append("Dao(").append(fileName).append("Dao ").append(BeanUtils.underline2Camel(po.getName())).append("Dao) {\r\n");
+        sb.append("        this.").append(BeanUtils.underline2Camel(po.getName())).append("Dao = ").append(BeanUtils.underline2Camel(po.getName())).append("Dao;\r\n");
+        sb.append("    }\r\n");
     }
 
     public String[] controllerInteGenerate(EntityNamePO po, String entityName) {
