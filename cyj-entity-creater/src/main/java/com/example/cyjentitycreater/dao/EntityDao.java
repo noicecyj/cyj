@@ -9,4 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2020-11-17
  */
 public interface EntityDao extends JpaRepository<EntityPO, String> {
+    /**
+     * 删除实体
+     *
+     * @param pid 实体pid
+     */
+    void deleteByPid(String pid);
 }

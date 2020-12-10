@@ -16,24 +16,56 @@ import org.springframework.stereotype.Service;
 public class EntityNameServiceImpl extends BaseService implements EntityNameService {
 
     private EntityNameDao entityNameDao;
+    private EntityDao entityDao;
 
     @Autowired
     public void setEntityNameDao(EntityNameDao entityNameDao) {
         this.entityNameDao = entityNameDao;
     }
 
+    @Autowired
+    public void setEntityDao(EntityDao entityDao) {
+        this.entityDao = entityDao;
+    }
+
     @Override
     public EntityNamePO addOne(EntityNamePO po) {
-        return entityNameDao.save(po);
+        EntityNamePO entityNamePO = entityNameDao.save(po);
+        EntityPO idEntityPO = new EntityPO();
+        idEntityPO.setPid(entityNamePO.getId());
+        idEntityPO.setEntityName("id");
+        idEntityPO.setEntityProperty("String");
+        idEntityPO.setSortCode("0010");
+        entityDao.save(idEntityPO);
+        EntityPO sortCodeEntityPO = new EntityPO();
+        sortCodeEntityPO.setPid(entityNamePO.getId());
+        sortCodeEntityPO.setEntityName("sort_code");
+        sortCodeEntityPO.setEntityProperty("String");
+        sortCodeEntityPO.setSortCode("0010");
+        entityDao.save(sortCodeEntityPO);
+        return entityNamePO;
     }
 
     @Override
     public void deleteOne(String id) {
         entityNameDao.deleteById(id);
+        entityDao.deleteByPid(id);
     }
 
     @Override
     public EntityNamePO updateOne(EntityNamePO po) {
+        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+            String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+            String[] relEntities = str.split(",");
+            for (String relEntity : relEntities) {
+                EntityPO pidEntityPO = new EntityPO();
+                pidEntityPO.setPid(relEntity);
+                pidEntityPO.setEntityName("pid");
+                pidEntityPO.setEntityProperty("String");
+                pidEntityPO.setSortCode("0010");
+                entityDao.save(pidEntityPO);
+            }
+        }
         return entityNameDao.saveAndFlush(po);
     }
 

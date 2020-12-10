@@ -19,10 +19,16 @@ import java.util.Map;
 public class EntityNameControllerImpl implements EntityNameController {
 
     private EntityNameServiceImpl entityNameService;
+    private EntityServiceImpl entityService;
 
     @Autowired
     public void setEntityNameService(EntityNameServiceImpl entityNameService) {
         this.entityNameService = entityNameService;
+    }
+
+    @Autowired
+    public void setEntityService(EntityServiceImpl entityService) {
+        this.entityService = entityService;
     }
 
     @Override
