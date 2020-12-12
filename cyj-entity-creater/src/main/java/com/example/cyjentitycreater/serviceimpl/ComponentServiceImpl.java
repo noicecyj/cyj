@@ -60,14 +60,6 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("    ").append(underComponentName).append("LoadingVisible: true,\r\n");
         sb.append("    ").append(underComponentName).append("Total: 0,\r\n");
         sb.append("    ").append(underComponentName).append("Current: 1,\r\n");
-        sb.append("    formItemLayout: {\r\n");
-        sb.append("      labelCol: {\r\n");
-        sb.append("        fixedSpan: 6,\r\n");
-        sb.append("      },\r\n");
-        sb.append("      wrapperCol: {\r\n");
-        sb.append("        span: 40,\r\n");
-        sb.append("      },\r\n");
-        sb.append("    },\r\n");
         if (entityName != null) {
             sb.append("    ").append("divVisible: true,\r\n");
             sb.append("    ").append(BeanUtils.underline2Camel(entityName)).append("Id: '',\r\n");
@@ -388,13 +380,14 @@ public class ComponentServiceImpl extends BaseService {
     private String[] createIndexJsx(EntityNamePO po, String[] relEntities) {
         StringBuilder sb = new StringBuilder();
         String underComponentName = BeanUtils.underline2Camel(po.getName());
-        sb.append("import { ResponsiveGrid, Button, Table, Box, Dialog, Form, Loading, Pagination } from '@alifd/next';\r\n");
+        sb.append("import { ResponsiveGrid, Button, Box, Dialog, Loading, Pagination } from '@alifd/next';\r\n");
         sb.append("import React, { useEffect } from 'react';\r\n");
         sb.append("import { store as pageStore } from 'ice/").append(BeanUtils.captureName(underComponentName)).append("';\r\n");
+        sb.append("import DataFormTemple from '@/components/dataForm';\r\n");
+        sb.append("import DataTableTemple from '@/components/dataTable';\r\n");
         sb.append("import styles from './index.module.scss';\r\n");
         sb.append("\r\n");
         sb.append("const { Cell } = ResponsiveGrid;\r\n");
-        sb.append("const FormItem = Form.Item;\r\n");
         sb.append("\r\n");
         sb.append("function ").append(BeanUtils.captureName(underComponentName)).append("Page() {\r\n");
 
@@ -411,11 +404,26 @@ public class ComponentServiceImpl extends BaseService {
             }
         }
         sb.append("  useEffect(() => {\r\n");
-        sb.append("    // <=============================自定义初始化数据 start =============================>\r\n");
-        sb.append("\r\n");
-        sb.append("    // <=============================自定义初始化数据 end   =============================>\r\n");
         sb.append("    ").append(underComponentName).append("Dispatchers.").append(underComponentName).append("Page(1);\r\n");
-        sb.append("  }, [").append(underComponentName).append("Dispatchers]);\r\n");
+        sb.append("    ").append(underComponentName).append("Dispatchers.findDataFormByName('").append(po.getFormModelCode()).append("');\r\n");
+        sb.append("    ").append(underComponentName).append("Dispatchers.findDataTableByName('").append(po.getTableModelCode()).append("');\r\n");
+        if (relEntities != null) {
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
+                sb.append("    ").append(underRelEntity).append("Dispatchers.findDataFormByName('").append(relPo.getFormModelCode()).append("');\r\n");
+                sb.append("    ").append(underRelEntity).append("Dispatchers.findDataTableByName('").append(relPo.getTableModelCode()).append("');\r\n");
+            }
+        }
+        sb.append("  }, [").append(underComponentName).append("Dispatchers");
+        if (relEntities != null) {
+            for (String relEntity : relEntities) {
+                EntityNamePO relPo = entityNameService.findOneById(relEntity);
+                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
+                sb.append(", ").append(underRelEntity).append("Dispatchers\r\n");
+            }
+        }
+        sb.append("]);\r\n");
         sb.append("\r\n");
         sb.append("  const ").append(underComponentName).append("PageRender = (value, index, record) => {\r\n");
         sb.append("    return <div className={styles.opt}>\r\n");
@@ -469,35 +477,13 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("              onCancel={() => ").append(underComponentName).append(".setState({ ").append(underComponentName).append("Visible: false })}\r\n");
         sb.append("              onClose={() => ").append(underComponentName).append(".setState({ ").append(underComponentName).append("Visible: false })}\r\n");
         sb.append("              style={{ width: '30%' }}>\r\n");
-        sb.append("              <Form style={{ width: '100%' }} {...").append(underComponentName).append("State.formItemLayout}\r\n");
-        sb.append("                value={").append(underComponentName).append("State.").append(underComponentName).append("FormData}\r\n");
-        sb.append("                onChange={value => ").append(underComponentName).append(".setState({ ").append(underComponentName).append("FormData: value })}>\r\n");
-        sb.append("                {/* <=============================自定义表单 start =============================> */}\r\n");
-        sb.append("                  11111111111111111111111\r\n");
-        sb.append("                {/* <=============================自定义表单 end   =============================> */}\r\n");
-        sb.append("              </Form>\r\n");
+        sb.append("              <DataFormTemple items={ ").append(underComponentName).append("State.").append(underComponentName).append("DataForm }\r\n");
+        sb.append("                dispatchers={ value => ").append(underComponentName).append("Dispatchers.setDataForm(value) }\r\n");
+        sb.append("                formDataValue={ ").append(underComponentName).append("State.").append(underComponentName).append("FormData } />\r\n");
         sb.append("            </Dialog>\r\n");
         sb.append("          </div>\r\n");
         sb.append("          <Loading tip=\"加载中...\" visible={").append(underComponentName).append("State.").append(underComponentName).append("LoadingVisible}>\r\n");
-        if (relEntities != null) {
-            sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underComponentName).append("TableData}\r\n");
-            sb.append("              rowSelection={{\r\n");
-            sb.append("                mode: 'single',\r\n");
-            sb.append("                onSelect: (selected, record) => {\r\n");
-            for (String relEntity : relEntities) {
-                EntityNamePO relPo = entityNameService.findOneById(relEntity);
-                String underRelEntity = BeanUtils.underline2Camel(relPo.getName());
-                sb.append("                  ").append(underRelEntity).append("Dispatchers.onRowClick({ selected, record });\r\n");
-            }
-            sb.append("                },\r\n");
-            sb.append("              }} >\r\n");
-        } else {
-            sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underComponentName).append("State.").append(underComponentName).append("TableData}>\r\n");
-        }
-        sb.append("              {/* <=============================自定义表单 start =============================> */}\r\n");
-        sb.append("              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={").append(underComponentName).append("PageRender} />\r\n");
-        sb.append("              {/* <=============================自定义表单 end   =============================> */}\r\n");
-        sb.append("            </Table>\r\n");
+        sb.append("            <DataTableTemple dataSource={ ").append(underComponentName).append("State.").append(underComponentName).append("DataTable } pageRender={ ").append(underComponentName).append("PageRender } />\r\n");
         sb.append("            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n");
         sb.append("              <div className={styles.total}> 共 <span>{").append(underComponentName).append("State.").append(underComponentName).append("Total}</span> 条 </div>\r\n");
         sb.append("              <Pagination onChange={current => ").append(underComponentName).append("Dispatchers.").append(underComponentName).append("Page(current)}\r\n");
@@ -523,26 +509,18 @@ public class ComponentServiceImpl extends BaseService {
                 sb.append("              onCancel={() => ").append(underRelEntity).append(".setState({ ").append(underRelEntity).append("Visible: false })}\r\n");
                 sb.append("              onClose={() => ").append(underRelEntity).append(".setState({ ").append(underRelEntity).append("Visible: false })}\r\n");
                 sb.append("              style={{ width: '30%' }}>\r\n");
-                sb.append("              <Form style={{ width: '100%' }} {...").append(underRelEntity).append("State.formItemLayout}\r\n");
-                sb.append("                value={").append(underRelEntity).append("State.").append(underRelEntity).append("FormData}\r\n");
-                sb.append("                onChange={value => ").append(underRelEntity).append(".setState({ ").append(underRelEntity).append("FormData: value })}>\r\n");
-                sb.append("                {/* <=============================自定义表单 start =============================> */}\r\n");
-                sb.append("                  11111111111111111111111\r\n");
-                sb.append("                {/* <=============================自定义表单 end   =============================> */}\r\n");
-                sb.append("              </Form>\r\n");
+                sb.append("              <DataFormTemple items={ ").append(underRelEntity).append("State.").append(underRelEntity).append("DataForm }\r\n");
+                sb.append("                dispatchers={ value => ").append(underRelEntity).append("Dispatchers.setDataForm(value) }\r\n");
+                sb.append("                formDataValue={ ").append(underRelEntity).append("State.").append(underRelEntity).append("FormData } />\r\n");
                 sb.append("            </Dialog>\r\n");
                 sb.append("          </div>\r\n");
                 sb.append("          <Loading tip=\"加载中...\" visible={").append(underRelEntity).append("State.").append(underRelEntity).append("LoadingVisible}>\r\n");
-                sb.append("            <Table hasBorder className={styles.Table} dataSource={").append(underRelEntity).append("State.").append(underRelEntity).append("TableData}>\r\n");
-                sb.append("              {/* <=============================自定义表单 start =============================> */}\r\n");
-                sb.append("              <Table.Column title=\"操作\" lock=\"right\" width=\"160px\" cell={").append(underRelEntity).append("PageRender} />\r\n");
-                sb.append("              {/* <=============================自定义表单 end   =============================> */}\r\n");
-                sb.append("            </Table>\r\n");
+                sb.append("            <DataTableTemple dataSource={ ").append(underRelEntity).append("State.").append(underRelEntity).append("DataTable } pageRender={ ").append(underRelEntity).append("PageRender } />\r\n");
                 sb.append("            <Box margin={[15, 0, 0, 0]} direction=\"row\" align=\"center\" justify=\"space-between\">\r\n");
                 sb.append("              <div className={styles.total}> 共 <span>{").append(underRelEntity).append("State.").append(underRelEntity).append("Total}</span> 条 </div>\r\n");
+                sb.append("              <Pagination onChange={current => ").append(underRelEntity).append("Dispatchers.").append(underRelEntity).append("Page({ id: ").append(underRelEntity).append("State.").append(underComponentName).append("Id, current })}\r\n");
+                sb.append("                stype=\"simple\" pageSize={5} total={").append(underRelEntity).append("State.").append(underRelEntity).append("Total} />\r\n");
                 sb.append("            </Box>\r\n");
-                sb.append("            <Pagination onChange={current => ").append(underRelEntity).append("Dispatchers.").append(underRelEntity).append("Page({ id: ").append(underRelEntity).append("State.").append(underComponentName).append("Id, current })}\r\n");
-                sb.append("              stype=\"simple\" pageSize={5} total={").append(underRelEntity).append("State.").append(underRelEntity).append("Total} />\r\n");
                 sb.append("          </Loading>\r\n");
                 sb.append("        </div>\r\n");
                 sb.append("      </Cell>\r\n");

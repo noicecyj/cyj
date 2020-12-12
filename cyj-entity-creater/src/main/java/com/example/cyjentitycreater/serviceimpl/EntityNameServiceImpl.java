@@ -1,11 +1,17 @@
 package com.example.cyjentitycreater.serviceimpl;
 
-import com.example.cyjentitycreater.entity.*;
-import com.example.cyjentitycreater.dao.*;
-import com.example.cyjentitycreater.service.*;
+import com.example.cyjentitycreater.dao.EntityDao;
+import com.example.cyjentitycreater.dao.EntityNameDao;
+import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.entity.EntityPO;
+import com.example.cyjentitycreater.service.EntityNameService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author 曹元杰
@@ -13,6 +19,7 @@ import org.springframework.stereotype.Service;
  * @date 2020-11-17
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class EntityNameServiceImpl extends BaseService implements EntityNameService {
 
     private EntityNameDao entityNameDao;

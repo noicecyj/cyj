@@ -228,6 +228,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("import org.springframework.beans.factory.annotation.Autowired;\r\n");
         sb.append("import org.springframework.data.domain.*;\r\n");
         sb.append("import org.springframework.stereotype.Service;\r\n");
+        sb.append("import org.springframework.transaction.annotation.Transactional;\r\n");
         sb.append("\r\n");
         if (entityName != null) {
             sb.append("\r\n");
@@ -235,6 +236,7 @@ public class PoServiceImpl extends BaseService {
         }
         generateAuthor(sb);
         sb.append("@Service\r\n");
+        sb.append("@Transactional(rollbackFor = Exception.class)\r\n");
         sb.append("public class ").append(fileName).append("ServiceImpl extends BaseService implements ").append(fileName).append("Service {\r\n");
         sb.append("\r\n");
         sb.append("    private ").append(fileName).append("Dao ").append(BeanUtils.underline2Camel(po.getName())).append("Dao;\r\n");
