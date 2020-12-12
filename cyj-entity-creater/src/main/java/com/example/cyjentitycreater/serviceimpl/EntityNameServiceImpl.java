@@ -41,7 +41,7 @@ public class EntityNameServiceImpl extends BaseService implements EntityNameServ
         sortCodeEntityPO.setPid(entityNamePO.getId());
         sortCodeEntityPO.setEntityName("sort_code");
         sortCodeEntityPO.setEntityProperty("String");
-        sortCodeEntityPO.setSortCode("0010");
+        sortCodeEntityPO.setSortCode("0100");
         entityDao.save(sortCodeEntityPO);
         return entityNamePO;
     }
@@ -62,7 +62,7 @@ public class EntityNameServiceImpl extends BaseService implements EntityNameServ
                 pidEntityPO.setPid(relEntity);
                 pidEntityPO.setEntityName("pid");
                 pidEntityPO.setEntityProperty("String");
-                pidEntityPO.setSortCode("0010");
+                pidEntityPO.setSortCode("0020");
                 entityDao.save(pidEntityPO);
             }
         }
