@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-12-13
  */
 @Entity
 @Table(name = UserPO.T_USER)
@@ -24,19 +24,19 @@ public class UserPO implements Serializable {
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column
-    private String name;
+    @Column(name = "user_name")
+    private String userName;
 
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @Column
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "phone")
     private String phone;
 
-    @Column
-    private String username;
-
-    @Column
+    @Column(name = "sort_code")
     private String sortCode;
 
 }

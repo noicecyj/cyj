@@ -1,20 +1,21 @@
 package com.example.sso.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
-import com.example.sso.entity.UserPO;
-import com.example.sso.serviceimpl.UserServiceImpl;
+import com.example.cyjcommon.utils.VoPoConverter;
+import com.example.sso.entity.*;
+import com.example.sso.serviceimpl.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-12-13
  */
 @RestController
-@RequestMapping(value = "userApi")
+@RequestMapping(value = "ssoApi")
 public class UserControllerImpl implements UserController {
 
     private UserServiceImpl userService;
@@ -25,14 +26,14 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                                @RequestParam("pageSize") Integer pageSize,
-                                @RequestParam("sortCode") String sortCode) {
+    public ResultVO userFindAll(Integer pageNumber, Integer pageSize, String sortCode) {
         return ResultVO.success(userService.findAll(pageNumber - 1, pageSize, sortCode));
     }
 
     @Override
-    public ResultVO userSave(UserPO po) {
+    public ResultVO userSave(Map<String, Object> vo) {
+        UserPO po = new UserPO();
+        VoPoConverter.copyProperties(vo, po);
         if (po.getId() == null) {
             return ResultVO.success(userService.addOne(po));
         }
@@ -40,7 +41,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    public void userDelete(@RequestParam("id") String id) {
+    public void userDelete(String id) {
         userService.deleteOne(id);
     }
 

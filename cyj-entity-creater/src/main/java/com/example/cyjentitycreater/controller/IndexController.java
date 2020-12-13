@@ -69,7 +69,7 @@ public class IndexController {
     @RequestMapping(value = "createEntity")
     public ResultVO createEntity(@RequestBody CreateVO createVO) {
         EntityNamePO po = entityNameService.findOneById(createVO.getId());
-        entityFactory.createEntity(po);
+        entityFactory.createEntity(po,createVO.getChoose());
         return ResultVO.success();
     }
 

@@ -12,5 +12,5 @@ import java.io.Serializable;
 @Data
 public class CreateVO implements Serializable {
     private String id;
-    private String type;
+    private String[] choose;
 }

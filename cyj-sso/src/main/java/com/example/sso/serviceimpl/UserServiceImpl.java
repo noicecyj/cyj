@@ -1,21 +1,20 @@
 package com.example.sso.serviceimpl;
 
-import com.example.sso.entity.UserPO;
-import com.example.sso.dao.UserDao;
-import com.example.sso.service.UserService;
+import com.example.sso.entity.*;
+import com.example.sso.dao.*;
+import com.example.sso.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-12-13
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl extends BaseService implements UserService {
 
     private UserDao userDao;
@@ -45,6 +44,14 @@ public class UserServiceImpl extends BaseService implements UserService {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
         return userDao.findAll(pageable);
+    }
+
+    @Override
+    public UserPO findOneById(String id) {
+        if (userDao.findById(id).isPresent()){
+            return userDao.findById(id).get();
+        }
+        return null;
     }
 
 }

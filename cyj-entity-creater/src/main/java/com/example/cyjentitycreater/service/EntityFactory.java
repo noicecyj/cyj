@@ -30,10 +30,10 @@ public class EntityFactory {
         this.otherService = voService;
     }
 
-    public void createEntity(EntityNamePO po) {
+    public void createEntity(EntityNamePO po, String[] choose) {
         try {
             if (EntityType.PO.getType().equals(po.getType())) {
-                poService.createJavaFile(po);
+                poService.createJavaFile(po, choose);
             } else if (EntityType.VO.getType().equals(po.getType()) ||
                     EntityType.BO.getType().equals(po.getType()) ||
                     EntityType.DTO.getType().equals(po.getType())) {

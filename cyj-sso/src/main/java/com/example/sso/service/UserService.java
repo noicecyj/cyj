@@ -1,11 +1,11 @@
 package com.example.sso.service;
 
-import com.example.sso.entity.UserPO;
+import com.example.sso.entity.*;
 import org.springframework.data.domain.Page;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-12-13
  */
 public interface UserService {
 
@@ -41,4 +41,13 @@ public interface UserService {
      * @return 实体列表分页
      */
     Page<UserPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+
+    /**
+     * 查找实体
+     *
+     * @param id 实体id
+     * @return 实体
+     */
+    UserPO findOneById(String id);
+
 }

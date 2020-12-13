@@ -33,36 +33,50 @@ public class PoServiceImpl extends BaseService {
         this.entityService = entityService;
     }
 
-    public void createJavaFile(EntityNamePO po) throws IOException {
-        String[] result = entityGenerate(po);
-        createJavaFile(po.getPath() + "\\entity", result);
-        String[] daoResult = daoGenerate(po, null);
-        createJavaFile(po.getPath() + "\\dao", daoResult);
-        String[] serviceResult = serviceGenerate(po, null);
-        createJavaFile(po.getPath() + "\\service", serviceResult);
-        String[] serviceImplResult = serviceImplGenerate(po, null);
-        createJavaFile(po.getPath() + "\\serviceimpl", serviceImplResult);
-        String[] controllerInteResult = controllerInteGenerate(po, null);
-        createJavaFile(po.getPath() + "\\controller", controllerInteResult);
-        String[] controllerResult = controllerGenerate(po, null);
-        createJavaFile(po.getPath() + "\\controller", controllerResult);
+    public void createJavaFile(EntityNamePO po, String[] choose) throws IOException {
+        for (String cho : choose) {
+            if ("entity".equals(cho)) {
+                String[] result = entityGenerate(po);
+                createJavaFile(po.getPath() + "\\entity", result);
+            } else if ("dao".equals(cho)) {
+                String[] daoResult = daoGenerate(po, null);
+                createJavaFile(po.getPath() + "\\dao", daoResult);
+            } else if ("service".equals(cho)) {
+                String[] serviceResult = serviceGenerate(po, null);
+                createJavaFile(po.getPath() + "\\service", serviceResult);
+                String[] serviceImplResult = serviceImplGenerate(po, null);
+                createJavaFile(po.getPath() + "\\serviceimpl", serviceImplResult);
+            } else if ("controller".equals(cho)) {
+                String[] controllerInteResult = controllerInteGenerate(po, null);
+                createJavaFile(po.getPath() + "\\controller", controllerInteResult);
+                String[] controllerResult = controllerGenerate(po, null);
+                createJavaFile(po.getPath() + "\\controller", controllerResult);
+            }
+        }
         if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
             String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
             String[] relEntities = str.split(",");
             for (String relEntity : relEntities) {
                 EntityNamePO subPo = entityNameService.findOneById(relEntity);
-                String[] subResult = entityGenerate(subPo);
-                createJavaFile(subPo.getPath() + "\\entity", subResult);
-                String[] subDaoResult = daoGenerate(subPo, po.getName());
-                createJavaFile(subPo.getPath() + "\\dao", subDaoResult);
-                String[] subServiceResult = serviceGenerate(subPo, po.getName());
-                createJavaFile(subPo.getPath() + "\\service", subServiceResult);
-                String[] subServiceImplResult = serviceImplGenerate(subPo, po.getName());
-                createJavaFile(subPo.getPath() + "\\serviceimpl", subServiceImplResult);
-                String[] subControllerInteResult = controllerInteGenerate(subPo, po.getName());
-                createJavaFile(subPo.getPath() + "\\controller", subControllerInteResult);
-                String[] subControllerResult = controllerGenerate(subPo, po.getName());
-                createJavaFile(subPo.getPath() + "\\controller", subControllerResult);
+                for (String cho : choose) {
+                    if ("entity".equals(cho)) {
+                        String[] subResult = entityGenerate(subPo);
+                        createJavaFile(subPo.getPath() + "\\entity", subResult);
+                    } else if ("dao".equals(cho)) {
+                        String[] subDaoResult = daoGenerate(subPo, po.getName());
+                        createJavaFile(subPo.getPath() + "\\dao", subDaoResult);
+                    } else if ("service".equals(cho)) {
+                        String[] subServiceResult = serviceGenerate(subPo, po.getName());
+                        createJavaFile(subPo.getPath() + "\\service", subServiceResult);
+                        String[] subServiceImplResult = serviceImplGenerate(subPo, po.getName());
+                        createJavaFile(subPo.getPath() + "\\serviceimpl", subServiceImplResult);
+                    } else if ("controller".equals(cho)) {
+                        String[] subControllerInteResult = controllerInteGenerate(subPo, po.getName());
+                        createJavaFile(subPo.getPath() + "\\controller", subControllerInteResult);
+                        String[] subControllerResult = controllerGenerate(subPo, po.getName());
+                        createJavaFile(subPo.getPath() + "\\controller", subControllerResult);
+                    }
+                }
             }
         }
     }
@@ -240,7 +254,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("public class ").append(fileName).append("ServiceImpl extends BaseService implements ").append(fileName).append("Service {\r\n");
         sb.append("\r\n");
         sb.append("    private ").append(fileName).append("Dao ").append(BeanUtils.underline2Camel(po.getName())).append("Dao;\r\n");
-        if (entityName == null){
+        if (entityName == null) {
             if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
                 String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
                 String[] relEntities = str.split(",");
@@ -252,7 +266,7 @@ public class PoServiceImpl extends BaseService {
             }
         }
         generateSet(po, sb, fileName);
-        if (entityName == null){
+        if (entityName == null) {
             if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
                 String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
                 String[] relEntities = str.split(",");
@@ -272,7 +286,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("    @Override\r\n");
         sb.append("    public void deleteOne(String id) {\r\n");
         sb.append("        ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.deleteById(id);\r\n");
-        if (entityName == null){
+        if (entityName == null) {
             if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
                 String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
                 String[] relEntities = str.split(",");

@@ -1,15 +1,16 @@
 package com.example.sso.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
-import com.example.sso.entity.UserPO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-09-13
+ * @date 2020-12-13
  */
 public interface UserController {
 
@@ -21,26 +22,26 @@ public interface UserController {
      * @param sortCode   排序列
      * @return 返回结果
      */
-     @PostMapping(value = "userPage")
-     ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
+    @PostMapping(value = "userPage")
+    ResultVO userFindAll(@RequestParam("pageNumber") Integer pageNumber,
                          @RequestParam("pageSize") Integer pageSize,
                          @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象
      *
-     * @param po 对象
+     * @param vo 对象
      * @return 返回结果
      */
-     @PostMapping(value = "userSave")
-     ResultVO userSave(@RequestBody UserPO po);
+    @PostMapping(value = "userSave")
+    ResultVO userSave(@RequestBody Map<String, Object> vo);
 
     /**
      * 删除对象
      *
      * @param id 对象ID
      */
-     @PostMapping(value = "userDelete")
-     void userDelete(@RequestParam("id") String id);
+    @PostMapping(value = "userDelete")
+    void userDelete(@RequestParam("id") String id);
 
 }
