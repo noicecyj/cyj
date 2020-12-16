@@ -1,6 +1,6 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.DataItemPO;
+import com.example.cyjpagemenu.entity.DataFormItemPO;
 import com.example.cyjpagemenu.entity.DataTableItemPO;
 import com.example.cyjpagemenu.entity.DataTablePO;
 
@@ -19,7 +19,7 @@ public interface IndexService {
      * @param name 名称
      * @return 返回结果
      */
-    List<DataItemPO> findDataFormByName(String name);
+    List<DataFormItemPO> findDataFormByName(String name);
 
     /**
      * 根据名称获取表格

@@ -29,7 +29,7 @@ public class QUserPO extends EntityPathBase<UserPO> {
 
     public final StringPath sortCode = createString("sortCode");
 
-    public final StringPath username = createString("username");
+    public final StringPath userName = createString("userName");
 
     public QUserPO(String variable) {
         super(UserPO.class, forVariable(variable));

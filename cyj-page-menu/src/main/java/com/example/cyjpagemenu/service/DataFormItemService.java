@@ -7,9 +7,9 @@ import java.util.List;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-05
+ * @date 2020-12-16
  */
-public interface DataItemService {
+public interface DataFormItemService {
 
     /**
      * 添加实体
@@ -17,7 +17,7 @@ public interface DataItemService {
      * @param po 实体
      * @return 实体
      */
-    DataItemPO addOne(DataItemPO po);
+    DataFormItemPO addOne(DataFormItemPO po);
 
     /**
      * 删除实体
@@ -32,7 +32,7 @@ public interface DataItemService {
      * @param po 实体
      * @return 实体
      */
-    DataItemPO updateOne(DataItemPO po);
+    DataFormItemPO updateOne(DataFormItemPO po);
 
     /**
      * 查找所有实体(分页排序)
@@ -43,7 +43,7 @@ public interface DataItemService {
      * @param sortCode 排序列
      * @return 实体列表分页
      */
-    Page<DataItemPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);
+    Page<DataFormItemPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);
 
     /**
      * 查找实体
@@ -51,6 +51,6 @@ public interface DataItemService {
      * @param id 实体id
      * @return 实体
      */
-    List<DataItemPO> findOneById(String id);
+    List<DataFormItemPO> findOneById(String id);
 
 }

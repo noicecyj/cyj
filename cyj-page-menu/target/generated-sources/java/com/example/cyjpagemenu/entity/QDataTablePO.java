@@ -19,9 +19,13 @@ public class QDataTablePO extends EntityPathBase<DataTablePO> {
 
     public static final QDataTablePO dataTablePO = new QDataTablePO("dataTablePO");
 
+    public final StringPath dataSource = createString("dataSource");
+
     public final StringPath dataTableName = createString("dataTableName");
 
     public final StringPath id = createString("id");
+
+    public final StringPath isMain = createString("isMain");
 
     public final StringPath sortCode = createString("sortCode");
 

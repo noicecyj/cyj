@@ -24,14 +24,14 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     }
 
     @Override
-    public List<DataItemPO> findDataFormByName(String name) {
+    public List<DataFormItemPO> findDataFormByName(String name) {
         QDataFormPO qDataFormPO = QDataFormPO.dataFormPO;
-        QDataItemPO qDataItemPO = QDataItemPO.dataItemPO;
-        return queryFactory.selectFrom(qDataItemPO)
+        QDataFormItemPO qDataFormItemPO = QDataFormItemPO.dataFormItemPO;
+        return queryFactory.selectFrom(qDataFormItemPO)
                 .innerJoin(qDataFormPO)
-                .on(qDataItemPO.pid.eq(qDataFormPO.id))
+                .on(qDataFormItemPO.pid.eq(qDataFormPO.id))
                 .where(qDataFormPO.dataFormName.eq(name))
-                .orderBy(qDataItemPO.sortCode.asc()).fetch();
+                .orderBy(qDataFormItemPO.sortCode.asc()).fetch();
     }
 
     @Override

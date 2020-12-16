@@ -19,11 +19,17 @@ public class QDataTableItemPO extends EntityPathBase<DataTableItemPO> {
 
     public static final QDataTableItemPO dataTableItemPO = new QDataTableItemPO("dataTableItemPO");
 
+    public final StringPath dataIndex = createString("dataIndex");
+
     public final StringPath id = createString("id");
 
     public final StringPath pid = createString("pid");
 
     public final StringPath sortCode = createString("sortCode");
+
+    public final StringPath title = createString("title");
+
+    public final StringPath width = createString("width");
 
     public QDataTableItemPO(String variable) {
         super(DataTableItemPO.class, forVariable(variable));

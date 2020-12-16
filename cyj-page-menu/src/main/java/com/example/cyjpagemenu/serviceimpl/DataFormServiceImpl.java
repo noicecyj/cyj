@@ -6,17 +6,19 @@ import com.example.cyjpagemenu.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-05
+ * @date 2020-12-16
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class DataFormServiceImpl extends BaseService implements DataFormService {
 
     private DataFormDao dataFormDao;
-    private DataItemDao dataItemDao;
+    private DataFormItemDao dataFormItemDao;
 
     @Autowired
     public void setDataFormDao(DataFormDao dataFormDao) {
@@ -24,8 +26,8 @@ public class DataFormServiceImpl extends BaseService implements DataFormService 
     }
 
     @Autowired
-    public void setDataItemDao(DataItemDao dataItemDao) {
-        this.dataItemDao = dataItemDao;
+    public void setDataFormItemDao(DataFormItemDao dataFormItemDao) {
+        this.dataFormItemDao = dataFormItemDao;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class DataFormServiceImpl extends BaseService implements DataFormService 
     @Override
     public void deleteOne(String id) {
         dataFormDao.deleteById(id);
-        dataItemDao.deleteByPid(id);
+        dataFormItemDao.deleteByPid(id);
     }
 
     @Override

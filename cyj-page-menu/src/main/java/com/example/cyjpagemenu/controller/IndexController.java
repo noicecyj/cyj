@@ -2,7 +2,7 @@ package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjcommon.utils.ResultVO;
-import com.example.cyjpagemenu.entity.DataItemPO;
+import com.example.cyjpagemenu.entity.DataFormItemPO;
 import com.example.cyjpagemenu.entity.DataTableItemPO;
 import com.example.cyjpagemenu.entity.DataTablePO;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
@@ -108,7 +108,7 @@ public class IndexController {
      */
     @PostMapping(value = "findDataFormByName")
     public ResultVO findDataFormByName(@RequestParam("name") String name) {
-        List<DataItemPO> pos = indexService.findDataFormByName(name);
+        List<DataFormItemPO> pos = indexService.findDataFormByName(name);
         return ResultVO.success(pos);
     }
 
