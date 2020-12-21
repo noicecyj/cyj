@@ -1,12 +1,57 @@
+POST http://localhost:8010/pageMenuApi/dataFormSave
+Content-Type: application/json
+
+{
+  "dataFormName": "dataFormTable",
+  "description": "表单管理表单",
+  "sortCode": "0010"
+}
+
+###
+
+POST http://localhost:8010/pageMenuApi/dataFormItemSave
+Content-Type: application/json
+
+{
+  "pid": "30faf267-2baf-4151-81ba-172e30cf5ada",
+  "jsonData": "{\"label\":\"123\",\"required\":\"true\",\"name\":\"234\",\"type\":\"345\",\"dataSource\":\"34567\"}",
+  "sortCode": "0050"
+}
+
+###
+POST http://localhost:8010/pageMenuApi/dataTableSave
+Content-Type: application/json
+
+{
+  "dataTableName": "dataFormItemTable",
+  "description": "表单管理子表表格",
+  "isMain": "true",
+  "sortCode": "0010"
+}
+
+###
+
+POST http://localhost:8010/pageMenuApi/dataTableItemSave
+Content-Type: application/json
+
+{
+  "pid": "54bfc84f-e5f9-4e15-840c-3907b54ccc76",
+  "jsonData": "{\"title\":\"排序代码\",\"dataIndex\":\"sortCode\"}",
+  "sortCode": "0050"
+}
+
+###
 POST http://localhost:8010/pageMenuApi/findCatalogByName
 Content-Type: application/x-www-form-urlencoded
 
 name=实体类型
+
 ###
 POST http://localhost:8030/dictionaryApi/findCatalogByName
 Content-Type: application/x-www-form-urlencoded
 
 name=实体类型
+
 ###
 POST http://localhost:8010/pageMenuApi/findCatalogByName?name=asd
 Accept: application/json
@@ -14,6 +59,7 @@ Accept: application/json
 ###
 POST http://localhost:8010/pageMenuApi/findDataFormByName?name=245
 Accept: application/json
+
 
 
 

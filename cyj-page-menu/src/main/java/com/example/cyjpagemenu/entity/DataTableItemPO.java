@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-07
+ * @date 2020-12-20
  */
 @Entity
 @Table(name = DataTableItemPO.T_DATA_TABLE_ITEM)
@@ -27,14 +27,8 @@ public class DataTableItemPO implements Serializable {
     @Column(name = "pid")
     private String pid;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "data_index")
-    private String dataIndex;
-
-    @Column(name = "width")
-    private String width;
+    @Column(name = "json_data")
+    private String jsonData;
 
     @Column(name = "sort_code")
     private String sortCode;
