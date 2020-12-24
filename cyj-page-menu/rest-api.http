@@ -2,8 +2,8 @@ POST http://localhost:8010/pageMenuApi/dataFormSave
 Content-Type: application/json
 
 {
-  "dataFormName": "dataFormTable",
-  "description": "表单管理表单",
+  "dataFormName": "dataTableItemForm",
+  "description": "表格管理子表表单",
   "sortCode": "0010"
 }
 
@@ -13,7 +13,7 @@ POST http://localhost:8010/pageMenuApi/dataFormItemSave
 Content-Type: application/json
 
 {
-  "pid": "30faf267-2baf-4151-81ba-172e30cf5ada",
+  "pid": "803e507b-8794-4a1e-a0d7-5b3f72170248",
   "jsonData": "{\"label\":\"123\",\"required\":\"true\",\"name\":\"234\",\"type\":\"345\",\"dataSource\":\"34567\"}",
   "sortCode": "0050"
 }
@@ -23,9 +23,8 @@ POST http://localhost:8010/pageMenuApi/dataTableSave
 Content-Type: application/json
 
 {
-  "dataTableName": "dataFormItemTable",
-  "description": "表单管理子表表格",
-  "isMain": "true",
+  "dataTableName": "dataTableTable",
+  "description": "表格管理表格",
   "sortCode": "0010"
 }
 
@@ -35,7 +34,7 @@ POST http://localhost:8010/pageMenuApi/dataTableItemSave
 Content-Type: application/json
 
 {
-  "pid": "54bfc84f-e5f9-4e15-840c-3907b54ccc76",
+  "pid": "b0e5ce46-1dc8-43d6-afc8-c4d4ca87bed2",
   "jsonData": "{\"title\":\"排序代码\",\"dataIndex\":\"sortCode\"}",
   "sortCode": "0050"
 }

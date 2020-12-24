@@ -110,7 +110,6 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
     protected void secondarySubAppend(ILoggingEvent eventObject, Connection connection, long eventId) throws Throwable {
         Map<String, String> mergedMap = mergePropertyMaps(eventObject);
         insertProperties(mergedMap, connection, eventId);
-
         if (eventObject.getThrowableProxy() != null) {
             insertThrowable(eventObject.getThrowableProxy(), connection, eventId);
         }
@@ -138,21 +137,17 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
             PreparedStatement insertPropertiesStatement = null;
             try {
                 insertPropertiesStatement = connection.prepareStatement(insertPropertiesSql);
-
                 for (String key : propertiesKeys) {
                     String value = mergedMap.get(key);
-
                     insertPropertiesStatement.setLong(1, eventId);
                     insertPropertiesStatement.setString(2, key);
                     insertPropertiesStatement.setString(3, value);
-
                     if (cnxSupportsBatchUpdates) {
                         insertPropertiesStatement.addBatch();
                     } else {
                         insertPropertiesStatement.execute();
                     }
                 }
-
                 if (cnxSupportsBatchUpdates) {
                     insertPropertiesStatement.executeBatch();
                 }
@@ -163,17 +158,14 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
     }
 
     protected void insertThrowable(IThrowableProxy tp, Connection connection, long eventId) throws SQLException {
-
         PreparedStatement exceptionStatement = null;
         try {
             exceptionStatement = connection.prepareStatement(insertExceptionSql);
-
             short baseIndex = 0;
             while (tp != null) {
                 baseIndex = buildExceptionStatement(tp, baseIndex, exceptionStatement, eventId);
                 tp = tp.getCause();
             }
-
             if (cnxSupportsBatchUpdates) {
                 exceptionStatement.executeBatch();
             }
@@ -199,9 +191,7 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
     }
 
     void bindCallerDataWithPreparedStatement(PreparedStatement stmt, StackTraceElement[] callerDataArray) throws SQLException {
-
         StackTraceElement caller = extractFirstCaller(callerDataArray);
-
         stmt.setString(CLASS_INDEX, caller.getFileName());
         stmt.setString(CLASSPATH_INDEX, caller.getClassName());
         stmt.setString(METHOD_INDEX, caller.getMethodName());
@@ -231,7 +221,6 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
             synchronized (this) {
                 subAppend(eventObject, connection, insertStatement);
             }
-
             // we no longer need the insertStatement
             if (insertStatement != null) {
                 insertStatement.close();
@@ -245,11 +234,9 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
     }
 
     short buildExceptionStatement(IThrowableProxy tp, short baseIndex, PreparedStatement insertExceptionStatement, long eventId) throws SQLException {
-
         StringBuilder buf = new StringBuilder();
         ThrowableProxyUtil.subjoinFirstLine(buf, tp);
         updateExceptionStatement(insertExceptionStatement, buf.toString(), baseIndex++, eventId);
-
         int commonFrames = tp.getCommonFrames();
         StackTraceElementProxy[] stepArray = tp.getStackTraceElementProxyArray();
         for (int i = 0; i < stepArray.length - commonFrames; i++) {
@@ -258,11 +245,9 @@ public class ServerLogAppender extends DBAppenderBase<ILoggingEvent> {
             ThrowableProxyUtil.subjoinSTEP(sb, stepArray[i]);
             updateExceptionStatement(insertExceptionStatement, sb.toString(), baseIndex++, eventId);
         }
-
         if (commonFrames > 0) {
             updateExceptionStatement(insertExceptionStatement, CoreConstants.TAB + "... " + commonFrames + " common frames omitted", baseIndex++, eventId);
         }
-
         return baseIndex;
     }
 

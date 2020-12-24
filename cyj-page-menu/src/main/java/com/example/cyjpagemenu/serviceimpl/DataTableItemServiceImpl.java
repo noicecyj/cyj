@@ -27,6 +27,7 @@ public class DataTableItemServiceImpl extends BaseService implements DataTableIt
 
     @Override
     public DataTableItemPO addOne(DataTableItemPO po) {
+        po.setJsonData("{\"title\":\"\",\"dataIndex\":\"\"}");
         return dataTableItemDao.save(po);
     }
 
