@@ -2,14 +2,13 @@ package com.example.cyjentitycreater.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.CommonUtils;
+import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.DictionaryDTO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.service.DictionaryApiService;
 import com.example.cyjentitycreater.service.EntityFactory;
-import com.example.cyjentitycreater.serviceimpl.ComponentServiceImpl;
-import com.example.cyjentitycreater.serviceimpl.EntityNameServiceImpl;
-import com.example.cyjentitycreater.serviceimpl.IndexServiceImpl;
+import com.example.cyjentitycreater.serviceimpl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +33,8 @@ public class IndexController {
     private EntityNameServiceImpl entityNameService;
     private ComponentServiceImpl componentService;
     private DictionaryApiService dictionaryApiService;
+    private AppServiceServiceImpl appServiceService;
+    private AppServiceImpl appService;
 
     @Autowired
     public void setEntityFactory(EntityFactory entityFactory) {
@@ -58,6 +59,16 @@ public class IndexController {
     @Autowired
     public void setDictionaryApiService(DictionaryApiService dictionaryApiService) {
         this.dictionaryApiService = dictionaryApiService;
+    }
+
+    @Autowired
+    public void setAppServiceService(AppServiceServiceImpl appServiceService) {
+        this.appServiceService = appServiceService;
+    }
+
+    @Autowired
+    public void setAppService(AppServiceImpl appService) {
+        this.appService = appService;
     }
 
     /**
@@ -86,6 +97,23 @@ public class IndexController {
         HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
             componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ResultVO.success();
+    }
+
+    /**
+     * 生成组件文件
+     *
+     * @param createVO 实体参数
+     * @return 返回值
+     */
+    @RequestMapping(value = "createAppFile")
+    public ResultVO createAppFile(@RequestBody CreateVO createVO) {
+        AppServicePO po = appServiceService.findOneById(createVO.getId());
+        try {
+            appService.createJavaFile(po);
         } catch (IOException e) {
             e.printStackTrace();
         }

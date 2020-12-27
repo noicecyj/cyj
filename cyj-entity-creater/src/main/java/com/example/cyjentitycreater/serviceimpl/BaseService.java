@@ -90,15 +90,19 @@ public class BaseService {
      * @param result 内容
      */
     public void createJavaFile(String path, String[] result) throws IOException {
-        File file = new File(path + "/" + result[1]);
+        File file = new File(path);
+        File file2 = new File(path + "/" + result[1]);
         //如果文件不存在，创建一个文件
-        if (file.createNewFile()) {
+        if (file.mkdirs()) {
+            logger.info("生成路径文件夹");
+        }
+        if (file2.createNewFile()) {
             logger.info("生成文件,路径为：{}", path + "/" + result[1]);
         }
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
-            fw = new FileWriter(file);
+            fw = new FileWriter(file2);
             bw = new BufferedWriter(fw);
             bw.write(result[0]);
         } catch (IOException e) {

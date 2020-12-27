@@ -83,8 +83,12 @@ public class BeanUtils {
         return false;
     }
 
-    public static String serviceFileName(AppServicePO po) {
-        return BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName())) + ".java";
+    public static String AppFileName(AppServicePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName())) + "Application.java";
+    }
+
+    public static String testAppFileName(AppServicePO po) {
+        return BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName())) + "ApplicationTests.java";
     }
 
     public static String entityName(EntityNamePO po) {
