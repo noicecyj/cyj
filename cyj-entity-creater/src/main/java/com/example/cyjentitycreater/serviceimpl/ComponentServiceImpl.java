@@ -22,26 +22,41 @@ public class ComponentServiceImpl extends BaseService {
         this.entityNameService = entityNameService;
     }
 
-    public void createComponentFile(String pagePath, EntityNamePO po) throws IOException {
+    public void createComponentFile(String pagePath, EntityNamePO po, String[] choose) throws IOException {
         String componentName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         String componentPath = pagePath + "/" + componentName;
-        createJavaFile(componentPath + "/models");
-        createJavaFile(componentPath + "/services");
-        createJavaFile(componentPath + "/models", createModelsJsx(po, null));
-        createJavaFile(componentPath + "/services", createServiceJsx(po, null));
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
-            String[] relEntities = str.split(",");
-            for (String relEntity : relEntities) {
-                EntityNamePO subPo = entityNameService.findOneById(relEntity);
-                createJavaFile(componentPath + "/models", createModelsJsx(subPo, po.getName()));
-                createJavaFile(componentPath + "/services", createServiceJsx(subPo, po.getName()));
+        for (String cho : choose) {
+            if ("model".equals(cho)) {
+                createJavaFile(componentPath + "/models");
+                createJavaFile(componentPath + "/models", createModelsJsx(po, null));
+            } else if ("service".equals(cho)) {
+                createJavaFile(componentPath + "/services");
+                createJavaFile(componentPath + "/services", createServiceJsx(po, null));
             }
-            createJavaFile(componentPath, createIndexJsx(po, relEntities));
-        } else {
-            createJavaFile(componentPath, createIndexJsx(po, null));
+            if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+                String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+                String[] relEntities = str.split(",");
+                for (String relEntity : relEntities) {
+                    EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    if ("model".equals(cho)) {
+                        createJavaFile(componentPath + "/models", createModelsJsx(subPo, po.getName()));
+                    } else if ("service".equals(cho)) {
+                        createJavaFile(componentPath + "/services", createServiceJsx(subPo, po.getName()));
+                    }
+                }
+                if ("index".equals(cho)) {
+                    createJavaFile(componentPath, createIndexJsx(po, relEntities));
+                }
+            } else {
+                if ("index".equals(cho)) {
+                    createJavaFile(componentPath, createIndexJsx(po, null));
+                }
+            }
+            if ("index".equals(cho)) {
+                createJavaFile(componentPath, createIndexCss());
+            }
         }
-        createJavaFile(componentPath, createIndexCss());
+
     }
 
     private String[] createModelsJsx(EntityNamePO po, String entityName) {

@@ -2,7 +2,7 @@ package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjentitycreater.entity.AppServicePO;
-import com.example.cyjentitycreater.entity.DictionaryDTO;
+import com.example.cyjentitycreater.entity.dto.DictionaryDTO;
 import com.example.cyjentitycreater.service.DictionaryApiService;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +23,7 @@ import static com.example.cyjentitycreater.utils.BeanUtils.testAppFileName;
 @Component
 public class AppServiceImpl extends BaseService {
 
-    private AppServiceServiceImpl appServiceService;
-
     private DictionaryApiService dictionaryApiService;
-
-    @Autowired
-    public void setAppServiceService(AppServiceServiceImpl appServiceService) {
-        this.appServiceService = appServiceService;
-    }
 
     @Autowired
     public void setDictionaryApiService(DictionaryApiService dictionaryApiService) {

@@ -1,7 +1,7 @@
 package com.example.cyjentitycreater.service;
 
 
-import com.example.cyjentitycreater.entity.DictionaryDTO;
+import com.example.cyjentitycreater.entity.dto.DictionaryDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;

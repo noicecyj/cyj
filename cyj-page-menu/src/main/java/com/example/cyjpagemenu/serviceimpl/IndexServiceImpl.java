@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 曹元杰
@@ -51,5 +52,10 @@ public class IndexServiceImpl extends BaseService implements IndexService {
             return indexDataTableDao.findDataTablePOByDataTableName(name).get();
         }
         return null;
+    }
+
+    @Override
+    public void formAndTableGenerate(Map<String, Object> vo) {
+
     }
 }

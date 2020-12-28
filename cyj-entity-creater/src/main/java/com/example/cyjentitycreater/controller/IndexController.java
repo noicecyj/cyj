@@ -4,7 +4,7 @@ import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.entity.DictionaryDTO;
+import com.example.cyjentitycreater.entity.dto.DictionaryDTO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.service.DictionaryApiService;
 import com.example.cyjentitycreater.service.EntityFactory;
@@ -96,7 +96,7 @@ public class IndexController {
         List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
         HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
-            componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po);
+            componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po,createVO.getChoose());
         } catch (IOException e) {
             e.printStackTrace();
         }

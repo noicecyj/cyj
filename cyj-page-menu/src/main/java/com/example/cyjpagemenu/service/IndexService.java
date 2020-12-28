@@ -5,6 +5,7 @@ import com.example.cyjpagemenu.entity.DataTableItemPO;
 import com.example.cyjpagemenu.entity.DataTablePO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 曹元杰
@@ -36,4 +37,11 @@ public interface IndexService {
      * @return 实体
      */
     DataTablePO findOneByName(String name);
+
+    /**
+     * 自动生成基础表单和基础表格
+     *
+     * @param vo 对象
+     */
+    void formAndTableGenerate(Map<String, Object> vo);
 }
