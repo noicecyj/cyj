@@ -1,4 +1,4 @@
-package com.example.cyjentitycreater.service;
+package com.example.cyjentitycreater.api;
 
 
 import com.example.cyjentitycreater.entity.dto.DictionaryDTO;

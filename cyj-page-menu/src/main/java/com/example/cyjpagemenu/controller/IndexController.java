@@ -5,7 +5,7 @@ import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjpagemenu.entity.DataFormItemPO;
 import com.example.cyjpagemenu.entity.DataTableItemPO;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
-import com.example.cyjpagemenu.service.DictionaryApiService;
+import com.example.cyjpagemenu.api.DictionaryApiService;
 import com.example.cyjpagemenu.serviceimpl.IndexServiceImpl;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

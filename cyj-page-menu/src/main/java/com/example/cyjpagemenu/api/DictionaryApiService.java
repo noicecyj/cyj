@@ -1,4 +1,4 @@
-package com.example.cyjpagemenu.service;
+package com.example.cyjpagemenu.api;
 
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import org.springframework.cloud.openfeign.FeignClient;

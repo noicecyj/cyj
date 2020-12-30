@@ -6,7 +6,7 @@ import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.CreateVO;
 import com.example.cyjentitycreater.entity.dto.DictionaryDTO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
-import com.example.cyjentitycreater.service.DictionaryApiService;
+import com.example.cyjentitycreater.api.DictionaryApiService;
 import com.example.cyjentitycreater.service.EntityFactory;
 import com.example.cyjentitycreater.serviceimpl.*;
 import org.springframework.beans.factory.annotation.Autowired;
