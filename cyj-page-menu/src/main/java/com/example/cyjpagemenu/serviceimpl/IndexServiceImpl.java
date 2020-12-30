@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author 曹元杰
@@ -18,10 +17,34 @@ import java.util.Map;
 public class IndexServiceImpl extends BaseService implements IndexService {
 
     private IndexDataTableDao indexDataTableDao;
+    private DataFormServiceImpl dataFormService;
+    private DataFormItemServiceImpl dataFormItemService;
+    private DataTableServiceImpl dataTableService;
+    private DataTableItemServiceImpl dataTableItemService;
 
     @Autowired
     public void setIndexDataTableDao(IndexDataTableDao indexDataTableDao) {
         this.indexDataTableDao = indexDataTableDao;
+    }
+
+    @Autowired
+    public void setDataFormService(DataFormServiceImpl dataFormService) {
+        this.dataFormService = dataFormService;
+    }
+
+    @Autowired
+    public void setDataFormItemService(DataFormItemServiceImpl dataFormItemService) {
+        this.dataFormItemService = dataFormItemService;
+    }
+
+    @Autowired
+    public void setDataTableService(DataTableServiceImpl dataTableService) {
+        this.dataTableService = dataTableService;
+    }
+
+    @Autowired
+    public void setDataTableItemService(DataTableItemServiceImpl dataTableItemService) {
+        this.dataTableItemService = dataTableItemService;
     }
 
     @Override
@@ -48,14 +71,27 @@ public class IndexServiceImpl extends BaseService implements IndexService {
 
     @Override
     public DataTablePO findOneByName(String name) {
-        if (indexDataTableDao.findDataTablePOByDataTableName(name).isPresent()){
+        if (indexDataTableDao.findDataTablePOByDataTableName(name).isPresent()) {
             return indexDataTableDao.findDataTablePOByDataTableName(name).get();
         }
         return null;
     }
 
     @Override
-    public void formAndTableGenerate(Map<String, Object> vo) {
-
+    public void formAndTableGenerate(String name) {
+        DataFormPO dataFormPO = new DataFormPO();
+        dataFormPO.setDataFormName(name + "Form");
+        dataFormPO = dataFormService.addOne(dataFormPO);
+        DataFormItemPO dataFormItemPO = new DataFormItemPO();
+        dataFormItemPO.setPid(dataFormPO.getId());
+        dataFormItemPO.setJsonData("{\"label\":\"排序代码\",\"required\":\"true\",\"name\":\"sortCode\",\"type\":\"Input\"}");
+        dataFormItemService.addOne(dataFormItemPO);
+        DataTablePO dataTablePO = new DataTablePO();
+        dataTablePO.setDataTableName(name + "Table");
+        dataTablePO = dataTableService.addOne(dataTablePO);
+        DataTableItemPO dataTableItemPO = new DataTableItemPO();
+        dataFormItemPO.setPid(dataTablePO.getId());
+        dataFormItemPO.setJsonData("{\"title\":\"排序代码\",\"dataIndex\":\"sortCode\"}");
+        dataTableItemService.addOne(dataTableItemPO);
     }
 }

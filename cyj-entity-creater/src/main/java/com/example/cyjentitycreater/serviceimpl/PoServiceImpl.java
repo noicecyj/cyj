@@ -34,6 +34,7 @@ public class PoServiceImpl extends BaseService {
     }
 
     public void createJavaFile(EntityNamePO po, String[] choose) throws IOException {
+        String fileName = BeanUtils.underline2Camel(po.getName());
         for (String cho : choose) {
             if ("entity".equals(cho)) {
                 String[] result = entityGenerate(po);
@@ -79,10 +80,18 @@ public class PoServiceImpl extends BaseService {
                 }
             }
         }
+        if (po.getFormModelCode() == null){
+            po.setFormModelCode(fileName + "Form");
+        }
+        if (po.getTableModelCode() == null){
+            po.setTableModelCode(fileName + "Table");
+        }
+        entityNameService.updateOne(po);
     }
 
     public String[] entityGenerate(EntityNamePO po) {
         List<EntityPO> poList = entityService.findOneById(po.getId());
+        String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         StringBuilder sb = new StringBuilder();
         generatePackage1(po, sb);
         sb.append("import org.hibernate.annotations.GenericGenerator;\r\n");
@@ -90,7 +99,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("import javax.persistence.*;\r\n");
         generatePackage2(poList, sb);
         sb.append("@Entity\r\n");
-        sb.append("@Table(name = ").append(BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()))).append(po.getType()).append(".T_").append(po.getName().toUpperCase()).append(")\r\n");
+        sb.append("@Table(name = ").append(fileName).append(po.getType()).append(".T_").append(po.getName().toUpperCase()).append(")\r\n");
         sb.append("@Data\r\n");
         sb.append("@GenericGenerator(name = \"uuid2\", strategy = \"org.hibernate.id.UUIDGenerator\")\r\n");
         generateClass(po, sb);

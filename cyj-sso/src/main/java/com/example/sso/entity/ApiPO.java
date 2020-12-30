@@ -12,12 +12,12 @@ import java.io.Serializable;
  * @date 2020-12-30
  */
 @Entity
-@Table(name = RolePO.T_ROLE)
+@Table(name = ApiPO.T_API)
 @Data
 @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-public class RolePO implements Serializable {
+public class ApiPO implements Serializable {
 
-    static final String T_ROLE = "t_role";
+    static final String T_API = "t_api";
 
     @Id
     @GeneratedValue(generator = "uuid2")

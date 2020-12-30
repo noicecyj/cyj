@@ -9,12 +9,14 @@ import com.example.cyjpagemenu.service.DictionaryApiService;
 import com.example.cyjpagemenu.serviceimpl.IndexServiceImpl;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author 曹元杰
@@ -124,12 +126,12 @@ public class IndexController {
     /**
      * 自动生成基础表单和基础表格
      *
-     * @param vo 对象
+     * @param name 对象
      * @return 返回结果
      */
     @PostMapping(value = "formAndTableGenerate")
-    public ResultVO formAndTableGenerate(@RequestBody Map<String, Object> vo) {
-        indexService.formAndTableGenerate(vo);
+    public ResultVO formAndTableGenerate(@RequestParam("name") String name) {
+        indexService.formAndTableGenerate(name);
         return ResultVO.success();
     }
 }
