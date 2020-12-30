@@ -1,5 +1,6 @@
 package com.example.cyjentitycreater.serviceimpl;
 
+import com.example.cyjentitycreater.api.PageMenuApiService;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
@@ -20,12 +21,17 @@ import static com.example.cyjentitycreater.utils.BeanUtils.*;
 public class PoServiceImpl extends BaseService {
 
     private EntityNameServiceImpl entityNameService;
-
+    private PageMenuApiService pageMenuApiService;
     private EntityServiceImpl entityService;
 
     @Autowired
     public void setEntityNameService(EntityNameServiceImpl entityNameService) {
         this.entityNameService = entityNameService;
+    }
+
+    @Autowired
+    public void setPageMenuApiService(PageMenuApiService pageMenuApiService) {
+        this.pageMenuApiService = pageMenuApiService;
     }
 
     @Autowired
@@ -80,13 +86,17 @@ public class PoServiceImpl extends BaseService {
                 }
             }
         }
-        if (po.getFormModelCode() == null){
+        if (po.getFormModelCode() == null && po.getTableModelCode() == null) {
+            pageMenuApiService.formAndTableGenerate(fileName);
+        }
+        if (po.getFormModelCode() == null) {
             po.setFormModelCode(fileName + "Form");
+            entityNameService.updateOne(po);
         }
-        if (po.getTableModelCode() == null){
+        if (po.getTableModelCode() == null) {
             po.setTableModelCode(fileName + "Table");
+            entityNameService.updateOne(po);
         }
-        entityNameService.updateOne(po);
     }
 
     public String[] entityGenerate(EntityNamePO po) {
