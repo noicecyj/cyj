@@ -81,20 +81,9 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     public void formAndTableGenerate(String name) {
         DataFormPO dataFormPO = new DataFormPO();
         dataFormPO.setDataFormName(name + "Form");
-        dataFormPO = dataFormService.addOne(dataFormPO);
-        DataFormItemPO dataFormItemPO = new DataFormItemPO();
-        dataFormItemPO.setPid(dataFormPO.getId());
-        dataFormItemPO = dataFormItemService.addOne(dataFormItemPO);
-        dataFormItemPO.setJsonData("{\"label\":\"排序代码\",\"required\":\"true\",\"name\":\"sortCode\",\"type\":\"Input\"}");
-        dataFormItemService.updateOne(dataFormItemPO);
-
+        dataFormService.addOne(dataFormPO);
         DataTablePO dataTablePO = new DataTablePO();
         dataTablePO.setDataTableName(name + "Table");
-        dataTablePO = dataTableService.addOne(dataTablePO);
-        DataTableItemPO dataTableItemPO = new DataTableItemPO();
-        dataTableItemPO.setPid(dataTablePO.getId());
-        dataTableItemPO = dataTableItemService.addOne(dataTableItemPO);
-        dataTableItemPO.setJsonData("{\"title\":\"排序代码\",\"dataIndex\":\"sortCode\"}");
-        dataTableItemService.updateOne(dataTableItemPO);
+        dataTableService.addOne(dataTablePO);
     }
 }

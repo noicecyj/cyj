@@ -21,6 +21,8 @@ public class QEntityNamePO extends EntityPathBase<EntityNamePO> {
 
     public final StringPath api = createString("api");
 
+    public final StringPath appName = createString("appName");
+
     public final StringPath formModelCode = createString("formModelCode");
 
     public final StringPath id = createString("id");

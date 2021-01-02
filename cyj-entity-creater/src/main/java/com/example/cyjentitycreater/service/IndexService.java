@@ -28,7 +28,8 @@ public interface IndexService {
     /**
      * 选择所有实体
      *
+     * @param tableName tableName
      * @return 实体列表
      */
-    List<EntityNamePO> findAll();
+    List<EntityNamePO> findAll(String tableName);
 }

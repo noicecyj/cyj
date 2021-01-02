@@ -1,12 +1,12 @@
 package com.example.cyjentitycreater.controller;
 
-import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.CommonUtils;
+import com.example.cyjcommon.utils.ResultVO;
+import com.example.cyjentitycreater.api.DictionaryApiService;
 import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.CreateVO;
-import com.example.cyjentitycreater.entity.dto.DictionaryDTO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
-import com.example.cyjentitycreater.api.DictionaryApiService;
+import com.example.cyjentitycreater.entity.dto.DictionaryDTO;
 import com.example.cyjentitycreater.service.EntityFactory;
 import com.example.cyjentitycreater.serviceimpl.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +80,7 @@ public class IndexController {
     @RequestMapping(value = "createEntity")
     public ResultVO createEntity(@RequestBody CreateVO createVO) {
         EntityNamePO po = entityNameService.findOneById(createVO.getId());
-        entityFactory.createEntity(po,createVO.getChoose());
+        entityFactory.createEntity(po, createVO.getChoose());
         return ResultVO.success();
     }
 
@@ -96,7 +96,7 @@ public class IndexController {
         List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
         HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
         try {
-            componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po,createVO.getChoose());
+            componentService.createComponentFile(mapPo.get("componentPath").getDictionaryValue(), po, createVO.getChoose());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -138,15 +138,5 @@ public class IndexController {
     @RequestMapping(value = "downEntity")
     public void downEntity(@RequestParam("id") String id) {
         indexService.downEntity(id);
-    }
-
-    /**
-     * 选择所有实体
-     *
-     * @return 实体列表
-     */
-    @RequestMapping(value = "selectEntityFindAll")
-    public ResultVO selectEntityFindAll() {
-        return ResultVO.success(indexService.findAll());
     }
 }

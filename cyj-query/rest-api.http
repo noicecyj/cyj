@@ -1,0 +1,10 @@
+POST http://localhost:8070/sqlApi/doFindAllSql
+Content-Type: application/x-www-form-urlencoded
+
+tableName=t_entity_name
+
+###
+
+
+
+

@@ -381,7 +381,15 @@ public class AppServiceImpl extends BaseService {
                 "    driver-class-name: com.mysql.cj.jdbc.Driver\r\n" +
                 "    url: jdbc:mysql://localhost:3306/data_user?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC\r\n" +
                 "    username: root\r\n" +
-                "    password: 68762306\r\n";
+                "    password: 68762306\r\n" +
+                "#feign的配置，连接超时及读取超时配置\r\n" +
+                "feign:\r\n" +
+                "  client:\r\n" +
+                "    config:\r\n" +
+                "      default:\r\n" +
+                "        connectTimeout: 60000\r\n" +
+                "        readTimeout: 60000\r\n" +
+                "        loggerLevel: basic\r\n";
         return new String[]{serviceFileData, "application.yml"};
     }
 

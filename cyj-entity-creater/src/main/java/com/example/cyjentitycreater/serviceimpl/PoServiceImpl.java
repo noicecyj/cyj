@@ -65,6 +65,7 @@ public class PoServiceImpl extends BaseService {
             String[] relEntities = str.split(",");
             for (String relEntity : relEntities) {
                 EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                String subFileName = BeanUtils.underline2Camel(subPo.getName());
                 for (String cho : choose) {
                     if ("entity".equals(cho)) {
                         String[] subResult = entityGenerate(subPo);
@@ -84,18 +85,24 @@ public class PoServiceImpl extends BaseService {
                         createJavaFile(subPo.getPath() + "\\controller", subControllerResult);
                     }
                 }
+                createFormAndTable(subPo, subFileName);
             }
         }
-        if (po.getFormModelCode() == null && po.getTableModelCode() == null) {
-            pageMenuApiService.formAndTableGenerate(fileName);
+        createFormAndTable(po, fileName);
+    }
+
+    private void createFormAndTable(EntityNamePO subPo, String subFileName) {
+        if ((subPo.getFormModelCode() == null || subPo.getFormModelCode().isEmpty()) &&
+                (subPo.getTableModelCode() == null || subPo.getTableModelCode().isEmpty())) {
+            pageMenuApiService.formAndTableGenerate(subFileName);
         }
-        if (po.getFormModelCode() == null) {
-            po.setFormModelCode(fileName + "Form");
-            entityNameService.updateOne(po);
+        if (subPo.getFormModelCode() == null || subPo.getFormModelCode().isEmpty()) {
+            subPo.setFormModelCode(subFileName + "Form");
+            entityNameService.updateOne(subPo);
         }
-        if (po.getTableModelCode() == null) {
-            po.setTableModelCode(fileName + "Table");
-            entityNameService.updateOne(po);
+        if (subPo.getTableModelCode() == null || subPo.getTableModelCode().isEmpty()) {
+            subPo.setTableModelCode(subFileName + "Table");
+            entityNameService.updateOne(subPo);
         }
     }
 

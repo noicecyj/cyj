@@ -60,7 +60,8 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     }
 
     @Override
-    public List<EntityNamePO> findAll() {
+    public List<EntityNamePO> findAll(String tableName) {
+
         return entityNameDao.findAll();
     }
 

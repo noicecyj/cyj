@@ -45,7 +45,17 @@ public class IndexController {
         } catch (Exception e) {
             return ResultVO.failure(e.getCause().getCause());
         }
+    }
 
+    /**
+     * 通过sql查询
+     *
+     * @param tableName 表名
+     * @return 返回值
+     */
+    @PostMapping(value = "doFindAllSql")
+    public ResultVO doFindAllSql(@RequestParam("tableName") String tableName) {
+        return ResultVO.success(indexService.findAllSql(tableName));
     }
 
 }

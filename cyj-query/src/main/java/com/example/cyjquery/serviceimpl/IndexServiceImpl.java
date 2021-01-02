@@ -35,4 +35,10 @@ public class IndexServiceImpl implements IndexService {
         Query query = em.createNativeQuery(sql);
         query.executeUpdate();
     }
+
+    @Override
+    public List<Map<String, Object>> findAllSql(String tableName) {
+        String sql = "select * from " + tableName + " where 1=1";
+        return queryBySql(sql);
+    }
 }

@@ -16,7 +16,7 @@ public interface IndexService {
      * @param sql sql语句
      * @return 查询结果
      */
-    List<Map<String,Object>> queryBySql(String sql);
+    List<Map<String, Object>> queryBySql(String sql);
 
     /**
      * 执行sql
@@ -24,4 +24,12 @@ public interface IndexService {
      * @param sql sql语句
      */
     void excuteSql(String sql);
+
+    /**
+     * 使用sql查询全部
+     *
+     * @param tableName 表名
+     * @return 查询结果
+     */
+    List<Map<String, Object>> findAllSql(String tableName);
 }

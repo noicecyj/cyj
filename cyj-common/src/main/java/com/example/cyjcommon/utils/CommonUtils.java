@@ -1,7 +1,11 @@
 package com.example.cyjcommon.utils;
 
+import javax.persistence.Table;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author 曹元杰
@@ -45,4 +49,16 @@ public class CommonUtils {
             return null;
         }
     }
+
+    /**
+     * 通过获取类上的@Table注解获取表名称
+     *
+     * @param clazz 类class
+     * @return 表名
+     */
+    public static String getTableName(Class<?> clazz) {
+        Table annotation = clazz.getAnnotation(Table.class);
+        return annotation.name();
+    }
+
 }
