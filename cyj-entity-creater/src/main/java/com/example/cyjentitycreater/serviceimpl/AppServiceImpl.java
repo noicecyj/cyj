@@ -31,34 +31,34 @@ public class AppServiceImpl extends BaseService {
     }
 
     public void createJavaFile(AppServicePO po) throws IOException {
-        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName()));
+        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getName()));
         List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
         HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
-        String AppFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getAppName()
+        String AppFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getName()
                 + "\\src\\main\\java\\com\\example\\" + AppName;
         String[] AppResult = appGenerate(po);
         createJavaFile(AppFilePath, AppResult);
-        String AppLogFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getAppName()
+        String AppLogFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getName()
                 + "\\src\\main\\java\\com\\example\\" + AppName + "\\config";
         String[] AppLogResult = appLogGenerate(po);
         createJavaFile(AppLogFilePath, AppLogResult);
-        String ymlFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getAppName()
+        String ymlFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getName()
                 + "\\src\\main\\resources";
         String[] ymlResult = ymlGenerate(po);
         createJavaFile(ymlFilePath, ymlResult);
-        String xmlFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getAppName()
+        String xmlFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getName()
                 + "\\src\\main\\resources";
         String[] xmlResult = xmlGenerate(po);
         createJavaFile(xmlFilePath, xmlResult);
-        String configFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getAppName()
+        String configFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getName()
                 + "\\src\\main\\resources";
         String[] configResult = configGenerate();
         createJavaFile(configFilePath, configResult);
-        String testAppFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getAppName()
+        String testAppFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getName()
                 + "\\src\\test\\java\\com\\example\\" + AppName;
         String[] testAppResult = testAppGenerate(po);
         createJavaFile(testAppFilePath, testAppResult);
-        String pomFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getAppName();
+        String pomFilePath = mapPo.get("servicePath").getDictionaryValue() + po.getName();
         String[] pomResult = pomGenerate(po);
         createJavaFile(pomFilePath, pomResult);
 
@@ -66,7 +66,7 @@ public class AppServiceImpl extends BaseService {
     }
 
     public String[] appGenerate(AppServicePO po) {
-        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName()));
+        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getName()));
         StringBuilder sb = new StringBuilder();
         sb.append("package com.example.").append(AppName).append(";\r\n");
         sb.append("\r\n");
@@ -91,7 +91,7 @@ public class AppServiceImpl extends BaseService {
     }
 
     public String[] appLogGenerate(AppServicePO po) {
-        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName()));
+        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getName()));
         String serviceFileData = "package com.example." + AppName + ".config;\r\n" +
                 "\r\n" +
                 "import ch.qos.logback.classic.spi.*;\r\n" +
@@ -370,7 +370,7 @@ public class AppServiceImpl extends BaseService {
                 "    prefer-ip-address: true\r\n" +
                 "spring:\r\n" +
                 "  application:\r\n" +
-                "    name: " + po.getAppName() + "\r\n" +
+                "    name: " + po.getName() + "\r\n" +
                 "  jpa:\r\n" +
                 "    generate-ddl: false\r\n" +
                 "    show-sql: true\r\n" +
@@ -394,7 +394,7 @@ public class AppServiceImpl extends BaseService {
     }
 
     public String[] xmlGenerate(AppServicePO po) {
-        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName()));
+        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getName()));
         String serviceFileData = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" +
                 "<!--该日志将日志级别不同的log信息保存到不同的文件中 -->\r\n" +
                 "<configuration debug=\"false\">\r\n" +
@@ -438,7 +438,7 @@ public class AppServiceImpl extends BaseService {
     }
 
     public String[] testAppGenerate(AppServicePO po) {
-        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getAppName()));
+        String AppName = BeanUtils.captureName(BeanUtils.underline2Camel2(po.getName()));
         StringBuilder sb = new StringBuilder();
         sb.append("package com.example.").append(AppName).append(";\r\n");
         sb.append("\r\n");
@@ -465,11 +465,11 @@ public class AppServiceImpl extends BaseService {
                 "    <modelVersion>4.0.0</modelVersion>\r\n" +
                 "\r\n" +
                 "    <groupId>com.example</groupId>\r\n" +
-                "    <artifactId>" + po.getAppName() + "</artifactId>\r\n" +
+                "    <artifactId>" + po.getName() + "</artifactId>\r\n" +
                 "    <version>0.0.1-SNAPSHOT</version>\r\n" +
                 "    <packaging>jar</packaging>\r\n" +
                 "\r\n" +
-                "    <name>" + po.getAppName() + "</name>\r\n" +
+                "    <name>" + po.getName() + "</name>\r\n" +
                 "    <description>Demo project for Spring Boot</description>\r\n" +
                 "\r\n" +
                 "    <parent>\r\n" +

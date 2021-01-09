@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-24
+ * @date 2021-01-06
  */
 @Entity
 @Table(name = AppServicePO.T_APP_SERVICE)
@@ -24,8 +24,8 @@ public class AppServicePO implements Serializable {
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "app_name")
-    private String appName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "app_api")
     private String appApi;
