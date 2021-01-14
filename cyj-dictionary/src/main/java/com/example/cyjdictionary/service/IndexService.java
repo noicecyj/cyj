@@ -30,6 +30,15 @@ public interface IndexService {
     List<DictionaryPO> findCatalogByValue(String value);
 
     /**
+     * 根据目录代号查找字典
+     *
+     * @param value 目录代号
+     * @param key 字典键值
+     * @return 字典列表
+     */
+    List<DictionaryPO> findDictionaryByCatalogValueAndDictionaryKey(String value,String key);
+
+    /**
      * 根据名称和代号进行模糊查询
      *
      * @param catalogName  目录名称

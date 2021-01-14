@@ -58,4 +58,15 @@ public class IndexController {
         return ResultVO.success(indexService.findAllSql(tableName));
     }
 
+    /**
+     * 通过主键sql查询
+     *
+     * @param tableName 表名
+     * @return 返回值
+     */
+    @PostMapping(value = "doFindSqlById")
+    public ResultVO doFindSqlById(@RequestParam("tableName") String tableName, @RequestParam("id") String id) {
+        return ResultVO.success(indexService.findSqlById(tableName, id));
+    }
+
 }

@@ -47,12 +47,6 @@ public class EntityNameServiceImpl extends BaseService implements EntityNameServ
         idEntityPO.setEntityProperty("String");
         idEntityPO.setSortCode("0010");
         entityDao.save(idEntityPO);
-        EntityPO sortCodeEntityPO = new EntityPO();
-        sortCodeEntityPO.setPid(entityNamePO.getId());
-        sortCodeEntityPO.setEntityName("sort_code");
-        sortCodeEntityPO.setEntityProperty("String");
-        sortCodeEntityPO.setSortCode("0100");
-        entityDao.save(sortCodeEntityPO);
         return entityNamePO;
     }
 

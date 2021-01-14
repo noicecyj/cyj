@@ -53,6 +53,17 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     }
 
     @Override
+    public List<DictionaryPO> findDictionaryByCatalogValueAndDictionaryKey(String value, String key) {
+        QDictionaryPO qDictionary = QDictionaryPO.dictionaryPO;
+        QCatalogPO qCatalogPO = QCatalogPO.catalogPO;
+        return queryFactory.selectFrom(qDictionary)
+                .innerJoin(qCatalogPO)
+                .on(qDictionary.pid.eq(qCatalogPO.id))
+                .where(qCatalogPO.catalogValue.eq(value).and(qDictionary.dictionaryValue.eq(key)))
+                .orderBy(qDictionary.sortCode.asc()).fetch();
+    }
+
+    @Override
     public Page<CatalogPO> findAllByCatalogNameContainsOrCatalogValueContains(String catalogName,
                                                                               String catalogValue,
                                                                               Integer pageNumber,

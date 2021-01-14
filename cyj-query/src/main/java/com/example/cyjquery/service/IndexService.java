@@ -32,4 +32,13 @@ public interface IndexService {
      * @return 查询结果
      */
     List<Map<String, Object>> findAllSql(String tableName);
+
+    /**
+     * 使用主键sql查询
+     *
+     * @param tableName 表名
+     * @param id 主键
+     * @return 查询结果
+     */
+    List<Map<String, Object>> findSqlById(String tableName, String id);
 }

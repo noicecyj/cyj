@@ -50,6 +50,18 @@ public class IndexController {
     }
 
     /**
+     * 根据目录值和字典值查询
+     *
+     * @param value 目录值
+     * @return 返回结果
+     */
+    @PostMapping(value = "findDictionaryByCatalogValueAndDictionaryKey")
+    public List<DictionaryPO> findDictionaryByCatalogValueAndDictionaryKey(@RequestParam("value") String value,
+                                                                           @RequestParam("key") String key) {
+        return indexService.findDictionaryByCatalogValueAndDictionaryKey(value,key);
+    }
+
+    /**
      * 根据目录名称或者值模糊查询
      *
      * @param catalogName  目录名称
