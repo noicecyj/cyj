@@ -3,6 +3,7 @@ package com.example.cyjpagemenu.service;
 import com.example.cyjpagemenu.entity.DataFormItemPO;
 import com.example.cyjpagemenu.entity.DataTableItemPO;
 import com.example.cyjpagemenu.entity.DataTablePO;
+import com.example.cyjpagemenu.entity.vo.DataSourceVO;
 
 import java.util.List;
 
@@ -43,4 +44,12 @@ public interface IndexService {
      * @param name 对象
      */
     void formAndTableGenerate(String name);
+
+    /**
+     * 处理数据
+     *
+     * @param dataSourceVO 数据
+     * @return 返回结果
+     */
+    Object transformData(DataSourceVO dataSourceVO);
 }

@@ -1,4 +1,4 @@
-package com.example.cyjpagemenu.entity;
+package com.example.cyjpagemenu.entity.vo;
 
 import lombok.Data;
 

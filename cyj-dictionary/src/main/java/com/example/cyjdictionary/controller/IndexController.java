@@ -56,7 +56,7 @@ public class IndexController {
      * @return 返回结果
      */
     @PostMapping(value = "findDictionaryByCatalogValueAndDictionaryKey")
-    public List<DictionaryPO> findDictionaryByCatalogValueAndDictionaryKey(@RequestParam("value") String value,
+    public DictionaryPO findDictionaryByCatalogValueAndDictionaryKey(@RequestParam("value") String value,
                                                                            @RequestParam("key") String key) {
         return indexService.findDictionaryByCatalogValueAndDictionaryKey(value,key);
     }

@@ -1,5 +1,7 @@
 package com.example.cyjcommon.utils;
 
+import com.alibaba.fastjson.JSONArray;
+
 import javax.persistence.Table;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -59,6 +61,15 @@ public class CommonUtils {
     public static String getTableName(Class<?> clazz) {
         Table annotation = clazz.getAnnotation(Table.class);
         return annotation.name();
+    }
+
+    /**
+     * json 转 List<T>
+     */
+    public static <T> List<T> jsonToList(String jsonString, Class<T> clazz) {
+        @SuppressWarnings("unchecked")
+        List<T> ts = (List<T>) JSONArray.parseArray(jsonString, clazz);
+        return ts;
     }
 
 }

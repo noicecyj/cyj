@@ -3,7 +3,7 @@ package com.example.cyjpagemenu.serviceimpl;
 import com.example.cyjcommon.utils.VoPoConverter;
 import com.example.cyjpagemenu.dao.MenuPageDao;
 import com.example.cyjpagemenu.entity.MenuPagePO;
-import com.example.cyjpagemenu.entity.MenuPageVO;
+import com.example.cyjpagemenu.entity.vo.MenuPageVO;
 import com.example.cyjpagemenu.service.MenuPageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

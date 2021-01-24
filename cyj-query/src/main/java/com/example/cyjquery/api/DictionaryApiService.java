@@ -1,6 +1,7 @@
-package com.example.cyjpagemenu.api;
+package com.example.cyjquery.api;
 
-import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
+
+import com.example.cyjquery.entity.dto.DictionaryDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,15 +35,4 @@ public interface DictionaryApiService {
      */
     @PostMapping(value = "/dictionaryApi/findCatalogByValue")
     List<DictionaryDTO> findCatalogByValue(@RequestParam("value") String value);
-
-    /**
-     * 根据目录值查询字典
-     *
-     * @param value 目录值
-     * @param key 键值
-     * @return 返回结果
-     */
-    @PostMapping(value = "/dictionaryApi/findDictionaryByCatalogValueAndDictionaryKey")
-    DictionaryDTO findDictionaryByCatalogValueAndDictionaryKey(@RequestParam("value") String value,
-                                                                     @RequestParam("key") String key);
 }

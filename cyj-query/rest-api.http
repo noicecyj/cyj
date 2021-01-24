@@ -1,7 +1,7 @@
-POST http://localhost:8070/sqlApi/doFindAllSql
+POST http://localhost:8070/sqlApi/doFindSqlById
 Content-Type: application/x-www-form-urlencoded
 
-tableName=t_entity_name
+tableName=t_entity_name&id=1b6e7b0d-8758-4de0-a80f-b54505ac9e9d
 
 ###
 

@@ -36,7 +36,7 @@ public interface IndexService {
      * @param key 字典键值
      * @return 字典列表
      */
-    List<DictionaryPO> findDictionaryByCatalogValueAndDictionaryKey(String value,String key);
+    DictionaryPO findDictionaryByCatalogValueAndDictionaryKey(String value,String key);
 
     /**
      * 根据名称和代号进行模糊查询

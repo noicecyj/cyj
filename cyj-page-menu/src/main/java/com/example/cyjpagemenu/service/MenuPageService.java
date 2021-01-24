@@ -1,7 +1,7 @@
 package com.example.cyjpagemenu.service;
 
 import com.example.cyjpagemenu.entity.MenuPagePO;
-import com.example.cyjpagemenu.entity.MenuPageVO;
+import com.example.cyjpagemenu.entity.vo.MenuPageVO;
 
 import java.io.IOException;
 

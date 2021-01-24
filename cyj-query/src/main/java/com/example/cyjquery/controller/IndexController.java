@@ -62,6 +62,7 @@ public class IndexController {
      * 通过主键sql查询
      *
      * @param tableName 表名
+     * @param id 主键
      * @return 返回值
      */
     @PostMapping(value = "doFindSqlById")

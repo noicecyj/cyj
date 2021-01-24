@@ -43,12 +43,10 @@ public class IndexServiceImpl implements IndexService {
     }
 
     @Override
-    public List<Map<String, Object>> findSqlById(String tableName, String id) {
+    public Object findSqlById(String tableName, String id) {
         String sql = String.format("select * from %s where id = ?", tableName);
         Query query = em.createNativeQuery(sql);
-        query.setParameter(1, id);
-        @SuppressWarnings("unchecked")
-        List<Map<String, Object>> list = query.unwrap(NativeQueryImpl.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
-        return list;
+        query.setParameter(1,id);
+        return query.unwrap(NativeQueryImpl.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list().get(0);
     }
 }

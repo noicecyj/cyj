@@ -2,17 +2,15 @@ package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjcommon.utils.ResultVO;
+import com.example.cyjpagemenu.api.DictionaryApiService;
 import com.example.cyjpagemenu.entity.DataFormItemPO;
 import com.example.cyjpagemenu.entity.DataTableItemPO;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
-import com.example.cyjpagemenu.api.DictionaryApiService;
+import com.example.cyjpagemenu.entity.vo.DataSourceVO;
 import com.example.cyjpagemenu.serviceimpl.IndexServiceImpl;
 import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -133,5 +131,17 @@ public class IndexController {
     public ResultVO formAndTableGenerate(@RequestParam("name") String name) {
         indexService.formAndTableGenerate(name);
         return ResultVO.success();
+    }
+
+    /**
+     * 处理数据
+     *
+     * @param dataSourceVO 数据
+     * @return 返回结果
+     */
+    @PostMapping(value = "transformData")
+    public ResultVO transformData(@RequestBody DataSourceVO dataSourceVO) {
+        Object dataSource = indexService.transformData(dataSourceVO);
+        return ResultVO.success(dataSource);
     }
 }
