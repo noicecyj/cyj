@@ -46,4 +46,12 @@ public interface EntityController {
     @PostMapping(value = "entityDelete")
     void entityDelete(@RequestParam("id") String id);
 
+    /**
+     * 根据ID查询
+     *
+     * @param id 对象ID
+     * @return 返回结果
+     */
+    @PostMapping(value = "findEntityById")
+    ResultVO findEntityById(@RequestParam("id") String id);
 }

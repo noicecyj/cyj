@@ -46,13 +46,13 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
     public Page<DictionaryPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-        List<DictionaryPO> poList = findOneById(id);
+        List<DictionaryPO> poList = findListById(id);
         List<DictionaryPO> poPage = CommonUtils.page(poList, pageSize, pageNumber);
         return new PageImpl<>(poPage, pageable, poList.size());
     }
 
     @Override
-    public List<DictionaryPO> findOneById(String id) {
+    public List<DictionaryPO> findListById(String id) {
         QDictionaryPO qDictionaryPO = QDictionaryPO.dictionaryPO;
         QCatalogPO qCatalogPO = QCatalogPO.catalogPO;
         return queryFactory.selectFrom(qDictionaryPO)

@@ -107,7 +107,7 @@ public class PoServiceImpl extends BaseService {
     }
 
     public String[] entityGenerate(EntityNamePO po) {
-        List<EntityPO> poList = entityService.findOneById(po.getId());
+        List<EntityPO> poList = entityService.findListById(po.getId());
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         StringBuilder sb = new StringBuilder();
         generatePackage1(po, sb);
@@ -234,10 +234,18 @@ public class PoServiceImpl extends BaseService {
         sb.append("     * @return 实体\r\n");
         sb.append("     */\r\n");
         if (entityName != null) {
-            sb.append("    List<").append(fileName).append("PO> findOneById(String id);\r\n");
+            sb.append("    List<").append(fileName).append("PO> findListById(String id);\r\n");
         } else {
-            sb.append("    ").append(fileName).append("PO findOneById(String id);\r\n");
+            sb.append("    ").append(fileName).append("PO findListById(String id);\r\n");
         }
+        sb.append("\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 查找实体\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param id 实体id\r\n");
+        sb.append("     * @return 实体\r\n");
+        sb.append("     */\r\n");
+        sb.append("    ").append(fileName).append("PO findOneById(String id);\r\n");
         sb.append("\r\n");
         sb.append("}\r\n");
         String entityServiceData = sb.toString();
@@ -334,7 +342,7 @@ public class PoServiceImpl extends BaseService {
             sb.append("    public Page<").append(fileName).append("PO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {\r\n");
             sb.append("        Sort sort = Sort.by(sortCode);\r\n");
             sb.append("        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);\r\n");
-            sb.append("        List<").append(fileName).append("PO> poList = findOneById(id);\r\n");
+            sb.append("        List<").append(fileName).append("PO> poList = findListById(id);\r\n");
             sb.append("        List<").append(fileName).append("PO> poPage = CommonUtils.page(poList, pageSize, pageNumber);\r\n");
             sb.append("        return new PageImpl<>(poPage, pageable, poList.size());\r\n");
         } else {
@@ -347,7 +355,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("\r\n");
         sb.append("    @Override\r\n");
         if (entityName != null) {
-            sb.append("    public List<").append(fileName).append("PO> findOneById(String id) {\r\n");
+            sb.append("    public List<").append(fileName).append("PO> findListById(String id) {\r\n");
             entityName = BeanUtils.captureName(BeanUtils.underline2Camel(entityName));
             sb.append("        Q").append(fileName).append("PO q").append(fileName).append("PO = Q").append(fileName).append("PO.").append(BeanUtils.underline2Camel(po.getName())).append("PO;\r\n");
             sb.append("        Q").append(entityName).append("PO q").append(entityName).append("PO = Q").append(entityName).append("PO.").append(BeanUtils.toLowerCaseFirstOne(entityName)).append("PO;\r\n");
@@ -357,12 +365,20 @@ public class PoServiceImpl extends BaseService {
             sb.append("                .where(q").append(entityName).append("PO.id.eq(id))\r\n");
             sb.append("                .orderBy(q").append(fileName).append("PO.sortCode.asc()).fetch();\r\n");
         } else {
-            sb.append("    public ").append(fileName).append("PO findOneById(String id) {\r\n");
+            sb.append("    public ").append(fileName).append("PO findListById(String id) {\r\n");
             sb.append("        if (").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).isPresent()){\r\n");
             sb.append("            return ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).get();\r\n");
             sb.append("        }\r\n");
             sb.append("        return null;\r\n");
         }
+        sb.append("    }\r\n");
+        sb.append("\r\n");
+        sb.append("    @Override\r\n");
+        sb.append("    public ").append(fileName).append("PO findOneById(String id) {\r\n");
+        sb.append("        if (").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).isPresent()) {\r\n");
+        sb.append("            return ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).get();\r\n");
+        sb.append("        }\r\n");
+        sb.append("        return null;\r\n");
         sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("}\r\n");
@@ -435,6 +451,15 @@ public class PoServiceImpl extends BaseService {
         sb.append("    @PostMapping(value = \"").append(BeanUtils.underline2Camel(po.getName())).append("Delete\")\r\n");
         sb.append("    void ").append(BeanUtils.underline2Camel(po.getName())).append("Delete(@RequestParam(\"id\") String id);\r\n");
         sb.append("\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 根据ID查询\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param id 对象ID\r\n");
+        sb.append("     * @return 返回结果\r\n");
+        sb.append("     */\r\n");
+        sb.append("    @PostMapping(value = \"find").append(fileName).append("ById\")\r\n");
+        sb.append("    ResultVO find").append(fileName).append("ById(@RequestParam(\"id\") String id);\r\n");
+        sb.append("\r\n");
         sb.append("}\r\n");
         String entityControllerData = sb.toString();
         return new String[]{entityControllerData, entityControllerName(po)};
@@ -497,6 +522,11 @@ public class PoServiceImpl extends BaseService {
         sb.append("    @Override\r\n");
         sb.append("    public void ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Delete(String id) {\r\n");
         sb.append("        ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Service.deleteOne(id);\r\n");
+        sb.append("    }\r\n");
+        sb.append("\r\n");
+        sb.append("    @Override\r\n");
+        sb.append("    public ResultVO find").append(fileName).append("ById(String id) {\r\n");
+        sb.append("        return ResultVO.success(").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Service.findOneById(id));\r\n");
         sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("}\r\n");

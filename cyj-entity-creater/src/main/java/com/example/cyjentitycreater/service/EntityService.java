@@ -51,6 +51,14 @@ public interface EntityService {
      * @param id 实体id
      * @return 实体
      */
-    List<EntityPO> findOneById(String id);
+    List<EntityPO> findListById(String id);
+
+    /**
+     * 查找实体
+     *
+     * @param id 实体id
+     * @return 实体
+     */
+    EntityPO findOneById(String id);
 
 }

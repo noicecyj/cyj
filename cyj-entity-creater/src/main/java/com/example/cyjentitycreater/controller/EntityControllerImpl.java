@@ -45,4 +45,9 @@ public class EntityControllerImpl implements EntityController {
         entityService.deleteOne(id);
     }
 
+    @Override
+    public ResultVO findEntityById(String id) {
+        return ResultVO.success(entityService.findOneById(id));
+    }
+
 }

@@ -44,13 +44,13 @@ public class EntityServiceImpl extends BaseService implements EntityService {
     public Page<EntityPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-        List<EntityPO> poList = findOneById(id);
+        List<EntityPO> poList = findListById(id);
         List<EntityPO> poPage = CommonUtils.page(poList, pageSize, pageNumber);
         return new PageImpl<>(poPage, pageable, poList.size());
     }
 
     @Override
-    public List<EntityPO> findOneById(String id) {
+    public List<EntityPO> findListById(String id) {
         QEntityPO qEntityPO = QEntityPO.entityPO;
         QEntityNamePO qEntityNamePO = QEntityNamePO.entityNamePO;
         return queryFactory.selectFrom(qEntityPO)
@@ -58,6 +58,14 @@ public class EntityServiceImpl extends BaseService implements EntityService {
                 .on(qEntityPO.pid.eq(qEntityNamePO.id))
                 .where(qEntityNamePO.id.eq(id))
                 .orderBy(qEntityPO.sortCode.asc()).fetch();
+    }
+
+    @Override
+    public EntityPO findOneById(String id) {
+        if (entityDao.findById(id).isPresent()) {
+            return entityDao.findById(id).get();
+        }
+        return null;
     }
 
 }

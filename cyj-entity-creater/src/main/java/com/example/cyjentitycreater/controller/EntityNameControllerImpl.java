@@ -2,10 +2,11 @@ package com.example.cyjentitycreater.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.VoPoConverter;
-import com.example.cyjentitycreater.entity.*;
-import com.example.cyjentitycreater.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.serviceimpl.EntityNameServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
@@ -19,16 +20,10 @@ import java.util.Map;
 public class EntityNameControllerImpl implements EntityNameController {
 
     private EntityNameServiceImpl entityNameService;
-    private EntityServiceImpl entityService;
 
     @Autowired
     public void setEntityNameService(EntityNameServiceImpl entityNameService) {
         this.entityNameService = entityNameService;
-    }
-
-    @Autowired
-    public void setEntityService(EntityServiceImpl entityService) {
-        this.entityService = entityService;
     }
 
     @Override
@@ -49,6 +44,11 @@ public class EntityNameControllerImpl implements EntityNameController {
     @Override
     public void entityNameDelete(String id) {
         entityNameService.deleteOne(id);
+    }
+
+    @Override
+    public ResultVO findEntityNameById(String id) {
+        return ResultVO.success(entityNameService.findOneById(id));
     }
 
 }

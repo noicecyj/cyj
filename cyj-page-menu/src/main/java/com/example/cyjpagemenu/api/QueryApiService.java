@@ -24,4 +24,14 @@ public interface QueryApiService {
      */
     @PostMapping(value = "/sqlApi/doFindSqlById")
     Object findSqlById(@RequestParam("tableName") String tableName, @RequestParam("id") String id);
+
+    /**
+     * 通过主键sql查询
+     *
+     * @param tableName 表名
+     * @return 返回值
+     */
+    @PostMapping(value = "/sqlApi/doFindAllSql")
+    Object FindAllSql(@RequestParam("tableName") String tableName);
+
 }

@@ -14,5 +14,6 @@ public class DataSourceVO implements Serializable {
 
     private Object dataSource;
     private Object dataTableItemList;
+    private Object dataFormItemList;
 
 }

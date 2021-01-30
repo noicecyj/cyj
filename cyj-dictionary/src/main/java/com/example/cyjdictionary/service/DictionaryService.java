@@ -52,6 +52,6 @@ public interface DictionaryService {
      * @param id 实体id
      * @return 实体
      */
-    List<DictionaryPO> findOneById(String id);
+    List<DictionaryPO> findListById(String id);
 
 }
