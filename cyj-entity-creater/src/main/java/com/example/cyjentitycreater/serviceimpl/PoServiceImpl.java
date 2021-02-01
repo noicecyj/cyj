@@ -227,16 +227,14 @@ public class PoServiceImpl extends BaseService {
             sb.append("    Page<").append(fileName).append("PO> findAll(Integer pageNumber, Integer pageSize, String sortCode);\r\n");
         }
         sb.append("\r\n");
-        sb.append("    /**\r\n");
-        sb.append("     * 查找实体\r\n");
-        sb.append("     *\r\n");
-        sb.append("     * @param id 实体id\r\n");
-        sb.append("     * @return 实体\r\n");
-        sb.append("     */\r\n");
         if (entityName != null) {
+            sb.append("    /**\r\n");
+            sb.append("     * 查找实体列表\r\n");
+            sb.append("     *\r\n");
+            sb.append("     * @param id 实体id\r\n");
+            sb.append("     * @return 实体\r\n");
+            sb.append("     */\r\n");
             sb.append("    List<").append(fileName).append("PO> findListById(String id);\r\n");
-        } else {
-            sb.append("    ").append(fileName).append("PO findListById(String id);\r\n");
         }
         sb.append("\r\n");
         sb.append("    /**\r\n");
@@ -353,8 +351,8 @@ public class PoServiceImpl extends BaseService {
         }
         sb.append("    }\r\n");
         sb.append("\r\n");
-        sb.append("    @Override\r\n");
         if (entityName != null) {
+            sb.append("    @Override\r\n");
             sb.append("    public List<").append(fileName).append("PO> findListById(String id) {\r\n");
             entityName = BeanUtils.captureName(BeanUtils.underline2Camel(entityName));
             sb.append("        Q").append(fileName).append("PO q").append(fileName).append("PO = Q").append(fileName).append("PO.").append(BeanUtils.underline2Camel(po.getName())).append("PO;\r\n");
@@ -364,8 +362,8 @@ public class PoServiceImpl extends BaseService {
             sb.append("                .on(q").append(fileName).append("PO.pid.eq(q").append(entityName).append("PO.id))\r\n");
             sb.append("                .where(q").append(entityName).append("PO.id.eq(id))\r\n");
             sb.append("                .orderBy(q").append(fileName).append("PO.sortCode.asc()).fetch();\r\n");
+            sb.append("    }\r\n");
         }
-        sb.append("    }\r\n");
         sb.append("\r\n");
         sb.append("    @Override\r\n");
         sb.append("    public ").append(fileName).append("PO findOneById(String id) {\r\n");
