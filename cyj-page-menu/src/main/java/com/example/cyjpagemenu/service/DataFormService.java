@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-16
+ * @date 2021-02-02
  */
 public interface DataFormService {
 
@@ -41,6 +41,7 @@ public interface DataFormService {
      * @return 实体列表分页
      */
     Page<DataFormPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+
 
     /**
      * 查找实体

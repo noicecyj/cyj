@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-07
+ * @date 2021-02-02
  */
 public interface DataTableItemService {
 
@@ -46,11 +46,19 @@ public interface DataTableItemService {
     Page<DataTableItemPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);
 
     /**
+     * 查找实体列表
+     *
+     * @param id 实体id
+     * @return 实体
+     */
+    List<DataTableItemPO> findListById(String id);
+
+    /**
      * 查找实体
      *
      * @param id 实体id
      * @return 实体
      */
-    List<DataTableItemPO> findOneById(String id);
+    DataTableItemPO findOneById(String id);
 
 }

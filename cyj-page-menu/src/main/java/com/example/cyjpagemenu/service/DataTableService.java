@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-07
+ * @date 2021-02-02
  */
 public interface DataTableService {
 
@@ -41,6 +41,7 @@ public interface DataTableService {
      * @return 实体列表分页
      */
     Page<DataTablePO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+
 
     /**
      * 查找实体

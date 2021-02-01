@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-16
+ * @date 2021-02-02
  */
 public interface DataFormController {
 
@@ -43,5 +43,14 @@ public interface DataFormController {
      */
     @PostMapping(value = "dataFormDelete")
     void dataFormDelete(@RequestParam("id") String id);
+
+    /**
+     * 根据ID查询
+     *
+     * @param id 对象ID
+     * @return 返回结果
+     */
+    @PostMapping(value = "findDataFormById")
+    ResultVO findDataFormById(@RequestParam("id") String id);
 
 }

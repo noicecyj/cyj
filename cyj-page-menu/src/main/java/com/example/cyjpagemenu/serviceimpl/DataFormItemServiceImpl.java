@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-16
+ * @date 2021-02-02
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -29,7 +29,6 @@ public class DataFormItemServiceImpl extends BaseService implements DataFormItem
 
     @Override
     public DataFormItemPO addOne(DataFormItemPO po) {
-        po.setJsonData("{\"label\":\"\",\"required\":\"\",\"name\":\"\",\"type\":\"\"}");
         return dataFormItemDao.save(po);
     }
 
@@ -47,13 +46,13 @@ public class DataFormItemServiceImpl extends BaseService implements DataFormItem
     public Page<DataFormItemPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode) {
         Sort sort = Sort.by(sortCode);
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-        List<DataFormItemPO> poList = findOneById(id);
+        List<DataFormItemPO> poList = findListById(id);
         List<DataFormItemPO> poPage = CommonUtils.page(poList, pageSize, pageNumber);
         return new PageImpl<>(poPage, pageable, poList.size());
     }
 
     @Override
-    public List<DataFormItemPO> findOneById(String id) {
+    public List<DataFormItemPO> findListById(String id) {
         QDataFormItemPO qDataFormItemPO = QDataFormItemPO.dataFormItemPO;
         QDataFormPO qDataFormPO = QDataFormPO.dataFormPO;
         return queryFactory.selectFrom(qDataFormItemPO)
@@ -61,6 +60,14 @@ public class DataFormItemServiceImpl extends BaseService implements DataFormItem
                 .on(qDataFormItemPO.pid.eq(qDataFormPO.id))
                 .where(qDataFormPO.id.eq(id))
                 .orderBy(qDataFormItemPO.sortCode.asc()).fetch();
+    }
+
+    @Override
+    public DataFormItemPO findOneById(String id) {
+        if (dataFormItemDao.findById(id).isPresent()) {
+            return dataFormItemDao.findById(id).get();
+        }
+        return null;
     }
 
 }

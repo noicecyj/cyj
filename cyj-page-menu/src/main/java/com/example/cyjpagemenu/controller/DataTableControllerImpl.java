@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-07
+ * @date 2021-02-02
  */
 @RestController
 @RequestMapping(value = "pageMenuApi")
@@ -43,6 +43,11 @@ public class DataTableControllerImpl implements DataTableController {
     @Override
     public void dataTableDelete(String id) {
         dataTableService.deleteOne(id);
+    }
+
+    @Override
+    public ResultVO findDataTableById(String id) {
+        return ResultVO.success(dataTableService.findOneById(id));
     }
 
 }

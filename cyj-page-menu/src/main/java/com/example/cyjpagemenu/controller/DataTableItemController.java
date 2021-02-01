@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-07
+ * @date 2021-02-02
  */
 public interface DataTableItemController {
 
@@ -45,5 +45,14 @@ public interface DataTableItemController {
      */
     @PostMapping(value = "dataTableItemDelete")
     void dataTableItemDelete(@RequestParam("id") String id);
+
+    /**
+     * 根据ID查询
+     *
+     * @param id 对象ID
+     * @return 返回结果
+     */
+    @PostMapping(value = "findDataTableItemById")
+    ResultVO findDataTableItemById(@RequestParam("id") String id);
 
 }

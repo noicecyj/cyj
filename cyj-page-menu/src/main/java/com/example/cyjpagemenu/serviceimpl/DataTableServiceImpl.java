@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-07
+ * @date 2021-02-02
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -53,9 +53,10 @@ public class DataTableServiceImpl extends BaseService implements DataTableServic
         return dataTableDao.findAll(pageable);
     }
 
+
     @Override
     public DataTablePO findOneById(String id) {
-        if (dataTableDao.findById(id).isPresent()){
+        if (dataTableDao.findById(id).isPresent()) {
             return dataTableDao.findById(id).get();
         }
         return null;

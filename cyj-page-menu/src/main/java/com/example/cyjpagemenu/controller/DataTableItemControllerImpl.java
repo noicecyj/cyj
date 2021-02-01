@@ -2,17 +2,18 @@ package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.VoPoConverter;
-import com.example.cyjpagemenu.entity.*;
-import com.example.cyjpagemenu.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjpagemenu.entity.DataTableItemPO;
+import com.example.cyjpagemenu.serviceimpl.DataTableItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-07
+ * @date 2021-02-02
  */
 @RestController
 @RequestMapping(value = "pageMenuApi")
@@ -43,6 +44,11 @@ public class DataTableItemControllerImpl implements DataTableItemController {
     @Override
     public void dataTableItemDelete(String id) {
         dataTableItemService.deleteOne(id);
+    }
+
+    @Override
+    public ResultVO findDataTableItemById(String id) {
+        return ResultVO.success(dataTableItemService.findOneById(id));
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-16
+ * @date 2021-02-02
  */
 @RestController
 @RequestMapping(value = "pageMenuApi")
@@ -43,6 +43,11 @@ public class DataFormItemControllerImpl implements DataFormItemController {
     @Override
     public void dataFormItemDelete(String id) {
         dataFormItemService.deleteOne(id);
+    }
+
+    @Override
+    public ResultVO findDataFormItemById(String id) {
+        return ResultVO.success(dataFormItemService.findOneById(id));
     }
 
 }

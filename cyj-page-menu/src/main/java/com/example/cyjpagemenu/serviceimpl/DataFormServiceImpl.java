@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-16
+ * @date 2021-02-02
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -55,7 +55,7 @@ public class DataFormServiceImpl extends BaseService implements DataFormService 
 
     @Override
     public DataFormPO findOneById(String id) {
-        if (dataFormDao.findById(id).isPresent()){
+        if (dataFormDao.findById(id).isPresent()) {
             return dataFormDao.findById(id).get();
         }
         return null;
