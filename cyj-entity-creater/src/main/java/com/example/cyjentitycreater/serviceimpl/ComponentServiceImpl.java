@@ -258,7 +258,7 @@ public class ComponentServiceImpl extends BaseService {
             sb.append("        ").append(underComponentName).append("Current: 1,\r\n");
             sb.append("        ").append(underComponentName).append("LoadingVisible: false,\r\n");
             sb.append("      };\r\n");
-            sb.append("      dispatch.entityName.setState(payload);\r\n");
+            sb.append("      dispatch.").append(underComponentName).append(".setState(payload);\r\n");
             sb.append("    },\r\n");
         }
         sb.append("    // <=============================自定义方法 start =============================>\r\n");

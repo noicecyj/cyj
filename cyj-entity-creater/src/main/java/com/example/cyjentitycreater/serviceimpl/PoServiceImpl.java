@@ -364,12 +364,6 @@ public class PoServiceImpl extends BaseService {
             sb.append("                .on(q").append(fileName).append("PO.pid.eq(q").append(entityName).append("PO.id))\r\n");
             sb.append("                .where(q").append(entityName).append("PO.id.eq(id))\r\n");
             sb.append("                .orderBy(q").append(fileName).append("PO.sortCode.asc()).fetch();\r\n");
-        } else {
-            sb.append("    public ").append(fileName).append("PO findListById(String id) {\r\n");
-            sb.append("        if (").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).isPresent()){\r\n");
-            sb.append("            return ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.findById(id).get();\r\n");
-            sb.append("        }\r\n");
-            sb.append("        return null;\r\n");
         }
         sb.append("    }\r\n");
         sb.append("\r\n");
