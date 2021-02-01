@@ -2,18 +2,17 @@ package com.example.cyjentitycreater.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.VoPoConverter;
-import com.example.cyjentitycreater.entity.EntityNamePO;
-import com.example.cyjentitycreater.serviceimpl.EntityNameServiceImpl;
+import com.example.cyjentitycreater.entity.*;
+import com.example.cyjentitycreater.serviceimpl.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-17
+ * @date 2021-02-02
  */
 @RestController
 @RequestMapping(value = "entityCreateApi")
