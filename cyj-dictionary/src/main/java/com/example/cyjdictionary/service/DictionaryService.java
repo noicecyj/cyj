@@ -1,14 +1,13 @@
 package com.example.cyjdictionary.service;
 
-import com.example.cyjdictionary.entity.DictionaryPO;
+import com.example.cyjdictionary.entity.*;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
-
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2021-02-02
  */
 public interface DictionaryService {
 
@@ -40,11 +39,19 @@ public interface DictionaryService {
      *
      * @param id         id
      * @param pageNumber 页码
-     * @param pageSize   条目
-     * @param sortCode   排序列
+     * @param pageSize 条目
+     * @param sortCode 排序列
      * @return 实体列表分页
      */
     Page<DictionaryPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);
+
+    /**
+     * 查找实体列表
+     *
+     * @param id 实体id
+     * @return 实体
+     */
+    List<DictionaryPO> findListById(String id);
 
     /**
      * 查找实体
@@ -52,6 +59,6 @@ public interface DictionaryService {
      * @param id 实体id
      * @return 实体
      */
-    List<DictionaryPO> findListById(String id);
+    DictionaryPO findOneById(String id);
 
 }

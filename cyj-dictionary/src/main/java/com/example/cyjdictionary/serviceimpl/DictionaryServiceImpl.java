@@ -1,23 +1,23 @@
 package com.example.cyjdictionary.serviceimpl;
 
 import com.example.cyjcommon.utils.CommonUtils;
-import com.example.cyjdictionary.dao.DictionaryDao;
-import com.example.cyjdictionary.entity.DictionaryPO;
-import com.example.cyjdictionary.entity.QCatalogPO;
-import com.example.cyjdictionary.entity.QDictionaryPO;
-import com.example.cyjdictionary.service.DictionaryService;
+import com.example.cyjdictionary.entity.*;
+import com.example.cyjdictionary.dao.*;
+import com.example.cyjdictionary.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
-
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2021-02-02
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class DictionaryServiceImpl extends BaseService implements DictionaryService {
 
     private DictionaryDao dictionaryDao;
@@ -60,6 +60,14 @@ public class DictionaryServiceImpl extends BaseService implements DictionaryServ
                 .on(qDictionaryPO.pid.eq(qCatalogPO.id))
                 .where(qCatalogPO.id.eq(id))
                 .orderBy(qDictionaryPO.sortCode.asc()).fetch();
+    }
+
+    @Override
+    public DictionaryPO findOneById(String id) {
+        if (dictionaryDao.findById(id).isPresent()) {
+            return dictionaryDao.findById(id).get();
+        }
+        return null;
     }
 
 }

@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2021-02-02
  */
 @Entity
 @Table(name = DictionaryPO.T_DICTIONARY)

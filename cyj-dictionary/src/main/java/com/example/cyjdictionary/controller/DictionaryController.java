@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2021-02-02
  */
 public interface DictionaryController {
 
@@ -25,9 +25,9 @@ public interface DictionaryController {
      */
     @PostMapping(value = "dictionaryPage")
     ResultVO dictionaryFindAll(@RequestParam("id") String id,
-                               @RequestParam("pageNumber") Integer pageNumber,
-                               @RequestParam("pageSize") Integer pageSize,
-                               @RequestParam("sortCode") String sortCode);
+                         @RequestParam("pageNumber") Integer pageNumber,
+                         @RequestParam("pageSize") Integer pageSize,
+                         @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象
@@ -45,5 +45,14 @@ public interface DictionaryController {
      */
     @PostMapping(value = "dictionaryDelete")
     void dictionaryDelete(@RequestParam("id") String id);
+
+    /**
+     * 根据ID查询
+     *
+     * @param id 对象ID
+     * @return 返回结果
+     */
+    @PostMapping(value = "findDictionaryById")
+    ResultVO findDictionaryById(@RequestParam("id") String id);
 
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-09
+ * @date 2021-02-02
  */
 public interface CatalogController {
 
@@ -24,8 +24,8 @@ public interface CatalogController {
      */
     @PostMapping(value = "catalogPage")
     ResultVO catalogFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                            @RequestParam("pageSize") Integer pageSize,
-                            @RequestParam("sortCode") String sortCode);
+                         @RequestParam("pageSize") Integer pageSize,
+                         @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象
@@ -43,5 +43,14 @@ public interface CatalogController {
      */
     @PostMapping(value = "catalogDelete")
     void catalogDelete(@RequestParam("id") String id);
+
+    /**
+     * 根据ID查询
+     *
+     * @param id 对象ID
+     * @return 返回结果
+     */
+    @PostMapping(value = "findCatalogById")
+    ResultVO findCatalogById(@RequestParam("id") String id);
 
 }

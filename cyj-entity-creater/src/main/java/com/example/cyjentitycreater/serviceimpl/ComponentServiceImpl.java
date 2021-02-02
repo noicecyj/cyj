@@ -313,7 +313,7 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("   * @return {*} \r\n");
         sb.append("   */\r\n");
         if (entityName != null) {
-            sb.append("  ").append(underComponentName).append("Save(").append(underComponentName).append("FormData, ").append(BeanUtils.underline2Camel(entityName)).append("Id) {\r\n");
+            sb.append("  ").append(underComponentName).append("Save(").append(BeanUtils.underline2Camel(entityName)).append("Id, ").append(underComponentName).append("FormData) {\r\n");
         } else {
             sb.append("  ").append(underComponentName).append("Save(data) {\r\n");
         }
