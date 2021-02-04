@@ -125,8 +125,8 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("     * @param {*} data\r\n");
         sb.append("     */\r\n");
         sb.append("    async ").append(underComponentName).append("Edit(data) {\r\n");
-        sb.append("      const ").append(underComponentName).append(" = await ").append(underComponentName).append("Service.find").append(ComponentName).append("ById(data.id);\r\n");
         sb.append("      if (data) {\r\n");
+        sb.append("        const ").append(underComponentName).append(" = await ").append(underComponentName).append("Service.find").append(ComponentName).append("ById(data.id);\r\n");
         sb.append("        const fromData = {\r\n");
         sb.append("          ...").append(underComponentName).append(".data,\r\n");
         sb.append("        };\r\n");
