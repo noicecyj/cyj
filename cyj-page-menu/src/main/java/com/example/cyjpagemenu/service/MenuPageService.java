@@ -1,39 +1,59 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.MenuPagePO;
+import com.example.cyjpagemenu.entity.*;
 import com.example.cyjpagemenu.entity.vo.MenuPageVO;
+import org.springframework.data.domain.Page;
 
 import java.io.IOException;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2021-02-04
  */
 public interface MenuPageService {
 
     /**
-     * 添加菜单
+     * 添加实体
      *
-     * @param po 菜单
-     * @return 菜单
+     * @param po 实体
+     * @return 实体
      */
     MenuPagePO addOne(MenuPagePO po);
 
     /**
-     * 删除菜单
+     * 删除实体
      *
-     * @param id 菜单id
+     * @param id 实体id
      */
     void deleteOne(String id);
 
     /**
-     * 更新菜单
+     * 更新实体
      *
-     * @param po 菜单
-     * @return 菜单
+     * @param po 实体
+     * @return 实体
      */
     MenuPagePO updateOne(MenuPagePO po);
+
+    /**
+     * 查找所有实体(分页排序)
+     *
+     * @param pageNumber 页码
+     * @param pageSize 条目
+     * @param sortCode 排序列
+     * @return 实体列表分页
+     */
+    Page<MenuPagePO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+
+
+    /**
+     * 查找实体
+     *
+     * @param id 实体id
+     * @return 实体
+     */
+    MenuPagePO findOneById(String id);
 
     /**
      * 查找所有菜单

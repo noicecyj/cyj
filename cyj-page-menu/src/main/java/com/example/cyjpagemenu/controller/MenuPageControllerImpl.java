@@ -1,18 +1,18 @@
 package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
-import com.example.cyjpagemenu.entity.MenuPagePO;
-import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
+import com.example.cyjcommon.utils.VoPoConverter;
+import com.example.cyjpagemenu.entity.*;
+import com.example.cyjpagemenu.serviceimpl.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-11-12
+ * @date 2021-02-04
  */
 @RestController
 @RequestMapping(value = "pageMenuApi")
@@ -26,11 +26,28 @@ public class MenuPageControllerImpl implements MenuPageController {
     }
 
     @Override
-    public ResultVO saveMenuPage(@RequestBody MenuPagePO po) {
+    public ResultVO menuPageFindAll(Integer pageNumber, Integer pageSize, String sortCode) {
+        return ResultVO.success(menuPageService.findAll(pageNumber - 1, pageSize, sortCode));
+    }
+
+    @Override
+    public ResultVO menuPageSave(Map<String, Object> vo) {
+        MenuPagePO po = new MenuPagePO();
+        VoPoConverter.copyProperties(vo, po);
         if (po.getId() == null) {
             return ResultVO.success(menuPageService.addOne(po));
         }
         return ResultVO.success(menuPageService.updateOne(po));
+    }
+
+    @Override
+    public void menuPageDelete(String id) {
+        menuPageService.deleteOne(id);
+    }
+
+    @Override
+    public ResultVO findMenuPageById(String id) {
+        return ResultVO.success(menuPageService.findOneById(id));
     }
 
     @Override
@@ -39,10 +56,4 @@ public class MenuPageControllerImpl implements MenuPageController {
         Object[] data = {menuPageService.findAll(), totalElements};
         return ResultVO.success(data);
     }
-
-    @Override
-    public void menuPageDelete(@RequestParam("id") String id) {
-        menuPageService.deleteOne(id);
-    }
-
 }

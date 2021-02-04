@@ -9,7 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,10 +25,11 @@ import java.util.List;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020/1/21 14:46
+ * @date 2021-02-04
  */
 @PropertySource(value = {"classpath:config.properties",}, encoding = "utf-8")
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class MenuPageServiceImpl extends BaseService implements MenuPageService {
 
     private MenuPageDao menuPageDao;
@@ -47,6 +53,22 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
     @Override
     public MenuPagePO updateOne(MenuPagePO po) {
         return menuPageDao.saveAndFlush(po);
+    }
+
+    @Override
+    public Page<MenuPagePO> findAll(Integer pageNumber, Integer pageSize, String sortCode) {
+        Sort sort = Sort.by(sortCode);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, sort);
+        return menuPageDao.findAll(pageable);
+    }
+
+
+    @Override
+    public MenuPagePO findOneById(String id) {
+        if (menuPageDao.findById(id).isPresent()) {
+            return menuPageDao.findById(id).get();
+        }
+        return null;
     }
 
     @Override
@@ -80,7 +102,7 @@ public class MenuPageServiceImpl extends BaseService implements MenuPageService 
         sb.append("    children: [\r\n");
         for (MenuPagePO po : pos) {
             sb.append("      {\r\n");
-            sb.append("        path: '").append(po.getPath()).append("',\r\n");
+            sb.append("        path: '").append(po.getApiPath()).append("',\r\n");
             sb.append("        component: ").append(po.getComponentName()).append("Page").append(",\r\n");
             sb.append("      },\r\n");
         }
