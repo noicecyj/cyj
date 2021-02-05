@@ -1,10 +1,8 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.*;
+import com.example.cyjpagemenu.entity.MenuPagePO;
 import com.example.cyjpagemenu.entity.vo.MenuPageVO;
 import org.springframework.data.domain.Page;
-
-import java.io.IOException;
 
 /**
  * @author 曹元杰
@@ -68,13 +66,5 @@ public interface MenuPageService {
      * @return 目录列表分页
      */
     long count();
-
-    /**
-     * 生成路由文件
-     *
-     * @param routePath 生成路径
-     * @throws IOException 异常
-     */
-    void createRouteFile(String routePath) throws IOException;
 
 }

@@ -29,14 +29,14 @@ public class MenuPagePO implements Serializable {
     @Column(name = "pid")
     private String pid;
 
-    @Column(name = "page_name")
-    private String pageName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "icon")
     private String icon;
 
-    @Column(name = "page_path")
-    private String pagePath;
+    @Column(name = "path")
+    private String path;
 
     @Column(name = "component_name")
     private String componentName;

@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka/
     fetch-registry: true
   instance:
     prefer-ip-address: true
@@ -21,6 +21,10 @@ spring:
     url: jdbc:mysql://localhost:3306/data_user?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: 68762306
+  security:
+    user:
+      name: admin
+      password: 123456
 #feign的配置，连接超时及读取超时配置
 feign:
   client:

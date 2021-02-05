@@ -1,6 +1,5 @@
 package com.example.cyjpagemenu.controller;
 
-import com.example.cyjcommon.utils.CommonUtils;
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjpagemenu.api.DictionaryApiService;
 import com.example.cyjpagemenu.entity.DataFormItemPO;
@@ -12,8 +11,6 @@ import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -54,23 +51,6 @@ public class IndexController {
     @PostMapping(value = "asideMenuConfig")
     public ResultVO asideMenuConfig() {
         return ResultVO.success(menuPageService.findAll());
-    }
-
-    /**
-     * 生成路由文件
-     *
-     * @return 返回结果
-     */
-    @PostMapping(value = "createRouteFile")
-    public ResultVO createRouteFile() {
-        List<DictionaryDTO> pos = dictionaryApiService.findCatalogByValue("FILE_PATH");
-        HashMap<String, DictionaryDTO> mapPo = CommonUtils.listToMap(pos, "dictionaryName");
-        try {
-            menuPageService.createRouteFile(mapPo.get("routePath").getDictionaryValue());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ResultVO.success();
     }
 
     /**
