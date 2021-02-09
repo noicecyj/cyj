@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-13
+ * @date 2021-02-09
  */
 @RestController
 @RequestMapping(value = "ssoApi")
@@ -43,6 +43,11 @@ public class UserControllerImpl implements UserController {
     @Override
     public void userDelete(String id) {
         userService.deleteOne(id);
+    }
+
+    @Override
+    public ResultVO findUserById(String id) {
+        return ResultVO.success(userService.findOneById(id));
     }
 
 }

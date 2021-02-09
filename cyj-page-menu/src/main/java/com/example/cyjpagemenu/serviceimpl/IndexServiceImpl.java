@@ -10,8 +10,7 @@ import com.example.cyjpagemenu.entity.*;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.example.cyjpagemenu.entity.vo.DataSourceVO;
 import com.example.cyjpagemenu.service.IndexService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.cyjpagemenu.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +27,6 @@ import java.util.Map;
 @Service
 public class IndexServiceImpl extends BaseService implements IndexService {
 
-    private final static Logger logger = LoggerFactory.getLogger(IndexServiceImpl.class);
     private IndexDataTableDao indexDataTableDao;
     private DataFormServiceImpl dataFormService;
     private DataFormItemServiceImpl dataFormItemService;
@@ -103,13 +101,31 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     }
 
     @Override
-    public void formAndTableGenerate(String name) {
+    public void formAndTableGenerate(String name, JSONArray jsonArray) {
         DataFormPO dataFormPO = new DataFormPO();
         dataFormPO.setDataFormName(name + "Form");
         dataFormService.addOne(dataFormPO);
         DataTablePO dataTablePO = new DataTablePO();
         dataTablePO.setDataTableName(name + "Table");
         dataTableService.addOne(dataTablePO);
+        List<JSONObject> objectList = JSONObject.parseArray(jsonArray.toString(), JSONObject.class);
+        for (JSONObject object : objectList) {
+            System.out.println(object);
+            if (!"id".equals(object.getString("entityName")) || !"sort_code".equals(object.getString("entityName"))) {
+                DataFormItemPO dataFormItemPO = new DataFormItemPO();
+                dataFormItemPO.setJsonData("{\"label\":\"\",\"required\":\"true\",\"name\":\"" +
+                        BeanUtils.underline2Camel(object.getString("entityName")) + "\",\"type\":\"Input\"}");
+                dataFormItemPO.setSortCode(object.getString("sortCode"));
+                dataFormItemPO.setPid(dataFormPO.getId());
+                dataFormItemService.addOne(dataFormItemPO);
+                DataTableItemPO dataTableItemPO = new DataTableItemPO();
+                dataTableItemPO.setJsonData("{\"title\":\"\",\"dataIndex\":\"" +
+                        BeanUtils.underline2Camel(object.getString("entityName")) + "\"}");
+                dataTableItemPO.setSortCode(object.getString("sortCode"));
+                dataTableItemPO.setPid(dataTablePO.getId());
+                dataTableItemService.addOne(dataTableItemPO);
+            }
+        }
     }
 
     @Override
@@ -212,7 +228,7 @@ public class IndexServiceImpl extends BaseService implements IndexService {
                                 newJsonObject = jsonObject;
                             }
                             objectList.add(newJsonObject);
-                        }else {
+                        } else {
                             objectList.add(jsonObject);
                         }
                     }

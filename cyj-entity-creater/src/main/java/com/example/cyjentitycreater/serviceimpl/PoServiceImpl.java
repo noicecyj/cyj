@@ -1,5 +1,7 @@
 package com.example.cyjentitycreater.serviceimpl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.example.cyjentitycreater.api.PageMenuApiService;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
@@ -94,7 +96,9 @@ public class PoServiceImpl extends BaseService {
     private void createFormAndTable(EntityNamePO subPo, String subFileName) {
         if ((subPo.getFormModelCode() == null || subPo.getFormModelCode().isEmpty()) &&
                 (subPo.getTableModelCode() == null || subPo.getTableModelCode().isEmpty())) {
-            pageMenuApiService.formAndTableGenerate(subFileName);
+            List<EntityPO> poList = entityService.findListById(subPo.getId());
+            JSONArray array = JSONArray.parseArray(JSON.toJSONString(poList));
+            pageMenuApiService.formAndTableGenerate(subFileName, array);
         }
         if (subPo.getFormModelCode() == null || subPo.getFormModelCode().isEmpty()) {
             subPo.setFormModelCode(subFileName + "Form");

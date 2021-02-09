@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-31
+ * @date 2021-02-09
  */
 @Entity
 @Table(name = UserPO.T_USER)
@@ -35,6 +35,9 @@ public class UserPO implements Serializable {
 
     @Column(name = "phone")
     private String phone;
+
+    @Column(name = "state")
+    private String state;
 
     @Column(name = "sort_code")
     private String sortCode;

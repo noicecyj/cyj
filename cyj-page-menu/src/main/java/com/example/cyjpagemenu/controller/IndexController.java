@@ -1,5 +1,6 @@
 package com.example.cyjpagemenu.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjpagemenu.api.DictionaryApiService;
 import com.example.cyjpagemenu.entity.DataFormItemPO;
@@ -108,8 +109,8 @@ public class IndexController {
      * @return 返回结果
      */
     @PostMapping(value = "formAndTableGenerate")
-    public ResultVO formAndTableGenerate(@RequestParam("name") String name) {
-        indexService.formAndTableGenerate(name);
+    public ResultVO formAndTableGenerate(@RequestParam("name") String name, @RequestBody JSONArray jsonArray) {
+        indexService.formAndTableGenerate(name, jsonArray);
         return ResultVO.success();
     }
 
