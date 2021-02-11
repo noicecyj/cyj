@@ -1,6 +1,6 @@
 package com.example.sso.dao;
 
-import com.example.sso.entity.RolePO;
+import com.example.sso.entity.ApiPO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version 1.0
  * @date 2021-02-11
  */
-public interface RoleDao extends JpaRepository<RolePO, String> {
+public interface ApiDao extends JpaRepository<ApiPO, String> {
 }

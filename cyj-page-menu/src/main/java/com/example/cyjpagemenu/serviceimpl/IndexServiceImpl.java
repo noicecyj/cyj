@@ -111,15 +111,16 @@ public class IndexServiceImpl extends BaseService implements IndexService {
         List<JSONObject> objectList = JSONObject.parseArray(jsonArray.toString(), JSONObject.class);
         for (JSONObject object : objectList) {
             System.out.println(object);
-            if (!"id".equals(object.getString("entityName")) || !"sort_code".equals(object.getString("entityName"))) {
+            if (!("id".equals(object.getString("entityName")) || "sort_code".equals(object.getString("entityName")))) {
                 DataFormItemPO dataFormItemPO = new DataFormItemPO();
-                dataFormItemPO.setJsonData("{\"label\":\"\",\"required\":\"true\",\"name\":\"" +
+                dataFormItemPO.setJsonData("{\"label\":\"" + object.getString("description") +
+                        "\",\"required\":\"false\",\"name\":\"" +
                         BeanUtils.underline2Camel(object.getString("entityName")) + "\",\"type\":\"Input\"}");
                 dataFormItemPO.setSortCode(object.getString("sortCode"));
                 dataFormItemPO.setPid(dataFormPO.getId());
                 dataFormItemService.addOne(dataFormItemPO);
                 DataTableItemPO dataTableItemPO = new DataTableItemPO();
-                dataTableItemPO.setJsonData("{\"title\":\"\",\"dataIndex\":\"" +
+                dataTableItemPO.setJsonData("{\"title\":\"" + object.getString("description") + "\",\"dataIndex\":\"" +
                         BeanUtils.underline2Camel(object.getString("entityName")) + "\"}");
                 dataTableItemPO.setSortCode(object.getString("sortCode"));
                 dataTableItemPO.setPid(dataTablePO.getId());

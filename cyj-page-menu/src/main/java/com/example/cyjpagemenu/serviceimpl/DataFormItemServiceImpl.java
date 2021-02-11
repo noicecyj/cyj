@@ -29,7 +29,6 @@ public class DataFormItemServiceImpl extends BaseService implements DataFormItem
 
     @Override
     public DataFormItemPO addOne(DataFormItemPO po) {
-        po.setJsonData("{\"label\":\"\",\"required\":\"\",\"name\":\"\",\"type\":\"\"}");
         return dataFormItemDao.save(po);
     }
 

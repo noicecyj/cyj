@@ -43,51 +43,53 @@ public class PoServiceImpl extends BaseService {
 
     public void createJavaFile(EntityNamePO po, String[] choose) throws IOException {
         String fileName = BeanUtils.underline2Camel(po.getName());
-        for (String cho : choose) {
-            if ("entity".equals(cho)) {
-                String[] result = entityGenerate(po);
-                createJavaFile(po.getPath() + "\\entity", result);
-            } else if ("dao".equals(cho)) {
-                String[] daoResult = daoGenerate(po, null);
-                createJavaFile(po.getPath() + "\\dao", daoResult);
-            } else if ("service".equals(cho)) {
-                String[] serviceResult = serviceGenerate(po, null);
-                createJavaFile(po.getPath() + "\\service", serviceResult);
-                String[] serviceImplResult = serviceImplGenerate(po, null);
-                createJavaFile(po.getPath() + "\\serviceimpl", serviceImplResult);
-            } else if ("controller".equals(cho)) {
-                String[] controllerInteResult = controllerInteGenerate(po, null);
-                createJavaFile(po.getPath() + "\\controller", controllerInteResult);
-                String[] controllerResult = controllerGenerate(po, null);
-                createJavaFile(po.getPath() + "\\controller", controllerResult);
-            }
-        }
-        if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-            String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
-            String[] relEntities = str.split(",");
-            for (String relEntity : relEntities) {
-                EntityNamePO subPo = entityNameService.findOneById(relEntity);
-                String subFileName = BeanUtils.underline2Camel(subPo.getName());
-                for (String cho : choose) {
-                    if ("entity".equals(cho)) {
-                        String[] subResult = entityGenerate(subPo);
-                        createJavaFile(subPo.getPath() + "\\entity", subResult);
-                    } else if ("dao".equals(cho)) {
-                        String[] subDaoResult = daoGenerate(subPo, po.getName());
-                        createJavaFile(subPo.getPath() + "\\dao", subDaoResult);
-                    } else if ("service".equals(cho)) {
-                        String[] subServiceResult = serviceGenerate(subPo, po.getName());
-                        createJavaFile(subPo.getPath() + "\\service", subServiceResult);
-                        String[] subServiceImplResult = serviceImplGenerate(subPo, po.getName());
-                        createJavaFile(subPo.getPath() + "\\serviceimpl", subServiceImplResult);
-                    } else if ("controller".equals(cho)) {
-                        String[] subControllerInteResult = controllerInteGenerate(subPo, po.getName());
-                        createJavaFile(subPo.getPath() + "\\controller", subControllerInteResult);
-                        String[] subControllerResult = controllerGenerate(subPo, po.getName());
-                        createJavaFile(subPo.getPath() + "\\controller", subControllerResult);
-                    }
+        if (choose.length != 0){
+            for (String cho : choose) {
+                if ("entity".equals(cho)) {
+                    String[] result = entityGenerate(po);
+                    createJavaFile(po.getPath() + "\\entity", result);
+                } else if ("dao".equals(cho)) {
+                    String[] daoResult = daoGenerate(po, null);
+                    createJavaFile(po.getPath() + "\\dao", daoResult);
+                } else if ("service".equals(cho)) {
+                    String[] serviceResult = serviceGenerate(po, null);
+                    createJavaFile(po.getPath() + "\\service", serviceResult);
+                    String[] serviceImplResult = serviceImplGenerate(po, null);
+                    createJavaFile(po.getPath() + "\\serviceimpl", serviceImplResult);
+                } else if ("controller".equals(cho)) {
+                    String[] controllerInteResult = controllerInteGenerate(po, null);
+                    createJavaFile(po.getPath() + "\\controller", controllerInteResult);
+                    String[] controllerResult = controllerGenerate(po, null);
+                    createJavaFile(po.getPath() + "\\controller", controllerResult);
                 }
-                createFormAndTable(subPo, subFileName);
+            }
+            if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+                String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+                String[] relEntities = str.split(",");
+                for (String relEntity : relEntities) {
+                    EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    String subFileName = BeanUtils.underline2Camel(subPo.getName());
+                    for (String cho : choose) {
+                        if ("entity".equals(cho)) {
+                            String[] subResult = entityGenerate(subPo);
+                            createJavaFile(subPo.getPath() + "\\entity", subResult);
+                        } else if ("dao".equals(cho)) {
+                            String[] subDaoResult = daoGenerate(subPo, po.getName());
+                            createJavaFile(subPo.getPath() + "\\dao", subDaoResult);
+                        } else if ("service".equals(cho)) {
+                            String[] subServiceResult = serviceGenerate(subPo, po.getName());
+                            createJavaFile(subPo.getPath() + "\\service", subServiceResult);
+                            String[] subServiceImplResult = serviceImplGenerate(subPo, po.getName());
+                            createJavaFile(subPo.getPath() + "\\serviceimpl", subServiceImplResult);
+                        } else if ("controller".equals(cho)) {
+                            String[] subControllerInteResult = controllerInteGenerate(subPo, po.getName());
+                            createJavaFile(subPo.getPath() + "\\controller", subControllerInteResult);
+                            String[] subControllerResult = controllerGenerate(subPo, po.getName());
+                            createJavaFile(subPo.getPath() + "\\controller", subControllerResult);
+                        }
+                    }
+                    createFormAndTable(subPo, subFileName);
+                }
             }
         }
         createFormAndTable(po, fileName);
