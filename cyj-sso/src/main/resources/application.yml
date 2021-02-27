@@ -29,4 +29,18 @@ feign:
         connectTimeout: 60000
         readTimeout: 60000
         loggerLevel: basic
-
+zuul:
+  host:
+    connect-timeout-millis: 15000 #HTTP连接超时大于Hystrix的超时时间
+    socket-timeout-millis: 60000   #socket超时
+  routes:
+    cyj-dictionary:
+      path: /cyj-dictionary/**
+    cyj-entity-creater:
+      path: /cyj-entity-creater/**
+    cyj-log:
+      path: /cyj-log/**
+    cyj-page-menu:
+      path: /cyj-page-menu/**
+    cyj-query:
+      path: /cyj-query/**
