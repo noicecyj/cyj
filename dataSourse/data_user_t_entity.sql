@@ -1,0 +1,103 @@
+create table t_entity
+(
+    id              varchar(36)  not null
+        primary key,
+    entity_name     varchar(255) null,
+    entity_property varchar(255) null,
+    pid             varchar(255) null,
+    sort_code       varchar(255) null,
+    description     varchar(255) null
+);
+
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('00028acd-83f3-45b6-8edc-8647bb6c5083', 'data_table_name', 'String', 'b5b1a8d8-1b29-41d9-84c5-c5395d1b18b4', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('04c1fcea-ad49-4379-b7ee-dedb092208b8', 'catalog_name', 'String', '2baaa27c-c5aa-4e6c-81fb-d31cfeccd16c', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('0b02d464-8b82-4254-846e-9a4b7f88b771', 'description', 'String', '6ec2cb36-2808-49ec-aca6-14e48cfa5b8c', '0040', '描述');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('0d1ecbee-4221-4167-b64e-6cfac73071da', 'pid', 'String', 'dc1bfe80-a23e-4914-8c5f-4adbcc8cfb69', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('0d2d6932-6a38-4dbf-9b52-94ab3e39df17', 'table_model_code', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0080', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('0dfd45bb-04b3-483c-9ab3-3c04a73c35e7', 'sort_code', 'String', 'a02b5d51-cbb8-46bb-b479-449add758da6', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('0e62cd35-8246-4ce8-a928-2e0a1d49b00f', 'id', 'String', '44befad6-c978-48ac-b2a4-d74a9023ac92', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('0f011591-6af0-402e-af52-2f37bfbac5e5', 'id', 'String', '6ec2cb36-2808-49ec-aca6-14e48cfa5b8c', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('107645b5-fcb3-49ff-9338-221399a7d3cb', 'component_name', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0060', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('22291a34-c3f5-41aa-bada-fb4919f03ac0', 'name', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('223f4121-141f-4a60-b79e-932c97203d7a', 'sort_code', 'String', '7c8a6c68-01d2-46a1-895b-567e6e435428', '0100', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('27dfc8a0-798c-4daf-86bc-a1b6b808bae0', 'id', 'String', '81ec3003-872c-42cf-9310-9133549165f9', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('285e86fc-ddb0-4f4a-8d32-a0cf26855fc1', 'pid', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('29362481-102a-4684-82f8-21bd1b6bc953', 'sort_code', 'String', 'ff09e383-ff0d-451a-84e4-97e9b2d1a802', '0050', '');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('2bab0cc4-2364-4b0f-87cf-1ec83faac341', 'password', 'String', '44befad6-c978-48ac-b2a4-d74a9023ac92', '0030', '密码');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('2d73a330-95b2-49d0-a431-bb85ca05836b', 'id', 'String', 'e8d98fea-df43-4edb-bd5e-a92bc6508b89', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('2e5ce5a0-dddc-483a-8b10-4b16b6c55ca0', 'id', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('2eea9b82-88c1-407b-8404-5cc951afcd62', 'api_path', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0070', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('3185fab7-ee0b-468a-8ba4-2862f5e92b30', 'phone', 'String', '44befad6-c978-48ac-b2a4-d74a9023ac92', '0050', '电话');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('31cb7354-9639-4444-bf83-0959a7abe383', 'name', 'String', '4f976ce3-5402-48ec-8c3a-ad030957121f', '0020', '名称');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('34ded059-30e2-44f0-abc2-20dd3786ef95', 'id', 'String', '55e88b7e-cd3c-4869-b2bc-153a1217bc21', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('3574f819-4f12-438e-9766-6d17699acb65', 'id', 'String', 'b5b1a8d8-1b29-41d9-84c5-c5395d1b18b4', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('3ac15eaf-59b8-45da-a34a-ade00943e2ec', 'sort_code', 'String', '81ec3003-872c-42cf-9310-9133549165f9', '0100', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('3f1e44a1-1621-4cdc-ade6-ed5ca4c3c5c6', 'sort_code', 'String', 'e8d98fea-df43-4edb-bd5e-a92bc6508b89', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('41695697-1f3a-4950-abae-2321ded263f1', 'description', 'String', '2baaa27c-c5aa-4e6c-81fb-d31cfeccd16c', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('422241e7-8b92-4154-a344-e12a0fd646e4', 'sort_code', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0090', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('4fdaf0a4-4dbc-4d9a-b291-4189e9c5b63e', 'name', 'String', '6ec2cb36-2808-49ec-aca6-14e48cfa5b8c', '0020', '名称');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('53698b67-f1a6-4385-aca9-6e0ad2b974d8', 'json_data', 'String', '5cf0f215-1420-4daf-b3ac-3ed3dba49fc4', '0060', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('53a42e96-bebc-47e7-b28d-52f91fa48162', 'page_name', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('5c85027b-003f-48ba-9d43-540b2ab6abcd', 'pid', 'String', '5cf0f215-1420-4daf-b3ac-3ed3dba49fc4', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('62225e96-6564-46a2-b568-8240c7e29ce6', 'description', 'String', '55e88b7e-cd3c-4869-b2bc-153a1217bc21', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('62e01063-1ed7-48e2-b2bd-fe23d7fcdf5b', 'sort_code', 'String', '2baaa27c-c5aa-4e6c-81fb-d31cfeccd16c', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('69baf7bf-2657-4f4a-a0d4-3839c6c019e5', 'form_model_code', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0070', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('6ae0675b-6eb3-4468-ac4f-8e36a9c9e02f', 'catalog_value', 'String', '2baaa27c-c5aa-4e6c-81fb-d31cfeccd16c', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('6b2d9107-37a1-43e1-97ca-5aea9abe039d', 'id', 'String', '5cf0f215-1420-4daf-b3ac-3ed3dba49fc4', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('6b7d10ab-382d-4c9d-9331-9ce3a9ccf11e', '234', 'String', 'dc1bfe80-a23e-4914-8c5f-4adbcc8cfb69', '5235', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('6bbdc77c-ca77-4137-afd5-9800c226653c', 'entity_property', 'String', '6982041d-8d07-4e68-9000-a4e42fecff04', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('78012c87-9287-4c98-8255-e6b8e4d273c9', 'sort_code', 'String', 'dbfbd101-0e31-404d-9bab-9ca77945a621', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('7b16d705-8ffd-4569-b60a-fb76e043fb2b', 'dictionary_name', 'String', 'dbfbd101-0e31-404d-9bab-9ca77945a621', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('7de9caed-a179-4017-a602-7c95bdc8bfb0', 'id', 'String', '1b6e7b0d-8758-4de0-a80f-b54505ac9e9d', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('7ff43118-5eb2-4e36-ba37-00ec6ccf6959', 'description', 'String', 'a02b5d51-cbb8-46bb-b479-449add758da6', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('85e74bdf-dff9-47da-9ace-b80601058876', 'app_port', 'String', '81ec3003-872c-42cf-9310-9133549165f9', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('8a27027c-81dc-4e86-a807-598cd60c7986', 'pid', 'String', '6982041d-8d07-4e68-9000-a4e42fecff04', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('8a29caaa-076d-4bd6-9201-48dbea29dce8', 'user_name', 'String', '44befad6-c978-48ac-b2a4-d74a9023ac92', '0020', '用户名');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('8d5a155c-fc14-4cd9-a903-1cb8eda218f7', 'app_name', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0021', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('906f7613-dfba-4a5b-aed4-6c785c283ac1', 'status', 'Integer', '44befad6-c978-48ac-b2a4-d74a9023ac92', '0060', '状态');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('98cd893e-4aa1-4075-89de-2005b6e85508', 'description', 'String', 'ff09e383-ff0d-451a-84e4-97e9b2d1a802', '0030', '描述');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('9e63a548-a1ac-449c-bd18-11a28194605b', 'sort_code', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0080', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('9fb8e62f-e3c1-4279-9f1f-5a6ae63af8e0', 'api', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('a0f38232-4c63-4b07-b3b7-a75211ce9f75', 'path', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('a5e1199e-f5d1-4fbd-88e8-4ecc2da75e90', 'name', 'String', '81ec3003-872c-42cf-9310-9133549165f9', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('a789e3b7-3d31-4ef4-9864-52bc64515c2f', 'pid', 'String', '5cf0f215-1420-4daf-b3ac-3ed3dba49fc4', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('a862ff47-19d4-4359-add4-89076827ed03', 'app_api', 'String', '81ec3003-872c-42cf-9310-9133549165f9', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('aa84a370-6bc2-479c-beae-6fd359627650', 'id', 'String', 'a02b5d51-cbb8-46bb-b479-449add758da6', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('aaf4a98a-b8a6-4a68-8b0b-f8263b953a68', 'icon', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('abea0983-9551-4675-a2de-8191b4aca327', 'sql_description', 'String', '1b6e7b0d-8758-4de0-a80f-b54505ac9e9d', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('ac2c2f3b-509d-4fa9-95f2-6287fdf3ec1e', 'pid', 'String', 'dbfbd101-0e31-404d-9bab-9ca77945a621', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('ae0deac8-b844-41fb-a934-62f75e1d6772', 'sort_code', 'String', '55e88b7e-cd3c-4869-b2bc-153a1217bc21', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('b7c42d8e-68a5-4179-a7e0-f5211884d454', 'description', 'String', 'b5b1a8d8-1b29-41d9-84c5-c5395d1b18b4', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('b81a9c4d-2287-46d0-ac75-0a2e5000eed1', 'path', 'String', '6ec2cb36-2808-49ec-aca6-14e48cfa5b8c', '0030', '路径');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('b9f835e5-3543-4c90-8e4f-0ba907b19b51', 'sort_code', 'String', 'dc1bfe80-a23e-4914-8c5f-4adbcc8cfb69', '0100', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('bd3d6624-edb4-462b-a422-4860a692596c', 'rel_entity', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0060', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('bf5b4b08-573e-42c9-9e98-b6bc803eaf33', 'sort_code', 'String', '6982041d-8d07-4e68-9000-a4e42fecff04', '0060', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('bfbe80c1-7719-4245-8b4a-6ea00095dd18', 'type', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0031', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('c07fc3bd-589a-4b6c-8a91-d34b6137fe20', 'sql_type', 'String', '1b6e7b0d-8758-4de0-a80f-b54505ac9e9d', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('c0b7730b-d818-47ae-a932-61e45022018d', 'sql_str', 'String', '1b6e7b0d-8758-4de0-a80f-b54505ac9e9d', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('c18c89a1-04c3-417e-92e9-0adb1c0ca468', 'id', 'String', '2baaa27c-c5aa-4e6c-81fb-d31cfeccd16c', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('c27e91da-b4a8-4cdc-839a-654db3219e91', 'description', 'String', '6982041d-8d07-4e68-9000-a4e42fecff04', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('c65ed8c1-06b3-4b10-9507-1d9e2087265c', 'sort_code', 'String', '6ec2cb36-2808-49ec-aca6-14e48cfa5b8c', '0060', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('c7f74497-91f7-4ee2-b09e-2b8284aeab70', 'id', 'String', '4f976ce3-5402-48ec-8c3a-ad030957121f', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('ca2e4c54-bc52-4127-a40b-4123e398f9c9', 'server_name', 'String', 'a02b5d51-cbb8-46bb-b479-449add758da6', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('cc09551c-330a-485c-b50c-1935ce69bdae', 'pid', 'String', 'e8d98fea-df43-4edb-bd5e-a92bc6508b89', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('cd42fe50-1c9e-4f9b-9005-7143cde6b873', 'name', 'String', 'ff09e383-ff0d-451a-84e4-97e9b2d1a802', '0020', '名称');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('d4f2fa73-d773-43cc-9706-1120d74b5ff9', 'id', 'String', 'dc1bfe80-a23e-4914-8c5f-4adbcc8cfb69', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('da5e8678-c1b0-4886-9ba5-c342752324f0', 'dictionary_value', 'String', 'dbfbd101-0e31-404d-9bab-9ca77945a621', '0040', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('db4bed7f-42ce-4c65-85f3-73a6ebd1e12a', 'name', 'String', '44befad6-c978-48ac-b2a4-d74a9023ac92', '0040', '姓名');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('dce1e4f1-f4a1-40b0-bc4a-7f5f1bba1d08', 'id', 'String', 'dbfbd101-0e31-404d-9bab-9ca77945a621', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('dd61fb60-da92-4ddb-80c5-686a29898e13', 'data_form_name', 'String', '55e88b7e-cd3c-4869-b2bc-153a1217bc21', '0020', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('e0f6efa8-997e-4299-b51b-ff5908931af4', 'sort_code', 'String', '44befad6-c978-48ac-b2a4-d74a9023ac92', '0070', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('e2667d9d-9ed3-4619-9944-49d7f3ad8be7', 'entity_name', 'String', '6982041d-8d07-4e68-9000-a4e42fecff04', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('e3305960-d41a-4106-929c-e715e3743536', 'status', 'Integer', 'ff09e383-ff0d-451a-84e4-97e9b2d1a802', '0040', '状态');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('e47368b6-f13d-4ac0-9c43-3abce3288467', 'server_port', 'String', 'a02b5d51-cbb8-46bb-b479-449add758da6', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('e5cd7a2b-e6d8-4802-9921-27e2bc7b3d11', 'status', 'Integer', '6ec2cb36-2808-49ec-aca6-14e48cfa5b8c', '0050', '状态');
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('e7c91de0-f945-43ca-9b0f-2bacb12aa58f', 'id', 'String', 'ff09e383-ff0d-451a-84e4-97e9b2d1a802', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('f101fc0a-96b2-4f64-bd62-9d8777b960c3', 'sort_code', 'String', '1b6e7b0d-8758-4de0-a80f-b54505ac9e9d', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('f38842c4-1946-47f1-8cca-81884fb408cf', 'id', 'String', '6982041d-8d07-4e68-9000-a4e42fecff04', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('f576551c-3825-4fcc-b61f-dd249134df6f', 'json_data', 'String', 'e8d98fea-df43-4edb-bd5e-a92bc6508b89', '0030', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('f64e3c77-3324-4e3a-b283-e8c4d4084d33', 'page_path', 'String', 'ad47b84e-354e-49a5-9179-ba141452a342', '0050', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('f9d4396b-d078-4829-9416-f3fe2a8d30e9', 'sort_code', 'String', '5cf0f215-1420-4daf-b3ac-3ed3dba49fc4', '0070', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('f9d71190-2b10-4697-a44f-e547db7a8823', 'sort_code', 'String', 'b5b1a8d8-1b29-41d9-84c5-c5395d1b18b4', '0060', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('fcd7d815-7dff-4b93-a9c3-c90c4c2837d5', 'id', 'String', 'bdc9b81f-ef70-4992-845f-4e4f9df704da', '0010', null);
+INSERT INTO data_user.t_entity (id, entity_name, entity_property, pid, sort_code, description) VALUES ('ff4f3a54-0666-4016-9136-f408c1d65973', 'id', 'String', '7c8a6c68-01d2-46a1-895b-567e6e435428', '0010', null);
