@@ -1,5 +1,6 @@
 package com.example.cyjentitycreater.serviceimpl;
 
+import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
 import com.example.cyjentitycreater.utils.BeanUtils;
@@ -37,7 +38,6 @@ public class BaseService {
     public void init() {
         queryFactory = new JPAQueryFactory(entityManager);
     }
-
     /**
      * 生成作者
      *
@@ -62,9 +62,9 @@ public class BaseService {
         sb.append("\r\n");
     }
 
-    public void generatePackage1(EntityNamePO po, StringBuilder sb) {
+    public void generatePackage1(AppServicePO appServicePO, StringBuilder sb) {
         //pojo路径
-        String[] poPathArr = po.getPath().split("java");
+        String[] poPathArr = appServicePO.getAppPath().split("java");
         String poPath = poPathArr[1].substring(1).replaceAll("\\\\", ".") + ".entity";
         sb.append("package ").append(poPath).append(";\r\n");
         sb.append("\r\n");

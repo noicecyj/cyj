@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-22
+ * @date 2021-03-06
  */
 public interface AppServiceService {
 
@@ -41,6 +41,7 @@ public interface AppServiceService {
      * @return 实体列表分页
      */
     Page<AppServicePO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+
 
     /**
      * 查找实体

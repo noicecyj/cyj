@@ -4,10 +4,7 @@ import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjdictionary.entity.DictionaryPO;
 import com.example.cyjdictionary.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +13,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "dictionaryApi")
 public class IndexController {

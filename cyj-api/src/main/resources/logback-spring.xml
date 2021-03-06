@@ -13,7 +13,7 @@
     </appender>
 
     <!--连接数据库配置-->
-    <appender name="db_classic_mysql_pool" class="com.example.CyjApi.config.ServerLogAppender">
+    <appender name="db_classic_mysql_pool" class="com.example.cyjapi.config.ServerLogAppender">
         <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
             <dataSource class="org.apache.commons.dbcp2.BasicDataSource">
                 <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>

@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-22
+ * @date 2021-03-06
  */
 @RestController
 @RequestMapping(value = "entityCreateApi")
@@ -43,6 +43,11 @@ public class AppServiceControllerImpl implements AppServiceController {
     @Override
     public void appServiceDelete(String id) {
         appServiceService.deleteOne(id);
+    }
+
+    @Override
+    public ResultVO findAppServiceById(String id) {
+        return ResultVO.success(appServiceService.findOneById(id));
     }
 
 }

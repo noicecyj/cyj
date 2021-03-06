@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2021-01-06
+ * @date 2021-03-06
  */
 @Entity
 @Table(name = AppServicePO.T_APP_SERVICE)
@@ -32,6 +32,9 @@ public class AppServicePO implements Serializable {
 
     @Column(name = "app_port")
     private String appPort;
+
+    @Column(name = "app_path")
+    private String appPath;
 
     @Column(name = "sort_code")
     private String sortCode;

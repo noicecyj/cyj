@@ -2,6 +2,7 @@ package com.example.cyjpagemenu.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.example.cyjpagemenu.entity.DataFormItemPO;
+import com.example.cyjpagemenu.entity.DataFormPO;
 import com.example.cyjpagemenu.entity.DataTableItemPO;
 import com.example.cyjpagemenu.entity.DataTablePO;
 import com.example.cyjpagemenu.entity.vo.DataSourceVO;
@@ -37,7 +38,15 @@ public interface IndexService {
      * @param name 实体name
      * @return 实体
      */
-    DataTablePO findOneByName(String name);
+    DataTablePO findTableByName(String name);
+
+    /**
+     * 查找实体
+     *
+     * @param name 实体name
+     * @return 实体
+     */
+    DataFormPO findFormByName(String name);
 
     /**
      * 自动生成基础表单和基础表格

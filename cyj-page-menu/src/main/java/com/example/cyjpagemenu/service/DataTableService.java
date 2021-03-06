@@ -25,6 +25,13 @@ public interface DataTableService {
     void deleteOne(String id);
 
     /**
+     * 删除所有实体
+     *
+     * @param id 实体id
+     */
+    void deleteAll(String id);
+
+    /**
      * 更新实体
      *
      * @param po 实体

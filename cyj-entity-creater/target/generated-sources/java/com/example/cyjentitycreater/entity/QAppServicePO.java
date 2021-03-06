@@ -21,11 +21,11 @@ public class QAppServicePO extends EntityPathBase<AppServicePO> {
 
     public final StringPath appApi = createString("appApi");
 
-    public final StringPath appName = createString("appName");
-
     public final StringPath appPort = createString("appPort");
 
     public final StringPath id = createString("id");
+
+    public final StringPath name = createString("name");
 
     public final StringPath sortCode = createString("sortCode");
 

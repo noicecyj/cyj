@@ -15,9 +15,26 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-wait: 100000
+        max-idle: 10
+        max-active: 100
+    timeout: 5000
   datasource:
     platform: mysql
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/data_user?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: 68762306
+#feign的配置，连接超时及读取超时配置
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 600000
+        readTimeout: 600000
+        loggerLevel: basic

@@ -14,6 +14,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2021-02-04
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "pageMenuApi")
 public class MenuPageControllerImpl implements MenuPageController {

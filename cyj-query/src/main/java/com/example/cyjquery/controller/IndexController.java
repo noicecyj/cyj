@@ -3,16 +3,14 @@ package com.example.cyjquery.controller;
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjquery.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author 曹元杰
  * @version 1.0
  * @date 2020-08-30
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "sqlApi")
 public class IndexController {

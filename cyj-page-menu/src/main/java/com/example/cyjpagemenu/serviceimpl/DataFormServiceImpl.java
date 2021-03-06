@@ -42,6 +42,11 @@ public class DataFormServiceImpl extends BaseService implements DataFormService 
     }
 
     @Override
+    public void deleteAll(String id) {
+        dataFormItemDao.deleteByPid(id);
+    }
+
+    @Override
     public DataFormPO updateOne(DataFormPO po) {
         return dataFormDao.saveAndFlush(po);
     }

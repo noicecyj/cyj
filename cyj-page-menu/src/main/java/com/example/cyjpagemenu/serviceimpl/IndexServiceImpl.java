@@ -5,7 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.cyjpagemenu.api.DictionaryApiService;
 import com.example.cyjpagemenu.api.QueryApiService;
-import com.example.cyjpagemenu.dao.IndexDataTableDao;
+import com.example.cyjpagemenu.dao.DataFormDao;
+import com.example.cyjpagemenu.dao.DataTableDao;
 import com.example.cyjpagemenu.entity.*;
 import com.example.cyjpagemenu.entity.dto.DictionaryDTO;
 import com.example.cyjpagemenu.entity.vo.DataSourceVO;
@@ -14,10 +15,7 @@ import com.example.cyjpagemenu.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author 曹元杰
@@ -27,17 +25,24 @@ import java.util.Map;
 @Service
 public class IndexServiceImpl extends BaseService implements IndexService {
 
-    private IndexDataTableDao indexDataTableDao;
+
     private DataFormServiceImpl dataFormService;
     private DataFormItemServiceImpl dataFormItemService;
     private DataTableServiceImpl dataTableService;
     private DataTableItemServiceImpl dataTableItemService;
     private QueryApiService queryApiService;
     private DictionaryApiService dictionaryApiService;
+    private DataTableDao dataTableDao;
+    private DataFormDao dataFormDao;
 
     @Autowired
-    public void setIndexDataTableDao(IndexDataTableDao indexDataTableDao) {
-        this.indexDataTableDao = indexDataTableDao;
+    public void setDataTableDao(DataTableDao dataTableDao) {
+        this.dataTableDao = dataTableDao;
+    }
+
+    @Autowired
+    public void setDataFormDao(DataFormDao dataFormDao) {
+        this.dataFormDao = dataFormDao;
     }
 
     @Autowired
@@ -93,21 +98,37 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     }
 
     @Override
-    public DataTablePO findOneByName(String name) {
-        if (indexDataTableDao.findDataTablePOByDataTableName(name).isPresent()) {
-            return indexDataTableDao.findDataTablePOByDataTableName(name).get();
+    public DataFormPO findFormByName(String name) {
+        if (dataFormDao.findDataFormPOByDataFormName(name).isPresent()) {
+            return dataFormDao.findDataFormPOByDataFormName(name).get();
+        }
+        return null;
+    }
+
+    @Override
+    public DataTablePO findTableByName(String name) {
+        if (dataTableDao.findDataTablePOByDataTableName(name).isPresent()) {
+            return dataTableDao.findDataTablePOByDataTableName(name).get();
         }
         return null;
     }
 
     @Override
     public void formAndTableGenerate(String name, JSONArray jsonArray) {
-        DataFormPO dataFormPO = new DataFormPO();
-        dataFormPO.setDataFormName(name + "Form");
-        dataFormService.addOne(dataFormPO);
-        DataTablePO dataTablePO = new DataTablePO();
-        dataTablePO.setDataTableName(name + "Table");
-        dataTableService.addOne(dataTablePO);
+        DataTablePO dataTablePO = findTableByName(name + "Table");
+        if (dataTablePO == null){
+            dataTablePO = new DataTablePO();
+            dataTablePO.setDataTableName(name + "Table");
+            dataTableService.addOne(dataTablePO);
+        }
+        DataFormPO dataFormPO = findFormByName(name + "Form");
+        if (dataFormPO == null){
+            dataFormPO = new DataFormPO();
+            dataFormPO.setDataFormName(name + "Form");
+            dataFormService.addOne(dataFormPO);
+        }
+        dataFormService.deleteAll(dataFormPO.getId());
+        dataTableService.deleteAll(dataTablePO.getId());
         List<JSONObject> objectList = JSONObject.parseArray(jsonArray.toString(), JSONObject.class);
         for (JSONObject object : objectList) {
             System.out.println(object);

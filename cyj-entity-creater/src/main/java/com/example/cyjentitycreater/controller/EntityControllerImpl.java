@@ -14,6 +14,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2021-02-02
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "entityCreateApi")
 public class EntityControllerImpl implements EntityController {

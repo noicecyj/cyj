@@ -3,10 +3,7 @@ package com.example.cyjlog.controller;
 import com.example.cyjlog.entity.LogPO;
 import com.example.cyjlog.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,6 +12,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "logApi")
 public class IndexController {

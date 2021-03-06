@@ -10,10 +10,7 @@ import com.example.cyjentitycreater.entity.dto.DictionaryDTO;
 import com.example.cyjentitycreater.service.EntityFactory;
 import com.example.cyjentitycreater.serviceimpl.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,6 +21,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "entityCreateApi")
 public class IndexController {

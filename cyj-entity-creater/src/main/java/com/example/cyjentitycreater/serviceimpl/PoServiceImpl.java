@@ -3,8 +3,10 @@ package com.example.cyjentitycreater.serviceimpl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.example.cyjentitycreater.api.PageMenuApiService;
+import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
+import com.example.cyjentitycreater.service.AppServiceService;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,12 @@ public class PoServiceImpl extends BaseService {
     private EntityNameServiceImpl entityNameService;
     private PageMenuApiService pageMenuApiService;
     private EntityServiceImpl entityService;
+    private AppServiceService appServiceService;
+
+    @Autowired
+    public void setAppServiceService(AppServiceService appServiceService) {
+        this.appServiceService = appServiceService;
+    }
 
     @Autowired
     public void setEntityNameService(EntityNameServiceImpl entityNameService) {
@@ -43,24 +51,25 @@ public class PoServiceImpl extends BaseService {
 
     public void createJavaFile(EntityNamePO po, String[] choose) throws IOException {
         String fileName = BeanUtils.underline2Camel(po.getName());
-        if (choose.length != 0){
+        AppServicePO appServicePO = appServiceService.findOneById(po.getAppName());
+        if (choose != null && choose.length != 0) {
             for (String cho : choose) {
                 if ("entity".equals(cho)) {
-                    String[] result = entityGenerate(po);
-                    createJavaFile(po.getPath() + "\\entity", result);
+                    String[] result = entityGenerate(po, appServicePO);
+                    createJavaFile(appServicePO.getAppPath() + "\\entity", result);
                 } else if ("dao".equals(cho)) {
-                    String[] daoResult = daoGenerate(po, null);
-                    createJavaFile(po.getPath() + "\\dao", daoResult);
+                    String[] daoResult = daoGenerate(po, appServicePO, null);
+                    createJavaFile(appServicePO.getAppPath() + "\\dao", daoResult);
                 } else if ("service".equals(cho)) {
-                    String[] serviceResult = serviceGenerate(po, null);
-                    createJavaFile(po.getPath() + "\\service", serviceResult);
-                    String[] serviceImplResult = serviceImplGenerate(po, null);
-                    createJavaFile(po.getPath() + "\\serviceimpl", serviceImplResult);
+                    String[] serviceResult = serviceGenerate(po, appServicePO, null);
+                    createJavaFile(appServicePO.getAppPath() + "\\service", serviceResult);
+                    String[] serviceImplResult = serviceImplGenerate(po, appServicePO, null);
+                    createJavaFile(appServicePO.getAppPath() + "\\serviceimpl", serviceImplResult);
                 } else if ("controller".equals(cho)) {
-                    String[] controllerInteResult = controllerInteGenerate(po, null);
-                    createJavaFile(po.getPath() + "\\controller", controllerInteResult);
-                    String[] controllerResult = controllerGenerate(po, null);
-                    createJavaFile(po.getPath() + "\\controller", controllerResult);
+                    String[] controllerInteResult = controllerInteGenerate(po, appServicePO, null);
+                    createJavaFile(appServicePO.getAppPath() + "\\controller", controllerInteResult);
+                    String[] controllerResult = controllerGenerate(po, appServicePO, null);
+                    createJavaFile(appServicePO.getAppPath() + "\\controller", controllerResult);
                 }
             }
             if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
@@ -68,24 +77,25 @@ public class PoServiceImpl extends BaseService {
                 String[] relEntities = str.split(",");
                 for (String relEntity : relEntities) {
                     EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    AppServicePO subAppServicePO = appServiceService.findOneById(subPo.getAppName());
                     String subFileName = BeanUtils.underline2Camel(subPo.getName());
                     for (String cho : choose) {
                         if ("entity".equals(cho)) {
-                            String[] subResult = entityGenerate(subPo);
-                            createJavaFile(subPo.getPath() + "\\entity", subResult);
+                            String[] subResult = entityGenerate(subPo, subAppServicePO);
+                            createJavaFile(subAppServicePO.getAppPath() + "\\entity", subResult);
                         } else if ("dao".equals(cho)) {
-                            String[] subDaoResult = daoGenerate(subPo, po.getName());
-                            createJavaFile(subPo.getPath() + "\\dao", subDaoResult);
+                            String[] subDaoResult = daoGenerate(subPo, subAppServicePO, po.getName());
+                            createJavaFile(subAppServicePO.getAppPath() + "\\dao", subDaoResult);
                         } else if ("service".equals(cho)) {
-                            String[] subServiceResult = serviceGenerate(subPo, po.getName());
-                            createJavaFile(subPo.getPath() + "\\service", subServiceResult);
-                            String[] subServiceImplResult = serviceImplGenerate(subPo, po.getName());
-                            createJavaFile(subPo.getPath() + "\\serviceimpl", subServiceImplResult);
+                            String[] subServiceResult = serviceGenerate(subPo, subAppServicePO, po.getName());
+                            createJavaFile(subAppServicePO.getAppPath() + "\\service", subServiceResult);
+                            String[] subServiceImplResult = serviceImplGenerate(subPo, subAppServicePO, po.getName());
+                            createJavaFile(subAppServicePO.getAppPath() + "\\serviceimpl", subServiceImplResult);
                         } else if ("controller".equals(cho)) {
-                            String[] subControllerInteResult = controllerInteGenerate(subPo, po.getName());
-                            createJavaFile(subPo.getPath() + "\\controller", subControllerInteResult);
-                            String[] subControllerResult = controllerGenerate(subPo, po.getName());
-                            createJavaFile(subPo.getPath() + "\\controller", subControllerResult);
+                            String[] subControllerInteResult = controllerInteGenerate(subPo, subAppServicePO, po.getName());
+                            createJavaFile(subAppServicePO.getAppPath() + "\\controller", subControllerInteResult);
+                            String[] subControllerResult = controllerGenerate(subPo, subAppServicePO, po.getName());
+                            createJavaFile(subAppServicePO.getAppPath() + "\\controller", subControllerResult);
                         }
                     }
                     createFormAndTable(subPo, subFileName);
@@ -96,12 +106,6 @@ public class PoServiceImpl extends BaseService {
     }
 
     private void createFormAndTable(EntityNamePO subPo, String subFileName) {
-        if ((subPo.getFormModelCode() == null || subPo.getFormModelCode().isEmpty()) &&
-                (subPo.getTableModelCode() == null || subPo.getTableModelCode().isEmpty())) {
-            List<EntityPO> poList = entityService.findListById(subPo.getId());
-            JSONArray array = JSONArray.parseArray(JSON.toJSONString(poList));
-            pageMenuApiService.formAndTableGenerate(subFileName, array);
-        }
         if (subPo.getFormModelCode() == null || subPo.getFormModelCode().isEmpty()) {
             subPo.setFormModelCode(subFileName + "Form");
             entityNameService.updateOne(subPo);
@@ -110,13 +114,16 @@ public class PoServiceImpl extends BaseService {
             subPo.setTableModelCode(subFileName + "Table");
             entityNameService.updateOne(subPo);
         }
+        List<EntityPO> poList = entityService.findListById(subPo.getId());
+        JSONArray array = JSONArray.parseArray(JSON.toJSONString(poList));
+        pageMenuApiService.formAndTableGenerate(subFileName, array);
     }
 
-    public String[] entityGenerate(EntityNamePO po) {
+    public String[] entityGenerate(EntityNamePO po, AppServicePO appServicePO) {
         List<EntityPO> poList = entityService.findListById(po.getId());
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         StringBuilder sb = new StringBuilder();
-        generatePackage1(po, sb);
+        generatePackage1(appServicePO, sb);
         sb.append("import org.hibernate.annotations.GenericGenerator;\r\n");
         sb.append("\r\n");
         sb.append("import javax.persistence.*;\r\n");
@@ -143,9 +150,9 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityData, entityName(po)};
     }
 
-    public String[] daoGenerate(EntityNamePO po, String entityName) {
+    public String[] daoGenerate(EntityNamePO po, AppServicePO appServicePO, String entityName) {
         StringBuilder sb = new StringBuilder();
-        String[] PathArr = po.getPath().split("java");
+        String[] PathArr = appServicePO.getAppPath().split("java");
         String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
         String poPath = packetPath + ".entity";
@@ -172,9 +179,9 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityDaoData, entityDaoName(po)};
     }
 
-    public String[] serviceGenerate(EntityNamePO po, String entityName) {
+    public String[] serviceGenerate(EntityNamePO po, AppServicePO appServicePO, String entityName) {
         StringBuilder sb = new StringBuilder();
-        String[] PathArr = po.getPath().split("java");
+        String[] PathArr = appServicePO.getAppPath().split("java");
         String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
         String poPath = packetPath + ".entity.*";
@@ -207,6 +214,13 @@ public class PoServiceImpl extends BaseService {
         sb.append("     * @param id 实体id\r\n");
         sb.append("     */\r\n");
         sb.append("    void deleteOne(String id);\r\n");
+        sb.append("\r\n");
+        sb.append("    /**\r\n");
+        sb.append("     * 删除所有实体\r\n");
+        sb.append("     *\r\n");
+        sb.append("     * @param id 实体id\r\n");
+        sb.append("     */\r\n");
+        sb.append("    void deleteAll(String id);\r\n");
         sb.append("\r\n");
         sb.append("    /**\r\n");
         sb.append("     * 更新实体\r\n");
@@ -256,9 +270,9 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityServiceData, entityServiceName(po)};
     }
 
-    public String[] serviceImplGenerate(EntityNamePO po, String entityName) {
+    public String[] serviceImplGenerate(EntityNamePO po, AppServicePO appServicePO, String entityName) {
         StringBuilder sb = new StringBuilder();
-        String[] PathArr = po.getPath().split("java");
+        String[] PathArr = appServicePO.getAppPath().split("java");
         String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径
         String poPath = packetPath + ".entity.*";
@@ -324,19 +338,9 @@ public class PoServiceImpl extends BaseService {
         sb.append("    @Override\r\n");
         sb.append("    public void deleteOne(String id) {\r\n");
         sb.append("        ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.deleteById(id);\r\n");
-        if (entityName == null) {
-            if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
-                String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
-                String[] relEntities = str.split(",");
-                for (String relEntity : relEntities) {
-                    EntityNamePO subPo = entityNameService.findOneById(relEntity);
-                    sb.append("        ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao.deleteByPid(id);\r\n");
-                }
-            }
-        }
-        sb.append("    }\r\n");
-        sb.append("\r\n");
-        sb.append("    @Override\r\n");
+        deleteByPid(po, entityName, sb);
+        sb.append("    public void deleteAll(String id) {\r\n");
+        deleteByPid(po, entityName, sb);
         sb.append("    public ").append(fileName).append("PO updateOne(").append(fileName).append("PO po) {\r\n");
         sb.append("        return ").append(BeanUtils.underline2Camel(po.getName())).append("Dao.saveAndFlush(po);\r\n");
         sb.append("    }\r\n");
@@ -384,6 +388,22 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityServiceImplData, entityServiceImplName(po)};
     }
 
+    private void deleteByPid(EntityNamePO po, String entityName, StringBuilder sb) {
+        if (entityName == null) {
+            if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
+                String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
+                String[] relEntities = str.split(",");
+                for (String relEntity : relEntities) {
+                    EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    sb.append("        ").append(BeanUtils.underline2Camel(subPo.getName())).append("Dao.deleteByPid(id);\r\n");
+                }
+            }
+        }
+        sb.append("    }\r\n");
+        sb.append("\r\n");
+        sb.append("    @Override\r\n");
+    }
+
     private void generateSet(EntityNamePO po, StringBuilder sb, String fileName) {
         sb.append("\r\n");
         sb.append("    @Autowired\r\n");
@@ -392,9 +412,9 @@ public class PoServiceImpl extends BaseService {
         sb.append("    }\r\n");
     }
 
-    public String[] controllerInteGenerate(EntityNamePO po, String entityName) {
+    public String[] controllerInteGenerate(EntityNamePO po, AppServicePO appServicePO, String entityName) {
         StringBuilder sb = new StringBuilder();
-        String[] PathArr = po.getPath().split("java");
+        String[] PathArr = appServicePO.getAppPath().split("java");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //controller路径
@@ -402,9 +422,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("package ").append(poControllerPath).append(";\r\n");
         sb.append("\r\n");
         sb.append("import com.example.cyjcommon.utils.ResultVO;\r\n");
-        sb.append("import org.springframework.web.bind.annotation.PostMapping;\r\n");
-        sb.append("import org.springframework.web.bind.annotation.RequestBody;\r\n");
-        sb.append("import org.springframework.web.bind.annotation.RequestParam;\r\n");
+        sb.append("import org.springframework.web.bind.annotation.*;\r\n");
         sb.append("\r\n");
         sb.append("import java.util.Map;\r\n");
         sb.append("\r\n");
@@ -463,9 +481,9 @@ public class PoServiceImpl extends BaseService {
         return new String[]{entityControllerData, entityControllerName(po)};
     }
 
-    public String[] controllerGenerate(EntityNamePO po, String entityName) {
+    public String[] controllerGenerate(EntityNamePO po, AppServicePO appServicePO, String entityName) {
         StringBuilder sb = new StringBuilder();
-        String[] PathArr = po.getPath().split("java");
+        String[] PathArr = appServicePO.getAppPath().split("java");
         String fileName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         String packetPath = PathArr[1].substring(1).replaceAll("\\\\", ".");
         //entity路径

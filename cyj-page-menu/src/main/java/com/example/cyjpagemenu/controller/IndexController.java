@@ -19,6 +19,7 @@ import java.util.List;
  * @version 1.0
  * @date 2020/1/21 14:46
  */
+@CrossOrigin
 @RestController
 @RequestMapping(value = "pageMenuApi")
 public class IndexController {

@@ -19,6 +19,8 @@ public class QEntityPO extends EntityPathBase<EntityPO> {
 
     public static final QEntityPO entityPO = new QEntityPO("entityPO");
 
+    public final StringPath description = createString("description");
+
     public final StringPath entityName = createString("entityName");
 
     public final StringPath entityProperty = createString("entityProperty");

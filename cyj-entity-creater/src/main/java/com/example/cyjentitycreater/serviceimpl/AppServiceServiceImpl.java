@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2020-12-22
+ * @date 2021-03-06
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -46,9 +46,10 @@ public class AppServiceServiceImpl extends BaseService implements AppServiceServ
         return appServiceDao.findAll(pageable);
     }
 
+
     @Override
     public AppServicePO findOneById(String id) {
-        if (appServiceDao.findById(id).isPresent()){
+        if (appServiceDao.findById(id).isPresent()) {
             return appServiceDao.findById(id).get();
         }
         return null;

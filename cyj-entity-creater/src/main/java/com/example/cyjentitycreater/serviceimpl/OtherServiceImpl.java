@@ -1,7 +1,9 @@
 package com.example.cyjentitycreater.serviceimpl;
 
+import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
 import com.example.cyjentitycreater.entity.EntityPO;
+import com.example.cyjentitycreater.service.AppServiceService;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,8 +23,13 @@ import static com.example.cyjentitycreater.utils.BeanUtils.entityName;
 public class OtherServiceImpl extends BaseService {
 
     private EntityNameServiceImpl entityNameService;
-
     private EntityServiceImpl entityService;
+    private AppServiceService appServiceService;
+
+    @Autowired
+    public void setAppServiceService(AppServiceService appServiceService) {
+        this.appServiceService = appServiceService;
+    }
 
     @Autowired
     public void setEntityNameService(EntityNameServiceImpl entityNameService) {
@@ -34,10 +41,10 @@ public class OtherServiceImpl extends BaseService {
         this.entityService = entityService;
     }
 
-    public String[] entityGenerate(EntityNamePO po) {
+    public String[] entityGenerate(EntityNamePO po, AppServicePO appServicePO) {
         List<EntityPO> poList = entityService.findListById(po.getId());
         StringBuilder sb = new StringBuilder();
-        generatePackage1(po, sb);
+        generatePackage1(appServicePO, sb);
         sb.append("\r\n");
         generatePackage2(poList, sb);
         sb.append("@Data\r\n");
@@ -54,7 +61,8 @@ public class OtherServiceImpl extends BaseService {
 
 
     public void createJavaFile(EntityNamePO po) throws IOException {
-        String[] result = entityGenerate(po);
-        createJavaFile(po.getPath(), result);
+        AppServicePO appServicePO = appServiceService.findOneById(po.getAppName());
+        String[] result = entityGenerate(po, appServicePO);
+        createJavaFile(appServicePO.getAppPath(), result);
     }
 }

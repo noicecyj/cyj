@@ -21,18 +21,27 @@ spring:
     url: jdbc:mysql://localhost:3306/data_user?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: 68762306
+  security:
+    user:
+      name: noice
+      password: 123456
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
 #feign的配置，连接超时及读取超时配置
 feign:
   client:
     config:
       default:
-        connectTimeout: 60000
-        readTimeout: 60000
+        connectTimeout: 600000
+        readTimeout: 600000
         loggerLevel: basic
 zuul:
   host:
-    connect-timeout-millis: 15000 #HTTP连接超时大于Hystrix的超时时间
-    socket-timeout-millis: 60000   #socket超时
+    connect-timeout-millis: 6000000 #HTTP连接超时大于Hystrix的超时时间
+    socket-timeout-millis: 6000000   #socket超时
+    connection-request-timeout-millis: 6000000
   routes:
     cyj-dictionary:
       path: /cyj-dictionary/**
