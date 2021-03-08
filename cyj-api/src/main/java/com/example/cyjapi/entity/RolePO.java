@@ -12,29 +12,23 @@ import java.io.Serializable;
  * @date 2021-03-07
  */
 @Entity
-@Table(name = UserPO.T_USER)
+@Table(name = RolePO.T_ROLE)
 @Data
 @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-public class UserPO implements Serializable {
+public class RolePO implements Serializable {
 
-    static final String T_USER = "t_user";
+    static final String T_ROLE = "t_role";
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @Column(name = "id", length = 36)
     private String id;
 
-    @Column(name = "user_name")
-    private String userName;
-
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "name")
     private String name;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "status")
     private Integer status;

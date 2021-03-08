@@ -49,7 +49,16 @@ zuul:
       path: /cyj-entity-creater/**
     cyj-log:
       path: /cyj-log/**
+    cyj-api:
+      path: /cyj-api/**
     cyj-page-menu:
       path: /cyj-page-menu/**
     cyj-query:
       path: /cyj-query/**
+hystrix:
+  command:
+    myusers-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 600000

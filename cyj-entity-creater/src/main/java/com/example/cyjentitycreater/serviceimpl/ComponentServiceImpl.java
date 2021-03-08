@@ -1,6 +1,8 @@
 package com.example.cyjentitycreater.serviceimpl;
 
+import com.example.cyjentitycreater.entity.AppServicePO;
 import com.example.cyjentitycreater.entity.EntityNamePO;
+import com.example.cyjentitycreater.service.AppServiceService;
 import com.example.cyjentitycreater.utils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,12 @@ import java.io.IOException;
 public class ComponentServiceImpl extends BaseService {
 
     private EntityNameServiceImpl entityNameService;
+    private AppServiceService appServiceService;
+
+    @Autowired
+    public void setAppServiceService(AppServiceService appServiceService) {
+        this.appServiceService = appServiceService;
+    }
 
     @Autowired
     public void setEntityNameService(EntityNameServiceImpl entityNameService) {
@@ -23,6 +31,7 @@ public class ComponentServiceImpl extends BaseService {
     }
 
     public void createComponentFile(String pagePath, EntityNamePO po, String[] choose) throws IOException {
+        AppServicePO appServicePO = appServiceService.findOneById(po.getAppName());
         String componentName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
         String componentPath = pagePath + "/" + componentName;
         for (String cho : choose) {
@@ -31,17 +40,18 @@ public class ComponentServiceImpl extends BaseService {
                 createJavaFile(componentPath + "/models", createModelsJsx(po, null));
             } else if ("service".equals(cho)) {
                 createJavaFile(componentPath + "/services");
-                createJavaFile(componentPath + "/services", createServiceJsx(po, null));
+                createJavaFile(componentPath + "/services", createServiceJsx(po, appServicePO, null));
             }
             if (po.getRelEntity() != null && !"".equals(po.getRelEntity())) {
                 String str = po.getRelEntity().substring(po.getRelEntity().indexOf("[") + 1, po.getRelEntity().indexOf("]"));
                 String[] relEntities = str.split(",");
                 for (String relEntity : relEntities) {
                     EntityNamePO subPo = entityNameService.findOneById(relEntity);
+                    AppServicePO subAppServicePO = appServiceService.findOneById(subPo.getAppName());
                     if ("model".equals(cho)) {
                         createJavaFile(componentPath + "/models", createModelsJsx(subPo, po.getName()));
                     } else if ("service".equals(cho)) {
-                        createJavaFile(componentPath + "/services", createServiceJsx(subPo, po.getName()));
+                        createJavaFile(componentPath + "/services", createServiceJsx(subPo, subAppServicePO, po.getName()));
                     }
                 }
                 if ("index".equals(cho)) {
@@ -269,7 +279,7 @@ public class ComponentServiceImpl extends BaseService {
         return new String[]{modelData, underComponentName + ".jsx"};
     }
 
-    private String[] createServiceJsx(EntityNamePO po, String entityName) {
+    private String[] createServiceJsx(EntityNamePO po, AppServicePO appServicePO, String entityName) {
         StringBuilder sb = new StringBuilder();
         String underComponentName = BeanUtils.underline2Camel(po.getName());
         String ComponentName = BeanUtils.captureName(BeanUtils.underline2Camel(po.getName()));
@@ -291,7 +301,7 @@ public class ComponentServiceImpl extends BaseService {
             sb.append("  ").append(underComponentName).append("Page(value) {\r\n");
         }
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Page',\r\n");
+        sb.append("      url: '/").append(appServicePO.getAppApi()).append("/").append(underComponentName).append("Page',\r\n");
         sb.append("      method: 'post',\r\n");
         sb.append("      params: {\r\n");
         if (entityName != null) {
@@ -318,7 +328,7 @@ public class ComponentServiceImpl extends BaseService {
             sb.append("  ").append(underComponentName).append("Save(data) {\r\n");
         }
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Save',\r\n");
+        sb.append("      url: '/").append(appServicePO.getAppApi()).append("/").append(underComponentName).append("Save',\r\n");
         sb.append("      method: 'post',\r\n");
         if (entityName != null) {
             sb.append("      data: { ...").append(underComponentName).append("FormData, pid: ").append(BeanUtils.underline2Camel(entityName)).append("Id },\r\n");
@@ -335,7 +345,7 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("   */\r\n");
         sb.append("  ").append(underComponentName).append("Delete(record) {\r\n");
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(po.getApi()).append("/").append(underComponentName).append("Delete',\r\n");
+        sb.append("      url: '/").append(appServicePO.getAppApi()).append("/").append(underComponentName).append("Delete',\r\n");
         sb.append("      method: 'post',\r\n");
         sb.append("      params: {\r\n");
         sb.append("        id: record.id,\r\n");
@@ -350,7 +360,7 @@ public class ComponentServiceImpl extends BaseService {
         sb.append("   */\r\n");
         sb.append("  find").append(ComponentName).append("ById(id) {\r\n");
         sb.append("    return request({\r\n");
-        sb.append("      url: '/").append(po.getApi()).append("/find").append(ComponentName).append("ById',\r\n");
+        sb.append("      url: '/").append(appServicePO.getAppApi()).append("/find").append(ComponentName).append("ById',\r\n");
         sb.append("      method: 'post',\r\n");
         sb.append("      params: {\r\n");
         sb.append("        id,\r\n");

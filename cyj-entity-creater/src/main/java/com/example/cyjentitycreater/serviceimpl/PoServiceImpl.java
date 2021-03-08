@@ -505,7 +505,7 @@ public class PoServiceImpl extends BaseService {
         sb.append("\r\n");
         generateAuthor(sb);
         sb.append("@RestController\r\n");
-        sb.append("@RequestMapping(value = \"").append(po.getApi()).append("\")\r\n");
+        sb.append("@RequestMapping(value = \"").append(appServicePO.getAppApi()).append("\")\r\n");
         sb.append("public class ").append(fileName).append("ControllerImpl implements ").append(fileName).append("Controller {\r\n");
         sb.append("\r\n");
         sb.append("    private ").append(fileName).append("ServiceImpl ").append(BeanUtils.toLowerCaseFirstOne(fileName)).append("Service;\r\n");

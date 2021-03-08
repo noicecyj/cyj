@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
  * @version 1.0
  * @date 2021-03-07
  */
-public interface UserService {
+public interface RoleService {
 
     /**
      * 添加实体
@@ -15,7 +15,7 @@ public interface UserService {
      * @param po 实体
      * @return 实体
      */
-    UserPO addOne(UserPO po);
+    RolePO addOne(RolePO po);
 
     /**
      * 删除实体
@@ -37,7 +37,7 @@ public interface UserService {
      * @param po 实体
      * @return 实体
      */
-    UserPO updateOne(UserPO po);
+    RolePO updateOne(RolePO po);
 
     /**
      * 查找所有实体(分页排序)
@@ -47,7 +47,7 @@ public interface UserService {
      * @param sortCode 排序列
      * @return 实体列表分页
      */
-    Page<UserPO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
+    Page<RolePO> findAll(Integer pageNumber, Integer pageSize, String sortCode);
 
 
     /**
@@ -56,6 +56,6 @@ public interface UserService {
      * @param id 实体id
      * @return 实体
      */
-    UserPO findOneById(String id);
+    RolePO findOneById(String id);
 
 }

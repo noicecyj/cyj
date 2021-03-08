@@ -12,10 +12,10 @@ import java.util.Map;
 /**
  * @author 曹元杰
  * @version 1.0
- * @date 2021-03-06
+ * @date 2021-03-07
  */
 @RestController
-@RequestMapping(value = "ssoApi")
+@RequestMapping(value = "authApi")
 public class UserControllerImpl implements UserController {
 
     private UserServiceImpl userService;

@@ -21,6 +21,8 @@ public class QAppServicePO extends EntityPathBase<AppServicePO> {
 
     public final StringPath appApi = createString("appApi");
 
+    public final StringPath appPath = createString("appPath");
+
     public final StringPath appPort = createString("appPort");
 
     public final StringPath id = createString("id");
