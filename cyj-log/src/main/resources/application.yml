@@ -21,3 +21,16 @@ spring:
     url: jdbc:mysql://localhost:3306/data_user?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: 68762306
+feign:
+  client:
+    default-config: my-config
+    config:
+      my-config:
+        connectTimeout: 6000000
+        readTimeout: 6000000
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false

@@ -33,8 +33,14 @@ spring:
 #feign的配置，连接超时及读取超时配置
 feign:
   client:
+    default-config: my-config
     config:
-      default:
-        connectTimeout: 600000
-        readTimeout: 600000
-        loggerLevel: basic
+      my-config:
+        connectTimeout: 6000000
+        readTimeout: 6000000
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false

@@ -365,7 +365,7 @@ public class AppServiceImpl extends BaseService {
                 "  client:\r\n" +
                 "    service-url:\r\n" +
                 "      defaultZone: http://localhost:8761/eureka/\r\n" +
-                "    fetch-registry: true\r\n" +
+                "    fetch-registry: false\r\n" +
                 "  instance:\r\n" +
                 "    prefer-ip-address: true\r\n" +
                 "spring:\r\n" +
@@ -389,7 +389,9 @@ public class AppServiceImpl extends BaseService {
                 "      default:\r\n" +
                 "        connectTimeout: 60000\r\n" +
                 "        readTimeout: 60000\r\n" +
-                "        loggerLevel: basic\r\n";
+                "        loggerLevel: basic\r\n" +
+                "  hystrix:\r\n" +
+                "    enabled: false\r\n";
         return new String[]{serviceFileData, "application.yml"};
     }
 

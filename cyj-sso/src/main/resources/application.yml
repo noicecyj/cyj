@@ -32,11 +32,11 @@ spring:
 #feign的配置，连接超时及读取超时配置
 feign:
   client:
+    default-config: my-config
     config:
-      default:
-        connectTimeout: 600000
-        readTimeout: 600000
-        loggerLevel: basic
+      my-config:
+        connectTimeout: 6000000
+        readTimeout: 6000000
 zuul:
   host:
     connect-timeout-millis: 6000000 #HTTP连接超时大于Hystrix的超时时间
@@ -55,10 +55,11 @@ zuul:
       path: /cyj-page-menu/**
     cyj-query:
       path: /cyj-query/**
+  retryable: true
 hystrix:
   command:
-    myusers-service:
+    default:
       execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 600000
+        timeout:
+          enabled: false
+
