@@ -2,6 +2,7 @@ package com.example.cyjapi.config;
 
 import com.example.cyjapi.serviceimpl.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -20,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
+@EnableOAuth2Sso
 @Order(2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
