@@ -28,6 +28,15 @@ spring:
     oauth2:
       client:
         registration:
+          clientId: cyj-api
+          clientSecret: 123456
+        provider:
+          authorizationUri: http://localhost:8080/cyj-api/oauth/authorize
+          tokenUri: http://localhost:8080/cyj-api/oauth/token
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8010/cyj-page-menu/oauth/default/
+          jwk-set-uri: http://localhost:8080/cyj-api/oauth/default/v1/keys
   cloud:
     loadbalancer:
       ribbon:

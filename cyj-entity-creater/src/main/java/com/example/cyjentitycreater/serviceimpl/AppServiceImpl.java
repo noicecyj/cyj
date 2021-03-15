@@ -485,7 +485,7 @@ public class AppServiceImpl extends BaseService {
                 "            <dependency>\r\n" +
                 "                <groupId>org.springframework.cloud</groupId>\r\n" +
                 "                <artifactId>spring-cloud-dependencies</artifactId>\r\n" +
-                "                <version>Hoxton.SR1</version>\r\n" +
+                "                <version>Hoxton.SR10</version>\r\n" +
                 "                <type>pom</type>\r\n" +
                 "                <scope>import</scope>\r\n" +
                 "            </dependency>\r\n" +
