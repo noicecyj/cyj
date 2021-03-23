@@ -1,10 +1,14 @@
 package com.example.cyjapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author 曹元杰
@@ -27,6 +31,9 @@ public class RolePO implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "value")
+    private String value;
+
     @Column(name = "description")
     private String description;
 
@@ -35,5 +42,10 @@ public class RolePO implements Serializable {
 
     @Column(name = "sort_code")
     private String sortCode;
+
+    @JsonIgnore
+    @ManyToMany(targetEntity = AuthorityPO.class,fetch = FetchType.EAGER)
+    @BatchSize(size = 20)
+    private Set<AuthorityPO> authorities = new HashSet<>();
 
 }

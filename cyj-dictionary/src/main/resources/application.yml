@@ -21,9 +21,6 @@ spring:
     url: jdbc:mysql://localhost:3306/data_user?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: root
     password: 68762306
-logging:
-  level:
-    org.hibernate: INFO
 #feign的配置，连接超时及读取超时配置
 feign:
   client:
@@ -38,20 +35,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 60000
+            timeoutInMilliseconds: 400000
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
-security:
-  oauth2:
-    resource:
-      id: cyj-dictionary
-      ## user-info-uri和token-info-uri二选择即可
-      ##如果配置了user-info-uri，该资源服务器使用userInfoTokenServices远程调用认证中心接口，通过认证中心的OAuth2AuthenticationProcessingFilter完成验证工作，一般设置user-info-uri即可
-      user-info-uri: http://localhost:8080/user
-      prefer-token-info: false
-      ## 该资源服务器使用RemoteTokenServices远程调用认证中心接口，注意一点就是如果使用token-info-uri那么就必须设置上clientId和clientSecret，通过CheckTokenEndpoint完成验证工作
-      #token-info-uri: http://127.0.0.1:8001/oauth/check_token
-      #client:
-      #client-secret: noice
-      #client-id: noice

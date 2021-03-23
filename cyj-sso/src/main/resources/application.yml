@@ -27,16 +27,12 @@ spring:
       password: 123456
     oauth2:
       client:
-        registration:
-          clientId: cyj-api
-          clientSecret: 123456
-        provider:
-          authorizationUri: http://localhost:8080/cyj-api/oauth/authorize
-          tokenUri: http://localhost:8080/cyj-api/oauth/token
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8010/cyj-page-menu/oauth/default/
-          jwk-set-uri: http://localhost:8080/cyj-api/oauth/default/v1/keys
+        access-token-uri: http://localhost:8050/cyj-api/oauth/token
+        user-authorization-uri: http://localhost:8050/cyj-api/oauth/authorize
+        client-id: cyj-api
+      resource:
+        user-info-uri: http://localhost:8050/cyj-api/user
+        prefer-token-info: false
   cloud:
     loadbalancer:
       ribbon:
@@ -59,16 +55,22 @@ zuul:
   routes:
     cyj-dictionary:
       path: /cyj-dictionary/**
+      sensitiveHeaders: "*"
     cyj-entity-creater:
       path: /cyj-entity-creater/**
+      sensitiveHeaders: "*"
     cyj-log:
       path: /cyj-log/**
+      sensitiveHeaders: "*"
     cyj-api:
       path: /cyj-api/**
+      sensitiveHeaders: "*"
     cyj-page-menu:
       path: /cyj-page-menu/**
+      sensitiveHeaders: "*"
     cyj-query:
       path: /cyj-query/**
+      sensitiveHeaders: "*"
   retryable: true
 hystrix:
   command:
@@ -76,7 +78,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 60000
+            timeoutInMilliseconds: 400000
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000

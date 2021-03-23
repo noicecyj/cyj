@@ -1,4 +1,4 @@
-package com.example.cyjsso.config;
+package com.example.cyjdictionary.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,10 +8,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+        http.cors();
     }
-
 }

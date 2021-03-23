@@ -7,6 +7,7 @@ import com.example.cyjapi.serviceimpl.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.security.Principal;
 import java.util.Map;
 
 /**
@@ -48,6 +49,11 @@ public class UserControllerImpl implements UserController {
     @Override
     public ResultVO findUserById(String id) {
         return ResultVO.success(userService.findOneById(id));
+    }
+
+    @GetMapping("/user")
+    public Principal user(Principal user){
+        return user;
     }
 
 }

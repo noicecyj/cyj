@@ -15,13 +15,5 @@ public interface UserDao extends JpaRepository<UserPO, String> {
      * @param name 用户名
      * @return 实体
      */
-    UserPO findByName(String name);
-
-    /**
-     * 查询用户
-     *
-     * @param phone 电话
-     * @return 实体
-     */
-    UserPO findByPhone(String phone);
+    UserPO findByUserName(String name);
 }
