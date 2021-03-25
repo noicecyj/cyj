@@ -10,10 +10,11 @@
         <module name="cyj-discovery" />
         <module name="cyj-common" />
         <module name="cyj-log" />
+        <module name="cyj-auth" />
         <module name="cyj-entity-creater" />
         <module name="cyj-dictionary" />
+        <module name="cyj-user" />
         <module name="cyj-workflow" />
-        <module name="cyj-api" />
         <module name="cyj-sso" />
         <module name="cyj-query" />
         <module name="cyj-page-menu" />
@@ -23,6 +24,7 @@
       <module name="cjy-log" target="1.8" />
       <module name="cyj" target="1.8" />
       <module name="cyj-api" target="1.8" />
+      <module name="cyj-auth" target="1.8" />
       <module name="cyj-common" target="1.8" />
       <module name="cyj-data-dictionary" target="1.8" />
       <module name="cyj-dictionary" target="1.8" />
@@ -32,6 +34,7 @@
       <module name="cyj-page-menu" target="1.8" />
       <module name="cyj-query" target="1.8" />
       <module name="cyj-sso" target="1.8" />
+      <module name="cyj-user" target="1.8" />
       <module name="cyj-workflow" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -39,6 +42,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cjy-log" options="-parameters" />
       <module name="cyj-api" options="-parameters" />
+      <module name="cyj-auth" options="-parameters" />
       <module name="cyj-common" options="-parameters" />
       <module name="cyj-data-dictionary" options="-parameters" />
       <module name="cyj-dictionary" options="-parameters" />
@@ -48,6 +52,7 @@
       <module name="cyj-page-menu" options="-parameters" />
       <module name="cyj-query" options="-parameters" />
       <module name="cyj-sso" options="-parameters" />
+      <module name="cyj-user" options="-parameters" />
       <module name="cyj-workflow" options="-parameters" />
     </option>
   </component>

@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cyj.iml" filepath="$PROJECT_DIR$/cyj.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cyj-api/cyj-api.iml" filepath="$PROJECT_DIR$/cyj-api/cyj-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cyj-auth/cyj-auth.iml" filepath="$PROJECT_DIR$/cyj-auth/cyj-auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-common/cyj-common.iml" filepath="$PROJECT_DIR$/cyj-common/cyj-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-dictionary/cyj-dictionary.iml" filepath="$PROJECT_DIR$/cyj-dictionary/cyj-dictionary.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-discovery/cyj-discovery.iml" filepath="$PROJECT_DIR$/cyj-discovery/cyj-discovery.iml" />
@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/cyj-page-menu/cyj-page-menu.iml" filepath="$PROJECT_DIR$/cyj-page-menu/cyj-page-menu.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-query/cyj-query.iml" filepath="$PROJECT_DIR$/cyj-query/cyj-query.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-sso/cyj-sso.iml" filepath="$PROJECT_DIR$/cyj-sso/cyj-sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cyj-user/cyj-user.iml" filepath="$PROJECT_DIR$/cyj-user/cyj-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/cyj-workflow/cyj-workflow.iml" filepath="$PROJECT_DIR$/cyj-workflow/cyj-workflow.iml" />
     </modules>
   </component>
