@@ -1,7 +1,8 @@
 package com.example.cyjentitycreater.service;
 
-import com.example.cyjentitycreater.entity.*;
+import com.example.cyjentitycreater.entity.AppServicePO;
 import org.springframework.data.domain.Page;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -36,8 +37,8 @@ public interface AppServiceService {
      * 查找所有实体(分页排序)
      *
      * @param pageNumber 页码
-     * @param pageSize 条目
-     * @param sortCode 排序列
+     * @param pageSize   条目
+     * @param sortCode   排序列
      * @return 实体列表分页
      */
     Page<AppServicePO> findAll(Integer pageNumber, Integer pageSize, String sortCode);

@@ -6,6 +6,7 @@ package com.example.cyjentitycreater.entity;
  * @date 2020/7/07 14:46
  */
 public enum EntityType {
+
     //值对象
     PO("PO"),
     //持久层对象
@@ -24,4 +25,5 @@ public enum EntityType {
     public String getType() {
         return type;
     }
+
 }

@@ -1,14 +1,19 @@
 package com.example.cyjentitycreater.serviceimpl;
 
 import com.example.cyjcommon.utils.CommonUtils;
-import com.example.cyjentitycreater.entity.*;
-import com.example.cyjentitycreater.dao.*;
-import com.example.cyjentitycreater.service.*;
+import com.example.cyjentitycreater.dao.EntityDao;
+import com.example.cyjentitycreater.entity.EntityPO;
+import com.example.cyjentitycreater.entity.QEntityNamePO;
+import com.example.cyjentitycreater.entity.QEntityPO;
+import com.example.cyjentitycreater.service.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import java.util.List;
 /**

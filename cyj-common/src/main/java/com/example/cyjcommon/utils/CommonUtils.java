@@ -28,11 +28,11 @@ public class CommonUtils {
         return currentPageList;
     }
 
-    public static <T> HashMap<String, T> listToMap(List<T> itemList,String name) {
+    public static <T> HashMap<String, T> listToMap(List<T> itemList, String name) {
         HashMap<String, T> map = new HashMap<>(16);
-        for (T item:itemList){
+        for (T item : itemList) {
             try {
-                map.put(Objects.requireNonNull(getFieldValueByName(item.getClass().getDeclaredField(name).getName(), item)).toString(),item);
+                map.put(Objects.requireNonNull(getFieldValueByName(item.getClass().getDeclaredField(name).getName(), item)).toString(), item);
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             }

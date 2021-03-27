@@ -1,7 +1,7 @@
 package com.example.cyjquery.serviceimpl;
 
-import com.example.cyjquery.entity.SqlPO;
 import com.example.cyjquery.dao.SqlDao;
+import com.example.cyjquery.entity.SqlPO;
 import com.example.cyjquery.service.SqlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

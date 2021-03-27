@@ -24,8 +24,8 @@ public interface AuthorityController {
      */
     @PostMapping(value = "authorityPage")
     ResultVO authorityFindAll(@RequestParam("pageNumber") Integer pageNumber,
-                         @RequestParam("pageSize") Integer pageSize,
-                         @RequestParam("sortCode") String sortCode);
+                              @RequestParam("pageSize") Integer pageSize,
+                              @RequestParam("sortCode") String sortCode);
 
     /**
      * 保存对象

@@ -37,7 +37,7 @@ public interface IndexService {
      * 使用主键sql查询
      *
      * @param tableName 表名
-     * @param id 主键
+     * @param id        主键
      * @return 查询结果
      */
     Object findSqlById(String tableName, String id);

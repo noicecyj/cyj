@@ -1,7 +1,9 @@
 package com.example.cyjdictionary.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 

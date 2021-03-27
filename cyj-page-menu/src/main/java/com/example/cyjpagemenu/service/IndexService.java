@@ -51,7 +51,7 @@ public interface IndexService {
     /**
      * 自动生成基础表单和基础表格
      *
-     * @param name 对象
+     * @param name      对象
      * @param jsonArray json对象
      */
     void formAndTableGenerate(String name, JSONArray jsonArray);

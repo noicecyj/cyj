@@ -42,9 +42,9 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     @Override
     public void upEntity(String id) {
         Optional<EntityPO> po = entityDao.findById(id);
-        if (po.isPresent()){
+        if (po.isPresent()) {
             String sortCode1 = po.get().getSortCode();
-            List<EntityPO> poList = indexDao.findByPidAndSortCodeBeforeOrderBySortCodeDesc(po.get().getPid(),sortCode1);
+            List<EntityPO> poList = indexDao.findByPidAndSortCodeBeforeOrderBySortCodeDesc(po.get().getPid(), sortCode1);
             exchangeSortCode(po.get(), sortCode1, poList);
         }
     }
@@ -52,9 +52,9 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     @Override
     public void downEntity(String id) {
         Optional<EntityPO> po = entityDao.findById(id);
-        if (po.isPresent()){
+        if (po.isPresent()) {
             String sortCode1 = po.get().getSortCode();
-            List<EntityPO> poList = indexDao.findByPidAndSortCodeAfterOrderBySortCode(po.get().getPid(),sortCode1);
+            List<EntityPO> poList = indexDao.findByPidAndSortCodeAfterOrderBySortCode(po.get().getPid(), sortCode1);
             exchangeSortCode(po.get(), sortCode1, poList);
         }
     }
@@ -66,7 +66,7 @@ public class IndexServiceImpl extends BaseService implements IndexService {
     }
 
     private void exchangeSortCode(EntityPO po, String sortCode1, List<EntityPO> poList) {
-        if (!poList.isEmpty()){
+        if (!poList.isEmpty()) {
             String sortCode2 = poList.get(0).getSortCode();
             poList.get(0).setSortCode(sortCode1);
             po.setSortCode(sortCode2);

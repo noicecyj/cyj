@@ -9,5 +9,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @date 2020-12-07
  */
 public interface IndexDao extends JpaRepository<DataTablePO, String> {
-
 }

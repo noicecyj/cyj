@@ -1,9 +1,10 @@
 package com.example.cyjpagemenu.service;
 
-import com.example.cyjpagemenu.entity.*;
+import com.example.cyjpagemenu.entity.DataFormItemPO;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+
 /**
  * @author 曹元杰
  * @version 1.0
@@ -39,8 +40,8 @@ public interface DataFormItemService {
      *
      * @param id         id
      * @param pageNumber 页码
-     * @param pageSize 条目
-     * @param sortCode 排序列
+     * @param pageSize   条目
+     * @param sortCode   排序列
      * @return 实体列表分页
      */
     Page<DataFormItemPO> findAll(String id, Integer pageNumber, Integer pageSize, String sortCode);

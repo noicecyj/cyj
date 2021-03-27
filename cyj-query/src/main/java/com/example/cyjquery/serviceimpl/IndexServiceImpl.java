@@ -46,7 +46,7 @@ public class IndexServiceImpl implements IndexService {
     public Object findSqlById(String tableName, String id) {
         String sql = String.format("select * from %s where id = ?", tableName);
         Query query = em.createNativeQuery(sql);
-        query.setParameter(1,id);
+        query.setParameter(1, id);
         return query.unwrap(NativeQueryImpl.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).getSingleResult();
     }
 }

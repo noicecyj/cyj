@@ -17,4 +17,5 @@ public class DictionaryDTO implements Serializable {
     private String dictionaryName;
     private String dictionaryValue;
     private String sortCode;
+
 }

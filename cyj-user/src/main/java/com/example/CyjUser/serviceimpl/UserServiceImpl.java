@@ -28,7 +28,7 @@ public class UserServiceImpl extends BaseService implements UserService, UserDet
 
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    private static final BCryptPasswordEncoder ENCODER = new BCryptPasswordEncoder();
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     private UserDao userDao;
 
@@ -39,7 +39,7 @@ public class UserServiceImpl extends BaseService implements UserService, UserDet
 
     @Override
     public UserPO addOne(UserPO po) {
-        String hash = ENCODER.encode(po.getPassword());
+        String hash = encoder.encode(po.getPassword());
         po.setPassword(hash);
         return userDao.save(po);
     }

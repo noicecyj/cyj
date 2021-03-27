@@ -1,10 +1,12 @@
 package com.example.cyjquery.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
-import com.example.cyjquery.entity.*;
-import com.example.cyjquery.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjquery.entity.SqlPO;
+import com.example.cyjquery.serviceimpl.SqlServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 曹元杰

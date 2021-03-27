@@ -2,10 +2,12 @@ package com.example.cyjdictionary.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.VoPoConverter;
-import com.example.cyjdictionary.entity.*;
-import com.example.cyjdictionary.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjdictionary.entity.CatalogPO;
+import com.example.cyjdictionary.serviceimpl.CatalogServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 

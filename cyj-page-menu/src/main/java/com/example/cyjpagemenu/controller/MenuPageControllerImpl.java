@@ -2,10 +2,12 @@ package com.example.cyjpagemenu.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.VoPoConverter;
-import com.example.cyjpagemenu.entity.*;
-import com.example.cyjpagemenu.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjpagemenu.entity.MenuPagePO;
+import com.example.cyjpagemenu.serviceimpl.MenuPageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 

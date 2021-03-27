@@ -10,7 +10,7 @@ public enum ResultCode {
     /* 成功状态码 */
     SUCCESS(200, "成功"),
 
-    FAILURE(400,"失败");
+    FAILURE(400, "失败");
 
     private final Integer code;
 

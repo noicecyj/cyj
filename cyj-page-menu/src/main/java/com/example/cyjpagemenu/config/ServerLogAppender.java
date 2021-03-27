@@ -1,6 +1,10 @@
 package com.example.cyjpagemenu.config;
 
-import ch.qos.logback.classic.spi.*;
+import ch.qos.logback.classic.spi.CallerData;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.classic.spi.IThrowableProxy;
+import ch.qos.logback.classic.spi.StackTraceElementProxy;
+import ch.qos.logback.classic.spi.ThrowableProxyUtil;
 import ch.qos.logback.core.CoreConstants;
 import ch.qos.logback.core.db.DBAppenderBase;
 import ch.qos.logback.core.db.DBHelper;
@@ -11,7 +15,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
 import static ch.qos.logback.core.db.DBHelper.closeStatement;
 

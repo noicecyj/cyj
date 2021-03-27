@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * 当前类型的对象必须交由Spring容器管理。使用@Component注解描述。
  * 继承父类后，必须实现父类中定义的4个抽象方法。
  * shouldFilter、 run、 filterType、 filterOrder
+ *
  * @author 曹元杰
  */
 @Component
@@ -42,7 +43,7 @@ public class LoggerFilter extends ZuulFilter {
         HttpServletRequest request = rc.getRequest();
 
         logger.info("LogFilter.method={},url={}",
-                request.getMethod(),request.getRequestURL().toString());
+                request.getMethod(), request.getRequestURL().toString());
         // 可以记录日志、鉴权，给维护人员记录提供定位协助、统计性能
         return null;
     }

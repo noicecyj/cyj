@@ -10,12 +10,12 @@ import java.util.List;
  * @version 1.0
  * @date 2020-09-13
  */
-public interface IndexDao extends JpaRepository<EntityPO,String> {
+public interface IndexDao extends JpaRepository<EntityPO, String> {
 
     /**
      * 查询上移属性
      *
-     * @param pid 实体id
+     * @param pid      实体id
      * @param sortCode 排序代码
      * @return 属性列
      */
@@ -24,7 +24,7 @@ public interface IndexDao extends JpaRepository<EntityPO,String> {
     /**
      * 查询下移属性
      *
-     * @param pid 实体id
+     * @param pid      实体id
      * @param sortCode 排序代码
      * @return 属性列
      */

@@ -54,7 +54,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @GetMapping("/user")
-    public Principal user(Principal user){
+    public Principal user(Principal user) {
         return user;
     }
 

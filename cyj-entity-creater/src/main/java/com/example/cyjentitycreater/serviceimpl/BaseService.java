@@ -38,6 +38,7 @@ public class BaseService {
     public void init() {
         queryFactory = new JPAQueryFactory(entityManager);
     }
+
     /**
      * 生成作者
      *

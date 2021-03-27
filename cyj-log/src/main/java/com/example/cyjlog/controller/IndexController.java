@@ -3,7 +3,11 @@ package com.example.cyjlog.controller;
 import com.example.cyjlog.entity.LogPO;
 import com.example.cyjlog.serviceimpl.IndexServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -26,6 +30,7 @@ public class IndexController {
 
     /**
      * 根据端口查询日志
+     *
      * @param port 端口
      * @return 返回值
      */
@@ -35,7 +40,6 @@ public class IndexController {
     }
 
     /**
-     *
      * @param name 服务名
      * @return 返回值
      */
@@ -45,8 +49,7 @@ public class IndexController {
     }
 
     /**
-     *
-     * @param port 端口
+     * @param port  端口
      * @param time1 时间1
      * @param time2 时间2
      * @return 返回值
@@ -59,7 +62,6 @@ public class IndexController {
     }
 
     /**
-     *
      * @param port 端口
      */
     @PostMapping(value = "deleteLogsByPort")

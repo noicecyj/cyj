@@ -1,10 +1,12 @@
 package com.example.cyjlog.controller;
 
 import com.example.cyjcommon.utils.ResultVO;
-import com.example.cyjlog.entity.*;
-import com.example.cyjlog.serviceimpl.*;
-import org.springframework.web.bind.annotation.*;
+import com.example.cyjlog.entity.ServerPO;
+import com.example.cyjlog.serviceimpl.ServerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 曹元杰
