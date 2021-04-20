@@ -2,9 +2,9 @@ server:
   port: 8020
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: false
   instance:
     prefer-ip-address: true
 spring:
@@ -39,3 +39,12 @@ hystrix:
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
+security:
+  oauth2: #与oauth2-server对应的配置
+    client:
+      client-id: cyj-entity-creater
+      client-secret: admin123456
+      user-authorization-uri: http://localhost:8090/oauth/authorize
+      access-token-uri: http://localhost:8090/oauth/token
+    resource:
+      user-info-uri: http://localhost:8090/current

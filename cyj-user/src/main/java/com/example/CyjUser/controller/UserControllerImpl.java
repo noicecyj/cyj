@@ -5,11 +5,11 @@ import com.example.CyjUser.serviceimpl.UserServiceImpl;
 import com.example.cyjcommon.utils.ResultVO;
 import com.example.cyjcommon.utils.VoPoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.Map;
 
 /**
@@ -53,9 +53,9 @@ public class UserControllerImpl implements UserController {
         return ResultVO.success(userService.findOneById(id));
     }
 
-    @GetMapping("/user")
-    public Principal user(Principal user) {
-        return user;
+    @GetMapping("/getCurrentUser")
+    public Object getCurrentUser(Authentication authentication) {
+        return authentication.getPrincipal();
     }
 
 }

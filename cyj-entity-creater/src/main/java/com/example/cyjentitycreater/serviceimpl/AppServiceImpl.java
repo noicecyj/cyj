@@ -363,8 +363,8 @@ public class AppServiceImpl extends BaseService {
                 "  port: " + po.getAppPort() + "\r\n" +
                 "eureka:\r\n" +
                 "  client:\r\n" +
-                "    service-url:\r\n" +
-                "      defaultZone: http://localhost:8761/eureka/\r\n" +
+                "    serviceUrl:\r\n" +
+                "      defaultZone: http://localhost:8761/eureka\r\n" +
                 "    fetch-registry: false\r\n" +
                 "  instance:\r\n" +
                 "    prefer-ip-address: true\r\n" +
