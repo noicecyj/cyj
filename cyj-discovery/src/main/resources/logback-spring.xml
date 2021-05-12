@@ -2,7 +2,7 @@
 <!--该日志将日志级别不同的log信息保存到不同的文件中 -->
 <configuration debug="false">
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="C:\cyj-entity-creater"/>
+    <property name="LOG_HOME" value="C:\cyj-discovery"/>
 
     <!-- 控制台输出 -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">

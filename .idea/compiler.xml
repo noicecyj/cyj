@@ -7,17 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cyj-discovery" />
-        <module name="cyj-common" />
-        <module name="cyj-log" />
         <module name="cyj-auth" />
-        <module name="cyj-entity-creater" />
+        <module name="cyj-discovery" />
+        <module name="cyj-log" />
         <module name="cyj-dictionary" />
-        <module name="cyj-user" />
-        <module name="cyj-workflow" />
+        <module name="cyj-common" />
         <module name="cyj-sso" />
-        <module name="cyj-query" />
         <module name="cyj-page-menu" />
+        <module name="cyj-entity-creater" />
+        <module name="cyj-user" />
+        <module name="cyj-query" />
+        <module name="cyj-workflow" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
